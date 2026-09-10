@@ -13,17 +13,48 @@ document.querySelectorAll('a,button,.p-card,.exp-card,.ev-card,.com-card').forEa
   el.addEventListener('mouseleave', () => { if (cur) cur.classList.remove('big'); if (curR) curR.classList.remove('big'); });
 });
 
-// HEADER SCROLL
+// HEADER SCROLL — works for both old #hdr and new .ycx-header
 const hdr = document.getElementById('hdr');
 window.addEventListener('scroll', () => {
-  hdr.classList.toggle('scrolled', window.scrollY > 80);
+  if (hdr) hdr.classList.toggle('scrolled', window.scrollY > 80);
 });
 
-// MENU
-function toggleMenu() {
-  document.getElementById('fsMenu').classList.toggle('open');
-  document.body.style.overflow = document.getElementById('fsMenu').classList.contains('open') ? 'hidden' : '';
+// ── DRAWER (new navbar) ───────────────────────────────────────
+function toggleDrawer() {
+  const drawer  = document.getElementById('navDrawer');
+  const overlay = document.getElementById('navOverlay');
+  const btn     = document.getElementById('hambBtn');
+  if (!drawer) return;
+  const isOpen = drawer.classList.toggle('open');
+  overlay.classList.toggle('open', isOpen);
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+  if (btn) btn.setAttribute('aria-expanded', isOpen);
 }
+
+function closeDrawer() {
+  const drawer  = document.getElementById('navDrawer');
+  const overlay = document.getElementById('navOverlay');
+  const btn     = document.getElementById('hambBtn');
+  if (!drawer) return;
+  drawer.classList.remove('open');
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+  if (btn) btn.setAttribute('aria-expanded', 'false');
+}
+
+function toggleDrawerGroup(btn) {
+  const sub = btn.nextElementSibling;
+  const isOpen = btn.classList.toggle('open');
+  sub.classList.toggle('open', isOpen);
+}
+
+// Close drawer on ESC key
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') closeDrawer();
+});
+
+// LEGACY COMPAT — keep toggleMenu() pointing to drawer in case any page still calls it
+function toggleMenu() { toggleDrawer(); }
 
 // HERO SLIDES
 const slides = document.querySelectorAll('.hero-slide');

@@ -5,9 +5,12 @@ body {
     margin: 0;
     padding: 0;
     -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
 }
 .container {
     max-width: 750px;
+    width: 100%;
     margin: 30px auto;
     background-color: #ffffff;
     border-radius: 12px;
@@ -21,7 +24,8 @@ body {
     text-align: center;
 }
 .header img {
-    width: 120px;
+    max-width: 140px;
+    height: auto;
     display: inline-block;
 }
 .header h1 {
@@ -155,4 +159,51 @@ body {
     border-top: 1px solid #edf2f7;
     font-size: 12px;
     color: #a0aec0;
+}
+
+@media only screen and (max-width: 600px) {
+    .container {
+        width: 100% !important;
+        margin: 0 !important;
+        border-radius: 0 !important;
+        border: none !important;
+    }
+    .header {
+        padding: 24px 16px !important;
+    }
+    .content {
+        padding: 24px 16px !important;
+    }
+    .details-row {
+        display: block !important;
+        margin-bottom: 12px !important;
+    }
+    .details-label {
+        width: 100% !important;
+        display: block !important;
+        margin-bottom: 2px !important;
+    }
+    .details-value {
+        width: 100% !important;
+        display: block !important;
+    }
+    .details-table, .details-table tbody, .details-table tr, .details-table th, .details-table td {
+        display: block !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    .details-table th {
+        width: 100% !important;
+        background-color: #f0f4f8 !important;
+        padding: 8px 10px !important;
+        font-size: 13px !important;
+    }
+    .details-table td {
+        width: 100% !important;
+        padding: 8px 10px 14px !important;
+        font-size: 14px !important;
+    }
+    .footer {
+        padding: 30px 16px !important;
+    }
 }

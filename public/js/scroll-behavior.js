@@ -50,29 +50,13 @@
         });
     }
 
-    // Mobile menu toggle
-    const hambBtn = document.getElementById('hambBtn');
-    const fsMenu = document.getElementById('fsMenu');
-    
-    if (hambBtn) {
-        hambBtn.addEventListener('click', toggleMenu);
-    }
+    // Mobile menu toggle is handled via onclick="toggleDrawer()" on #hambBtn in navbar.blade.php
 
-    window.toggleMenu = function() {
-        if (fsMenu) {
-            fsMenu.classList.toggle('open');
-            document.body.style.overflow = fsMenu.classList.contains('open') ? 'hidden' : '';
-        }
-    };
-
-    // Close menu when clicking nav items
+    // Legacy: close old fullscreen menu items if they still exist on any page
     const fsNavItems = document.querySelectorAll('.fs-nav-item');
     fsNavItems.forEach(item => {
         item.addEventListener('click', () => {
-            if (fsMenu) {
-                fsMenu.classList.remove('open');
-                document.body.style.overflow = '';
-            }
+            if (typeof closeDrawer === 'function') closeDrawer();
         });
     });
 })();

@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Application Received - Young Chanakya X</title>
     <style>
         @include('emails.layout.styles')
@@ -11,7 +13,7 @@
 
 <div class="container">
     <div class="header">
-        <img src="https://connectx.youngchanakya.com/images/logo/logo.png" alt="Young Chanakya X">
+        <img src="https://x.youngchanakya.com/images/logo/logo.png" alt="Young Chanakya X">
     </div>
     
     <div class="content">

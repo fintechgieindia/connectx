@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>sponsorship Application Received - Young Chanakya X</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sponsorship Application Received - Young Chanakya X</title>
     <style>
         @include('emails.layout.styles')
     </style>
@@ -11,14 +13,14 @@
 
 <div class="container">
     <div class="header">
-        <img src="https://connectx.youngchanakya.com/images/logo/logo.png" alt="Young Chanakya X">
+        <img src="https://x.youngchanakya.com/images/logo/logo.png" alt="Young Chanakya X">
     </div>
     
     <div class="content">
         <div class="greeting">Hello {{ $name }},</div>
         
         <div class="message">
-            Thank you for your interest in becoming a <strong>Young Chanakya X sponsor</strong>.
+            Thank you for your interest in becoming a <strong>Young Chanakya X Sponsor</strong>.
             <br><br>
             Our team has received your sponsorship inquiry. We appreciate your support for our ecosystem. Our sponsorship team will review your details and contact you shortly with customized opportunities and next steps.
         </div>

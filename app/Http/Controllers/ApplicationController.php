@@ -11,6 +11,7 @@ use App\Models\Sponsor;
 use App\Models\Speaker;
 use App\Models\FeaturedGuest;
 use App\Models\StorySubmission;
+use App\Models\InstitutionRegistration;
 
 class ApplicationController extends Controller
 {
@@ -658,6 +659,92 @@ class ApplicationController extends Controller
             }
 
             return back()->withInput()->with('error', 'Unable to submit proposal. Please try again.');
+        }
+    }
+
+    public function submitInstitution(Request $request)
+    {
+        $validated = $request->validate([
+            // Contact Person
+            'contact_name'        => 'required|string|max:255',
+            'designation'         => 'required|string|max:255',
+            'phone'               => 'required|string|max:50',
+            'email'               => 'required|email|max:255',
+
+            // Institution Details
+            'institution_name'    => 'required|string|max:255',
+            'institution_type'    => 'required|string|in:School,College,Both',
+            'board_or_university' => 'required|string|max:255',
+            'year_of_establishment' => 'nullable|digits:4|integer|min:1800|max:' . date('Y'),
+            'student_strength'    => 'required|string|max:100',
+            'city'                => 'required|string|max:100',
+            'state'               => 'required|string|max:100',
+            'website'             => 'nullable|url|max:255',
+
+            // Collaboration Interest
+            'areas_of_interest'   => 'required|array|min:1',
+            'areas_of_interest.*' => 'string|max:100',
+            'heard_about_ycx'     => 'nullable|string|max:255',
+            'message'             => 'nullable|string|max:3000',
+        ]);
+
+        // Encode areas_of_interest array as JSON for storage
+        $validated['areas_of_interest'] = json_encode($validated['areas_of_interest']);
+
+        try {
+            \Illuminate\Support\Facades\Log::info('--- INSTITUTION REGISTRATION SUBMISSION START ---');
+
+            // 1. Save to Database
+            $institution = InstitutionRegistration::create([
+                'contact_name'          => $validated['contact_name'],
+                'designation'           => $validated['designation'],
+                'phone'                 => $validated['phone'],
+                'email'                 => $validated['email'],
+                'institution_name'      => $validated['institution_name'],
+                'institution_type'      => $validated['institution_type'],
+                'board_or_university'   => $validated['board_or_university'],
+                'year_of_establishment' => $validated['year_of_establishment'] ?? null,
+                'student_strength'      => $validated['student_strength'],
+                'city'                  => $validated['city'],
+                'state'                 => $validated['state'],
+                'website'               => $validated['website'] ?? null,
+                'areas_of_interest'     => $validated['areas_of_interest'],
+                'heard_about_ycx'       => $validated['heard_about_ycx'] ?? null,
+                'message'               => $validated['message'] ?? null,
+                'status'                => 'pending',
+            ]);
+            \Illuminate\Support\Facades\Log::info('InstitutionRegistration saved to database. ID: ' . $institution->id);
+
+            // Prepare email data with decoded areas for display
+            $emailData = $validated;
+            $emailData['areas_of_interest'] = json_decode($validated['areas_of_interest'], true);
+
+            // 2. Email to Admin
+            \Illuminate\Support\Facades\Log::info('Sending admin email...');
+            Mail::send('emails.institution-application', $emailData, function ($message) use ($validated) {
+                $message->from(config('mail.from.address', 'youngchanakya.x@gmail.com'), config('mail.from.name', 'Young Chanakya X'))
+                        ->to('youngchanakya.x@gmail.com')
+                        ->subject('New Institution Registration: ' . $validated['institution_name'] . ' (' . $validated['contact_name'] . ')')
+                        ->replyTo($validated['email'], $validated['contact_name']);
+            });
+            \Illuminate\Support\Facades\Log::info('Admin email sent.');
+
+            // 3. Email to User (Confirmation)
+            \Illuminate\Support\Facades\Log::info('Sending user confirmation email to: ' . $validated['email']);
+            Mail::send('emails.institution-confirmation', $emailData, function ($message) use ($validated) {
+                $message->from(config('mail.from.address', 'youngchanakya.x@gmail.com'), config('mail.from.name', 'Young Chanakya X'))
+                        ->to($validated['email'])
+                        ->replyTo(config('mail.from.address', 'youngchanakya.x@gmail.com'), config('mail.from.name', 'Young Chanakya X'))
+                        ->subject('Institution Registration Received — Young Chanakya X');
+            });
+            \Illuminate\Support\Facades\Log::info('User email sent.');
+            \Illuminate\Support\Facades\Log::info('--- INSTITUTION REGISTRATION SUBMISSION END ---');
+
+            return back()->with('success', 'Your institution has been successfully registered with Young Chanakya X! Our team will reach out to you shortly.');
+        } catch (\Exception $e) {
+            logger()->error('SMTP Institution Registration failure: ' . $e->getMessage());
+
+            return back()->withInput()->with('error', 'Unable to submit registration. Please try again.');
         }
     }
 }

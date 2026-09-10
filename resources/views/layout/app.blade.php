@@ -68,6 +68,11 @@
             margin-right: calc(var(--bs-gutter-x, 1.5rem) * -.5);
             margin-left: calc(var(--bs-gutter-x, 1.5rem) * -.5);
         }
+        /* ── Nav page-specific hamburger line color ─────────── */
+        /* Pages with light/cream backgrounds override the white lines */
+        #hdr:not(.scrolled) .ycx-hamburger span {
+            background: #0c3a30;
+        }
     </style>
 </head>
 

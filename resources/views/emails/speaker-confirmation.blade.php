@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Speaker Application Received - Young Chanakya X</title>
     <style>
         @include('emails.layout.styles')
@@ -11,7 +13,7 @@
 
 <div class="container">
     <div class="header">
-        <img src="https://connectx.youngchanakya.com/images/logo/logo.png" alt="Young Chanakya X">
+        <img src="https://x.youngchanakya.com/images/logo/logo.png" alt="Young Chanakya X">
     </div>
     
     <div class="content">
@@ -67,10 +69,10 @@
         </div>
         @endif
 
-            <div class="closing">
-                Best regards,<br>
-                <strong>The Young Chanakya X Team</strong>
-            </div>
+        <div class="closing">
+            Best regards,<br>
+            <strong>The Young Chanakya X Team</strong>
+        </div>
     </div>
     
     @include('emails.layout.footer')

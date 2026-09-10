@@ -126,6 +126,15 @@ Route::get('/share-your-story', function () {
     return view('share-your-story');
 })->name('share-your-story');
 Route::post('/share-your-story/submit', [ApplicationController::class, 'submitStory'])->name('story.submit');
+
+// =========================
+// INSTITUTION REGISTRATION
+// =========================
+Route::get('/register-institution', function () {
+    return view('register-institution');
+})->name('institution.register');
+Route::post('/register-institution/submit', [ApplicationController::class, 'submitInstitution'])->name('institution.submit');
+
 Route::get('/career', [App\Http\Controllers\JobController::class, 'careers'])->name('careers.index');
 Route::get('/internship', [App\Http\Controllers\JobController::class, 'internships'])->name('internships.index');
 Route::get('/career/{slug}', [App\Http\Controllers\JobController::class, 'careerDetail'])->name('careers.detail');

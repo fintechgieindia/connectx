@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>New sponsorship Application</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>New Sponsorship Application</title>
     <style>
         @include('emails.layout.styles')
     </style>
@@ -11,12 +13,12 @@
 
 <div class="container">
     <div class="header">
-        <img src="https://connectx.youngchanakya.com/images/logo/logo.png" alt="Young Chanakya X">
+        <img src="https://x.youngchanakya.com/images/logo/logo.png" alt="Young Chanakya X">
     </div>
     
     <div class="content">
         <p class="intro">
-            A new application has been submitted for a <strong>Young Chanakya X sponsorship</strong>. Below are the details provided by the applicant:
+            A new application has been submitted for a <strong>Young Chanakya X Sponsorship</strong>. Below are the details provided by the applicant:
         </p>
         
         <table class="details-table">
@@ -45,7 +47,7 @@
                 <td><a href="{{ $linkedin }}" target="_blank">View LinkedIn Profile</a></td>
             </tr>
             <tr>
-                <th>sponsorship Level</th>
+                <th>Sponsorship Level</th>
                 <td>{{ $sponsorship_level }}</td>
             </tr>
             @if(!empty($website))

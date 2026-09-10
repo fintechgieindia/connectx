@@ -1,157 +1,270 @@
-<div class="fs-menu" id="fsMenu">
-    <div class="fs-left">
-        <div>
-            <a href="{{ url('/') }}" class="logo">
-                <!-- <img src="{{ asset('images/logo/yc.png') }}"
-                    alt="Young Chanakya X Logo"
-                    class="menu-logo"> -->
-                <img src="{{ asset('images/logo/yc.png') }}"
-                    alt="Young Chanakya"
-                    class="menu-logo">
-            </a>
+{{-- ============================================================
+     MAIN NAVBAR — YCX
+     Desktop: sticky header with grouped dropdown menus
+     Mobile: hamburger → slide-in drawer with accordions
+     All pages preserved, grouped into 5 logical categories.
+     ============================================================ --}}
 
-            <div class="fs-brand-desc">
-                <p>
-                    Young Chanakya is a Business Leadership Launchpad dedicated to empowering the next generation of entrepreneurs, innovators, and leaders. We bridge the gap between education and real-world success.
-                </p>
+{{-- ── Mobile Drawer Overlay ─────────────────────────────── --}}
+<div class="nav-drawer-overlay" id="navOverlay" onclick="closeDrawer()"></div>
 
-                <a href="https://youngchanakya.com/" target="_blank" class="fs-website-btn">
-                    Explore Young Chanakya ↗
-                </a>
-                <h3> Follow Us </h3>
-
-                <div class="fs-socials">
-                    <a href="https://www.linkedin.com/company/youngchanakya" target="_blank" class="fs-social">
-                        <i class="bi bi-linkedin"></i>
-                    </a>
-
-                    <a href="https://www.instagram.com/youngchanakya/" target="_blank" class="fs-social">
-                        <i class="bi bi-instagram"></i>
-                    </a>
-
-                    <a href="https://www.youtube.com/youngchanakya" target="_blank" class="fs-social">
-                        <i class="bi bi-youtube"></i>
-                    </a>
-
-                    <a href="https://www.facebook.com/youngchanakya/" target="_blank" class="fs-social">
-                        <i class="bi bi-facebook"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
+{{-- ── Mobile Drawer ─────────────────────────────────────── --}}
+<div class="nav-drawer" id="navDrawer">
+    <div class="nav-drawer-header">
+        <a href="{{ url('/') }}" onclick="closeDrawer()">
+            <img src="{{ asset('images/logo/logo.png') }}" alt="Young Chanakya X" class="nav-drawer-logo">
+        </a>
+        <button class="nav-drawer-close" onclick="closeDrawer()" aria-label="Close menu">
+            <i class="bi bi-x-lg"></i>
+        </button>
     </div>
 
-    <div class="fs-right">
-        <div class="fs-close" onclick="toggleMenu()">Close</div>
+    <nav class="nav-drawer-nav">
 
-        <div class="fs-right-content">
-            <div class="fs-right-top">
-                <a href="{{ url('/') }}" style="display: inline-block; line-height: 0; text-decoration: none;">
-                    <img src="{{ asset('images/logo/logo.png') }}"
-                        alt="Young Chanakya X"
-                        class="fs-right-logo">
+        {{-- About --}}
+        <div class="nav-drawer-item">
+            <button class="nav-drawer-group-btn" onclick="toggleDrawerGroup(this)">
+                <span>About</span>
+                <i class="bi bi-chevron-down nav-drawer-chevron"></i>
+            </button>
+            <div class="nav-drawer-sub">
+                <a href="{{ url('/about') }}" onclick="closeDrawer()" class="{{ request()->is('about') ? 'active' : '' }}">
+                    <i class="bi bi-info-circle"></i> About YCX
                 </a>
-
-                <div class="fs-right-socials">
-                    <a href="https://www.linkedin.com/company/youngchanakyax/" target="_blank" aria-label="YCX LinkedIn"><i class="bi bi-linkedin"></i></a>
-                    <a href="https://www.youtube.com/channel/UCunrW6XIpxgonRXd6CjQ9eQ" target="_blank" aria-label="YCX YouTube"><i class="bi bi-youtube"></i></a>
-                    <a href="https://www.facebook.com/YoungChanakyaX" target="_blank" aria-label="YCX Facebook"><i class="bi bi-facebook"></i></a>
-                    <a href="https://www.threads.com/@youngchanakyax" target="_blank" aria-label="YCX Threads"><i class="bi bi-threads"></i></a>
-                </div>
+                <a href="{{ url('/connectors') }}" onclick="closeDrawer()" class="{{ request()->is('connectors') ? 'active' : '' }}">
+                    <i class="bi bi-people"></i> Connectors
+                </a>
+                <a href="{{ url('/masterclass') }}" onclick="closeDrawer()" class="{{ request()->is('masterclass') ? 'active' : '' }}">
+                    <i class="bi bi-play-circle"></i> Masterclasses
+                </a>
+                <a href="{{ url('/insights') }}" onclick="closeDrawer()" class="{{ request()->is('insights') || request()->is('insights/*') ? 'active' : '' }}">
+                    <i class="bi bi-journal-richtext"></i> Insights
+                </a>
+                <a href="{{ url('/contact') }}" onclick="closeDrawer()" class="{{ request()->is('contact') ? 'active' : '' }}">
+                    <i class="bi bi-envelope"></i> Contact Us
+                </a>
             </div>
-
-            <nav class="fs-nav">
-
-                <a href="{{ url('/about') }}" class="fs-nav-item {{ request()->is('about') ? 'active' : '' }}" onclick="toggleMenu()">
-                    <span class="fs-nav-name">About Young Chanakya X</span>
-                    <span class="fs-nav-arrow">→</span>
-                </a>
-
-                <a href="{{ url('/become-a-partner') }}" class="fs-nav-item {{ request()->is('become-a-partner') ? 'active' : '' }}" onclick="toggleMenu()">
-                    <span class="fs-nav-name">Become a Partner</span>
-                    <span class="fs-nav-arrow">→</span>
-                </a>
-
-                <a href="{{ url('/become-a-sponsor') }}" class="fs-nav-item {{ request()->is('become-a-sponsor') || request()->is('become-a-sponser') ? 'active' : '' }}" onclick="toggleMenu()">
-                    <span class="fs-nav-name">Become a Sponsor</span>
-                    <span class="fs-nav-arrow">→</span>
-                </a>
-
-                <a href="{{ url('/share-your-story') }}" class="fs-nav-item {{ request()->is('share-your-story') ? 'active' : '' }}" onclick="toggleMenu()">
-                    <span class="fs-nav-name">Share Your Story</span>
-                    <span class="fs-nav-arrow">→</span>
-                </a>
-
-                <a href="{{ url('/become-a-speaker') }}" class="fs-nav-item {{ request()->is('become-a-speaker') ? 'active' : '' }}" onclick="toggleMenu()">
-                    <span class="fs-nav-name">YCX Talks</span>
-                    <span class="fs-nav-arrow">→</span>
-                </a>
-
-                <a href="{{ url('/become-a-feature') }}" class="fs-nav-item {{ request()->is('become-a-feature') ? 'active' : '' }}" onclick="toggleMenu()">
-                    <span class="fs-nav-name">Featured on YCX Podcast</span>
-                    <span class="fs-nav-arrow">→</span>
-                </a>
-
-                <a href="{{ url('/masterclass') }}" class="fs-nav-item {{ request()->is('masterclass') ? 'active' : '' }}" onclick="toggleMenu()">
-                    <span class="fs-nav-name">YCX Masterclass</span>
-                    <span class="fs-nav-arrow">→</span>
-                </a>
-
-                <a href="{{ url('/connectors') }}" class="fs-nav-item {{ request()->is('connectors-list') || request()->is('connecters-list') ? 'active' : '' }}" onclick="toggleMenu()">
-                    <span class="fs-nav-name">Connectors Directory</span>
-                    <span class="fs-nav-arrow">→</span>
-                </a>
-
-                <a href="{{ url('/events') }}" class="fs-nav-item {{ request()->is('events') ? 'active' : '' }}" onclick="toggleMenu()">
-                    <span class="fs-nav-name">Events</span>
-                    <span class="fs-nav-arrow">→</span>
-                </a>
-
-                <a href="{{ url('/career') }}" class="fs-nav-item {{ request()->is('career') ? 'active' : '' }}" onclick="toggleMenu()">
-                    <span class="fs-nav-name">Career</span>
-                    <span class="fs-nav-arrow">→</span>
-                </a>
-
-                <a href="{{ url('/internship') }}" class="fs-nav-item {{ request()->is('internship') ? 'active' : '' }}" onclick="toggleMenu()">
-                    <span class="fs-nav-name">Internship</span>
-                    <span class="fs-nav-arrow">→</span>
-                </a>
-
-                <a href="{{ url('/insights') }}" class="fs-nav-item {{ request()->is('insights') || request()->is('insights/*') ? 'active' : '' }}" onclick="toggleMenu()">
-                    <span class="fs-nav-name">Insights</span>
-                    <span class="fs-nav-arrow">→</span>
-                </a>
-
-                <a href="{{ url('/contact') }}" class="fs-nav-item {{ request()->is('contact') ? 'active' : '' }}" onclick="toggleMenu()">
-                    <span class="fs-nav-name">Contact Us</span>
-                    <span class="fs-nav-arrow">→</span>
-                </a>
-
-            </nav>
         </div>
+
+        {{-- Stories & Talks (Fix the name) --}}
+        <div class="nav-drawer-item">
+            <button class="nav-drawer-group-btn" onclick="toggleDrawerGroup(this)">
+                <span>Stories &amp; Talks</span>
+                <i class="bi bi-chevron-down nav-drawer-chevron"></i>
+            </button>
+            <div class="nav-drawer-sub">
+                <a href="{{ url('/share-your-story') }}" onclick="closeDrawer()" class="{{ request()->is('share-your-story') ? 'active' : '' }}">
+                    <i class="bi bi-chat-quote"></i> Share Your Story
+                </a>
+                <a href="{{ url('/become-a-speaker') }}" onclick="closeDrawer()" class="{{ request()->is('become-a-speaker') ? 'active' : '' }}">
+                    <i class="bi bi-mic"></i> YCX Talks
+                </a>
+                <a href="{{ url('/become-a-feature') }}" onclick="closeDrawer()" class="{{ request()->is('become-a-feature') ? 'active' : '' }}">
+                    <i class="bi bi-broadcast"></i> Featured on YCX Podcast
+                </a>
+            </div>
+        </div>
+
+        {{-- Business Collaboration --}}
+        <div class="nav-drawer-item">
+            <button class="nav-drawer-group-btn" onclick="toggleDrawerGroup(this)">
+                <span>Business Collaboration</span>
+                <i class="bi bi-chevron-down nav-drawer-chevron"></i>
+            </button>
+            <div class="nav-drawer-sub">
+                <a href="{{ url('/become-a-partner') }}" onclick="closeDrawer()" class="{{ request()->is('become-a-partner') ? 'active' : '' }}">
+                    <i class="bi bi-person-check"></i> Become a Partner
+                </a>
+                <a href="{{ url('/become-a-sponsor') }}" onclick="closeDrawer()" class="{{ request()->is('become-a-sponsor') ? 'active' : '' }}">
+                    <i class="bi bi-star"></i> Become a Sponsor
+                </a>
+                <a href="{{ url('/events') }}" onclick="closeDrawer()" class="{{ request()->is('events') || request()->is('event-details*') ? 'active' : '' }}">
+                    <i class="bi bi-calendar-event"></i> Event
+                </a>
+                <a href="{{ url('/register-institution') }}" onclick="closeDrawer()" class="{{ request()->is('register-institution') ? 'active' : '' }}">
+                    <i class="bi bi-building"></i> Register Institution
+                </a>
+            </div>
+        </div>
+
+        {{-- Work with Us --}}
+        <div class="nav-drawer-item">
+            <button class="nav-drawer-group-btn" onclick="toggleDrawerGroup(this)">
+                <span>Work with Us</span>
+                <i class="bi bi-chevron-down nav-drawer-chevron"></i>
+            </button>
+            <div class="nav-drawer-sub">
+                <a href="{{ url('/career') }}" onclick="closeDrawer()" class="{{ request()->is('career') || request()->is('career/*') ? 'active' : '' }}">
+                    <i class="bi bi-briefcase"></i> Career
+                </a>
+                <a href="{{ url('/internship') }}" onclick="closeDrawer()" class="{{ request()->is('internship') || request()->is('internship/*') ? 'active' : '' }}">
+                    <i class="bi bi-mortarboard"></i> Internship
+                </a>
+            </div>
+        </div>
+
+    </nav>
+
+    <div class="nav-drawer-footer">
+        <a href="{{ url('/connectors') }}" class="nav-drawer-cta" onclick="closeDrawer()">Connect with Us</a>
     </div>
 </div>
 
-<header id="hdr" class="sticky-menu">
+{{-- ── Main Header ───────────────────────────────────────── --}}
+<header id="hdr" class="ycx-header">
 
-    <a href="{{ url('/') }}" class="logo">
-        <img src="{{ asset('images/logo/logo.png') }}"
-            alt="Young Chanakya X"
-            class="site-logo">
+    {{-- Logo --}}
+    <a href="{{ url('/') }}" class="ycx-header-logo">
+        <img src="{{ asset('images/logo/logo.png') }}" alt="Young Chanakya X" class="site-logo">
     </a>
 
-    <div class="header-right">
+    {{-- Desktop Navigation --}}
+    <nav class="ycx-nav" aria-label="Main navigation">
 
-        <button class="btn-join" onclick="window.location.href='/connectors'">
-            Connect with Us
-        </button>
-
-        <div class="hamburger" id="hambBtn" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
+        {{-- 1. About --}}
+        <div class="ycx-nav-group" id="nav-group-about">
+            <button class="ycx-nav-trigger" aria-haspopup="true" aria-expanded="false">
+                About <i class="bi bi-chevron-down ycx-chevron"></i>
+            </button>
+            <div class="ycx-dropdown" role="menu">
+                <a href="{{ url('/about') }}" class="ycx-dropdown-item {{ request()->is('about') ? 'active' : '' }}" role="menuitem">
+                    <span class="ycx-dropdown-icon"><i class="bi bi-info-circle-fill"></i></span>
+                    <span class="ycx-dropdown-text">
+                        <strong>About YCX</strong>
+                        <small>Our story, mission &amp; vision</small>
+                    </span>
+                </a>
+                <a href="{{ url('/connectors') }}" class="ycx-dropdown-item {{ request()->is('connectors') ? 'active' : '' }}" role="menuitem">
+                    <span class="ycx-dropdown-icon"><i class="bi bi-people-fill"></i></span>
+                    <span class="ycx-dropdown-text">
+                        <strong>Connectors</strong>
+                        <small>Meet the YCX community</small>
+                    </span>
+                </a>
+                <a href="{{ url('/masterclass') }}" class="ycx-dropdown-item {{ request()->is('masterclass') ? 'active' : '' }}" role="menuitem">
+                    <span class="ycx-dropdown-icon"><i class="bi bi-play-circle-fill"></i></span>
+                    <span class="ycx-dropdown-text">
+                        <strong>Masterclasses</strong>
+                        <small>Deep-dive learning sessions</small>
+                    </span>
+                </a>
+                <a href="{{ url('/insights') }}" class="ycx-dropdown-item {{ request()->is('insights') || request()->is('insights/*') ? 'active' : '' }}" role="menuitem">
+                    <span class="ycx-dropdown-icon"><i class="bi bi-journal-richtext"></i></span>
+                    <span class="ycx-dropdown-text">
+                        <strong>Insights</strong>
+                        <small>Articles, trends &amp; perspectives</small>
+                    </span>
+                </a>
+                <a href="{{ url('/contact') }}" class="ycx-dropdown-item {{ request()->is('contact') ? 'active' : '' }}" role="menuitem">
+                    <span class="ycx-dropdown-icon"><i class="bi bi-envelope-fill"></i></span>
+                    <span class="ycx-dropdown-text">
+                        <strong>Contact Us</strong>
+                        <small>Get in touch with our team</small>
+                    </span>
+                </a>
+            </div>
         </div>
 
+        {{-- 2. Stories & Talks (Fix the name) --}}
+        <div class="ycx-nav-group" id="nav-group-stories">
+            <button class="ycx-nav-trigger" aria-haspopup="true" aria-expanded="false">
+                Stories &amp; Talks <i class="bi bi-chevron-down ycx-chevron"></i>
+            </button>
+            <div class="ycx-dropdown" role="menu">
+                <a href="{{ url('/share-your-story') }}" class="ycx-dropdown-item {{ request()->is('share-your-story') ? 'active' : '' }}" role="menuitem">
+                    <span class="ycx-dropdown-icon"><i class="bi bi-chat-quote-fill"></i></span>
+                    <span class="ycx-dropdown-text">
+                        <strong>Share Your Story</strong>
+                        <small>Submit your story or proposal</small>
+                    </span>
+                </a>
+                <a href="{{ url('/become-a-speaker') }}" class="ycx-dropdown-item {{ request()->is('become-a-speaker') ? 'active' : '' }}" role="menuitem">
+                    <span class="ycx-dropdown-icon"><i class="bi bi-mic-fill"></i></span>
+                    <span class="ycx-dropdown-text">
+                        <strong>YCX Talks</strong>
+                        <small>Speak at a YCX event</small>
+                    </span>
+                </a>
+                <a href="{{ url('/become-a-feature') }}" class="ycx-dropdown-item {{ request()->is('become-a-feature') ? 'active' : '' }}" role="menuitem">
+                    <span class="ycx-dropdown-icon"><i class="bi bi-broadcast-pin"></i></span>
+                    <span class="ycx-dropdown-text">
+                        <strong>Featured on YCX Podcast</strong>
+                        <small>Get featured on our podcast</small>
+                    </span>
+                </a>
+            </div>
+        </div>
+
+        {{-- 3. Business Collaboration --}}
+        <div class="ycx-nav-group" id="nav-group-collaboration">
+            <button class="ycx-nav-trigger" aria-haspopup="true" aria-expanded="false">
+                Business Collaboration <i class="bi bi-chevron-down ycx-chevron"></i>
+            </button>
+            <div class="ycx-dropdown" role="menu">
+                <a href="{{ url('/become-a-partner') }}" class="ycx-dropdown-item {{ request()->is('become-a-partner') ? 'active' : '' }}" role="menuitem">
+                    <span class="ycx-dropdown-icon"><i class="bi bi-person-check-fill"></i></span>
+                    <span class="ycx-dropdown-text">
+                        <strong>Become a Partner</strong>
+                        <small>Co-create community initiatives</small>
+                    </span>
+                </a>
+                <a href="{{ url('/become-a-sponsor') }}" class="ycx-dropdown-item {{ request()->is('become-a-sponsor') ? 'active' : '' }}" role="menuitem">
+                    <span class="ycx-dropdown-icon"><i class="bi bi-star-fill"></i></span>
+                    <span class="ycx-dropdown-text">
+                        <strong>Become a Sponsor</strong>
+                        <small>Showcase your brand with YCX</small>
+                    </span>
+                </a>
+                <a href="{{ url('/events') }}" class="ycx-dropdown-item {{ request()->is('events') || request()->is('event-details*') ? 'active' : '' }}" role="menuitem">
+                    <span class="ycx-dropdown-icon"><i class="bi bi-calendar-event-fill"></i></span>
+                    <span class="ycx-dropdown-text">
+                        <strong>Event</strong>
+                        <small>Networking &amp; community events</small>
+                    </span>
+                </a>
+                <a href="{{ url('/register-institution') }}" class="ycx-dropdown-item {{ request()->is('register-institution') ? 'active' : '' }}" role="menuitem">
+                    <span class="ycx-dropdown-icon"><i class="bi bi-building-fill"></i></span>
+                    <span class="ycx-dropdown-text">
+                        <strong>Register Institution</strong>
+                        <small>Schools &amp; colleges</small>
+                    </span>
+                </a>
+            </div>
+        </div>
+
+        {{-- 4. Work with Us --}}
+        <div class="ycx-nav-group" id="nav-group-work">
+            <button class="ycx-nav-trigger" aria-haspopup="true" aria-expanded="false">
+                Work with Us <i class="bi bi-chevron-down ycx-chevron"></i>
+            </button>
+            <div class="ycx-dropdown" role="menu">
+                <a href="{{ url('/career') }}" class="ycx-dropdown-item {{ request()->is('career') || request()->is('career/*') ? 'active' : '' }}" role="menuitem">
+                    <span class="ycx-dropdown-icon"><i class="bi bi-briefcase-fill"></i></span>
+                    <span class="ycx-dropdown-text">
+                        <strong>Career</strong>
+                        <small>Full-time roles at YCX</small>
+                    </span>
+                </a>
+                <a href="{{ url('/internship') }}" class="ycx-dropdown-item {{ request()->is('internship') || request()->is('internship/*') ? 'active' : '' }}" role="menuitem">
+                    <span class="ycx-dropdown-icon"><i class="bi bi-mortarboard-fill"></i></span>
+                    <span class="ycx-dropdown-text">
+                        <strong>Internship</strong>
+                        <small>Learn &amp; grow with us</small>
+                    </span>
+                </a>
+            </div>
+        </div>
+
+    </nav>
+
+    {{-- Right side: CTA + Hamburger --}}
+    <div class="ycx-header-right">
+        <a href="{{ url('/connectors') }}" class="ycx-cta-btn">Connect with Us</a>
+        <button class="ycx-hamburger" id="hambBtn" onclick="toggleDrawer()" aria-label="Open menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </div>
 
 </header>
