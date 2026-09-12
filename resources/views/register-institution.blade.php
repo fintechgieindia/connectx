@@ -75,67 +75,78 @@ $seo = [
    ============================================================ */
 
 #hdr:not(.scrolled) .hamburger span {
-    background: #0c3a30 !important;
+    background: #ffffff !important;
 }
 
 /* ── Hero Section ──────────────────────────────────────────── */
 .institution-hero {
     padding-top: 180px;
-    padding-bottom: 80px;
-    background: #f8f6f2;
+    padding-bottom: 90px;
+    background-image: linear-gradient(180deg, rgba(8, 28, 23, 0.84) 0%, rgba(6, 20, 16, 0.94) 100%),
+        url('{{ asset("images/media/institution/hero-banner.webp") }}');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
     position: relative;
     overflow: hidden;
+    color: #ffffff;
 }
 
 .institution-hero::before {
     content: "";
     position: absolute;
-    width: 480px;
-    height: 480px;
-    background: rgba(12, 58, 48, 0.04);
-    border-radius: 50%;
-    top: -180px;
-    right: -120px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255, 190, 142, 0.08) 0%, transparent 70%);
+    top: -150px;
+    right: -100px;
     pointer-events: none;
 }
 
-/* ── Eyebrow / Tag ─────────────────────────────────────────── */
-.institution-hero .eyebrow.rv {
-    color: #0c3a30 !important;
+/* ── Eyebrow Badge Pill ─────────────────────────────────────── */
+.institution-hero .hero-badge-pill {
+    background: rgba(255, 210, 177, 0.12);
+    border: 1px solid rgba(255, 210, 177, 0.28);
+    color: #ffd2b1;
+    padding: 7px 18px;
+    font-size: 0.78rem;
     font-weight: 700;
-    font-size: 10px;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    font-family: 'DM Mono', monospace;
-}
-.institution-hero .eyebrow.rv::before {
-    background: #d4936a !important;
-    width: 42px;
-    height: 2px;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 22px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 /* ── Left content ──────────────────────────────────────────── */
 .institution-hero h1 {
-    font-size: clamp(34px, 4vw, 54px);
+    font-size: clamp(34px, 4.2vw, 56px);
     font-weight: 900;
-    line-height: 1.15;
-    color: #0c3a30;
-    margin-bottom: 20px;
-    letter-spacing: -1.5px;
+    line-height: 1.18;
+    letter-spacing: -1.8px;
+    background: linear-gradient(135deg, #ffffff 25%, #ffbe8e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 22px;
+    padding-bottom: 0.08em;
 }
 
 .institution-hero .hero-copy {
-    font-size: 16px;
-    line-height: 1.75;
-    color: #54615a;
-    margin-bottom: 28px;
+    font-size: 16.5px;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.88);
+    margin-bottom: 30px;
     max-width: 520px;
 }
 
-/* Checklist matching become-a-partner pattern */
+/* Checklist matching authority / speaker page pattern */
 .inst-checklist {
     padding: 0;
-    margin: 0 0 30px 0;
+    margin: 0 0 32px 0;
     display: flex;
     flex-direction: column;
     gap: 14px;
@@ -143,26 +154,56 @@ $seo = [
 }
 .inst-checklist li {
     display: flex;
-    align-items: flex-start;
-    gap: 12px;
+    align-items: center;
+    gap: 13px;
     font-size: 15px;
     line-height: 1.5;
     font-weight: 500;
-    color: #10221c;
+    color: rgba(255, 255, 255, 0.95);
 }
 .inst-checklist .check-icon {
-    width: 24px;
-    height: 24px;
-    background: #0c3a30;
-    color: #ffffff;
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 210, 177, 0.15);
+    border: 1px solid rgba(255, 210, 177, 0.35);
+    color: #ffbe8e;
     border-radius: 50%;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 11px;
+    font-size: 13px;
     font-weight: bold;
     flex-shrink: 0;
-    margin-top: 1px;
+}
+
+/* Hero CTA Button */
+.inst-hero-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #ffd2b1;
+    color: #0c3a30;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    border: none;
+}
+.inst-hero-btn:hover {
+    background: #ffffff;
+    color: #0c3a30;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+}
+
+.institution-hero .about-hero-buttons {
+    display: flex;
+    gap: 14px;
 }
 
 /* ── Form Box ──────────────────────────────────────────────── */
@@ -170,7 +211,8 @@ $seo = [
     background: #ffffff;
     padding: 40px;
     border-radius: 20px;
-    box-shadow: 0 15px 60px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     position: relative;
 }
 
@@ -626,7 +668,8 @@ $seo = [
 /* ── Responsive ────────────────────────────────────────────── */
 @media (max-width: 991px) {
     .institution-hero {
-        padding-top: 130px;
+        background-attachment: scroll;
+        padding-top: 140px;
         padding-bottom: 60px;
     }
     .institution-hero h1 {
@@ -636,6 +679,10 @@ $seo = [
         text-align: center;
         margin-bottom: 40px;
     }
+    .institution-hero .hero-badge-pill {
+        margin-left: auto;
+        margin-right: auto;
+    }
     .institution-hero .hero-copy {
         margin-left: auto;
         margin-right: auto;
@@ -644,6 +691,11 @@ $seo = [
         display: inline-flex;
         flex-direction: column;
         text-align: left;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .institution-hero .about-hero-buttons {
+        justify-content: center;
     }
     .inst-benefits-section {
         padding: 70px 0;
@@ -686,6 +738,369 @@ $seo = [
         height: 52px;
     }
 }
+
+/* ── The Education Business Room Section ───────────────────── */
+.edu-business-room-section {
+    padding: 110px 0;
+    background: #f8f6f2;
+    position: relative;
+    border-top: 1px solid #eae5d9;
+    border-bottom: 1px solid #eae5d9;
+    overflow: hidden;
+}
+
+.edu-business-room-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(#dcd6c8 1px, transparent 1px);
+    background-size: 28px 28px;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.edu-room-header {
+    max-width: 820px;
+    margin: 0 auto 60px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.edu-room-header .eyebrow-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #0c3a30;
+    color: #ffd2b1;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 7px 18px;
+    border-radius: 50px;
+    margin-bottom: 18px;
+}
+
+.edu-room-header h2 {
+    font-size: clamp(32px, 4.5vw, 52px);
+    font-weight: 900;
+    color: #0c3a30;
+    line-height: 1.15;
+    letter-spacing: -1.5px;
+    margin-bottom: 16px;
+}
+
+.edu-room-header p {
+    font-size: 16.5px;
+    color: #54615a;
+    line-height: 1.75;
+    margin: 0;
+}
+
+/* Pillar Card */
+.edu-pillar-card {
+    background: #ffffff;
+    border-radius: 20px;
+    border: 1.5px solid #ece7dc;
+    padding: 32px 28px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+    position: relative;
+    box-shadow: 0 8px 24px rgba(12, 58, 48, 0.04);
+}
+
+.edu-pillar-card:hover {
+    transform: translateY(-6px);
+    border-color: #0c3a30;
+    box-shadow: 0 20px 45px rgba(12, 58, 48, 0.12);
+}
+
+.edu-pillar-card-top {
+    margin-bottom: 22px;
+}
+
+.edu-pillar-badge-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.edu-pillar-icon-box {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: #0c3a30;
+    color: #ffd2b1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: 0 6px 16px rgba(12, 58, 48, 0.18);
+    transition: transform 0.3s ease;
+}
+
+.edu-pillar-card:hover .edu-pillar-icon-box {
+    transform: scale(1.08) rotate(2deg);
+}
+
+.edu-pillar-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    color: #999385;
+    background: #f4f0e6;
+    padding: 4px 10px;
+    border-radius: 20px;
+}
+
+.edu-pillar-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: #0c3a30;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.edu-pillar-desc {
+    font-size: 14px;
+    color: #637069;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Branch / Track list */
+.edu-branch-tree {
+    border-top: 1px dashed #e2dcce;
+    padding-top: 18px;
+    margin-top: auto;
+}
+
+.edu-branch-tree-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #8c8577;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.edu-branch-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.edu-branch-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #f6f3eb;
+    color: #1a382f;
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: 1px solid #ece5d6;
+    transition: all 0.25s ease;
+}
+
+.edu-branch-pill i {
+    font-size: 10px;
+    color: #c98860;
+}
+
+.edu-pillar-card:hover .edu-branch-pill {
+    background: #f0eae0;
+    border-color: #dfd7c5;
+}
+
+.edu-branch-pill:hover {
+    background: #0c3a30 !important;
+    color: #ffffff !important;
+    border-color: #0c3a30 !important;
+}
+
+.edu-branch-pill:hover i {
+    color: #ffd2b1 !important;
+}
+
+/* ── Join The Room Master Card ─────────────────────────────── */
+.edu-join-room-card {
+    background: radial-gradient(ellipse at top left, #0e4539 0%, #082821 60%, #051a15 100%);
+    border-radius: 24px;
+    border: 1.5px solid rgba(255, 210, 177, 0.35);
+    padding: 46px 40px;
+    color: #ffffff;
+    box-shadow: 0 25px 60px rgba(8, 38, 31, 0.35);
+    position: relative;
+    overflow: hidden;
+    margin-top: 40px;
+}
+
+.edu-join-room-card::before {
+    content: "";
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 380px;
+    height: 380px;
+    background: radial-gradient(circle, rgba(255, 210, 177, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.edu-join-room-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 210, 177, 0.15);
+    border: 1px solid rgba(255, 210, 177, 0.35);
+    color: #ffd2b1;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 50px;
+    margin-bottom: 14px;
+}
+
+.edu-join-room-title {
+    font-size: clamp(26px, 3.5vw, 38px);
+    font-weight: 900;
+    letter-spacing: -1px;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.edu-join-room-subtitle {
+    font-size: 15.5px;
+    color: rgba(255, 255, 255, 0.82);
+    max-width: 680px;
+    line-height: 1.7;
+    margin-bottom: 32px;
+}
+
+.edu-join-actions-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    position: relative;
+    z-index: 2;
+}
+
+.edu-join-action-tile {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 210, 177, 0.2);
+    border-radius: 16px;
+    padding: 22px 18px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    color: #ffffff;
+    backdrop-filter: blur(6px);
+}
+
+.edu-join-action-tile:hover {
+    background: rgba(255, 210, 177, 0.16);
+    border-color: #ffd2b1;
+    transform: translateY(-4px);
+    color: #ffffff;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+}
+
+.edu-action-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+
+.edu-action-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(255, 210, 177, 0.18);
+    color: #ffd2b1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: transform 0.3s ease;
+}
+
+.edu-join-action-tile:hover .edu-action-icon {
+    transform: scale(1.1);
+    background: #ffd2b1;
+    color: #0c3a30;
+}
+
+.edu-action-arrow {
+    color: #ffd2b1;
+    font-size: 16px;
+    transition: transform 0.3s ease;
+}
+
+.edu-join-action-tile:hover .edu-action-arrow {
+    transform: translateX(4px);
+}
+
+.edu-action-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #ffd2b1;
+    margin-bottom: 4px;
+    display: block;
+}
+
+.edu-action-title {
+    font-size: 16.5px;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.35;
+}
+
+@media (max-width: 991px) {
+    .edu-join-actions-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .edu-business-room-section {
+        padding: 80px 0;
+    }
+    .edu-join-room-card {
+        padding: 34px 26px;
+    }
+}
+
+@media (max-width: 575px) {
+    .edu-join-actions-grid {
+        grid-template-columns: 1fr;
+    }
+    .edu-room-header h2 {
+        font-size: 28px;
+    }
+    .edu-join-room-title {
+        font-size: 24px;
+    }
+}
 </style>
 
 {{-- ============================================================
@@ -698,7 +1113,9 @@ $seo = [
             {{-- Left: Intro Content --}}
             <div class="col-lg-6">
                 <div class="hero-content">
-                    <div class="eyebrow rv" style="margin-bottom: 18px;">Register Your Institution</div>
+                    <div class="hero-badge-pill">
+                        <i class="bi bi-mortarboard-fill"></i> Register Your Institution
+                    </div>
 
                     <h1>Bring YCX Programs to Your School or College</h1>
 
@@ -709,14 +1126,14 @@ $seo = [
                     </p>
 
                     <ul class="inst-checklist">
-                        <li><span class="check-icon">✓</span>Host YCX events, workshops &amp; masterclasses on campus</li>
-                        <li><span class="check-icon">✓</span>Connect students with industry mentors &amp; opportunities</li>
-                        <li><span class="check-icon">✓</span>Run campus ambassador &amp; leadership programs</li>
-                        <li><span class="check-icon">✓</span>Gain institutional recognition in the YCX network</li>
+                        <li><span class="check-icon"><i class="bi bi-check-lg"></i></span>Host YCX events, workshops &amp; masterclasses on campus</li>
+                        <li><span class="check-icon"><i class="bi bi-check-lg"></i></span>Connect students with industry mentors &amp; opportunities</li>
+                        <li><span class="check-icon"><i class="bi bi-check-lg"></i></span>Run campus ambassador &amp; leadership programs</li>
+                        <li><span class="check-icon"><i class="bi bi-check-lg"></i></span>Gain institutional recognition in the YCX network</li>
                     </ul>
 
                     <div class="about-hero-buttons">
-                        <a href="#institution-form" class="about-btn-2">Register Your Institution</a>
+                        <a href="#institution-form" class="inst-hero-btn">Register Your Institution <i class="bi bi-arrow-right ms-1"></i></a>
                     </div>
                 </div>
             </div>
@@ -1222,6 +1639,285 @@ $seo = [
                     <h4>Masterclasses & Workshops</h4>
                     <p>Host YCX-curated masterclasses on entrepreneurship, communication, personal branding, and more — tailored to student audiences.</p>
                 </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{{-- ============================================================
+     SECTION 3 — THE EDUCATION BUSINESS ROOM
+     ============================================================ --}}
+<section class="edu-business-room-section" id="education-business-room">
+    <div class="container">
+
+        {{-- Section Header --}}
+        <div class="edu-room-header">
+            <div class="eyebrow-badge">
+                <i class="bi bi-briefcase-fill"></i> Executive Leadership Ecosystem
+            </div>
+            <h2>The Education Business Room</h2>
+            <p>
+                A high-impact collaborative ecosystem uniting school owners, college chancellors, education entrepreneurs,
+                and corporate innovators to exchange strategic knowledge, explore leadership models, and build progressive institutional partnerships.
+            </p>
+        </div>
+
+        {{-- 6 Core Pillars Grid --}}
+        <div class="row g-4">
+
+            {{-- 1. PODCAST --}}
+            <div class="col-md-6 col-lg-4">
+                <div class="edu-pillar-card">
+                    <div class="edu-pillar-card-top">
+                        <div class="edu-pillar-badge-row">
+                            <div class="edu-pillar-icon-box">
+                                <i class="bi bi-mic-fill"></i>
+                            </div>
+                            <span class="edu-pillar-num">01 / ROOM</span>
+                        </div>
+                        <h3 class="edu-pillar-title">🎙 Podcast</h3>
+                        <p class="edu-pillar-desc">
+                            In-depth conversations with visionary education leaders, edtech founders, and institutional changemakers on building modern learning organizations.
+                        </p>
+                    </div>
+
+                    <div class="edu-branch-tree">
+                        <div class="edu-branch-tree-title">
+                            <i class="bi bi-diagram-3"></i> Core Tracks
+                        </div>
+                        <div class="edu-branch-pills">
+                            <span class="edu-branch-pill"><i class="bi bi-play-circle-fill"></i> Episodes</span>
+                            <span class="edu-branch-pill"><i class="bi bi-person-video"></i> Guest Stories</span>
+                            <span class="edu-branch-pill"><i class="bi bi-camera-video"></i> Video / Audio</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{-- 2. PANEL DISCUSSIONS --}}
+            <div class="col-md-6 col-lg-4">
+                <div class="edu-pillar-card">
+                    <div class="edu-pillar-card-top">
+                        <div class="edu-pillar-badge-row">
+                            <div class="edu-pillar-icon-box">
+                                <i class="bi bi-chat-square-quote-fill"></i>
+                            </div>
+                            <span class="edu-pillar-num">02 / ROOM</span>
+                        </div>
+                        <h3 class="edu-pillar-title">🗣 Panel Discussions</h3>
+                        <p class="edu-pillar-desc">
+                            High-stakes roundtable forums addressing critical policies, campus governance, AI integration, and the commercial sustainability of institutions.
+                        </p>
+                    </div>
+
+                    <div class="edu-branch-tree">
+                        <div class="edu-branch-tree-title">
+                            <i class="bi bi-diagram-3"></i> Core Tracks
+                        </div>
+                        <div class="edu-branch-pills">
+                            <span class="edu-branch-pill"><i class="bi bi-award"></i> Leadership</span>
+                            <span class="edu-branch-pill"><i class="bi bi-cpu"></i> Technology</span>
+                            <span class="edu-branch-pill"><i class="bi bi-compass"></i> Future of Education</span>
+                            <span class="edu-branch-pill"><i class="bi bi-graph-up-arrow"></i> Business of Education</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{-- 3. STORIES --}}
+            <div class="col-md-6 col-lg-4">
+                <div class="edu-pillar-card">
+                    <div class="edu-pillar-card-top">
+                        <div class="edu-pillar-badge-row">
+                            <div class="edu-pillar-icon-box">
+                                <i class="bi bi-book-half"></i>
+                            </div>
+                            <span class="edu-pillar-num">03 / ROOM</span>
+                        </div>
+                        <h3 class="edu-pillar-title">📖 Stories</h3>
+                        <p class="edu-pillar-desc">
+                            Unfiltered chronicles of educators and entrepreneurs turning constraints into excellence, navigating regulatory hurdles, and building enduring campuses.
+                        </p>
+                    </div>
+
+                    <div class="edu-branch-tree">
+                        <div class="edu-branch-tree-title">
+                            <i class="bi bi-diagram-3"></i> Core Tracks
+                        </div>
+                        <div class="edu-branch-pills">
+                            <span class="edu-branch-pill"><i class="bi bi-person-badge"></i> Founder Stories</span>
+                            <span class="edu-branch-pill"><i class="bi bi-building"></i> Institution Stories</span>
+                            <span class="edu-branch-pill"><i class="bi bi-arrow-repeat"></i> Transformation Stories</span>
+                            <span class="edu-branch-pill"><i class="bi bi-lightning"></i> Failure → Success</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{-- 4. TALKS --}}
+            <div class="col-md-6 col-lg-4">
+                <div class="edu-pillar-card">
+                    <div class="edu-pillar-card-top">
+                        <div class="edu-pillar-badge-row">
+                            <div class="edu-pillar-icon-box">
+                                <i class="bi bi-megaphone-fill"></i>
+                            </div>
+                            <span class="edu-pillar-num">04 / ROOM</span>
+                        </div>
+                        <h3 class="edu-pillar-title">🎤 Talks</h3>
+                        <p class="edu-pillar-desc">
+                            Engaging keynotes and leadership masterclasses that connect students and faculties with industry icons, mentors, and corporate trailblazers.
+                        </p>
+                    </div>
+
+                    <div class="edu-branch-tree">
+                        <div class="edu-branch-tree-title">
+                            <i class="bi bi-diagram-3"></i> Core Tracks
+                        </div>
+                        <div class="edu-branch-pills">
+                            <span class="edu-branch-pill"><i class="bi bi-star"></i> Keynotes</span>
+                            <span class="edu-branch-pill"><i class="bi bi-mortarboard"></i> College Talks</span>
+                            <span class="edu-branch-pill"><i class="bi bi-backpack"></i> School Talks</span>
+                            <span class="edu-branch-pill"><i class="bi bi-gem"></i> Leadership Sessions</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{-- 5. MEETUPS --}}
+            <div class="col-md-6 col-lg-4">
+                <div class="edu-pillar-card">
+                    <div class="edu-pillar-card-top">
+                        <div class="edu-pillar-badge-row">
+                            <div class="edu-pillar-icon-box">
+                                <i class="bi bi-people-fill"></i>
+                            </div>
+                            <span class="edu-pillar-num">05 / ROOM</span>
+                        </div>
+                        <h3 class="edu-pillar-title">🤝 Meetups</h3>
+                        <p class="edu-pillar-desc">
+                            Curated, closed-door conclaves designed for confidential peer exchange, strategic alliances, and institutional synergy among decision-makers.
+                        </p>
+                    </div>
+
+                    <div class="edu-branch-tree">
+                        <div class="edu-branch-tree-title">
+                            <i class="bi bi-diagram-3"></i> Core Tracks
+                        </div>
+                        <div class="edu-branch-pills">
+                            <span class="edu-branch-pill"><i class="bi bi-building"></i> School Owners</span>
+                            <span class="edu-branch-pill"><i class="bi bi-bank"></i> College Owners</span>
+                            <span class="edu-branch-pill"><i class="bi bi-briefcase"></i> Education Entrepreneurs</span>
+                            <span class="edu-branch-pill"><i class="bi bi-hdd-network"></i> Technology Leaders</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{-- 6. INSIGHTS --}}
+            <div class="col-md-6 col-lg-4">
+                <div class="edu-pillar-card">
+                    <div class="edu-pillar-card-top">
+                        <div class="edu-pillar-badge-row">
+                            <div class="edu-pillar-icon-box">
+                                <i class="bi bi-lightbulb-fill"></i>
+                            </div>
+                            <span class="edu-pillar-num">06 / ROOM</span>
+                        </div>
+                        <h3 class="edu-pillar-title">🧠 Insights</h3>
+                        <p class="edu-pillar-desc">
+                            Research papers, emerging curriculum dynamics, market trends, and evidence-backed perspectives analyzing Indian and global education landscapes.
+                        </p>
+                    </div>
+
+                    <div class="edu-branch-tree">
+                        <div class="edu-branch-tree-title">
+                            <i class="bi bi-diagram-3"></i> Core Tracks
+                        </div>
+                        <div class="edu-branch-pills">
+                            <span class="edu-branch-pill"><i class="bi bi-file-text"></i> Articles</span>
+                            <span class="edu-branch-pill"><i class="bi bi-clipboard-data"></i> Research</span>
+                            <span class="edu-branch-pill"><i class="bi bi-graph-up"></i> Trends</span>
+                            <span class="edu-branch-pill"><i class="bi bi-chat-dots"></i> Opinion</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        {{-- 7. JOIN THE ROOM — Master Executive Hub --}}
+        <div class="edu-join-room-card">
+            <div class="row align-items-center mb-4">
+                <div class="col-lg-8">
+                    <div class="edu-join-room-badge">
+                        <i class="bi bi-rocket-takeoff-fill"></i> Gateway · Take Your Seat
+                    </div>
+                    <h3 class="edu-join-room-title">🚀 Join The Education Business Room</h3>
+                    <p class="edu-join-room-subtitle">
+                        Step directly into the room where decisions are made and progressive campus initiatives take shape. Select your path to connect with our network.
+                    </p>
+                </div>
+                <div class="col-lg-4 text-lg-end d-none d-lg-block">
+                    <a href="#institution-form" class="btn px-4 py-3 fw-bold"
+                       style="background: #ffd2b1; color: #0c3a30; border-radius: 50px; font-size: 14px; text-decoration: none; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 8px;">
+                        Register Institution <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            {{-- 4 Direct Action Tiles --}}
+            <div class="edu-join-actions-grid">
+
+                {{-- Action 1: Become a Guest --}}
+                <a href="{{ url('/become-a-feature') }}" class="edu-join-action-tile">
+                    <div class="edu-action-top">
+                        <div class="edu-action-icon"><i class="bi bi-mic-fill"></i></div>
+                        <div class="edu-action-arrow"><i class="bi bi-arrow-up-right"></i></div>
+                    </div>
+                    <div>
+                        <span class="edu-action-label">Podcast &amp; Media</span>
+                        <h4 class="edu-action-title">Become a Guest</h4>
+                    </div>
+                </a>
+
+                {{-- Action 2: Attend a Meetup --}}
+                <a href="{{ url('/events') }}" class="edu-join-action-tile">
+                    <div class="edu-action-top">
+                        <div class="edu-action-icon"><i class="bi bi-calendar2-check-fill"></i></div>
+                        <div class="edu-action-arrow"><i class="bi bi-arrow-up-right"></i></div>
+                    </div>
+                    <div>
+                        <span class="edu-action-label">Closed-Door Gatherings</span>
+                        <h4 class="edu-action-title">Attend a Meetup</h4>
+                    </div>
+                </a>
+
+                {{-- Action 3: Partner With Us --}}
+                <a href="{{ url('/become-a-partner') }}" class="edu-join-action-tile">
+                    <div class="edu-action-top">
+                        <div class="edu-action-icon"><i class="bi bi-person-check-fill"></i></div>
+                        <div class="edu-action-arrow"><i class="bi bi-arrow-up-right"></i></div>
+                    </div>
+                    <div>
+                        <span class="edu-action-label">Strategic Alliance</span>
+                        <h4 class="edu-action-title">Partner With Us</h4>
+                    </div>
+                </a>
+
+                {{-- Action 4: Invite Kishorekumar --}}
+                <a href="#institution-form" class="edu-join-action-tile">
+                    <div class="edu-action-top">
+                        <div class="edu-action-icon"><i class="bi bi-person-badge-fill"></i></div>
+                        <div class="edu-action-arrow"><i class="bi bi-arrow-down-right"></i></div>
+                    </div>
+                    <div>
+                        <span class="edu-action-label">Keynote &amp; CEO Sessions</span>
+                        <h4 class="edu-action-title">Invite Kishorekumar</h4>
+                    </div>
+                </a>
+
             </div>
         </div>
 

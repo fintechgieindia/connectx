@@ -110,8 +110,19 @@
     </div>
 </div>
 
+@php
+    $isLightHeroPage = (isset($lightNav) && $lightNav) 
+        || request()->is('about*') 
+        || request()->is('become-a-partner*') 
+        || request()->is('become-a-sponsor*') 
+        || request()->is('career') 
+        || request()->is('career/*')
+        || request()->is('internship/*')
+        || request()->is('masterclass*');
+@endphp
+
 {{-- ── Main Header ───────────────────────────────────────── --}}
-<header id="hdr" class="ycx-header">
+<header id="hdr" class="ycx-header {{ $isLightHeroPage ? 'light-hero-nav' : '' }}">
 
     {{-- Logo --}}
     <a href="{{ url('/') }}" class="ycx-header-logo">

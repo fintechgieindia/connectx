@@ -134,6 +134,31 @@
   background: rgba(255, 255, 255, 0.12);
 }
 
+/* Unscrolled on light hero pages — match the dark scrolled text color */
+.ycx-header.light-hero-nav:not(.scrolled) .ycx-nav-trigger,
+.light-hero-page .ycx-header:not(.scrolled) .ycx-nav-trigger {
+  color: rgba(10, 10, 10, 0.78) !important;
+}
+
+.ycx-header.light-hero-nav:not(.scrolled) .ycx-nav-trigger:hover,
+.ycx-header.light-hero-nav:not(.scrolled) .ycx-nav-group:hover .ycx-nav-trigger,
+.light-hero-page .ycx-header:not(.scrolled) .ycx-nav-trigger:hover,
+.light-hero-page .ycx-header:not(.scrolled) .ycx-nav-group:hover .ycx-nav-trigger {
+  color: var(--ycx-active) !important;
+  background: rgba(12, 58, 48, 0.06) !important;
+}
+
+.ycx-header.light-hero-nav:not(.scrolled) .ycx-nav-trigger.active,
+.light-hero-page .ycx-header:not(.scrolled) .ycx-nav-trigger.active {
+  color: var(--ycx-active) !important;
+  background: rgba(12, 58, 48, 0.08) !important;
+}
+
+.ycx-header.light-hero-nav:not(.scrolled) .ycx-hamburger span,
+.light-hero-page .ycx-header:not(.scrolled) .ycx-hamburger span {
+  background: #0c3a30 !important;
+}
+
 /* ── Chevron icon ──────────────────────────────────────────────── */
 .ycx-chevron {
   font-size: 10px;
