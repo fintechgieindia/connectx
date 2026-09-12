@@ -718,6 +718,9 @@ class ApplicationController extends Controller
             // Prepare email data with decoded areas for display
             $emailData = $validated;
             $emailData['areas_of_interest'] = json_decode($validated['areas_of_interest'], true);
+            $emailData['institution_message'] = $validated['message'] ?? null;
+            $emailData['user_message'] = $validated['message'] ?? null;
+            unset($emailData['message']);
 
             // 2. Email to Admin
             \Illuminate\Support\Facades\Log::info('Sending admin email...');

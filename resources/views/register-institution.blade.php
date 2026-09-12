@@ -1204,7 +1204,7 @@ $seo = [
                         </div>
                     @endif
 
-                    <form action="{{ route('institution.submit') }}" method="POST" id="institution-registration-form">
+                    <form action="{{ route('institution.submit') }}" method="POST" id="institution-registration-form" novalidate>
                         @csrf
 
                         {{-- ══════════════════════════════════════════
@@ -1969,35 +1969,35 @@ $seo = [
                     <i class="bi bi-check-circle-fill" style="font-size: 4rem; color: #0c3a30;"></i>
                 </div>
                 <h3 class="fw-bold mb-3" style="font-size: 1.5rem; line-height: 1.3; color: #0c3a30;">
-                    Registration Submitted Successfully!
+                    Thank You for Connecting!
                 </h3>
                 <p class="mb-4" style="line-height: 1.6; font-size: 0.95rem; color: #687588;">
                     {{ session('success') }}
                 </p>
-                <a href="{{ url('/') }}" class="btn px-5 py-3 fw-bold w-100 d-block text-center"
+                <a href="{{ request()->url() }}" class="btn px-5 py-3 fw-bold w-100 d-block text-center"
                    style="text-decoration: none; background-color: #0c3a30; color: #ffffff; border-radius: 12px; border: none; transition: all 0.3s ease;">
-                    Explore Young Chanakya X
+                    Continue Exploring
                 </a>
             </div>
         </div>
     </div>
 </div>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var successModalElement = document.getElementById('successModal');
-        if (successModalElement) {
-            var myModal = new bootstrap.Modal(successModalElement);
-            myModal.show();
-        }
-    });
-</script>
 @endif
 
 @push('scripts')
 {{-- intl-tel-input for phone field --}}
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/js/intlTelInput.min.js"></script>
 <script>
+    @if (session('success'))
+    document.addEventListener("DOMContentLoaded", function() {
+        var successModalElement = document.getElementById('successModal');
+        if (successModalElement && typeof bootstrap !== 'undefined') {
+            var myModal = new bootstrap.Modal(successModalElement);
+            myModal.show();
+        }
+    });
+    @endif
+
     @php
         $initialStep = 1;
         if ($errors->has('areas_of_interest') || $errors->has('heard_about_ycx') || $errors->has('message')) {
@@ -2044,8 +2044,9 @@ $seo = [
             }
         });
 
-        // ── Form Submit Validation ────────────────────────────
+        // ── Form Submit Validation & Prevent Duplicate Submission ──
         var form = document.getElementById('institution-registration-form');
+        var submitBtn = document.getElementById('inst-submit-btn');
         if (form) {
             form.addEventListener('submit', function (e) {
                 // Validate all steps in order
@@ -2060,6 +2061,12 @@ $seo = [
                 // Format phone with international dial code
                 if (iti && phoneInput) {
                     phoneInput.value = iti.getNumber();
+                }
+
+                // Prevent duplicate submissions
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span><span>Submitting...</span>';
                 }
             });
         }

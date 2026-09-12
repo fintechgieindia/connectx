@@ -100,10 +100,10 @@
                 <td>{{ $heard_about_ycx }}</td>
             </tr>
             @endif
-            @if(!empty($message))
+            @if(!empty($institution_message))
             <tr>
                 <th>Additional Message</th>
-                <td>{{ $message }}</td>
+                <td style="white-space: pre-wrap;">{{ $institution_message }}</td>
             </tr>
             @endif
         </table>
