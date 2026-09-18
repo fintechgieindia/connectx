@@ -1,15 +1,17 @@
 @php
 /**
- * Register Your Institution Page SEO Data
+ * Register Your Institution — The Education Business Room
+ * Executive Landing Page for School & College Founders, Correspondents & Leaders
  */
 $seo = [
-    'title'       => 'Register Your Institution | Young Chanakya X',
-    'description' => 'Register your school or college with Young Chanakya X to bring leadership programs, events, masterclasses, and community initiatives to your students.',
-    'keywords'    => 'register institution YCX, school registration, college registration, Young Chanakya X school partnership, campus leadership program, YCX college collaboration, student leadership initiative, institution partnership',
+    'title'       => 'The Education Business Room | Young Chanakya X',
+    'description' => 'A premier executive podcast and leadership platform for school owners, college correspondents, chairpersons, and education founders to share their journeys and institutional stories.',
+    'keywords'    => 'The Education Business Room, Young Chanakya X podcast, school owner podcast, college correspondent series, education leaders India, educational founders series, campus leadership, school founders stories',
     'image'       => asset('images/assets/seo-share.jpg'),
     'type'        => 'website',
     'robots'      => 'index, follow',
 ];
+$lightNav = true;
 @endphp
 
 @extends('layout.app')
@@ -20,9 +22,9 @@ $seo = [
 {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "Register Your Institution | Young Chanakya X",
+    "name": "The Education Business Room | Young Chanakya X",
     "url": "https://connectx.youngchanakya.com/register-institution",
-    "description": "Register your school or college with Young Chanakya X to bring leadership programs, events, masterclasses, and community initiatives to your students.",
+    "description": "A premier executive podcast and storytelling platform for school owners, college correspondents, chairpersons, and education entrepreneurs.",
     "isPartOf": {
         "@type": "WebSite",
         "@id": "https://connectx.youngchanakya.com/#website",
@@ -35,2216 +37,1193 @@ $seo = [
 @endpush
 
 @push('styles')
-<link rel="stylesheet" href="{{ asset('css/custom-home.css') }}">
-<link rel="stylesheet" href="{{ asset('css/about-us.css') }}">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/css/intlTelInput.css">
+{{-- Manrope is loaded globally via typography.css — no extra font import needed --}}
+
+{{-- Tailwind CSS CDN + Theme Extension --}}
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          forest: { DEFAULT: '#0c3a30', deep: '#07241e', dark: '#051b16', mid: '#14513f', light: '#1c634f' },
+          peach:  { DEFAULT: '#ffd2b1', deep: '#f0b489', pale: '#fff2e8', warm: '#ffe6d3' },
+          cream:  { DEFAULT: '#fbf8f4', warm: '#f5eee5', card: '#ffffff', edge: '#e7ded2' }
+        },
+        fontFamily: {
+          sans: ['Manrope', 'system-ui', 'sans-serif']
+        },
+        maxWidth: { shell: '84rem' }
+      }
+    }
+  }
+</script>
+
 <style>
-    /* intl-tel-input overrides — matching partner/sponsor pages */
-    .iti {
-        width: 100%;
-        display: block;
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 96px;
+  }
+  body {
+    background-color: #fbf8f4 !important;
+    color: #0c3a30;
+    -webkit-font-smoothing: antialiased;
+  }
+  /* Fixed site navbar hamburger color on light cream background */
+  #hdr:not(.scrolled) .ycx-hamburger span {
+    background: #0c3a30 !important;
+  }
+
+  /* Form & Interactive Elements */
+  .pill input:checked + span {
+    background: #0c3a30 !important;
+    color: #ffd2b1 !important;
+    border-color: #0c3a30 !important;
+    box-shadow: 0 4px 14px rgba(12, 58, 48, 0.18);
+  }
+  .field-error {
+    border-color: #c43c1f !important;
+    background-color: #fff6f4 !important;
+  }
+  .error-msg {
+    display: none;
+    color: #c43c1f;
+    font-size: 0.76rem;
+    font-weight: 600;
+    margin-top: 0.35rem;
+  }
+  .field-error ~ .error-msg, .error-msg.show {
+    display: block;
+  }
+
+  /* Arc Timeline Step Connectors */
+  .timeline-step::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -24px;
+    width: 24px;
+    height: 2px;
+    background: #e2d6c5;
+  }
+  @media (max-width: 1024px) {
+    .timeline-step::after {
+      display: none;
     }
-    .iti__country-list {
-        background-color: #ffffff !important;
-        border: 1px solid #cccccc !important;
-        color: #333333 !important;
-    }
-    .iti__search-input {
-        background-color: #ffffff !important;
-        color: #333333 !important;
-        border: 1px solid #cccccc !important;
-    }
-    .iti__country {
-        padding: 8px 10px !important;
-    }
-    .iti__country:hover, .iti__country.iti__highlight {
-        background-color: #f1ede4 !important;
-    }
-    .iti__selected-dial-code {
-        color: #333333 !important;
-    }
+  }
+
+  /* Glow & Glass effects */
+  .hero-glass-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 24px 60px -15px rgba(12, 58, 48, 0.18), 0 0 0 1px rgba(231, 222, 210, 0.9);
+  }
+
+  .executive-badge {
+    background: linear-gradient(135deg, rgba(12, 58, 48, 0.06) 0%, rgba(255, 210, 177, 0.3) 100%);
+    border: 1px solid rgba(12, 58, 48, 0.15);
+  }
+
+  .pod-wave {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    height: 18px;
+  }
+  .pod-wave span {
+    width: 3px;
+    background: #0c3a30;
+    border-radius: 99px;
+    animation: wavePulse 1.2s ease-in-out infinite alternate;
+  }
+  .pod-wave span:nth-child(1) { height: 8px; animation-delay: 0.1s; }
+  .pod-wave span:nth-child(2) { height: 16px; animation-delay: 0.3s; }
+  .pod-wave span:nth-child(3) { height: 10px; animation-delay: 0.15s; }
+  .pod-wave span:nth-child(4) { height: 18px; animation-delay: 0.4s; }
+  .pod-wave span:nth-child(5) { height: 6px; animation-delay: 0.25s; }
+
+  @keyframes wavePulse {
+    0% { transform: scaleY(0.4); }
+    100% { transform: scaleY(1.1); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
 </style>
 @endpush
 
 @section('content')
 
-<style>
-/* ============================================================
-   REGISTER INSTITUTION PAGE — STYLES
-   Mirrors become-a-partner / become-a-sponsor UI conventions
-   ============================================================ */
-
-#hdr:not(.scrolled) .hamburger span {
-    background: #ffffff !important;
-}
-
-/* ── Hero Section ──────────────────────────────────────────── */
-.institution-hero {
-    padding-top: 180px;
-    padding-bottom: 90px;
-    background-image: linear-gradient(180deg, rgba(8, 28, 23, 0.84) 0%, rgba(6, 20, 16, 0.94) 100%),
-        url('{{ asset("images/media/institution/hero-banner.webp") }}');
-    background-size: cover;
-    background-position: center center;
-    background-attachment: fixed;
-    position: relative;
-    overflow: hidden;
-    color: #ffffff;
-}
-
-.institution-hero::before {
-    content: "";
-    position: absolute;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(255, 190, 142, 0.08) 0%, transparent 70%);
-    top: -150px;
-    right: -100px;
-    pointer-events: none;
-}
-
-/* ── Eyebrow Badge Pill ─────────────────────────────────────── */
-.institution-hero .hero-badge-pill {
-    background: rgba(255, 210, 177, 0.12);
-    border: 1px solid rgba(255, 210, 177, 0.28);
-    color: #ffd2b1;
-    padding: 7px 18px;
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    border-radius: 50px;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 22px;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-}
-
-/* ── Left content ──────────────────────────────────────────── */
-.institution-hero h1 {
-    font-size: clamp(34px, 4.2vw, 56px);
-    font-weight: 900;
-    line-height: 1.18;
-    letter-spacing: -1.8px;
-    background: linear-gradient(135deg, #ffffff 25%, #ffbe8e 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 22px;
-    padding-bottom: 0.08em;
-}
-
-.institution-hero .hero-copy {
-    font-size: 16.5px;
-    line-height: 1.8;
-    color: rgba(255, 255, 255, 0.88);
-    margin-bottom: 30px;
-    max-width: 520px;
-}
-
-/* Checklist matching authority / speaker page pattern */
-.inst-checklist {
-    padding: 0;
-    margin: 0 0 32px 0;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    list-style: none;
-}
-.inst-checklist li {
-    display: flex;
-    align-items: center;
-    gap: 13px;
-    font-size: 15px;
-    line-height: 1.5;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.95);
-}
-.inst-checklist .check-icon {
-    width: 28px;
-    height: 28px;
-    background: rgba(255, 210, 177, 0.15);
-    border: 1px solid rgba(255, 210, 177, 0.35);
-    color: #ffbe8e;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 13px;
-    font-weight: bold;
-    flex-shrink: 0;
-}
-
-/* Hero CTA Button */
-.inst-hero-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: #ffd2b1;
-    color: #0c3a30;
-    padding: 14px 32px;
-    border-radius: 50px;
-    font-weight: 700;
-    font-size: 14px;
-    letter-spacing: 0.6px;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
-    border: none;
-}
-.inst-hero-btn:hover {
-    background: #ffffff;
-    color: #0c3a30;
-    transform: translateY(-2px);
-    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
-}
-
-.institution-hero .about-hero-buttons {
-    display: flex;
-    gap: 14px;
-}
-
-/* ── Form Box ──────────────────────────────────────────────── */
-.institution-form-box {
-    background: #ffffff;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    position: relative;
-}
-
-.institution-form-box .form-title {
-    font-size: 20px;
-    font-weight: 800;
-    color: #0c3a30;
-    margin-bottom: 6px;
-}
-
-.institution-form-box .form-subtitle {
-    font-size: 14px;
-    color: #777;
-    margin-bottom: 28px;
-    line-height: 1.5;
-}
-
-/* Section dividers inside form */
-.inst-form-section-label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #0c3a30;
-    background: #f1ede4;
-    border-radius: 6px;
-    padding: 6px 12px;
-    margin: 20px 0 18px;
-    display: block;
-}
-
-/* Inputs — matching partner/sponsor form inputs exactly */
-.institution-form-box .form-control,
-.institution-form-box select.form-control {
-    height: 58px;
-    border: 1px solid #e5e5e5;
-    border-radius: 12px;
-    padding: 0 18px;
-    font-size: 15px;
-    color: #000000;
-    box-shadow: none;
-    transition: all 0.3s ease;
-    background: #ffffff;
-    appearance: none;
-    -webkit-appearance: none;
-}
-
-.institution-form-box textarea.form-control {
-    height: 120px;
-    padding-top: 14px;
-    resize: vertical;
-}
-
-.institution-form-box .form-control::placeholder {
-    color: #888888 !important;
-}
-
-.institution-form-box .form-control:focus,
-.institution-form-box select.form-control:focus {
-    border-color: #0c3a30;
-    box-shadow: 0 0 0 3px rgba(12, 58, 48, 0.12);
-    outline: none;
-}
-
-/* Select arrow */
-.select-wrapper {
-    position: relative;
-}
-.select-wrapper::after {
-    content: "\f282";
-    font-family: "bootstrap-icons";
-    position: absolute;
-    right: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #555;
-    pointer-events: none;
-    font-size: 13px;
-}
-
-/* Labels */
-.institution-form-box label {
-    display: block;
-    font-size: 14px;
-    font-weight: 600;
-    color: #19352d;
-    margin-bottom: 8px;
-    text-align: left;
-}
-
-/* Checkbox group */
-.inst-checkbox-group {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-}
-
-.inst-checkbox-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    padding: 12px 14px;
-    border: 1.5px solid #e5e5e5;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.25s ease;
-    background: #fafafa;
-}
-
-.inst-checkbox-item:hover {
-    border-color: #0c3a30;
-    background: #f0f7f4;
-}
-
-.inst-checkbox-item input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
-    flex-shrink: 0;
-    accent-color: #0c3a30;
-    margin-top: 1px;
-    cursor: pointer;
-}
-
-.inst-checkbox-item.checked {
-    border-color: #0c3a30;
-    background: #f0f7f4;
-}
-
-.inst-checkbox-item span {
-    font-size: 13.5px;
-    font-weight: 500;
-    color: #1a1a1a;
-    line-height: 1.4;
-}
-
-/* Submit button */
-.inst-submit-btn {
-    width: 100%;
-    height: 58px;
-    border: none;
-    border-radius: 12px;
-    background: #0c3a30;
-    color: #ffffff;
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
-.inst-submit-btn:hover {
-    background: #071f1a;
-    transform: translateY(-2px);
-    box-shadow: 0 12px 28px rgba(12, 58, 48, 0.2);
-}
-
-.inst-submit-btn i {
-    font-size: 18px;
-}
-
-/* ── Multi-Step Wizard Styles ──────────────────────────────── */
-.inst-wizard-progress {
-    margin-bottom: 26px;
-    padding-bottom: 18px;
-    border-bottom: 1px solid #f0ece1;
-}
-
-.inst-steps-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    position: relative;
-    padding: 0 4px;
-}
-
-.inst-steps-track {
-    position: absolute;
-    top: 19px;
-    left: 45px;
-    right: 45px;
-    height: 3px;
-    background: #e9e5dc;
-    z-index: 1;
-    border-radius: 2px;
-}
-
-.inst-progress-fill {
-    height: 100%;
-    background: #0c3a30;
-    border-radius: 2px;
-    transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    width: 0%;
-}
-
-.inst-step-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    z-index: 2;
-    text-decoration: none;
-    cursor: default;
-    background: transparent;
-    border: none;
-    padding: 0;
-    width: 76px;
-    text-align: center;
-}
-
-.inst-step-item.clickable {
-    cursor: pointer;
-}
-
-.inst-step-circle {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: #ffffff;
-    border: 2px solid #dcd7cb;
-    color: #7a7a7a;
-    font-size: 14px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-}
-
-.inst-step-circle .inst-step-check {
-    display: none;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-.inst-step-item.active .inst-step-circle {
-    background: #0c3a30;
-    border-color: #0c3a30;
-    color: #ffffff;
-    box-shadow: 0 0 0 5px rgba(12, 58, 48, 0.15);
-    transform: scale(1.05);
-}
-
-.inst-step-item.completed .inst-step-circle {
-    background: #0c3a30;
-    border-color: #0c3a30;
-    color: #ffffff;
-}
-
-.inst-step-item.completed .inst-step-circle .inst-step-num {
-    display: none;
-}
-
-.inst-step-item.completed .inst-step-circle .inst-step-check {
-    display: inline-block;
-}
-
-.inst-step-label {
-    font-size: 12px;
-    font-weight: 600;
-    color: #7a7a7a;
-    margin-top: 8px;
-    line-height: 1.3;
-    transition: color 0.3s ease;
-    white-space: nowrap;
-}
-
-.inst-step-item.active .inst-step-label {
-    color: #0c3a30;
-    font-weight: 700;
-}
-
-.inst-step-item.completed .inst-step-label {
-    color: #0c3a30;
-}
-
-.inst-step-counter-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: #f1ede4;
-    color: #0c3a30;
-    font-size: 12px;
-    font-weight: 700;
-    padding: 6px 14px;
-    border-radius: 20px;
-    letter-spacing: 0.3px;
-}
-
-/* Wizard Step Containers */
-.inst-form-step {
-    display: none;
-}
-
-.inst-form-step.active {
-    display: block;
-    animation: instStepFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-@keyframes instStepFadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(12px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Wizard Navigation Buttons */
-.inst-wizard-nav {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-top: 24px;
-}
-
-.inst-wizard-nav .inst-submit-btn {
-    width: auto;
-    margin-bottom: 0;
-}
-
-.inst-next-btn {
-    height: 58px;
-    border: none;
-    border-radius: 12px;
-    background: #0c3a30;
-    color: #ffffff;
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: 0.3px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 0 24px;
-}
-
-.inst-next-btn:hover {
-    background: #071f1a;
-    transform: translateY(-2px);
-    box-shadow: 0 12px 28px rgba(12, 58, 48, 0.2);
-}
-
-.inst-prev-btn {
-    height: 58px;
-    border: 1.5px solid #dcd7cb;
-    border-radius: 12px;
-    background: #f8f6f2;
-    color: #0c3a30;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 0 24px;
-    flex-shrink: 0;
-}
-
-.inst-prev-btn:hover {
-    background: #ece7dc;
-    border-color: #0c3a30;
-    transform: translateY(-2px);
-}
-
-@media (max-width: 575px) {
-    .inst-step-label {
-        display: none;
-    }
-    .inst-step-item {
-        width: 38px;
-    }
-    .inst-steps-track {
-        left: 28px;
-        right: 28px;
-    }
-    .inst-prev-btn {
-        padding: 0 16px;
-        font-size: 14px;
-        height: 52px;
-    }
-    .inst-next-btn {
-        font-size: 15px;
-        height: 52px;
-        padding: 0 16px;
-    }
-}
-
-/* ── Benefits Section ──────────────────────────────────────── */
-.inst-benefits-section {
-    padding: 100px 0;
-    background: #ffffff;
-}
-
-.inst-benefit-card {
-    background: #f8f6f2;
-    border-radius: 16px;
-    padding: 32px 28px;
-    height: 100%;
-    border: 1px solid #ececec;
-    transition: all 0.3s ease;
-}
-
-.inst-benefit-card:hover {
-    border-color: #0c3a30;
-    transform: translateY(-4px);
-    box-shadow: 0 20px 45px rgba(12, 58, 48, 0.1);
-}
-
-.inst-benefit-icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 14px;
-    background: #0c3a30;
-    color: #ffffff;
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
-.inst-benefit-card h4 {
-    font-size: 18px;
-    font-weight: 700;
-    color: #0c3a30;
-    margin-bottom: 10px;
-}
-
-.inst-benefit-card p {
-    font-size: 14px;
-    line-height: 1.75;
-    color: #666;
-    margin: 0;
-}
-
-/* ── CTA Banner ────────────────────────────────────────────── */
-.inst-cta-banner {
-    background: linear-gradient(135deg, #0c3a30 0%, #082821 100%);
-    padding: 80px 0;
-}
-
-/* ── Responsive ────────────────────────────────────────────── */
-@media (max-width: 991px) {
-    .institution-hero {
-        background-attachment: scroll;
-        padding-top: 140px;
-        padding-bottom: 60px;
-    }
-    .institution-hero h1 {
-        font-size: 36px;
-    }
-    .institution-hero .hero-content {
-        text-align: center;
-        margin-bottom: 40px;
-    }
-    .institution-hero .hero-badge-pill {
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .institution-hero .hero-copy {
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .inst-checklist {
-        display: inline-flex;
-        flex-direction: column;
-        text-align: left;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .institution-hero .about-hero-buttons {
-        justify-content: center;
-    }
-    .inst-benefits-section {
-        padding: 70px 0;
-    }
-}
-
-@media (max-width: 767px) {
-    .institution-hero {
-        padding-top: 110px;
-        padding-bottom: 50px;
-    }
-    .institution-hero h1 {
-        font-size: 30px;
-        letter-spacing: -0.5px;
-    }
-    .institution-form-box {
-        padding: 28px 20px;
-    }
-    .inst-checkbox-group {
-        grid-template-columns: 1fr;
-    }
-    .inst-benefits-section {
-        padding: 60px 0;
-    }
-}
-
-@media (max-width: 480px) {
-    .institution-hero {
-        padding-top: 95px;
-        padding-bottom: 40px;
-    }
-    .institution-hero h1 {
-        font-size: 26px;
-    }
-    .institution-form-box {
-        padding: 22px 16px;
-    }
-    .inst-submit-btn {
-        font-size: 15px;
-        height: 52px;
-    }
-}
-
-/* ── The Education Business Room Section ───────────────────── */
-.edu-business-room-section {
-    padding: 110px 0;
-    background: #f8f6f2;
-    position: relative;
-    border-top: 1px solid #eae5d9;
-    border-bottom: 1px solid #eae5d9;
-    overflow: hidden;
-}
-
-.edu-business-room-section::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: radial-gradient(#dcd6c8 1px, transparent 1px);
-    background-size: 28px 28px;
-    opacity: 0.6;
-    pointer-events: none;
-}
-
-.edu-room-header {
-    max-width: 820px;
-    margin: 0 auto 60px;
-    text-align: center;
-    position: relative;
-    z-index: 2;
-}
-
-.edu-room-header .eyebrow-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: #0c3a30;
-    color: #ffd2b1;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    padding: 7px 18px;
-    border-radius: 50px;
-    margin-bottom: 18px;
-}
-
-.edu-room-header h2 {
-    font-size: clamp(32px, 4.5vw, 52px);
-    font-weight: 900;
-    color: #0c3a30;
-    line-height: 1.15;
-    letter-spacing: -1.5px;
-    margin-bottom: 16px;
-}
-
-.edu-room-header p {
-    font-size: 16.5px;
-    color: #54615a;
-    line-height: 1.75;
-    margin: 0;
-}
-
-/* Pillar Card */
-.edu-pillar-card {
-    background: #ffffff;
-    border-radius: 20px;
-    border: 1.5px solid #ece7dc;
-    padding: 32px 28px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
-    position: relative;
-    box-shadow: 0 8px 24px rgba(12, 58, 48, 0.04);
-}
-
-.edu-pillar-card:hover {
-    transform: translateY(-6px);
-    border-color: #0c3a30;
-    box-shadow: 0 20px 45px rgba(12, 58, 48, 0.12);
-}
-
-.edu-pillar-card-top {
-    margin-bottom: 22px;
-}
-
-.edu-pillar-badge-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 18px;
-}
-
-.edu-pillar-icon-box {
-    width: 52px;
-    height: 52px;
-    border-radius: 14px;
-    background: #0c3a30;
-    color: #ffd2b1;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    box-shadow: 0 6px 16px rgba(12, 58, 48, 0.18);
-    transition: transform 0.3s ease;
-}
-
-.edu-pillar-card:hover .edu-pillar-icon-box {
-    transform: scale(1.08) rotate(2deg);
-}
-
-.edu-pillar-num {
-    font-family: 'DM Mono', monospace;
-    font-size: 13px;
-    font-weight: 700;
-    color: #999385;
-    background: #f4f0e6;
-    padding: 4px 10px;
-    border-radius: 20px;
-}
-
-.edu-pillar-title {
-    font-size: 20px;
-    font-weight: 800;
-    color: #0c3a30;
-    letter-spacing: -0.5px;
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.edu-pillar-desc {
-    font-size: 14px;
-    color: #637069;
-    line-height: 1.6;
-    margin: 0;
-}
-
-/* Branch / Track list */
-.edu-branch-tree {
-    border-top: 1px dashed #e2dcce;
-    padding-top: 18px;
-    margin-top: auto;
-}
-
-.edu-branch-tree-title {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: #8c8577;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.edu-branch-pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 7px;
-}
-
-.edu-branch-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: #f6f3eb;
-    color: #1a382f;
-    font-size: 12.5px;
-    font-weight: 600;
-    padding: 6px 12px;
-    border-radius: 8px;
-    border: 1px solid #ece5d6;
-    transition: all 0.25s ease;
-}
-
-.edu-branch-pill i {
-    font-size: 10px;
-    color: #c98860;
-}
-
-.edu-pillar-card:hover .edu-branch-pill {
-    background: #f0eae0;
-    border-color: #dfd7c5;
-}
-
-.edu-branch-pill:hover {
-    background: #0c3a30 !important;
-    color: #ffffff !important;
-    border-color: #0c3a30 !important;
-}
-
-.edu-branch-pill:hover i {
-    color: #ffd2b1 !important;
-}
-
-/* ── Join The Room Master Card ─────────────────────────────── */
-.edu-join-room-card {
-    background: radial-gradient(ellipse at top left, #0e4539 0%, #082821 60%, #051a15 100%);
-    border-radius: 24px;
-    border: 1.5px solid rgba(255, 210, 177, 0.35);
-    padding: 46px 40px;
-    color: #ffffff;
-    box-shadow: 0 25px 60px rgba(8, 38, 31, 0.35);
-    position: relative;
-    overflow: hidden;
-    margin-top: 40px;
-}
-
-.edu-join-room-card::before {
-    content: "";
-    position: absolute;
-    top: -100px;
-    right: -100px;
-    width: 380px;
-    height: 380px;
-    background: radial-gradient(circle, rgba(255, 210, 177, 0.12) 0%, transparent 70%);
-    pointer-events: none;
-}
-
-.edu-join-room-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(255, 210, 177, 0.15);
-    border: 1px solid rgba(255, 210, 177, 0.35);
-    color: #ffd2b1;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 6px 16px;
-    border-radius: 50px;
-    margin-bottom: 14px;
-}
-
-.edu-join-room-title {
-    font-size: clamp(26px, 3.5vw, 38px);
-    font-weight: 900;
-    letter-spacing: -1px;
-    color: #ffffff;
-    margin-bottom: 10px;
-}
-
-.edu-join-room-subtitle {
-    font-size: 15.5px;
-    color: rgba(255, 255, 255, 0.82);
-    max-width: 680px;
-    line-height: 1.7;
-    margin-bottom: 32px;
-}
-
-.edu-join-actions-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    position: relative;
-    z-index: 2;
-}
-
-.edu-join-action-tile {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 210, 177, 0.2);
-    border-radius: 16px;
-    padding: 22px 18px;
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-    color: #ffffff;
-    backdrop-filter: blur(6px);
-}
-
-.edu-join-action-tile:hover {
-    background: rgba(255, 210, 177, 0.16);
-    border-color: #ffd2b1;
-    transform: translateY(-4px);
-    color: #ffffff;
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
-}
-
-.edu-action-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 14px;
-}
-
-.edu-action-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    background: rgba(255, 210, 177, 0.18);
-    color: #ffd2b1;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    transition: transform 0.3s ease;
-}
-
-.edu-join-action-tile:hover .edu-action-icon {
-    transform: scale(1.1);
-    background: #ffd2b1;
-    color: #0c3a30;
-}
-
-.edu-action-arrow {
-    color: #ffd2b1;
-    font-size: 16px;
-    transition: transform 0.3s ease;
-}
-
-.edu-join-action-tile:hover .edu-action-arrow {
-    transform: translateX(4px);
-}
-
-.edu-action-label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 1.2px;
-    text-transform: uppercase;
-    color: #ffd2b1;
-    margin-bottom: 4px;
-    display: block;
-}
-
-.edu-action-title {
-    font-size: 16.5px;
-    font-weight: 800;
-    color: #ffffff;
-    margin: 0;
-    line-height: 1.35;
-}
-
-@media (max-width: 991px) {
-    .edu-join-actions-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .edu-business-room-section {
-        padding: 80px 0;
-    }
-    .edu-join-room-card {
-        padding: 34px 26px;
-    }
-}
-
-@media (max-width: 575px) {
-    .edu-join-actions-grid {
-        grid-template-columns: 1fr;
-    }
-    .edu-room-header h2 {
-        font-size: 28px;
-    }
-    .edu-join-room-title {
-        font-size: 24px;
-    }
-}
-</style>
-
-{{-- ============================================================
-     HERO SECTION
-     ============================================================ --}}
-<section class="institution-hero">
-    <div class="container">
-        <div class="row align-items-center gy-5">
-
-            {{-- Left: Intro Content --}}
-            <div class="col-lg-6">
-                <div class="hero-content">
-                    <div class="hero-badge-pill">
-                        <i class="bi bi-mortarboard-fill"></i> Register Your Institution
-                    </div>
-
-                    <h1>Bring YCX Programs to Your School or College</h1>
-
-                    <p class="hero-copy">
-                        Partner with Young Chanakya X to create meaningful leadership experiences for your students.
-                        From events and masterclasses to internship connects and speaker programs — bring the
-                        YCX ecosystem directly to your campus.
-                    </p>
-
-                    <ul class="inst-checklist">
-                        <li><span class="check-icon"><i class="bi bi-check-lg"></i></span>Host YCX events, workshops &amp; masterclasses on campus</li>
-                        <li><span class="check-icon"><i class="bi bi-check-lg"></i></span>Connect students with industry mentors &amp; opportunities</li>
-                        <li><span class="check-icon"><i class="bi bi-check-lg"></i></span>Run campus ambassador &amp; leadership programs</li>
-                        <li><span class="check-icon"><i class="bi bi-check-lg"></i></span>Gain institutional recognition in the YCX network</li>
-                    </ul>
-
-                    <div class="about-hero-buttons">
-                        <a href="#institution-form" class="inst-hero-btn">Register Your Institution <i class="bi bi-arrow-right ms-1"></i></a>
-                    </div>
-                </div>
+<div class="bg-cream font-sans text-forest overflow-hidden">
+
+  {{-- Accessible Skip Link --}}
+  <a href="#founder-form" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:m-4 focus:rounded focus:bg-forest focus:px-4 focus:py-2 focus:text-peach">
+    Skip to the Story Submission Form
+  </a>
+
+  {{-- ============================================================
+       01. HERO + FORM (Form on the Right Side of Hero Banner)
+       ============================================================ --}}
+  <section class="relative pt-28 pb-16 lg:pt-36 lg:pb-24 border-b border-cream-edge">
+    {{-- Ambient Background Glow --}}
+    <div class="pointer-events-none absolute -top-20 -left-20 h-[520px] w-[520px] rounded-full bg-peach/25 blur-3xl" aria-hidden="true"></div>
+    <div class="pointer-events-none absolute top-1/2 -right-32 h-[600px] w-[600px] rounded-full bg-forest/5 blur-3xl" aria-hidden="true"></div>
+
+    <div class="mx-auto max-w-shell px-5 lg:px-8">
+      <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-14 xl:gap-20">
+
+        {{-- LEFT COLUMN: HERO HEADLINE & VALUE PROPOSITION --}}
+        <div>
+          
+          {{-- Eyebrow with Podcast Live Wave --}}
+          <div class="inline-flex items-center gap-3 rounded-full executive-badge px-4 py-2 text-xs font-bold uppercase tracking-wider text-forest">
+            <span class="flex h-2.5 w-2.5 rounded-full bg-peach-deep animate-ping"></span>
+            <span>The Education Business Room</span>
+            <span class="text-forest/30">|</span>
+            <div class="pod-wave">
+              <span></span><span></span><span></span><span></span><span></span>
             </div>
+            <span class="font-semibold text-forest/75 normal-case tracking-normal">Founder’s Series</span>
+          </div>
 
-            {{-- Right: Registration Form --}}
-            <div class="col-lg-6">
-                <div class="institution-form-box" id="institution-form">
+          {{-- Main Hero Headline --}}
+          <h1 class="mt-6 text-[2.4rem] font-black leading-[1.08] sm:text-5xl lg:text-[3.25rem] text-forest" style="letter-spacing:-2px;">
+            Where India's Education
+            <span class="block" style="color:#14513f;">Leaders Speak First.</span>
+          </h1>
 
-                    <div class="form-title">Institution Registration Form</div>
-                    <div class="form-subtitle">Fill in the details below and our team will get back to you within 2–3 business days.</div>
+          {{-- Subtitle / Description --}}
+          <p class="mt-6 text-[1.05rem] leading-relaxed text-forest/80 font-normal">
+            <strong>The Education Business Room</strong> by Young Chanakya X is an exclusive platform for school founders, college correspondents, and institutional leaders — a space to share your real journey, exchange ideas with peers, and put your institution on the national map.
+          </p>
 
-                    {{-- Multi-Step Wizard Progress Indicator --}}
-                    <div class="inst-wizard-progress">
-                        <div class="inst-steps-bar">
-                            <div class="inst-steps-track">
-                                <div class="inst-progress-fill" id="instProgressFill"></div>
-                            </div>
-
-                            <button type="button" class="inst-step-item active" data-step="1" id="step-nav-1" onclick="instStepClick(1)">
-                                <div class="inst-step-circle">
-                                    <span class="inst-step-num">1</span>
-                                    <i class="bi bi-check-lg inst-step-check"></i>
-                                </div>
-                                <span class="inst-step-label">Contact</span>
-                            </button>
-
-                            <button type="button" class="inst-step-item" data-step="2" id="step-nav-2" onclick="instStepClick(2)">
-                                <div class="inst-step-circle">
-                                    <span class="inst-step-num">2</span>
-                                    <i class="bi bi-check-lg inst-step-check"></i>
-                                </div>
-                                <span class="inst-step-label">Institution</span>
-                            </button>
-
-                            <button type="button" class="inst-step-item" data-step="3" id="step-nav-3" onclick="instStepClick(3)">
-                                <div class="inst-step-circle">
-                                    <span class="inst-step-num">3</span>
-                                    <i class="bi bi-check-lg inst-step-check"></i>
-                                </div>
-                                <span class="inst-step-label">Location</span>
-                            </button>
-
-                            <button type="button" class="inst-step-item" data-step="4" id="step-nav-4" onclick="instStepClick(4)">
-                                <div class="inst-step-circle">
-                                    <span class="inst-step-num">4</span>
-                                    <i class="bi bi-check-lg inst-step-check"></i>
-                                </div>
-                                <span class="inst-step-label">Interests</span>
-                            </button>
-                        </div>
-
-                        <div class="inst-step-counter text-center mt-3 d-sm-none">
-                            <span class="inst-step-counter-badge" id="instStepCounterBadge">
-                                Step 1 of 4: Contact Person Details
-                            </span>
-                        </div>
-                    </div>
-
-                    {{-- Error Alert --}}
-                    @if (session('error') || $errors->any())
-                        <div class="alert alert-danger mb-4" style="font-weight: 500; border-radius: 10px;">
-                            <i class="bi bi-exclamation-triangle-fill me-2"></i>
-                            @if (session('error'))
-                                {{ session('error') }}
-                            @else
-                                Please correct the errors highlighted below.
-                            @endif
-                        </div>
-                    @endif
-
-                    <form action="{{ route('institution.submit') }}" method="POST" id="institution-registration-form" novalidate>
-                        @csrf
-
-                        {{-- ══════════════════════════════════════════
-                             STEP 1 — CONTACT PERSON DETAILS
-                             ══════════════════════════════════════════ --}}
-                        <div class="inst-form-step active" id="inst-step-1" data-step="1">
-                            <span class="inst-form-section-label">
-                                <i class="bi bi-person-fill me-1"></i> Contact Person Details
-                            </span>
-
-                            <div class="row">
-                                {{-- Full Name --}}
-                                <div class="col-md-6 mb-3">
-                                    <label for="inst-contact-name">Full Name <span class="text-danger">*</span></label>
-                                    <input type="text"
-                                        id="inst-contact-name"
-                                        class="form-control @error('contact_name') is-invalid @enderror"
-                                        name="contact_name"
-                                        value="{{ old('contact_name') }}"
-                                        placeholder="Your Full Name"
-                                        required>
-                                    @error('contact_name')
-                                        <div class="text-danger small mt-1" style="font-size: 0.75rem; font-weight: 600;">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
-                                {{-- Designation / Role --}}
-                                <div class="col-md-6 mb-3">
-                                    <label for="inst-designation">Designation / Role <span class="text-danger">*</span></label>
-                                    <input type="text"
-                                        id="inst-designation"
-                                        class="form-control @error('designation') is-invalid @enderror"
-                                        name="designation"
-                                        value="{{ old('designation') }}"
-                                        placeholder="E.g. Principal, Director, Owner"
-                                        required>
-                                    @error('designation')
-                                        <div class="text-danger small mt-1" style="font-size: 0.75rem; font-weight: 600;">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
-                                {{-- Phone --}}
-                                <div class="col-md-6 mb-3">
-                                    <label for="inst-phone">Phone / WhatsApp Number <span class="text-danger">*</span></label>
-                                    <input type="tel"
-                                        id="inst-phone"
-                                        class="form-control @error('phone') is-invalid @enderror"
-                                        name="phone"
-                                        value="{{ old('phone') }}"
-                                        placeholder="E.g. +91 9876543210"
-                                        required>
-                                    @error('phone')
-                                        <div class="text-danger small mt-1" style="font-size: 0.75rem; font-weight: 600;">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
-                                {{-- Email --}}
-                                <div class="col-md-6 mb-3">
-                                    <label for="inst-email">Email Address <span class="text-danger">*</span></label>
-                                    <input type="email"
-                                        id="inst-email"
-                                        class="form-control @error('email') is-invalid @enderror"
-                                        name="email"
-                                        value="{{ old('email') }}"
-                                        placeholder="official@yourinstitution.edu"
-                                        required>
-                                    @error('email')
-                                        <div class="text-danger small mt-1" style="font-size: 0.75rem; font-weight: 600;">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="inst-wizard-nav">
-                                <button type="button" class="inst-next-btn w-100" onclick="instWizardNext(1)">
-                                    <span>Continue to Institution Details</span>
-                                    <i class="bi bi-arrow-right ms-2"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        {{-- ══════════════════════════════════════════
-                             STEP 2 — INSTITUTION DETAILS
-                             ══════════════════════════════════════════ --}}
-                        <div class="inst-form-step" id="inst-step-2" data-step="2">
-                            <span class="inst-form-section-label">
-                                <i class="bi bi-building-fill me-1"></i> Institution Details
-                            </span>
-
-                            <div class="row">
-                                {{-- Institution Name --}}
-                                <div class="col-12 mb-3">
-                                    <label for="inst-name">Institution Name <span class="text-danger">*</span></label>
-                                    <input type="text"
-                                        id="inst-name"
-                                        class="form-control @error('institution_name') is-invalid @enderror"
-                                        name="institution_name"
-                                        value="{{ old('institution_name') }}"
-                                        placeholder="Full name of your school or college"
-                                        required>
-                                    @error('institution_name')
-                                        <div class="text-danger small mt-1" style="font-size: 0.75rem; font-weight: 600;">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
-                                {{-- Institution Type --}}
-                                <div class="col-md-6 mb-3">
-                                    <label for="inst-type">Institution Type <span class="text-danger">*</span></label>
-                                    <div class="select-wrapper">
-                                        <select class="form-control @error('institution_type') is-invalid @enderror"
-                                            id="inst-type"
-                                            name="institution_type"
-                                            required>
-                                            <option value="" disabled {{ old('institution_type') ? '' : 'selected' }}>Select Type</option>
-                                            @foreach(['School', 'College', 'Both'] as $type)
-                                                <option value="{{ $type }}" {{ old('institution_type') == $type ? 'selected' : '' }}>{{ $type }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    @error('institution_type')
-                                        <div class="text-danger small mt-1" style="font-size: 0.75rem; font-weight: 600;">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
-                                {{-- Board / University --}}
-                                <div class="col-md-6 mb-3">
-                                    <label for="inst-board">Affiliated Board / University <span class="text-danger">*</span></label>
-                                    <input type="text"
-                                        id="inst-board"
-                                        class="form-control @error('board_or_university') is-invalid @enderror"
-                                        name="board_or_university"
-                                        value="{{ old('board_or_university') }}"
-                                        placeholder="E.g. CBSE, Anna University"
-                                        required>
-                                    @error('board_or_university')
-                                        <div class="text-danger small mt-1" style="font-size: 0.75rem; font-weight: 600;">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
-                                {{-- Year of Establishment --}}
-                                <div class="col-md-6 mb-3">
-                                    <label for="inst-year">Year of Establishment <span class="text-muted" style="font-weight: 400;">(Optional)</span></label>
-                                    <input type="number"
-                                        id="inst-year"
-                                        class="form-control @error('year_of_establishment') is-invalid @enderror"
-                                        name="year_of_establishment"
-                                        value="{{ old('year_of_establishment') }}"
-                                        placeholder="E.g. 1998"
-                                        min="1800"
-                                        max="{{ date('Y') }}">
-                                    @error('year_of_establishment')
-                                        <div class="text-danger small mt-1" style="font-size: 0.75rem; font-weight: 600;">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="inst-wizard-nav">
-                                <button type="button" class="inst-prev-btn" onclick="instWizardPrev(2)">
-                                    <i class="bi bi-arrow-left me-1"></i>
-                                    <span>Back</span>
-                                </button>
-                                <button type="button" class="inst-next-btn flex-grow-1" onclick="instWizardNext(2)">
-                                    <span>Continue to Location &amp; Scale</span>
-                                    <i class="bi bi-arrow-right ms-2"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        {{-- ══════════════════════════════════════════
-                             STEP 3 — LOCATION & CAMPUS DETAILS
-                             ══════════════════════════════════════════ --}}
-                        <div class="inst-form-step" id="inst-step-3" data-step="3">
-                            <span class="inst-form-section-label">
-                                <i class="bi bi-geo-alt-fill me-1"></i> Location &amp; Campus Details
-                            </span>
-
-                            <div class="row">
-                                {{-- Student Strength --}}
-                                <div class="col-md-6 mb-3">
-                                    <label for="inst-strength">Approximate Student Strength <span class="text-danger">*</span></label>
-                                    <div class="select-wrapper">
-                                        <select class="form-control @error('student_strength') is-invalid @enderror"
-                                            id="inst-strength"
-                                            name="student_strength"
-                                            required>
-                                            <option value="" disabled {{ old('student_strength') ? '' : 'selected' }}>Select Strength</option>
-                                            @foreach(['Below 200', '200 – 500', '500 – 1,000', '1,000 – 2,500', '2,500 – 5,000', 'Above 5,000'] as $range)
-                                                <option value="{{ $range }}" {{ old('student_strength') == $range ? 'selected' : '' }}>{{ $range }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    @error('student_strength')
-                                        <div class="text-danger small mt-1" style="font-size: 0.75rem; font-weight: 600;">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
-                                {{-- City --}}
-                                <div class="col-md-6 mb-3">
-                                    <label for="inst-city">City <span class="text-danger">*</span></label>
-                                    <input type="text"
-                                        id="inst-city"
-                                        class="form-control @error('city') is-invalid @enderror"
-                                        name="city"
-                                        value="{{ old('city') }}"
-                                        placeholder="City"
-                                        required>
-                                    @error('city')
-                                        <div class="text-danger small mt-1" style="font-size: 0.75rem; font-weight: 600;">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
-                                {{-- State --}}
-                                <div class="col-md-6 mb-3">
-                                    <label for="inst-state">State <span class="text-danger">*</span></label>
-                                    <div class="select-wrapper">
-                                        <select class="form-control @error('state') is-invalid @enderror"
-                                            id="inst-state"
-                                            name="state"
-                                            required>
-                                            <option value="" disabled {{ old('state') ? '' : 'selected' }}>Select State</option>
-                                            @foreach([
-                                                'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh',
-                                                'Goa', 'Gujarat', 'Haryana', 'Himachal Pradesh', 'Jharkhand', 'Karnataka',
-                                                'Kerala', 'Madhya Pradesh', 'Maharashtra', 'Manipur', 'Meghalaya', 'Mizoram',
-                                                'Nagaland', 'Odisha', 'Punjab', 'Rajasthan', 'Sikkim', 'Tamil Nadu',
-                                                'Telangana', 'Tripura', 'Uttar Pradesh', 'Uttarakhand', 'West Bengal',
-                                                'Andaman & Nicobar Islands', 'Chandigarh', 'Dadra & Nagar Haveli and Daman & Diu',
-                                                'Delhi', 'Jammu & Kashmir', 'Ladakh', 'Lakshadweep', 'Puducherry'
-                                            ] as $st)
-                                                <option value="{{ $st }}" {{ old('state') == $st ? 'selected' : '' }}>{{ $st }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    @error('state')
-                                        <div class="text-danger small mt-1" style="font-size: 0.75rem; font-weight: 600;">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
-                                {{-- Website --}}
-                                <div class="col-12 mb-3">
-                                    <label for="inst-website">Institution Website <span class="text-muted" style="font-weight: 400;">(Optional)</span></label>
-                                    <input type="url"
-                                        id="inst-website"
-                                        class="form-control @error('website') is-invalid @enderror"
-                                        name="website"
-                                        value="{{ old('website') }}"
-                                        placeholder="https://www.yourinstitution.edu.in">
-                                    @error('website')
-                                        <div class="text-danger small mt-1" style="font-size: 0.75rem; font-weight: 600;">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="inst-wizard-nav">
-                                <button type="button" class="inst-prev-btn" onclick="instWizardPrev(3)">
-                                    <i class="bi bi-arrow-left me-1"></i>
-                                    <span>Back</span>
-                                </button>
-                                <button type="button" class="inst-next-btn flex-grow-1" onclick="instWizardNext(3)">
-                                    <span>Continue to Areas of Interest</span>
-                                    <i class="bi bi-arrow-right ms-2"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        {{-- ══════════════════════════════════════════
-                             STEP 4 — COLLABORATION & AREAS OF INTEREST
-                             ══════════════════════════════════════════ --}}
-                        <div class="inst-form-step" id="inst-step-4" data-step="4">
-                            <span class="inst-form-section-label">
-                                <i class="bi bi-stars me-1"></i> Areas of Interest
-                            </span>
-
-                            <div class="mb-3">
-                                <label style="margin-bottom: 14px;">
-                                    What would you like to bring to your institution? <span class="text-danger">*</span>
-                                </label>
-
-                                @php
-                                    $areas = [
-                                        ['icon' => 'bi-calendar-event-fill', 'value' => 'YCX Events & Networking', 'label' => 'YCX Events & Networking'],
-                                        ['icon' => 'bi-mortarboard-fill',    'value' => 'Leadership Programs',      'label' => 'Leadership Programs'],
-                                        ['icon' => 'bi-play-circle-fill',    'value' => 'Masterclasses & Workshops','label' => 'Masterclasses & Workshops'],
-                                        ['icon' => 'bi-briefcase-fill',      'value' => 'Internship Connect',        'label' => 'Internship Connect'],
-                                        ['icon' => 'bi-mic-fill',            'value' => 'YCX Talks & Speaker Programs', 'label' => 'YCX Talks & Speaker Programs'],
-                                        ['icon' => 'bi-megaphone-fill',      'value' => 'Campus Ambassador Program', 'label' => 'Campus Ambassador Program'],
-                                    ];
-                                    $oldAreas = old('areas_of_interest', []);
-                                @endphp
-
-                                <div class="inst-checkbox-group" id="areas-checkbox-group">
-                                    @foreach($areas as $area)
-                                        <label class="inst-checkbox-item {{ in_array($area['value'], $oldAreas) ? 'checked' : '' }}"
-                                               for="area-{{ Str::slug($area['value']) }}">
-                                            <input type="checkbox"
-                                                id="area-{{ Str::slug($area['value']) }}"
-                                                name="areas_of_interest[]"
-                                                value="{{ $area['value'] }}"
-                                                {{ in_array($area['value'], $oldAreas) ? 'checked' : '' }}
-                                                onchange="toggleCheckedClass(this)">
-                                            <span>
-                                                <i class="bi {{ $area['icon'] }}" style="color: #0c3a30; margin-right: 4px;"></i>
-                                                {{ $area['label'] }}
-                                            </span>
-                                        </label>
-                                    @endforeach
-                                </div>
-
-                                @error('areas_of_interest')
-                                    <div class="text-danger small mt-2" style="font-size: 0.75rem; font-weight: 600;">{{ $message }}</div>
-                                @enderror
-                            </div>
-
-                            {{-- How did you hear about YCX? --}}
-                            <div class="col-12 mb-3">
-                                <label for="inst-heard">How did you hear about Young Chanakya X? <span class="text-muted" style="font-weight: 400;">(Optional)</span></label>
-                                <div class="select-wrapper">
-                                    <select class="form-control"
-                                        id="inst-heard"
-                                        name="heard_about_ycx">
-                                        <option value="" {{ old('heard_about_ycx') ? '' : 'selected' }}>Select an option</option>
-                                        @foreach([
-                                            'Social Media (Instagram / LinkedIn / Facebook)',
-                                            'YouTube',
-                                            'Word of Mouth',
-                                            'Google Search',
-                                            'Through a Student or Alumni',
-                                            'Through a Staff / Faculty Member',
-                                            'YCX Event or Program',
-                                            'Other',
-                                        ] as $source)
-                                            <option value="{{ $source }}" {{ old('heard_about_ycx') == $source ? 'selected' : '' }}>{{ $source }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-
-                            {{-- Additional Message --}}
-                            <div class="col-12 mb-4">
-                                <label for="inst-message">Additional Notes / Message <span class="text-muted" style="font-weight: 400;">(Optional)</span></label>
-                                <textarea
-                                    id="inst-message"
-                                    class="form-control @error('message') is-invalid @enderror"
-                                    name="message"
-                                    placeholder="Share any additional context, special requirements, or questions you have for our team...">{{ old('message') }}</textarea>
-                                @error('message')
-                                    <div class="text-danger small mt-1" style="font-size: 0.75rem; font-weight: 600;">{{ $message }}</div>
-                                @enderror
-                            </div>
-
-                            {{-- Wizard Submit Nav --}}
-                            <div class="inst-wizard-nav">
-                                <button type="button" class="inst-prev-btn" onclick="instWizardPrev(4)">
-                                    <i class="bi bi-arrow-left me-1"></i>
-                                    <span>Back</span>
-                                </button>
-                                <button type="submit" class="inst-submit-btn flex-grow-1" id="inst-submit-btn">
-                                    <i class="bi bi-send-fill me-2"></i>
-                                    <span>Submit Registration</span>
-                                </button>
-                            </div>
-
-                            <p class="text-center mt-3 mb-0" style="font-size: 12px; color: #999;">
-                                <i class="bi bi-shield-check me-1" style="color: #0c3a30;"></i>
-                                Your information is secure and will never be shared with third parties.
-                            </p>
-                        </div>
-
-                    </form>
-
-                </div>{{-- /.institution-form-box --}}
+          {{-- 6 Quick Highlights Inspired by the Graphic --}}
+          <div class="mt-8 grid grid-cols-2 sm:grid-cols-3 gap-3">
+            <div class="flex items-center gap-2.5 rounded-xl border border-cream-edge bg-white/80 p-3 shadow-xs">
+              <span class="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-forest text-peach text-sm">🎙️</span>
+              <span class="text-xs font-semibold leading-tight text-forest">Video Podcast Feature</span>
             </div>
-
-        </div>
-    </div>
-</section>
-
-{{-- ============================================================
-     BENEFITS SECTION — What YCX Offers Institutions
-     ============================================================ --}}
-<section class="inst-benefits-section">
-    <div class="container">
-
-        <div class="text-center mb-60">
-            <div class="eyebrow rv" style="color: #0c3a30; font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;">Why Partner with YCX</div>
-            <h2 style="font-size: clamp(30px, 4vw, 48px); font-weight: 900; color: #0c3a30; margin-top: 14px; line-height: 1.2; letter-spacing: -1px;">
-                What Your Institution Gains
-            </h2>
-            <p style="max-width: 580px; margin: 16px auto 0; color: #54615a; font-size: 16px; line-height: 1.7;">
-                Young Chanakya X brings a proven ecosystem of leadership, networking, and real-world learning directly to your campus.
-            </p>
-        </div>
-
-        <div class="row g-4">
-            <div class="col-md-6 col-lg-4">
-                <div class="inst-benefit-card">
-                    <div class="inst-benefit-icon"><i class="bi bi-lightning-charge-fill"></i></div>
-                    <h4>Leadership Development</h4>
-                    <p>Empower your students with hands-on leadership programs, mentorship sessions, and real-world business challenges curated by YCX.</p>
-                </div>
+            <div class="flex items-center gap-2.5 rounded-xl border border-cream-edge bg-white/80 p-3 shadow-xs">
+              <span class="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-forest text-peach text-sm">🌟</span>
+              <span class="text-xs font-semibold leading-tight text-forest">National Spotlight</span>
             </div>
-            <div class="col-md-6 col-lg-4">
-                <div class="inst-benefit-card">
-                    <div class="inst-benefit-icon"><i class="bi bi-people-fill"></i></div>
-                    <h4>Community & Networking</h4>
-                    <p>Connect your students with a diverse network of entrepreneurs, industry leaders, investors, and innovators from across India.</p>
-                </div>
+            <div class="flex items-center gap-2.5 rounded-xl border border-cream-edge bg-white/80 p-3 shadow-xs">
+              <span class="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-forest text-peach text-sm">🤝</span>
+              <span class="text-xs font-semibold leading-tight text-forest">Founder Circle Meetups</span>
             </div>
-            <div class="col-md-6 col-lg-4">
-                <div class="inst-benefit-card">
-                    <div class="inst-benefit-icon"><i class="bi bi-camera-video-fill"></i></div>
-                    <h4>YCX Talks & Expert Sessions</h4>
-                    <p>Bring in experienced speakers, founders, and subject-matter experts to deliver inspiring talks and interactive workshops on your campus.</p>
-                </div>
+            <div class="flex items-center gap-2.5 rounded-xl border border-cream-edge bg-white/80 p-3 shadow-xs">
+              <span class="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-forest text-peach text-sm">🏛️</span>
+              <span class="text-xs font-semibold leading-tight text-forest">Campus Leadership Talks</span>
             </div>
-            <div class="col-md-6 col-lg-4">
-                <div class="inst-benefit-card">
-                    <div class="inst-benefit-icon"><i class="bi bi-briefcase-fill"></i></div>
-                    <h4>Internship & Career Connect</h4>
-                    <p>Give students access to internship listings, career guidance, and direct connections with companies actively looking to hire.</p>
-                </div>
+            <div class="flex items-center gap-2.5 rounded-xl border border-cream-edge bg-white/80 p-3 shadow-xs">
+              <span class="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-forest text-peach text-sm">💼</span>
+              <span class="text-xs font-semibold leading-tight text-forest">Internship Connect</span>
             </div>
-            <div class="col-md-6 col-lg-4">
-                <div class="inst-benefit-card">
-                    <div class="inst-benefit-icon"><i class="bi bi-award-fill"></i></div>
-                    <h4>Institutional Recognition</h4>
-                    <p>Gain visibility as a YCX partner institution in our network, events, publications, and social media — enhancing your institution's brand.</p>
-                </div>
+            <div class="flex items-center gap-2.5 rounded-xl border border-cream-edge bg-white/80 p-3 shadow-xs">
+              <span class="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-forest text-peach text-sm">🚀</span>
+              <span class="text-xs font-semibold leading-tight text-forest">Student Masterclasses</span>
             </div>
-            <div class="col-md-6 col-lg-4">
-                <div class="inst-benefit-card">
-                    <div class="inst-benefit-icon"><i class="bi bi-journal-richtext"></i></div>
-                    <h4>Masterclasses & Workshops</h4>
-                    <p>Host YCX-curated masterclasses on entrepreneurship, communication, personal branding, and more — tailored to student audiences.</p>
-                </div>
-            </div>
-        </div>
+          </div>
 
-    </div>
-</section>
-
-{{-- ============================================================
-     SECTION 3 — THE EDUCATION BUSINESS ROOM
-     ============================================================ --}}
-<section class="edu-business-room-section" id="education-business-room">
-    <div class="container">
-
-        {{-- Section Header --}}
-        <div class="edu-room-header">
-            <div class="eyebrow-badge">
-                <i class="bi bi-briefcase-fill"></i> Executive Leadership Ecosystem
-            </div>
-            <h2>The Education Business Room</h2>
-            <p>
-                A high-impact collaborative ecosystem uniting school owners, college chancellors, education entrepreneurs,
-                and corporate innovators to exchange strategic knowledge, explore leadership models, and build progressive institutional partnerships.
-            </p>
-        </div>
-
-        {{-- 6 Core Pillars Grid --}}
-        <div class="row g-4">
-
-            {{-- 1. PODCAST --}}
-            <div class="col-md-6 col-lg-4">
-                <div class="edu-pillar-card">
-                    <div class="edu-pillar-card-top">
-                        <div class="edu-pillar-badge-row">
-                            <div class="edu-pillar-icon-box">
-                                <i class="bi bi-mic-fill"></i>
-                            </div>
-                            <span class="edu-pillar-num">01 / ROOM</span>
-                        </div>
-                        <h3 class="edu-pillar-title">🎙 Podcast</h3>
-                        <p class="edu-pillar-desc">
-                            In-depth conversations with visionary education leaders, edtech founders, and institutional changemakers on building modern learning organizations.
-                        </p>
-                    </div>
-
-                    <div class="edu-branch-tree">
-                        <div class="edu-branch-tree-title">
-                            <i class="bi bi-diagram-3"></i> Core Tracks
-                        </div>
-                        <div class="edu-branch-pills">
-                            <span class="edu-branch-pill"><i class="bi bi-play-circle-fill"></i> Episodes</span>
-                            <span class="edu-branch-pill"><i class="bi bi-person-video"></i> Guest Stories</span>
-                            <span class="edu-branch-pill"><i class="bi bi-camera-video"></i> Video / Audio</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {{-- 2. PANEL DISCUSSIONS --}}
-            <div class="col-md-6 col-lg-4">
-                <div class="edu-pillar-card">
-                    <div class="edu-pillar-card-top">
-                        <div class="edu-pillar-badge-row">
-                            <div class="edu-pillar-icon-box">
-                                <i class="bi bi-chat-square-quote-fill"></i>
-                            </div>
-                            <span class="edu-pillar-num">02 / ROOM</span>
-                        </div>
-                        <h3 class="edu-pillar-title">🗣 Panel Discussions</h3>
-                        <p class="edu-pillar-desc">
-                            High-stakes roundtable forums addressing critical policies, campus governance, AI integration, and the commercial sustainability of institutions.
-                        </p>
-                    </div>
-
-                    <div class="edu-branch-tree">
-                        <div class="edu-branch-tree-title">
-                            <i class="bi bi-diagram-3"></i> Core Tracks
-                        </div>
-                        <div class="edu-branch-pills">
-                            <span class="edu-branch-pill"><i class="bi bi-award"></i> Leadership</span>
-                            <span class="edu-branch-pill"><i class="bi bi-cpu"></i> Technology</span>
-                            <span class="edu-branch-pill"><i class="bi bi-compass"></i> Future of Education</span>
-                            <span class="edu-branch-pill"><i class="bi bi-graph-up-arrow"></i> Business of Education</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {{-- 3. STORIES --}}
-            <div class="col-md-6 col-lg-4">
-                <div class="edu-pillar-card">
-                    <div class="edu-pillar-card-top">
-                        <div class="edu-pillar-badge-row">
-                            <div class="edu-pillar-icon-box">
-                                <i class="bi bi-book-half"></i>
-                            </div>
-                            <span class="edu-pillar-num">03 / ROOM</span>
-                        </div>
-                        <h3 class="edu-pillar-title">📖 Stories</h3>
-                        <p class="edu-pillar-desc">
-                            Unfiltered chronicles of educators and entrepreneurs turning constraints into excellence, navigating regulatory hurdles, and building enduring campuses.
-                        </p>
-                    </div>
-
-                    <div class="edu-branch-tree">
-                        <div class="edu-branch-tree-title">
-                            <i class="bi bi-diagram-3"></i> Core Tracks
-                        </div>
-                        <div class="edu-branch-pills">
-                            <span class="edu-branch-pill"><i class="bi bi-person-badge"></i> Founder Stories</span>
-                            <span class="edu-branch-pill"><i class="bi bi-building"></i> Institution Stories</span>
-                            <span class="edu-branch-pill"><i class="bi bi-arrow-repeat"></i> Transformation Stories</span>
-                            <span class="edu-branch-pill"><i class="bi bi-lightning"></i> Failure → Success</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {{-- 4. TALKS --}}
-            <div class="col-md-6 col-lg-4">
-                <div class="edu-pillar-card">
-                    <div class="edu-pillar-card-top">
-                        <div class="edu-pillar-badge-row">
-                            <div class="edu-pillar-icon-box">
-                                <i class="bi bi-megaphone-fill"></i>
-                            </div>
-                            <span class="edu-pillar-num">04 / ROOM</span>
-                        </div>
-                        <h3 class="edu-pillar-title">🎤 Talks</h3>
-                        <p class="edu-pillar-desc">
-                            Engaging keynotes and leadership masterclasses that connect students and faculties with industry icons, mentors, and corporate trailblazers.
-                        </p>
-                    </div>
-
-                    <div class="edu-branch-tree">
-                        <div class="edu-branch-tree-title">
-                            <i class="bi bi-diagram-3"></i> Core Tracks
-                        </div>
-                        <div class="edu-branch-pills">
-                            <span class="edu-branch-pill"><i class="bi bi-star"></i> Keynotes</span>
-                            <span class="edu-branch-pill"><i class="bi bi-mortarboard"></i> College Talks</span>
-                            <span class="edu-branch-pill"><i class="bi bi-backpack"></i> School Talks</span>
-                            <span class="edu-branch-pill"><i class="bi bi-gem"></i> Leadership Sessions</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {{-- 5. MEETUPS --}}
-            <div class="col-md-6 col-lg-4">
-                <div class="edu-pillar-card">
-                    <div class="edu-pillar-card-top">
-                        <div class="edu-pillar-badge-row">
-                            <div class="edu-pillar-icon-box">
-                                <i class="bi bi-people-fill"></i>
-                            </div>
-                            <span class="edu-pillar-num">05 / ROOM</span>
-                        </div>
-                        <h3 class="edu-pillar-title">🤝 Meetups</h3>
-                        <p class="edu-pillar-desc">
-                            Curated, closed-door conclaves designed for confidential peer exchange, strategic alliances, and institutional synergy among decision-makers.
-                        </p>
-                    </div>
-
-                    <div class="edu-branch-tree">
-                        <div class="edu-branch-tree-title">
-                            <i class="bi bi-diagram-3"></i> Core Tracks
-                        </div>
-                        <div class="edu-branch-pills">
-                            <span class="edu-branch-pill"><i class="bi bi-building"></i> School Owners</span>
-                            <span class="edu-branch-pill"><i class="bi bi-bank"></i> College Owners</span>
-                            <span class="edu-branch-pill"><i class="bi bi-briefcase"></i> Education Entrepreneurs</span>
-                            <span class="edu-branch-pill"><i class="bi bi-hdd-network"></i> Technology Leaders</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {{-- 6. INSIGHTS --}}
-            <div class="col-md-6 col-lg-4">
-                <div class="edu-pillar-card">
-                    <div class="edu-pillar-card-top">
-                        <div class="edu-pillar-badge-row">
-                            <div class="edu-pillar-icon-box">
-                                <i class="bi bi-lightbulb-fill"></i>
-                            </div>
-                            <span class="edu-pillar-num">06 / ROOM</span>
-                        </div>
-                        <h3 class="edu-pillar-title">🧠 Insights</h3>
-                        <p class="edu-pillar-desc">
-                            Research papers, emerging curriculum dynamics, market trends, and evidence-backed perspectives analyzing Indian and global education landscapes.
-                        </p>
-                    </div>
-
-                    <div class="edu-branch-tree">
-                        <div class="edu-branch-tree-title">
-                            <i class="bi bi-diagram-3"></i> Core Tracks
-                        </div>
-                        <div class="edu-branch-pills">
-                            <span class="edu-branch-pill"><i class="bi bi-file-text"></i> Articles</span>
-                            <span class="edu-branch-pill"><i class="bi bi-clipboard-data"></i> Research</span>
-                            <span class="edu-branch-pill"><i class="bi bi-graph-up"></i> Trends</span>
-                            <span class="edu-branch-pill"><i class="bi bi-chat-dots"></i> Opinion</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          {{-- Trust Footnote --}}
+          <div class="mt-8 flex flex-wrap items-center gap-4 text-xs font-medium text-forest/70">
+            <span class="inline-flex items-center gap-1.5 font-bold text-forest">
+              <i class="bi bi-shield-check text-forest-mid text-sm"></i> Curated &amp; Closed-Door
+            </span>
+            <span>•</span>
+            <span>No Cost to Participate</span>
+            <span>•</span>
+            <span>Broadcast-Quality Production</span>
+          </div>
 
         </div>
 
-        {{-- 7. JOIN THE ROOM — Master Executive Hub --}}
-        <div class="edu-join-room-card">
-            <div class="row align-items-center mb-4">
-                <div class="col-lg-8">
-                    <div class="edu-join-room-badge">
-                        <i class="bi bi-rocket-takeoff-fill"></i> Gateway · Take Your Seat
-                    </div>
-                    <h3 class="edu-join-room-title">🚀 Join The Education Business Room</h3>
-                    <p class="edu-join-room-subtitle">
-                        Step directly into the room where decisions are made and progressive campus initiatives take shape. Select your path to connect with our network.
-                    </p>
-                </div>
-                <div class="col-lg-4 text-lg-end d-none d-lg-block">
-                    <a href="#institution-form" class="btn px-4 py-3 fw-bold"
-                       style="background: #ffd2b1; color: #0c3a30; border-radius: 50px; font-size: 14px; text-decoration: none; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 8px;">
-                        Register Institution <i class="bi bi-arrow-right"></i>
-                    </a>
-                </div>
+        {{-- RIGHT COLUMN: HERO FORM (Direct Access For Founders & Leaders) --}}
+        <div id="founder-form">
+          <div class="hero-glass-card rounded-[1.85rem] p-6 sm:p-8 lg:p-9">
+
+            {{-- Card Header --}}
+            <div class="border-b border-cream-edge pb-5">
+              <div class="flex items-center justify-between">
+                <span class="rounded-full bg-forest/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-forest">
+                  Executive Registration
+                </span>
+                <span class="text-xs font-medium text-forest/60">Takes 2 mins</span>
+              </div>
+              <h2 class="mt-3 text-2xl sm:text-[1.75rem] font-bold leading-tight text-forest">
+                Share Your Journey
+              </h2>
+              <p class="mt-1 text-xs sm:text-sm text-forest/70">
+                Join The Education Business Room or bring YCX programs to your campus.
+              </p>
             </div>
 
-            {{-- 4 Direct Action Tiles --}}
-            <div class="edu-join-actions-grid">
+            {{-- 2-Step Progress Indicator --}}
+            <div class="mt-5 border-b border-cream-edge pb-4">
+              <ol class="flex items-center justify-between gap-3 list-none p-0 m-0" aria-label="Progress">
+                <li class="flex items-center gap-2.5 flex-1" data-indicator="1">
+                  <span data-bubble class="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-forest text-xs font-bold text-peach">1</span>
+                  <span class="text-xs font-semibold text-forest">About You</span>
+                </li>
+                <li class="h-px flex-1 bg-cream-edge"></li>
+                <li class="flex items-center gap-2.5 flex-1 justify-end" data-indicator="2">
+                  <span data-bubble class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-forest/25 text-xs font-semibold text-forest/50">2</span>
+                  <span class="text-xs font-semibold text-forest/50">Your Campus</span>
+                </li>
+              </ol>
+            </div>
 
-                {{-- Action 1: Become a Guest --}}
-                <a href="{{ url('/become-a-feature') }}" class="edu-join-action-tile">
-                    <div class="edu-action-top">
-                        <div class="edu-action-icon"><i class="bi bi-mic-fill"></i></div>
-                        <div class="edu-action-arrow"><i class="bi bi-arrow-up-right"></i></div>
-                    </div>
+            {{-- FORM ELEMENT --}}
+            <form id="founderRegForm" class="mt-5" novalidate>
+
+              {{-- STEP 1: ABOUT THE FOUNDER / LEADER --}}
+              <fieldset id="step1">
+                <legend class="sr-only">About the Founder / Leader</legend>
+                <div class="space-y-4">
+                  <div>
+                    <label for="name" class="block text-xs font-bold uppercase tracking-wider text-forest/85">Your Full Name <span class="text-red-600">*</span></label>
+                    <input id="name" name="name" type="text" required placeholder="e.g. Dr. Ramesh Chander"
+                      class="mt-1.5 w-full rounded-xl border border-cream-edge bg-cream/50 px-4 py-3 text-sm text-forest placeholder:text-forest/35 outline-none transition focus:border-forest focus:bg-white" />
+                    <p class="error-msg">Please enter your name.</p>
+                  </div>
+
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                        <span class="edu-action-label">Podcast &amp; Media</span>
-                        <h4 class="edu-action-title">Become a Guest</h4>
+                      <label for="role" class="block text-xs font-bold uppercase tracking-wider text-forest/85">Your Role <span class="text-red-600">*</span></label>
+                      <select id="role" name="role" required
+                        class="mt-1.5 w-full rounded-xl border border-cream-edge bg-cream/50 px-4 py-3 text-sm text-forest outline-none transition focus:border-forest focus:bg-white">
+                        <option value="">Select Role</option>
+                        <option value="School Founder / Owner">School Founder / Owner</option>
+                        <option value="College Correspondent">College Correspondent</option>
+                        <option value="College Chairperson">College Chairperson</option>
+                        <option value="Principal / Director">Principal / Director</option>
+                        <option value="Education Entrepreneur">Education Entrepreneur</option>
+                        <option value="Trustee / Board Member">Trustee / Board Member</option>
+                        <option value="Other">Other Executive</option>
+                      </select>
+                      <p class="error-msg">Select your designation.</p>
                     </div>
-                </a>
 
-                {{-- Action 2: Attend a Meetup --}}
-                <a href="{{ url('/events') }}" class="edu-join-action-tile">
-                    <div class="edu-action-top">
-                        <div class="edu-action-icon"><i class="bi bi-calendar2-check-fill"></i></div>
-                        <div class="edu-action-arrow"><i class="bi bi-arrow-up-right"></i></div>
-                    </div>
                     <div>
-                        <span class="edu-action-label">Closed-Door Gatherings</span>
-                        <h4 class="edu-action-title">Attend a Meetup</h4>
+                      <label for="phone" class="block text-xs font-bold uppercase tracking-wider text-forest/85">Phone / WhatsApp <span class="text-red-600">*</span></label>
+                      <input id="phone" name="phone" type="tel" required placeholder="+91 98765 43210"
+                        class="mt-1.5 w-full rounded-xl border border-cream-edge bg-cream/50 px-4 py-3 text-sm text-forest placeholder:text-forest/35 outline-none transition focus:border-forest focus:bg-white" />
+                      <p class="error-msg">Enter a reachable phone number.</p>
                     </div>
-                </a>
+                  </div>
 
-                {{-- Action 3: Partner With Us --}}
-                <a href="{{ url('/become-a-partner') }}" class="edu-join-action-tile">
-                    <div class="edu-action-top">
-                        <div class="edu-action-icon"><i class="bi bi-person-check-fill"></i></div>
-                        <div class="edu-action-arrow"><i class="bi bi-arrow-up-right"></i></div>
-                    </div>
+                  <div>
+                    <label for="email" class="block text-xs font-bold uppercase tracking-wider text-forest/85">Official / Personal Email <span class="text-red-600">*</span></label>
+                    <input id="email" name="email" type="email" required placeholder="founder@institution.edu.in"
+                      class="mt-1.5 w-full rounded-xl border border-cream-edge bg-cream/50 px-4 py-3 text-sm text-forest placeholder:text-forest/35 outline-none transition focus:border-forest focus:bg-white" />
+                    <p class="error-msg">Enter a valid email address.</p>
+                  </div>
+                </div>
+
+                <div class="mt-6 flex items-center justify-between pt-2">
+                  <span class="text-[11px] text-forest/50">Confidential · Direct YCX Team Access</span>
+                  <button type="button" id="nextBtn"
+                    class="rounded-full bg-forest px-7 py-3 text-xs font-bold uppercase tracking-wider text-peach transition hover:bg-forest-mid shadow-sm">
+                    Continue to Institution →
+                  </button>
+                </div>
+              </fieldset>
+
+              {{-- STEP 2: ABOUT THE INSTITUTION & PARTICIPATION --}}
+              <fieldset id="step2" hidden>
+                <legend class="sr-only">About Your Institution</legend>
+                <div class="space-y-4">
+                  <div>
+                    <label for="inst" class="block text-xs font-bold uppercase tracking-wider text-forest/85">Institution / Group Name <span class="text-red-600">*</span></label>
+                    <input id="inst" name="inst" type="text" required placeholder="e.g. Sri Krishna Educational Trust"
+                      class="mt-1.5 w-full rounded-xl border border-cream-edge bg-cream/50 px-4 py-3 text-sm text-forest placeholder:text-forest/35 outline-none transition focus:border-forest focus:bg-white" />
+                    <p class="error-msg">Enter your institution or group name.</p>
+                  </div>
+
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                        <span class="edu-action-label">Strategic Alliance</span>
-                        <h4 class="edu-action-title">Partner With Us</h4>
+                      <label for="type" class="block text-xs font-bold uppercase tracking-wider text-forest/85">Category <span class="text-red-600">*</span></label>
+                      <select id="type" name="type" required
+                        class="mt-1.5 w-full rounded-xl border border-cream-edge bg-cream/50 px-4 py-3 text-sm text-forest outline-none transition focus:border-forest focus:bg-white">
+                        <option value="">Select Type</option>
+                        <option value="School / Group of Schools">School / K-12 Group</option>
+                        <option value="College / University">College / University</option>
+                        <option value="Both School & College">Both School &amp; College</option>
+                        <option value="Education Enterprise">EdTech / Education Co</option>
+                      </select>
+                      <p class="error-msg">Select institution type.</p>
                     </div>
-                </a>
 
-                {{-- Action 4: Invite Kishorekumar --}}
-                <a href="#institution-form" class="edu-join-action-tile">
-                    <div class="edu-action-top">
-                        <div class="edu-action-icon"><i class="bi bi-person-badge-fill"></i></div>
-                        <div class="edu-action-arrow"><i class="bi bi-arrow-down-right"></i></div>
-                    </div>
                     <div>
-                        <span class="edu-action-label">Keynote &amp; CEO Sessions</span>
-                        <h4 class="edu-action-title">Invite Kishorekumar</h4>
+                      <label for="city" class="block text-xs font-bold uppercase tracking-wider text-forest/85">City &amp; State <span class="text-red-600">*</span></label>
+                      <input id="city" name="city" type="text" required placeholder="Coimbatore, TN"
+                        class="mt-1.5 w-full rounded-xl border border-cream-edge bg-cream/50 px-4 py-3 text-sm text-forest placeholder:text-forest/35 outline-none transition focus:border-forest focus:bg-white" />
+                      <p class="error-msg">Enter city and state.</p>
                     </div>
-                </a>
+                  </div>
 
-            </div>
-        </div>
+                  {{-- What would you like to explore? (Dropdown) --}}
+                  <div>
+                    <label for="interest" class="block text-xs font-bold uppercase tracking-wider text-forest/85">
+                      What Would You Like to Explore? <span class="text-red-600">*</span>
+                    </label>
+                    <select id="interest" name="interest" required
+                      class="mt-1.5 w-full rounded-xl border border-cream-edge bg-cream/50 px-4 py-3 text-sm text-forest outline-none transition focus:border-forest focus:bg-white">
+                      <option value="">Select What You'd Like to Explore</option>
+                      <option value="Podcast Feature">🎙️ Video Podcast Feature (The Education Business Room)</option>
+                      <option value="Founder Panel">🗣️ Educational Leadership Panel Discussion</option>
+                      <option value="Campus Leadership Talks">🏛️ Campus Leadership Talks &amp; Keynotes</option>
+                      <option value="Student Masterclasses">💡 Student Masterclasses &amp; Workshops</option>
+                      <option value="Closed-Door Meetups">🤝 Closed-Door Founder &amp; Correspondent Meetups</option>
+                      <option value="Comprehensive Partnership">🌟 Comprehensive Institutional Partnership (All Programs)</option>
+                    </select>
+                    <p class="error-msg">Please select what you would like to explore.</p>
+                  </div>
 
-    </div>
-</section>
+                  <div>
+                    <label for="site" class="block text-xs font-bold uppercase tracking-wider text-forest/85">Institution Website / LinkedIn <span class="font-normal text-forest/50">(Optional)</span></label>
+                    <input id="site" name="site" type="url" placeholder="https://yourinstitution.edu.in"
+                      class="mt-1.5 w-full rounded-xl border border-cream-edge bg-cream/50 px-4 py-3 text-sm text-forest placeholder:text-forest/35 outline-none transition focus:border-forest focus:bg-white" />
+                  </div>
+                </div>
 
-{{-- ============================================================
-     CTA BANNER
-     ============================================================ --}}
-<section class="inst-cta-banner">
-    <div class="container">
-        <div class="row align-items-center gy-4">
-            <div class="col-lg-7 text-center text-lg-start">
-                <div style="font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #ffd2b1; margin-bottom: 16px;">Young Chanakya X</div>
-                <h2 style="font-size: clamp(28px, 4vw, 44px); font-weight: 900; color: #ffffff; line-height: 1.2; letter-spacing: -1px; margin-bottom: 16px;">
-                    Ready to bring YCX to your campus?
-                </h2>
-                <p style="font-size: 16px; color: rgba(255,255,255,0.80); line-height: 1.7; margin: 0;">
-                    Register your institution today and our team will connect with you to design the right programs for your students.
+                <div class="mt-6 flex items-center justify-between pt-2">
+                  <button type="button" id="backBtn" class="text-xs font-bold text-forest/70 underline underline-offset-4 hover:text-forest">
+                    ← Back
+                  </button>
+                  <button type="submit"
+                    class="rounded-full bg-forest px-7 py-3 text-xs font-bold uppercase tracking-wider text-peach transition hover:bg-forest-mid shadow-sm">
+                    Submit Profile →
+                  </button>
+                </div>
+              </fieldset>
+
+              {{-- SUCCESS STATE --}}
+              <div id="formSuccessState" hidden class="py-8 text-center">
+                <div class="mx-auto grid h-14 w-14 place-items-center rounded-full bg-forest text-peach">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <h3 class="mt-4 text-2xl font-bold text-forest">Story Received</h3>
+                <p class="mx-auto mt-2 max-w-sm text-xs leading-relaxed text-forest/75">
+                  Thank you for connecting with <strong>The Education Business Room</strong>. Our curation team will review your profile and reach out within 2–3 working days to coordinate the conversation format.
                 </p>
-            </div>
-            <div class="col-lg-5 text-center text-lg-end">
-                <a href="#institution-form" class="btn px-5 py-3 fw-bold me-3"
-                   style="background: #ffd2b1; color: #0c3a30; border-radius: 50px; font-size: 15px; text-decoration: none; transition: all 0.3s ease; display: inline-block;">
-                    Register Now
-                </a>
-                <a href="{{ url('/contact') }}" class="btn px-5 py-3 fw-bold mt-3 mt-sm-0"
-                   style="background: transparent; color: #ffffff; border: 2px solid rgba(255,255,255,0.4); border-radius: 50px; font-size: 15px; text-decoration: none; transition: all 0.3s ease; display: inline-block;">
-                    Contact Us
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<button class="scroll-top">
-    <i class="bi bi-arrow-up-short"></i>
-</button>
-
-{{-- ============================================================
-     SUCCESS MODAL
-     ============================================================ --}}
-@if (session('success'))
-<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content" style="background: linear-gradient(135deg, #fffcf9 0%, #ffeada 100%); border: 1px solid rgba(12, 58, 48, 0.15); border-radius: 20px;">
-            <div class="modal-body text-center p-5">
-                <div class="mb-4">
-                    <i class="bi bi-check-circle-fill" style="font-size: 4rem; color: #0c3a30;"></i>
+                <div class="mt-5">
+                  <a href="#founder-story" class="text-xs font-bold text-forest underline underline-offset-4">
+                    Explore the Founder Arc below ↓
+                  </a>
                 </div>
-                <h3 class="fw-bold mb-3" style="font-size: 1.5rem; line-height: 1.3; color: #0c3a30;">
-                    Thank You for Connecting!
-                </h3>
-                <p class="mb-4" style="line-height: 1.6; font-size: 0.95rem; color: #687588;">
-                    {{ session('success') }}
-                </p>
-                <a href="{{ request()->url() }}" class="btn px-5 py-3 fw-bold w-100 d-block text-center"
-                   style="text-decoration: none; background-color: #0c3a30; color: #ffffff; border-radius: 12px; border: none; transition: all 0.3s ease;">
-                    Continue Exploring
-                </a>
-            </div>
+              </div>
+
+              <p id="liveStatus" aria-live="polite" class="sr-only"></p>
+            </form>
+
+          </div>
         </div>
+
+      </div>
     </div>
+  </section>
+
+  {{-- ============================================================
+       02. WHO IS THIS CONVERSATION FOR? (6 Education Leader Profiles)
+       ============================================================ --}}
+  <section class="py-20 lg:py-28 bg-white border-b border-cream-edge">
+    <div class="mx-auto max-w-shell px-5 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto">
+        <span class="rounded-full bg-peach/40 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-forest">
+          The Leadership Circle
+        </span>
+        <h2 class="mt-4 text-3xl font-black sm:text-4xl lg:text-[2.75rem] text-forest" style="letter-spacing:-1.5px;">
+          Who Is This Conversation For?
+        </h2>
+        <p class="mt-4 text-forest/75 text-[1.05rem] leading-relaxed">
+          We invite leaders from across the education continuum who are carrying the responsibility of institutions and inspiring the next generation of builders.
+        </p>
+      </div>
+
+      {{-- 6 Cards Grid with Evocative Imagery --}}
+      <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+
+        {{-- Profile 1 --}}
+        <article class="group overflow-hidden rounded-2xl border border-cream-edge bg-cream-card transition hover:border-forest/40 hover:shadow-lg">
+          <div class="h-48 w-full overflow-hidden bg-cream-warm">
+            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=700&q=80" 
+                 alt="College Correspondent at university campus" 
+                 class="h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
+          </div>
+          <div class="p-6">
+            <span class="text-[11px] font-bold uppercase tracking-widest text-forest/50">Higher Education</span>
+            <h3 class="mt-1 text-xl font-bold text-forest">College Correspondents</h3>
+            <p class="mt-2 text-sm leading-relaxed text-forest/70">
+              Preserving institutional values, building long-term vision, and navigating generational transitions with accountability.
+            </p>
+          </div>
+        </article>
+
+        {{-- Profile 2 --}}
+        <article class="group overflow-hidden rounded-2xl border border-cream-edge bg-cream-card transition hover:border-forest/40 hover:shadow-lg">
+          <div class="h-48 w-full overflow-hidden bg-cream-warm">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=700&q=80" 
+                 alt="College Chairperson leading campus strategy" 
+                 class="h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
+          </div>
+          <div class="p-6">
+            <span class="text-[11px] font-bold uppercase tracking-widest text-forest/50">Institutional Governance</span>
+            <h3 class="mt-1 text-xl font-bold text-forest">College Chairpersons</h3>
+            <p class="mt-2 text-sm leading-relaxed text-forest/70">
+              Leading institutions through rapid educational change, campus expansion, and international accreditations.
+            </p>
+          </div>
+        </article>
+
+        {{-- Profile 3 --}}
+        <article class="group overflow-hidden rounded-2xl border border-cream-edge bg-cream-card transition hover:border-forest/40 hover:shadow-lg">
+          <div class="h-48 w-full overflow-hidden bg-cream-warm">
+            <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=700&q=80" 
+                 alt="School Founder building a community school" 
+                 class="h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
+          </div>
+          <div class="p-6">
+            <span class="text-[11px] font-bold uppercase tracking-widest text-forest/50">K-12 &amp; School Foundations</span>
+            <h3 class="mt-1 text-xl font-bold text-forest">School Founders &amp; Owners</h3>
+            <p class="mt-2 text-sm leading-relaxed text-forest/70">
+              Turning early educational conviction into real campuses, overcoming early hurdles, and nurturing young minds.
+            </p>
+          </div>
+        </article>
+
+        {{-- Profile 4 --}}
+        <article class="group overflow-hidden rounded-2xl border border-cream-edge bg-cream-card transition hover:border-forest/40 hover:shadow-lg">
+          <div class="h-48 w-full overflow-hidden bg-cream-warm">
+            <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=700&q=80" 
+                 alt="Principals and directors mentoring students" 
+                 class="h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
+          </div>
+          <div class="p-6">
+            <span class="text-[11px] font-bold uppercase tracking-widest text-forest/50">Academic Leadership</span>
+            <h3 class="mt-1 text-xl font-bold text-forest">Principals &amp; Directors</h3>
+            <p class="mt-2 text-sm leading-relaxed text-forest/70">
+              Guiding teaching culture, modernizing curriculums, and striking the balance between academic rigour and well-being.
+            </p>
+          </div>
+        </article>
+
+        {{-- Profile 5 --}}
+        <article class="group overflow-hidden rounded-2xl border border-cream-edge bg-cream-card transition hover:border-forest/40 hover:shadow-lg">
+          <div class="h-48 w-full overflow-hidden bg-cream-warm">
+            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=700&q=80" 
+                 alt="Education entrepreneurs building new models" 
+                 class="h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
+          </div>
+          <div class="p-6">
+            <span class="text-[11px] font-bold uppercase tracking-widest text-forest/50">EdTech &amp; Innovation</span>
+            <h3 class="mt-1 text-xl font-bold text-forest">Education Entrepreneurs</h3>
+            <p class="mt-2 text-sm leading-relaxed text-forest/70">
+              Pioneering sustainable business models, skill-first learning academies, and AI-enabled educational ecosystems.
+            </p>
+          </div>
+        </article>
+
+        {{-- Profile 6 --}}
+        <article class="group overflow-hidden rounded-2xl border border-cream-edge bg-cream-card transition hover:border-forest/40 hover:shadow-lg">
+          <div class="h-48 w-full overflow-hidden bg-cream-warm">
+            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=700&q=80" 
+                 alt="Executive roundtable of chancellors and board members" 
+                 class="h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
+          </div>
+          <div class="p-6">
+            <span class="text-[11px] font-bold uppercase tracking-widest text-forest/50">Strategy &amp; Ecosystem</span>
+            <h3 class="mt-1 text-xl font-bold text-forest">Trustees &amp; Board Members</h3>
+            <p class="mt-2 text-sm leading-relaxed text-forest/70">
+              Driving cross-institutional partnerships, industry linkages, capital allocation, and progressive campus transformation.
+            </p>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  {{-- ============================================================
+       03. ABOUT THE EDUCATION BUSINESS ROOM (Why this platform exists)
+       ============================================================ --}}
+  <section class="py-20 lg:py-28 bg-forest text-cream relative">
+    <div class="mx-auto max-w-shell px-5 lg:px-8">
+      
+      <div class="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+        
+        <div class="lg:col-span-6">
+          <span class="text-xs font-bold uppercase tracking-widest text-peach">
+            Beyond the Institution · Behind the Journey
+          </span>
+
+          <h2 class="mt-4 text-3xl font-black leading-tight sm:text-4xl lg:text-[2.85rem] text-cream" style="letter-spacing:-1.5px;">
+            The Untold Stories of the People Who Built the Campus.
+          </h2>
+
+          <p class="mt-6 text-[1.05rem] leading-relaxed text-cream/80">
+            Every successful institution has an authentic story that rarely makes it to the admission brochure:
+          </p>
+
+          <p class="mt-4 text-[1.05rem] leading-relaxed text-cream/70">
+            The initial spark. The sleepless nights. The regulatory gridlocks. The calculated risks. The financial tightropes. And the turning point when students finally walked through the gates.
+          </p>
+
+          <p class="mt-4 text-[1.05rem] leading-relaxed text-cream/70">
+            <strong>The Education Business Room</strong> was created to bring these leadership journeys to the surface — unscripted, reflective, and deeply valuable for the entire education community.
+          </p>
+
+          {{-- 5 Core Focus Areas Pills --}}
+          <div class="mt-8 flex flex-wrap gap-2.5">
+            <span class="rounded-full border border-peach/30 bg-white/5 px-4 py-1.5 text-xs font-semibold text-peach">
+              🎙️ Founder Conversations
+            </span>
+            <span class="rounded-full border border-peach/30 bg-white/5 px-4 py-1.5 text-xs font-semibold text-peach">
+              🏛️ Institution Heritage
+            </span>
+            <span class="rounded-full border border-peach/30 bg-white/5 px-4 py-1.5 text-xs font-semibold text-peach">
+              💡 Education Innovation
+            </span>
+            <span class="rounded-full border border-peach/30 bg-white/5 px-4 py-1.5 text-xs font-semibold text-peach">
+              📊 Business of Education
+            </span>
+            <span class="rounded-full border border-peach/30 bg-white/5 px-4 py-1.5 text-xs font-semibold text-peach">
+              🔮 Future of Learning &amp; AI
+            </span>
+          </div>
+        </div>
+
+        {{-- Right Side Quote & Visual --}}
+        <div class="lg:col-span-6">
+          <div class="rounded-3xl border border-peach/20 bg-forest-deep/60 p-8 sm:p-12 relative overflow-hidden backdrop-blur-sm shadow-2xl">
+            <div class="text-peach/20 text-6xl font-display leading-none select-none">“</div>
+            <blockquote class="mt-2 text-2xl sm:text-3xl font-semibold italic leading-snug text-cream">
+              Education is not just a system. It’s people, purpose, and possibility.
+            </blockquote>
+            <div class="mt-6 flex items-center gap-4 pt-6 border-t border-cream/15">
+              <div class="h-10 w-10 rounded-full bg-peach flex items-center justify-center text-forest font-bold text-sm">
+                YCX
+              </div>
+              <div>
+                <div class="text-sm font-bold text-cream">The Education Business Room</div>
+                <div class="text-xs text-cream/60">A Young Chanakya Executive Initiative</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  {{-- ============================================================
+       04. THE FOUNDER STORY (The 5-Stage Leadership Arc)
+       ============================================================ --}}
+  <section id="founder-story" class="py-20 lg:py-32 bg-forest overflow-hidden relative">
+
+    {{-- Ambient radial glows --}}
+    <div class="pointer-events-none absolute -top-32 left-1/4 h-[500px] w-[500px] rounded-full bg-peach/8 blur-3xl" aria-hidden="true"></div>
+    <div class="pointer-events-none absolute -bottom-20 right-1/3 h-[400px] w-[400px] rounded-full bg-peach/5 blur-3xl" aria-hidden="true"></div>
+
+    <div class="mx-auto max-w-shell px-5 lg:px-8 relative z-10">
+
+      {{-- Section Header --}}
+      <div class="text-center max-w-2xl mx-auto">
+        <span class="inline-flex items-center gap-2 rounded-full border border-peach/25 bg-white/5 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-peach">
+          <span class="h-1.5 w-1.5 rounded-full bg-peach"></span>
+          The Narrative Framework
+        </span>
+        <h2 class="mt-5 text-3xl font-black sm:text-4xl lg:text-[2.75rem] text-cream" style="letter-spacing:-1.5px;">
+          The Founder Arc: Five Chapters That Define Your Legacy
+        </h2>
+        <p class="mt-4 text-cream/60 text-[1.05rem] leading-relaxed">
+          Every institution carries a story that goes far deeper than its prospectus. We help you tell it.
+        </p>
+      </div>
+
+      {{-- Large Arc Path SVG connector (desktop only) --}}
+      <div class="hidden lg:block relative mt-20" aria-hidden="true">
+        <svg class="absolute top-[88px] left-0 w-full overflow-visible" height="60" viewBox="0 0 1200 60" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M60 30 C180 30 180 55 300 55 C420 55 420 5 540 5 C660 5 660 55 780 55 C900 55 900 5 1020 5 C1140 5 1140 30 1200 30"
+                stroke="#ffd2b1" stroke-opacity="0.18" stroke-width="1.5" stroke-dasharray="6 4" fill="none"/>
+        </svg>
+      </div>
+
+      {{-- 5 Phases --}}
+      <div class="mt-16 lg:mt-0 grid gap-6 sm:grid-cols-2 lg:grid-cols-5 relative">
+
+        {{-- Phase 01 — The Beginning --}}
+        <div class="group flex flex-col rounded-3xl border border-peach/15 bg-forest-deep/60 backdrop-blur-sm overflow-hidden transition hover:border-peach/35 hover:bg-forest-mid/40 hover:-translate-y-2 duration-300 lg:mt-0">
+          <div class="w-full h-44 overflow-hidden">
+            <img src="{{ asset('images/assets/arc-01-beginning.jpg') }}" alt="The Beginning — the spark of conviction" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
+          </div>
+          <div class="p-7">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-[10px] font-black uppercase tracking-widest text-peach/50">Phase</span>
+              <span class="text-2xl font-black text-peach/30" style="letter-spacing:-1px;">01</span>
+            </div>
+            <h3 class="text-lg font-black text-cream" style="letter-spacing:-0.5px;">The Beginning</h3>
+            <p class="mt-2 text-sm leading-relaxed text-cream/55">
+              Why did you start? What was the personal conviction that made you lay the first foundation stone?
+            </p>
+          </div>
+        </div>
+
+        {{-- Phase 02 — The Struggle --}}
+        <div class="group flex flex-col rounded-3xl border border-peach/15 bg-forest-deep/60 backdrop-blur-sm overflow-hidden transition hover:border-peach/35 hover:bg-forest-mid/40 hover:-translate-y-2 duration-300 lg:mt-12">
+          <div class="w-full h-44 overflow-hidden">
+            <img src="{{ asset('images/assets/arc-02-struggle.jpg') }}" alt="The Struggle — storms and challenges" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
+          </div>
+          <div class="p-7">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-[10px] font-black uppercase tracking-widest text-peach/50">Phase</span>
+              <span class="text-2xl font-black text-peach/30" style="letter-spacing:-1px;">02</span>
+            </div>
+            <h3 class="text-lg font-black text-cream" style="letter-spacing:-0.5px;">The Struggle</h3>
+            <p class="mt-2 text-sm leading-relaxed text-cream/55">
+              What almost broke the vision? The financial storms, regulatory walls, and sleepless nights that tested everything.
+            </p>
+          </div>
+        </div>
+
+        {{-- Phase 03 — The Turning Point --}}
+        <div class="group flex flex-col rounded-3xl border border-peach/15 bg-forest-deep/60 backdrop-blur-sm overflow-hidden transition hover:border-peach/35 hover:bg-forest-mid/40 hover:-translate-y-2 duration-300 lg:-mt-4">
+          <div class="w-full h-44 overflow-hidden">
+            <img src="{{ asset('images/assets/arc-03-turning-point.jpg') }}" alt="The Turning Point — sunrise and breakthrough" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
+          </div>
+          <div class="p-7">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-[10px] font-black uppercase tracking-widest text-peach/50">Phase</span>
+              <span class="text-2xl font-black text-peach/30" style="letter-spacing:-1px;">03</span>
+            </div>
+            <h3 class="text-lg font-black text-cream" style="letter-spacing:-0.5px;">The Turning Point</h3>
+            <p class="mt-2 text-sm leading-relaxed text-cream/55">
+              What changed everything? The breakthrough moment when the institution crossed into public trust and recognition.
+            </p>
+          </div>
+        </div>
+
+        {{-- Phase 04 — The Lesson --}}
+        <div class="group flex flex-col rounded-3xl border border-peach/15 bg-forest-deep/60 backdrop-blur-sm overflow-hidden transition hover:border-peach/35 hover:bg-forest-mid/40 hover:-translate-y-2 duration-300 lg:mt-12">
+          <div class="w-full h-44 overflow-hidden">
+            <img src="{{ asset('images/assets/arc-04-lesson.jpg') }}" alt="The Lesson — compass and wisdom" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
+          </div>
+          <div class="p-7">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-[10px] font-black uppercase tracking-widest text-peach/50">Phase</span>
+              <span class="text-2xl font-black text-peach/30" style="letter-spacing:-1px;">04</span>
+            </div>
+            <h3 class="text-lg font-black text-cream" style="letter-spacing:-0.5px;">The Lesson</h3>
+            <p class="mt-2 text-sm leading-relaxed text-cream/55">
+              What did the journey teach you? Hard-won principles that every aspiring education founder needs to hear.
+            </p>
+          </div>
+        </div>
+
+        {{-- Phase 05 — The Future --}}
+        <div class="group flex flex-col rounded-3xl border border-peach/20 bg-peach/10 backdrop-blur-sm overflow-hidden transition hover:border-peach/45 hover:bg-peach/15 hover:-translate-y-2 duration-300 lg:mt-0">
+          <div class="w-full h-44 overflow-hidden">
+            <img src="{{ asset('images/assets/arc-05-future.jpg') }}" alt="The Future — rocket and ambition" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
+          </div>
+          <div class="p-7">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-[10px] font-black uppercase tracking-widest text-peach/60">Phase</span>
+              <span class="text-2xl font-black text-peach/45" style="letter-spacing:-1px;">05</span>
+            </div>
+            <h3 class="text-lg font-black text-cream" style="letter-spacing:-0.5px;">The Future</h3>
+            <p class="mt-2 text-sm leading-relaxed text-cream/60">
+              Where is education heading next? How you're positioning your institution and its students for an AI-native world.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  {{-- ============================================================
+       05. WHAT WE TALK ABOUT (Themes in Modern Education)
+       ============================================================ --}}
+  <section class="py-20 lg:py-28 bg-cream-warm border-b border-cream-edge">
+    <div class="mx-auto max-w-shell px-5 lg:px-8">
+      
+      <div class="max-w-2xl">
+        <span class="text-xs font-bold uppercase tracking-widest text-forest-mid">
+          Curated Discourse
+        </span>
+        <h2 class="mt-3 text-3xl font-black sm:text-4xl lg:text-[2.75rem] text-forest" style="letter-spacing:-1.5px;">
+          What We Talk About
+        </h2>
+        <p class="mt-4 text-forest/75 text-[1.05rem] leading-relaxed">
+          Conversations anchored in the most decisive themes governing Indian and global education today.
+        </p>
+      </div>
+
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+
+        {{-- Theme 1 --}}
+        <div class="rounded-2xl border border-cream-edge bg-white p-7 transition hover:border-forest hover:shadow-md">
+          <div class="h-10 w-10 rounded-xl bg-forest/10 flex items-center justify-center text-forest">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/>
+            </svg>
+          </div>
+          <h3 class="mt-5 text-xl font-bold text-forest">Founder Journeys &amp; Leadership</h3>
+          <p class="mt-2.5 text-sm leading-relaxed text-forest/70">
+            Unfiltered conversations on personal resilience, team culture, governance, and institutional endurance.
+          </p>
+        </div>
+
+        {{-- Theme 2 --}}
+        <div class="rounded-2xl border border-cream-edge bg-white p-7 transition hover:border-forest hover:shadow-md">
+          <div class="h-10 w-10 rounded-xl bg-forest/10 flex items-center justify-center text-forest">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/>
+            </svg>
+          </div>
+          <h3 class="mt-5 text-xl font-bold text-forest">AI, ERP &amp; Campus Tech</h3>
+          <p class="mt-2.5 text-sm leading-relaxed text-forest/70">
+            Navigating digital transformation, adopting generative AI responsibly, and modernizing campus operations.
+          </p>
+        </div>
+
+        {{-- Theme 3 --}}
+        <div class="rounded-2xl border border-cream-edge bg-white p-7 transition hover:border-forest hover:shadow-md">
+          <div class="h-10 w-10 rounded-xl bg-forest/10 flex items-center justify-center text-forest">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <h3 class="mt-5 text-xl font-bold text-forest">The Future of Education</h3>
+          <p class="mt-2.5 text-sm leading-relaxed text-forest/70">
+            Shifting from rote academics to skill-first mastery, global curriculums, and entrepreneurial mindsets.
+          </p>
+        </div>
+
+        {{-- Theme 4 --}}
+        <div class="rounded-2xl border border-cream-edge bg-white p-7 transition hover:border-forest hover:shadow-md">
+          <div class="h-10 w-10 rounded-xl bg-forest/10 flex items-center justify-center text-forest">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+            </svg>
+          </div>
+          <h3 class="mt-5 text-xl font-bold text-forest">The Business of Education</h3>
+          <p class="mt-2.5 text-sm leading-relaxed text-forest/70">
+            Infrastructure financing, fee structures, regulatory compliance, faculty retention, and sustainable campus models.
+          </p>
+        </div>
+
+        {{-- Theme 5 --}}
+        <div class="rounded-2xl border border-cream-edge bg-white p-7 transition hover:border-forest hover:shadow-md">
+          <div class="h-10 w-10 rounded-xl bg-forest/10 flex items-center justify-center text-forest">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+            </svg>
+          </div>
+          <h3 class="mt-5 text-xl font-bold text-forest">Transformation &amp; Turnarounds</h3>
+          <p class="mt-2.5 text-sm leading-relaxed text-forest/70">
+            How legacy schools and colleges adapt, rebrand, elevate placements, and regain regional eminence.
+          </p>
+        </div>
+
+        {{-- Theme 6 --}}
+        <div class="rounded-2xl border border-cream-edge bg-white p-7 transition hover:border-forest hover:shadow-md">
+          <div class="h-10 w-10 rounded-xl bg-forest/10 flex items-center justify-center text-forest">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <h3 class="mt-5 text-xl font-bold text-forest">Social Impact &amp; Nation Building</h3>
+          <p class="mt-2.5 text-sm leading-relaxed text-forest/70">
+            Providing accessible, high-quality education in Tier 2/3 cities and creating upward mobility for first-generation learners.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  {{-- ============================================================
+       06. WHY JOIN THE CONVERSATION? (6 Value Propositions)
+       ============================================================ --}}
+  <section class="py-20 lg:py-28 bg-white border-b border-cream-edge">
+    <div class="mx-auto max-w-shell px-5 lg:px-8">
+
+      <div class="text-center max-w-3xl mx-auto">
+        <span class="rounded-full bg-peach/40 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-forest">
+          Tangible Value
+        </span>
+        <h2 class="mt-4 text-[1.9rem] font-black sm:text-[2.2rem] lg:text-[2.6rem] text-forest whitespace-nowrap" style="letter-spacing:-1.5px;">
+          Why Be Part of the Conversation?
+        </h2>
+        <p class="mt-4 text-forest/75 text-[1.05rem] leading-relaxed">
+          Your story, your platform, your institutional legacy — all on the national stage.
+        </p>
+      </div>
+
+      <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+
+        {{-- Card 1 --}}
+        <div class="flex items-start gap-4 rounded-2xl border border-cream-edge bg-cream p-6 transition hover:border-forest/30 hover:shadow-md">
+          <div class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-forest shadow-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-peach" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.07A1 1 0 0121 8.845v6.31a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-[15px] font-bold text-forest leading-tight">Professional Broadcast Recording</h3>
+            <p class="mt-1.5 text-sm leading-relaxed text-forest/65">
+              High-definition multi-camera video, studio audio, and cinematic post-production for national distribution.
+            </p>
+          </div>
+        </div>
+
+        {{-- Card 2 --}}
+        <div class="flex items-start gap-4 rounded-2xl border border-cream-edge bg-cream p-6 transition hover:border-forest/30 hover:shadow-md">
+          <div class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-forest shadow-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-peach" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-[15px] font-bold text-forest leading-tight">Elevated Digital Presence</h3>
+            <p class="mt-1.5 text-sm leading-relaxed text-forest/65">
+              Featured across YouTube, Spotify, LinkedIn, and the YCX digital ecosystem — reaching the right audience.
+            </p>
+          </div>
+        </div>
+
+        {{-- Card 3 --}}
+        <div class="flex items-start gap-4 rounded-2xl border border-cream-edge bg-cream p-6 transition hover:border-forest/30 hover:shadow-md">
+          <div class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-forest shadow-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-peach" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-[15px] font-bold text-forest leading-tight">Authoritative Thought Leadership</h3>
+            <p class="mt-1.5 text-sm leading-relaxed text-forest/65">
+              Position yourself as a visionary voice in modern education — a benchmark for institutions across India.
+            </p>
+          </div>
+        </div>
+
+        {{-- Card 4 --}}
+        <div class="flex items-start gap-4 rounded-2xl border border-cream-edge bg-cream p-6 transition hover:border-forest/30 hover:shadow-md">
+          <div class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-forest shadow-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-peach" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-[15px] font-bold text-forest leading-tight">Closed-Door Founder Network</h3>
+            <p class="mt-1.5 text-sm leading-relaxed text-forest/65">
+              Exclusive private roundtables and conclaves with founders and chairpersons of 120+ institutions.
+            </p>
+          </div>
+        </div>
+
+        {{-- Card 5 --}}
+        <div class="flex items-start gap-4 rounded-2xl border border-cream-edge bg-cream p-6 transition hover:border-forest/30 hover:shadow-md">
+          <div class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-forest shadow-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-peach" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-[15px] font-bold text-forest leading-tight">Institutional Storytelling</h3>
+            <p class="mt-1.5 text-sm leading-relaxed text-forest/65">
+              Give parents, faculty, and alumni an authentic, compelling reason to trust your campus — beyond the brochure.
+            </p>
+          </div>
+        </div>
+
+        {{-- Card 6 --}}
+        <div class="flex items-start gap-4 rounded-2xl border border-cream-edge bg-cream p-6 transition hover:border-forest/30 hover:shadow-md">
+          <div class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-forest shadow-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-peach" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-[15px] font-bold text-forest leading-tight">Direct Student Programs</h3>
+            <p class="mt-1.5 text-sm leading-relaxed text-forest/65">
+              Unlock YCX masterclasses, industry speaker sessions, internship connects, and campus ambassadors for your students.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  {{-- ============================================================
+       07. HOW THE CONVERSATION WORKS (Step-by-Step Roadmap)
+       ============================================================ --}}
+  <section class="py-20 lg:py-28 bg-cream border-b border-cream-edge">
+    <div class="mx-auto max-w-shell px-5 lg:px-8">
+
+      <div class="text-center max-w-2xl mx-auto">
+        <span class="rounded-full bg-forest/10 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-forest">
+          Simple &amp; Curated
+        </span>
+        <h2 class="mt-4 text-[1.9rem] font-black sm:text-[2.2rem] lg:text-[2.6rem] text-forest whitespace-nowrap" style="letter-spacing:-1.5px;">
+          How the Conversation Works
+        </h2>
+        <p class="mt-4 text-forest/75 text-[1.05rem]">
+          A seamless process designed to respect your schedule and put your voice front and centre.
+        </p>
+      </div>
+
+      <ol class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-5 list-none p-0 m-0">
+
+        <li class="relative flex flex-col gap-4 rounded-2xl border border-cream-edge bg-white p-6 shadow-xs transition hover:border-forest/30 hover:shadow-md">
+          <div class="flex items-center gap-3">
+            <div class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-forest shadow-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-peach" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+              </svg>
+            </div>
+            <span class="text-[11px] font-bold uppercase tracking-widest text-forest/40">Step 01</span>
+          </div>
+          <div>
+            <h3 class="text-[15px] font-bold text-forest leading-snug">Tell Us About You</h3>
+            <p class="mt-1.5 text-sm text-forest/65 leading-relaxed">
+              Submit your profile via the form above in under two minutes.
+            </p>
+          </div>
+        </li>
+
+        <li class="relative flex flex-col gap-4 rounded-2xl border border-cream-edge bg-white p-6 shadow-xs transition hover:border-forest/30 hover:shadow-md">
+          <div class="flex items-center gap-3">
+            <div class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-forest shadow-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-peach" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+              </svg>
+            </div>
+            <span class="text-[11px] font-bold uppercase tracking-widest text-forest/40">Step 02</span>
+          </div>
+          <div>
+            <h3 class="text-[15px] font-bold text-forest leading-snug">Editorial Review</h3>
+            <p class="mt-1.5 text-sm text-forest/65 leading-relaxed">
+              Our curation team reviews your journey and finds the ideal conversation angle.
+            </p>
+          </div>
+        </li>
+
+        <li class="relative flex flex-col gap-4 rounded-2xl border border-cream-edge bg-white p-6 shadow-xs transition hover:border-forest/30 hover:shadow-md">
+          <div class="flex items-center gap-3">
+            <div class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-forest shadow-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-peach" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+              </svg>
+            </div>
+            <span class="text-[11px] font-bold uppercase tracking-widest text-forest/40">Step 03</span>
+          </div>
+          <div>
+            <h3 class="text-[15px] font-bold text-forest leading-snug">We Connect</h3>
+            <p class="mt-1.5 text-sm text-forest/65 leading-relaxed">
+              A 15-minute briefing call to align on talking points, themes, and recording dates.
+            </p>
+          </div>
+        </li>
+
+        <li class="relative flex flex-col gap-4 rounded-2xl border border-cream-edge bg-white p-6 shadow-xs transition hover:border-forest/30 hover:shadow-md">
+          <div class="flex items-center gap-3">
+            <div class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-forest shadow-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-peach" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/>
+              </svg>
+            </div>
+            <span class="text-[11px] font-bold uppercase tracking-widest text-forest/40">Step 04</span>
+          </div>
+          <div>
+            <h3 class="text-[15px] font-bold text-forest leading-snug">The Conversation</h3>
+            <p class="mt-1.5 text-sm text-forest/65 leading-relaxed">
+              Record in-studio or on campus — a relaxed, candid dialogue on your own terms.
+            </p>
+          </div>
+        </li>
+
+        <li class="relative flex flex-col gap-4 rounded-2xl border border-cream-edge bg-white p-6 shadow-xs transition hover:border-forest/30 hover:shadow-md">
+          <div class="flex items-center gap-3">
+            <div class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-forest shadow-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-peach" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
+              </svg>
+            </div>
+            <span class="text-[11px] font-bold uppercase tracking-widest text-forest/40">Step 05</span>
+          </div>
+          <div>
+            <h3 class="text-[15px] font-bold text-forest leading-snug">We Tell Your Story</h3>
+            <p class="mt-1.5 text-sm text-forest/65 leading-relaxed">
+              Mastered, produced, and published across national media and the YCX creator network.
+            </p>
+          </div>
+        </li>
+
+      </ol>
+
+    </div>
+  </section>
+
+  {{-- ============================================================
+       08. SHARE YOUR STORY FINAL CTA BANNER
+       ============================================================ --}}
+  <section class="py-20 lg:py-24 bg-forest text-cream relative overflow-hidden">
+    {{-- Background Accent Ring --}}
+    <div class="pointer-events-none absolute -bottom-32 -right-32 h-[450px] w-[450px] rounded-full border border-peach/15" aria-hidden="true"></div>
+
+    <div class="mx-auto max-w-shell px-5 lg:px-8 relative z-10 text-center">
+      
+      <span class="inline-flex items-center gap-2 rounded-full border border-peach/30 bg-white/5 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-peach">
+        <span class="h-2 w-2 rounded-full bg-peach animate-pulse"></span>
+        Educational Founder’s Series
+      </span>
+
+      <h2 class="mt-6 text-3xl font-black sm:text-4xl lg:text-[3.25rem] text-cream max-w-3xl mx-auto leading-tight" style="letter-spacing:-2px;">
+        Because Better Schools Build a Brighter India.
+      </h2>
+
+      <p class="mt-5 text-[1.1rem] leading-relaxed text-cream/75 max-w-2xl mx-auto font-normal">
+        Your journey has inspired hundreds of students and faculty members. It's time to share that wisdom with the wider nation.
+      </p>
+
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+        <a href="#founder-form" 
+           class="rounded-full bg-peach px-8 py-4 text-sm font-bold uppercase tracking-wider text-forest transition hover:bg-white hover:text-forest shadow-lg">
+          Share Your Story Now →
+        </a>
+        <a href="{{ url('/contact') }}" 
+           class="rounded-full border border-cream/30 bg-transparent px-8 py-4 text-sm font-bold uppercase tracking-wider text-cream transition hover:border-cream hover:bg-white/10">
+          Speak With Our Team
+        </a>
+      </div>
+
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-6 text-xs text-cream/60">
+        <span>Education Leaders</span>
+        <span>•</span>
+        <span>Idea Exchange</span>
+        <span>•</span>
+        <span>Institutional Collaboration</span>
+        <span>•</span>
+        <span>Real Impact</span>
+      </div>
+
+    </div>
+  </section>
+
 </div>
-@endif
-
-@push('scripts')
-{{-- intl-tel-input for phone field --}}
-<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/js/intlTelInput.min.js"></script>
-<script>
-    @if (session('success'))
-    document.addEventListener("DOMContentLoaded", function() {
-        var successModalElement = document.getElementById('successModal');
-        if (successModalElement && typeof bootstrap !== 'undefined') {
-            var myModal = new bootstrap.Modal(successModalElement);
-            myModal.show();
-        }
-    });
-    @endif
-
-    @php
-        $initialStep = 1;
-        if ($errors->has('areas_of_interest') || $errors->has('heard_about_ycx') || $errors->has('message')) {
-            $initialStep = 4;
-        } elseif ($errors->has('student_strength') || $errors->has('city') || $errors->has('state') || $errors->has('website')) {
-            $initialStep = 3;
-        } elseif ($errors->has('institution_name') || $errors->has('institution_type') || $errors->has('board_or_university') || $errors->has('year_of_establishment')) {
-            $initialStep = 2;
-        } elseif ($errors->has('contact_name') || $errors->has('designation') || $errors->has('phone') || $errors->has('email')) {
-            $initialStep = 1;
-        }
-    @endphp
-
-    var currentStep = {{ $initialStep }};
-    var totalSteps = 4;
-    var stepTitles = {
-        1: "Contact Person Details",
-        2: "Institution Details",
-        3: "Location & Campus Details",
-        4: "Areas of Interest"
-    };
-
-    var iti = null;
-    var phoneInput = null;
-
-    document.addEventListener("DOMContentLoaded", function () {
-        // ── Phone with intl-tel-input ─────────────────────────
-        phoneInput = document.getElementById('inst-phone');
-        if (phoneInput) {
-            iti = window.intlTelInput(phoneInput, {
-                initialCountry: "in",
-                separateDialCode: true,
-                utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/js/utils.js"
-            });
-        }
-
-        // ── Initialize Wizard UI ─────────────────────────────
-        updateWizardUI(currentStep);
-
-        // ── Clear custom validation on user input ─────────────
-        document.addEventListener('input', function (e) {
-            if (e.target && typeof e.target.setCustomValidity === 'function') {
-                e.target.setCustomValidity('');
-            }
-        });
-
-        // ── Form Submit Validation & Prevent Duplicate Submission ──
-        var form = document.getElementById('institution-registration-form');
-        var submitBtn = document.getElementById('inst-submit-btn');
-        if (form) {
-            form.addEventListener('submit', function (e) {
-                // Validate all steps in order
-                for (var s = 1; s <= totalSteps; s++) {
-                    if (!validateStep(s)) {
-                        e.preventDefault();
-                        goToStep(s);
-                        return false;
-                    }
-                }
-
-                // Format phone with international dial code
-                if (iti && phoneInput) {
-                    phoneInput.value = iti.getNumber();
-                }
-
-                // Prevent duplicate submissions
-                if (submitBtn) {
-                    submitBtn.disabled = true;
-                    submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span><span>Submitting...</span>';
-                }
-            });
-        }
-    });
-
-    // ── Update Wizard UI ──────────────────────────────────────
-    function updateWizardUI(step) {
-        for (var i = 1; i <= totalSteps; i++) {
-            var stepEl = document.getElementById('inst-step-' + i);
-            var navItem = document.getElementById('step-nav-' + i);
-
-            if (stepEl) {
-                if (i === step) {
-                    stepEl.classList.add('active');
-                } else {
-                    stepEl.classList.remove('active');
-                }
-            }
-
-            if (navItem) {
-                navItem.classList.remove('active', 'completed', 'clickable');
-                if (i < step) {
-                    navItem.classList.add('completed', 'clickable');
-                } else if (i === step) {
-                    navItem.classList.add('active');
-                }
-            }
-        }
-
-        // Update progress track fill
-        var progressFill = document.getElementById('instProgressFill');
-        if (progressFill) {
-            var percent = ((step - 1) / (totalSteps - 1)) * 100;
-            progressFill.style.width = percent + '%';
-        }
-
-        // Update mobile counter badge
-        var badge = document.getElementById('instStepCounterBadge');
-        if (badge) {
-            badge.textContent = 'Step ' + step + ' of ' + totalSteps + ': ' + stepTitles[step];
-        }
-    }
-
-    // ── Validate Step ─────────────────────────────────────────
-    function validateStep(step) {
-        var stepEl = document.getElementById('inst-step-' + step);
-        if (!stepEl) return true;
-
-        var inputs = stepEl.querySelectorAll('input, select, textarea');
-        for (var i = 0; i < inputs.length; i++) {
-            var el = inputs[i];
-            if (typeof el.setCustomValidity === 'function') {
-                el.setCustomValidity('');
-            }
-        }
-
-        for (var i = 0; i < inputs.length; i++) {
-            var el = inputs[i];
-
-            // Required field check
-            if (el.hasAttribute('required')) {
-                if (el.type === 'checkbox') {
-                    continue; // Checkbox group handled below
-                }
-
-                if (!el.value || !el.value.trim()) {
-                    el.setCustomValidity('Please fill in this field.');
-                    el.reportValidity();
-                    el.focus();
-                    return false;
-                }
-
-                if (!el.checkValidity()) {
-                    el.reportValidity();
-                    el.focus();
-                    return false;
-                }
-            }
-
-            // Phone specific check
-            if (el.id === 'inst-phone') {
-                var phoneVal = el.value.trim();
-                if (!phoneVal) {
-                    el.setCustomValidity('Please enter a valid phone number.');
-                    el.reportValidity();
-                    el.focus();
-                    return false;
-                }
-            }
-
-            // Year of establishment check
-            if (el.id === 'inst-year' && el.value) {
-                var yr = parseInt(el.value, 10);
-                var currYr = new Date().getFullYear();
-                if (isNaN(yr) || yr < 1800 || yr > currYr) {
-                    el.setCustomValidity('Please enter a valid year between 1800 and ' + currYr + '.');
-                    el.reportValidity();
-                    el.focus();
-                    return false;
-                }
-            }
-        }
-
-        // Step 4: Checkbox group validation
-        if (step === 4) {
-            var checked = stepEl.querySelectorAll('input[name="areas_of_interest[]"]:checked');
-            if (checked.length === 0) {
-                var errorMsg = document.getElementById('areas-error');
-                if (!errorMsg) {
-                    errorMsg = document.createElement('div');
-                    errorMsg.id = 'areas-error';
-                    errorMsg.className = 'text-danger small mt-2';
-                    errorMsg.style.fontSize = '0.75rem';
-                    errorMsg.style.fontWeight = '600';
-                    errorMsg.textContent = 'Please select at least one area of interest.';
-                    document.getElementById('areas-checkbox-group').parentNode.appendChild(errorMsg);
-                }
-                document.getElementById('areas-checkbox-group').scrollIntoView({ behavior: 'smooth', block: 'center' });
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    // ── Wizard Navigation Handlers ────────────────────────────
-    function instWizardNext(current) {
-        if (validateStep(current)) {
-            goToStep(current + 1);
-        }
-    }
-
-    function instWizardPrev(current) {
-        goToStep(current - 1);
-    }
-
-    function instStepClick(target) {
-        if (target === currentStep) return;
-
-        if (target < currentStep) {
-            goToStep(target);
-        } else {
-            // Validate all preceding steps before advancing to target
-            for (var s = currentStep; s < target; s++) {
-                if (!validateStep(s)) {
-                    return;
-                }
-            }
-            goToStep(target);
-        }
-    }
-
-    function goToStep(step) {
-        if (step < 1 || step > totalSteps) return;
-        currentStep = step;
-        updateWizardUI(currentStep);
-
-        var formBox = document.getElementById('institution-form');
-        if (formBox) {
-            var rect = formBox.getBoundingClientRect();
-            if (rect.top < 0 || rect.top > 200) {
-                formBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        }
-    }
-
-    // ── Toggle checked class on checkbox cards ────────────────
-    function toggleCheckedClass(checkbox) {
-        var label = checkbox.closest('.inst-checkbox-item');
-        if (checkbox.checked) {
-            label.classList.add('checked');
-        } else {
-            label.classList.remove('checked');
-        }
-        var errorMsg = document.getElementById('areas-error');
-        if (errorMsg) errorMsg.remove();
-    }
-</script>
-@endpush
 
 @endsection
+
+@push('scripts')
+<script>
+(function () {
+  'use strict';
+
+  var form = document.getElementById('founderRegForm'),
+      s1 = document.getElementById('step1'),
+      s2 = document.getElementById('step2'),
+      done = document.getElementById('formSuccessState'),
+      live = document.getElementById('liveStatus'),
+      nextBtn = document.getElementById('nextBtn'),
+      backBtn = document.getElementById('backBtn');
+
+  function mark(f, bad) {
+    f.classList.toggle('field-error', bad);
+    f.setAttribute('aria-invalid', bad ? 'true' : 'false');
+  }
+
+  function validate(scope) {
+    var first = null;
+    scope.querySelectorAll('input[required], select[required], input[type="url"], input[type="email"]').forEach(function (f) {
+      var ok = f.value.trim() === '' ? !f.hasAttribute('required') : f.checkValidity();
+      mark(f, !ok);
+      if (!ok && !first) first = f;
+    });
+    return first;
+  }
+
+  function setStep(n) {
+    s1.hidden = (n === 2);
+    s2.hidden = (n === 1);
+
+    document.querySelectorAll('[data-indicator]').forEach(function (li) {
+      var on = li.getAttribute('data-indicator') === String(n);
+      var bubble = li.querySelector('[data-bubble]');
+      if (bubble) {
+        bubble.className = on
+          ? 'grid h-7 w-7 shrink-0 place-items-center rounded-full bg-forest text-xs font-bold text-peach'
+          : 'grid h-7 w-7 shrink-0 place-items-center rounded-full border border-forest/25 text-xs font-semibold text-forest/50';
+      }
+      var label = li.querySelector('span:last-child');
+      if (label) {
+        label.className = on ? 'text-xs font-semibold text-forest' : 'text-xs font-semibold text-forest/50';
+      }
+    });
+
+    if (live) live.textContent = 'Step ' + n + ' of 2';
+    var f = (n === 1 ? s1 : s2).querySelector('input, select');
+    if (f) f.focus({ preventScroll: true });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', function () {
+      var bad = validate(s1);
+      if (bad) {
+        bad.focus();
+        if (live) live.textContent = 'Please fill out all required details.';
+        return;
+      }
+      setStep(2);
+    });
+  }
+
+  if (backBtn) {
+    backBtn.addEventListener('click', function () {
+      setStep(1);
+    });
+  }
+
+  if (form) {
+    var clearHandler = function (e) {
+      if (e.target.classList.contains('field-error') && e.target.checkValidity()) {
+        mark(e.target, false);
+      }
+    };
+    form.addEventListener('input', clearHandler);
+    form.addEventListener('change', clearHandler);
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var bad = validate(s2);
+
+      if (bad) {
+        bad.focus();
+        if (live) live.textContent = 'Please complete all required fields.';
+        return;
+      }
+
+      // UI submission state
+      s1.hidden = true;
+      s2.hidden = true;
+      if (done) done.hidden = false;
+      if (live) live.textContent = 'Story submitted successfully.';
+    });
+  }
+})();
+</script>
+@endpush
