@@ -56,6 +56,130 @@ document.addEventListener('keydown', function (e) {
 // LEGACY COMPAT — keep toggleMenu() pointing to drawer in case any page still calls it
 function toggleMenu() { toggleDrawer(); }
 
+// ── DESKTOP DROPDOWN BEHAVIOR (Click to lock open & hover with grace buffer) ──
+(function initDesktopNavbar() {
+  const navGroups = document.querySelectorAll('.ycx-nav-group');
+  if (!navGroups.length) return;
+
+  let closeTimer = null;
+
+  function closeAll() {
+    if (closeTimer) {
+      clearTimeout(closeTimer);
+      closeTimer = null;
+    }
+    navGroups.forEach(group => {
+      group.classList.remove('open');
+      group.removeAttribute('data-locked');
+      const trigger = group.querySelector('.ycx-nav-trigger');
+      if (trigger) trigger.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  function openGroup(group, isClick) {
+    if (closeTimer) {
+      clearTimeout(closeTimer);
+      closeTimer = null;
+    }
+    navGroups.forEach(g => {
+      if (g !== group) {
+        g.classList.remove('open');
+        g.removeAttribute('data-locked');
+        const t = g.querySelector('.ycx-nav-trigger');
+        if (t) t.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    group.classList.add('open');
+    const trigger = group.querySelector('.ycx-nav-trigger');
+    if (trigger) trigger.setAttribute('aria-expanded', 'true');
+
+    if (isClick) {
+      group.setAttribute('data-locked', 'true');
+    }
+  }
+
+  navGroups.forEach(group => {
+    const trigger = group.querySelector('.ycx-nav-trigger');
+    const dropdown = group.querySelector('.ycx-dropdown');
+
+    // 1. CLICK TRIGGER: Toggle dropdown open & locked state
+    if (trigger) {
+      trigger.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const isOpen = group.classList.contains('open');
+        const isLocked = group.getAttribute('data-locked') === 'true';
+
+        if (isOpen && isLocked) {
+          closeAll();
+        } else {
+          openGroup(group, true);
+        }
+      });
+    }
+
+    // 2. HOVER ENTER: Open if not already open, cancel any closing timer
+    group.addEventListener('mouseenter', function () {
+      if (closeTimer) {
+        clearTimeout(closeTimer);
+        closeTimer = null;
+      }
+      if (!group.classList.contains('open')) {
+        openGroup(group, false);
+      }
+    });
+
+    // 3. HOVER LEAVE: If clicked/locked, DO NOT close! If only hovered, wait 600ms grace period
+    group.addEventListener('mouseleave', function () {
+      if (group.getAttribute('data-locked') === 'true') {
+        // User clicked it: keep it open!
+        return;
+      }
+      closeTimer = setTimeout(function () {
+        if (group.getAttribute('data-locked') !== 'true') {
+          group.classList.remove('open');
+          if (trigger) trigger.setAttribute('aria-expanded', 'false');
+        }
+      }, 600);
+    });
+
+    // 4. DROPDOWN MOUSE INTERACTIONS:
+    if (dropdown) {
+      dropdown.addEventListener('mouseenter', function () {
+        if (closeTimer) {
+          clearTimeout(closeTimer);
+          closeTimer = null;
+        }
+      });
+
+      dropdown.addEventListener('click', function (e) {
+        // If clicking a menu link, close menu so page can navigate
+        if (e.target.closest('a')) {
+          closeAll();
+        } else {
+          e.stopPropagation();
+        }
+      });
+    }
+  });
+
+  // Click outside anywhere on document closes all dropdowns
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.ycx-nav-group')) {
+      closeAll();
+    }
+  });
+
+  // ESC key closes dropdowns
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      closeAll();
+    }
+  });
+})();
+
 // HERO SLIDES
 const slides = document.querySelectorAll('.hero-slide');
 const dots = document.querySelectorAll('.hdot');

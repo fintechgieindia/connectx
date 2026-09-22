@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What We Talk About - Interactive Explorer</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-white: #ffffff;
+            --bg-offwhite: #f9fafb;
+            --brand-green: #388e3c;
+            --brand-orange: #f57c00;
+            --text-dark: #0a3a2f;
+            --text-muted: #4b5563;
+            --border-light: #e5e7eb;
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 40px -10px rgba(10, 58, 47, 0.1);
+            --transition-speed: 0.3s;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .explorer-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 100px 5%;
+            display: flex;
+            gap: 60px;
+            align-items: flex-start;
+        }
+
+        /* --- Left Column: Sticky --- */
+        .left-column {
+            flex: 0 0 35%;
+            position: sticky;
+            top: 120px; /* Sticks 120px from the top of the viewport */
+            padding-right: 20px;
+        }
+
+        .section-badge {
+            display: inline-block;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--brand-orange);
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: clamp(3rem, 4vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            color: var(--text-dark);
+            margin-bottom: 24px;
+        }
+
+        .section-desc {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 90%;
+            border-left: 3px solid var(--brand-green);
+            padding-left: 20px;
+        }
+
+        /* --- Right Column: Preview & Grid --- */
+        .right-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .preview-panel {
+            background: var(--bg-white);
+            border-radius: 24px;
+            border: 1px solid var(--border-light);
+            padding: 30px;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .preview-content {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .preview-content.fade {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        .preview-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 16px;
+            background-color: var(--bg-offwhite);
+        }
+
+        .preview-text-content {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .preview-icon-wrapper {
+            background-color: rgba(56, 142, 60, 0.1);
+            color: var(--brand-green);
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .preview-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .preview-desc {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .topic-btn {
+            background: var(--bg-white);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 24px 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            cursor: pointer;
+            text-align: left;
+            transition: all var(--transition-speed) ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .topic-btn:hover, .topic-btn.active {
+            border-color: var(--brand-green);
+            background: rgba(56, 142, 60, 0.03);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(56, 142, 60, 0.08);
+        }
+
+        .topic-btn-icon {
+            color: var(--brand-orange);
+            font-size: 1.25rem;
+            width: 30px;
+            text-align: center;
+            transition: color var(--transition-speed) ease;
+        }
+
+        .topic-btn:hover .topic-btn-icon, .topic-btn.active .topic-btn-icon {
+            color: var(--brand-green);
+        }
+
+        .topic-btn-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            line-height: 1.4;
+        }
+
+        @media (max-width: 1024px) {
+            .explorer-section {
+                flex-direction: column;
+                gap: 50px;
+            }
+            .left-column {
+                position: relative;
+                top: 0;
+                width: 100%;
+            }
+            .right-column {
+                width: 100%;
+            }
+            .preview-image {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .topics-grid {
+                grid-template-columns: 1fr;
+            }
+            .preview-text-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="explorer-section">
+        
+        <!-- Left Side: Sticky Information -->
+        <div class="left-column">
+            <span class="section-badge">Curated Discourse</span>
+            <h2 class="section-title">What We Talk About</h2>
+            <p class="section-desc">Conversations anchored in the most decisive themes governing Indian and global education today. Explore the topics to learn more.</p>
+        </div>
+
+        <!-- Right Side: Interactive Area -->
+        <div class="right-column">
+            
+            <!-- Top: Dynamic Preview Panel -->
+            <div class="preview-panel">
+                <div class="preview-content" id="previewContainer">
+                    <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Preview Image" class="preview-image" id="prevImage">
+                    <div class="preview-text-content">
+                        <div class="preview-icon-wrapper">
+                            <i class="fa-solid fa-microphone" id="prevIcon"></i>
+                        </div>
+                        <div>
+                            <h3 class="preview-title" id="prevTitle">Founder Journeys & Leadership</h3>
+                            <p class="preview-desc" id="prevDesc">Unfiltered conversations on personal resilience, team culture, governance, and institutional endurance.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom: Topic Buttons Grid -->
+            <div class="topics-grid">
+                <button class="topic-btn active" data-topic="0">
+                    <i class="fa-solid fa-microphone topic-btn-icon"></i>
+                    <span class="topic-btn-title">Founder Journeys & Leadership</span>
+                </button>
+                <button class="topic-btn" data-topic="1">
+                    <i class="fa-solid fa-microchip topic-btn-icon"></i>
+                    <span class="topic-btn-title">AI, ERP & Campus Tech</span>
+                </button>
+                <button class="topic-btn" data-topic="2">
+                    <i class="fa-solid fa-rocket topic-btn-icon"></i>
+                    <span class="topic-btn-title">The Future of Education</span>
+                </button>
+                <button class="topic-btn" data-topic="3">
+                    <i class="fa-solid fa-chart-line topic-btn-icon"></i>
+                    <span class="topic-btn-title">The Business of Education</span>
+                </button>
+                <button class="topic-btn" data-topic="4">
+                    <i class="fa-solid fa-arrow-rotate-right topic-btn-icon"></i>
+                    <span class="topic-btn-title">Transformation & Turnarounds</span>
+                </button>
+                <button class="topic-btn" data-topic="5">
+                    <i class="fa-solid fa-earth-americas topic-btn-icon"></i>
+                    <span class="topic-btn-title">Social Impact & Nation Building</span>
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        // Data for all topics
+        const topicData = [
+            {
+                title: "Founder Journeys & Leadership",
+                desc: "Unfiltered conversations on personal resilience, team culture, governance, and institutional endurance.",
+                icon: "fa-solid fa-microphone",
+                img: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            },
+            {
+                title: "AI, ERP & Campus Tech",
+                desc: "Navigating digital transformation, adopting generative AI responsibly, and modernizing campus operations.",
+                icon: "fa-solid fa-microchip",
+                img: "https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            },
+            {
+                title: "The Future of Education",
+                desc: "Shifting from rote academics to skill-first mastery, global curriculums, and entrepreneurial mindsets.",
+                icon: "fa-solid fa-rocket",
+                img: "https://images.pexels.com/photos/5212361/pexels-photo-5212361.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            },
+            {
+                title: "The Business of Education",
+                desc: "Infrastructure financing, fee structures, regulatory compliance, faculty retention, and sustainable campus models.",
+                icon: "fa-solid fa-chart-line",
+                img: "https://images.pexels.com/photos/3183186/pexels-photo-3183186.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            },
+            {
+                title: "Transformation & Turnarounds",
+                desc: "How legacy schools and colleges adapt, rebrand, elevate placements, and regain regional eminence.",
+                icon: "fa-solid fa-arrow-rotate-right",
+                img: "https://images.pexels.com/photos/267507/pexels-photo-267507.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            },
+            {
+                title: "Social Impact & Nation Building",
+                desc: "Providing accessible, high-quality education in Tier 2/3 cities and creating upward mobility for first-generation learners.",
+                icon: "fa-solid fa-earth-americas",
+                img: "https://images.pexels.com/photos/3184654/pexels-photo-3184654.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            }
+        ];
+
+        const buttons = document.querySelectorAll('.topic-btn');
+        const previewContainer = document.getElementById('previewContainer');
+        const prevImage = document.getElementById('prevImage');
+        const prevIcon = document.getElementById('prevIcon');
+        const prevTitle = document.getElementById('prevTitle');
+        const prevDesc = document.getElementById('prevDesc');
+
+        let currentActiveIndex = 0;
+
+        buttons.forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                const index = parseInt(this.getAttribute('data-topic'));
+                
+                // Prevent reloading if hovering over the already active one
+                if (index === currentActiveIndex) return;
+                
+                // Update active state on buttons
+                buttons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                
+                currentActiveIndex = index;
+
+                // Start fade out
+                previewContainer.classList.add('fade');
+
+                // Wait for fade out to complete before swapping content
+                setTimeout(() => {
+                    const data = topicData[index];
+                    prevImage.src = data.img;
+                    prevIcon.className = data.icon;
+                    prevTitle.textContent = data.title;
+                    prevDesc.textContent = data.desc;
+
+                    // Fade back in
+                    previewContainer.classList.remove('fade');
+                }, 300); // Matches CSS transition speed
+            });
+        });
+    </script>
+</body>
+</html>

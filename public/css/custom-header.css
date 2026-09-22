@@ -80,6 +80,24 @@
   position: relative;
 }
 
+/* Invisible bridge under nav group so moving cursor downward to dropdown never leaves the group */
+.ycx-nav-group::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: -20px;
+  right: -20px;
+  height: 25px;
+  background: transparent;
+  pointer-events: none;
+  z-index: 1050;
+}
+
+.ycx-nav-group:hover::after,
+.ycx-nav-group.open::after {
+  pointer-events: all;
+}
+
 /* ── Trigger Button / Link ─────────────────────────────────────── */
 .ycx-nav-trigger {
   display: inline-flex;
@@ -107,6 +125,7 @@
 
 .ycx-nav-trigger:hover,
 .ycx-nav-group:hover .ycx-nav-trigger,
+.ycx-nav-group.open .ycx-nav-trigger,
 .ycx-nav-trigger.active {
   color: var(--ycx-active);
   background: rgba(12, 58, 48, 0.06);
@@ -118,7 +137,8 @@
 }
 
 .ycx-header.scrolled .ycx-nav-trigger:hover,
-.ycx-header.scrolled .ycx-nav-group:hover .ycx-nav-trigger {
+.ycx-header.scrolled .ycx-nav-group:hover .ycx-nav-trigger,
+.ycx-header.scrolled .ycx-nav-group.open .ycx-nav-trigger {
   color: var(--ycx-active);
 }
 
@@ -129,6 +149,7 @@
 
 .ycx-header:not(.scrolled) .ycx-nav-trigger:hover,
 .ycx-header:not(.scrolled) .ycx-nav-group:hover .ycx-nav-trigger,
+.ycx-header:not(.scrolled) .ycx-nav-group.open .ycx-nav-trigger,
 .ycx-header:not(.scrolled) .ycx-nav-trigger.active {
   color: #ffffff;
   background: rgba(255, 255, 255, 0.12);
@@ -142,8 +163,10 @@
 
 .ycx-header.light-hero-nav:not(.scrolled) .ycx-nav-trigger:hover,
 .ycx-header.light-hero-nav:not(.scrolled) .ycx-nav-group:hover .ycx-nav-trigger,
+.ycx-header.light-hero-nav:not(.scrolled) .ycx-nav-group.open .ycx-nav-trigger,
 .light-hero-page .ycx-header:not(.scrolled) .ycx-nav-trigger:hover,
-.light-hero-page .ycx-header:not(.scrolled) .ycx-nav-group:hover .ycx-nav-trigger {
+.light-hero-page .ycx-header:not(.scrolled) .ycx-nav-group:hover .ycx-nav-trigger,
+.light-hero-page .ycx-header:not(.scrolled) .ycx-nav-group.open .ycx-nav-trigger {
   color: var(--ycx-active) !important;
   background: rgba(12, 58, 48, 0.06) !important;
 }
@@ -207,7 +230,20 @@
   rotate: 45deg;
 }
 
-.ycx-nav-group:hover .ycx-dropdown {
+/* Invisible hover bridge to eliminate gap so moving mouse to dropdown never loses hover */
+.ycx-dropdown::after {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 0;
+  right: 0;
+  height: 22px;
+  background: transparent;
+  z-index: 1;
+}
+
+.ycx-nav-group:hover .ycx-dropdown,
+.ycx-nav-group.open .ycx-dropdown {
   opacity: 1;
   visibility: visible;
   pointer-events: all;

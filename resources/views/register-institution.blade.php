@@ -228,16 +228,7 @@ $lightNav = true;
             </div>
           </div>
 
-          {{-- Trust Footnote --}}
-          <div class="mt-8 flex flex-wrap items-center gap-4 text-xs font-medium text-forest/70">
-            <span class="inline-flex items-center gap-1.5 font-bold text-forest">
-              <i class="bi bi-shield-check text-forest-mid text-sm"></i> Curated &amp; Closed-Door
-            </span>
-            <span>•</span>
-            <span>No Cost to Participate</span>
-            <span>•</span>
-            <span>Broadcast-Quality Production</span>
-          </div>
+
 
         </div>
 
@@ -246,7 +237,7 @@ $lightNav = true;
           <div class="hero-glass-card rounded-[1.85rem] p-6 sm:p-8 lg:p-9">
 
             {{-- Card Header --}}
-            <div class="border-b border-cream-edge pb-5">
+            <div class="pb-1">
               <div class="flex items-center justify-between">
                 <span class="rounded-full bg-forest/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-forest">
                   Executive Registration
@@ -261,19 +252,29 @@ $lightNav = true;
               </p>
             </div>
 
-            {{-- 2-Step Progress Indicator --}}
-            <div class="mt-5 border-b border-cream-edge pb-4">
-              <ol class="flex items-center justify-between gap-3 list-none p-0 m-0" aria-label="Progress">
-                <li class="flex items-center gap-2.5 flex-1" data-indicator="1">
-                  <span data-bubble class="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-forest text-xs font-bold text-peach">1</span>
-                  <span class="text-xs font-semibold text-forest">About You</span>
-                </li>
-                <li class="h-px flex-1 bg-cream-edge"></li>
-                <li class="flex items-center gap-2.5 flex-1 justify-end" data-indicator="2">
-                  <span data-bubble class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-forest/25 text-xs font-semibold text-forest/50">2</span>
-                  <span class="text-xs font-semibold text-forest/50">Your Campus</span>
-                </li>
-              </ol>
+            {{-- 2-Step Segmented Navigation Cards (No Horizontal Line) --}}
+            <div class="mt-5 grid grid-cols-2 gap-2 p-1.5 rounded-2xl bg-cream-warm border border-cream-edge" aria-label="Registration Steps">
+              {{-- Step 1 --}}
+              <div data-indicator="1" class="flex items-center gap-2.5 py-2.5 px-3.5 rounded-xl bg-forest text-white shadow-sm border border-forest transition-all duration-300 cursor-pointer">
+                <span data-bubble class="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-white/15 text-peach text-xs font-bold transition-all">
+                  <i class="fa-solid fa-user text-[11px]"></i>
+                </span>
+                <div class="min-w-0 flex flex-col leading-tight">
+                  <span data-tag class="text-[10px] font-bold uppercase tracking-wider text-peach">Step 01</span>
+                  <span data-label class="text-xs font-bold text-white truncate">About You</span>
+                </div>
+              </div>
+
+              {{-- Step 2 --}}
+              <div data-indicator="2" class="flex items-center gap-2.5 py-2.5 px-3.5 rounded-xl bg-transparent text-forest/50 border border-transparent transition-all duration-300 cursor-default">
+                <span data-bubble class="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-cream-edge/70 text-forest/40 text-xs font-semibold transition-all">
+                  <i class="fa-solid fa-building-columns text-[11px]"></i>
+                </span>
+                <div class="min-w-0 flex flex-col leading-tight">
+                  <span data-tag class="text-[10px] font-semibold uppercase tracking-wider text-forest/40">Step 02</span>
+                  <span data-label class="text-xs font-semibold text-forest/60 truncate">Your Campus</span>
+                </div>
+              </div>
             </div>
 
             {{-- FORM ELEMENT --}}
@@ -600,21 +601,30 @@ $lightNav = true;
           </div>
         </div>
 
-        {{-- Right Side Quote & Visual --}}
+        {{-- Right Side — Image Visual --}}
         <div class="lg:col-span-6">
-          <div class="rounded-3xl border border-peach/20 bg-forest-deep/60 p-8 sm:p-12 relative overflow-hidden backdrop-blur-sm shadow-2xl">
-            <div class="text-peach/20 text-6xl font-display leading-none select-none">“</div>
-            <blockquote class="mt-2 text-2xl sm:text-3xl font-semibold italic leading-snug text-cream">
-              Education is not just a system. It’s people, purpose, and possibility.
-            </blockquote>
-            <div class="mt-6 flex items-center gap-4 pt-6 border-t border-cream/15">
-              <div class="h-10 w-10 rounded-full bg-peach flex items-center justify-center text-forest font-bold text-sm">
-                YCX
+          <div class="relative rounded-3xl overflow-hidden shadow-2xl group">
+            <img src="{{ asset('images/assets/education-leaders-meeting.jpg') }}" alt="Education leaders in conversation" class="w-full h-[420px] lg:h-[500px] object-cover transition duration-700 group-hover:scale-[1.03]" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+            {{-- Floating Quote Overlay --}}
+            <div class="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
+              <blockquote class="text-xl sm:text-2xl font-semibold italic leading-snug text-white" style="text-shadow:0 2px 12px rgba(0,0,0,0.3);">
+                “Education is not just a system. It’s people, purpose, and possibility.”
+              </blockquote>
+              <div class="mt-4 flex items-center gap-3">
+                <div class="h-9 w-9 rounded-full bg-peach grid place-items-center text-forest font-bold text-xs shadow-sm">YCX</div>
+                <div>
+                  <div class="text-sm font-bold text-white">The Education Business Room</div>
+                  <div class="text-xs text-white/60">A Young Chanakya Executive Initiative</div>
+                </div>
               </div>
-              <div>
-                <div class="text-sm font-bold text-cream">The Education Business Room</div>
-                <div class="text-xs text-cream/60">A Young Chanakya Executive Initiative</div>
-              </div>
+            </div>
+            {{-- Floating Top Badge --}}
+            <div class="absolute top-5 right-5">
+              <span class="inline-flex items-center gap-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/20 px-3.5 py-1.5 text-[11px] font-bold text-white shadow-sm">
+                <span class="h-1.5 w-1.5 rounded-full bg-peach animate-pulse"></span>
+                Founder Conversations
+              </span>
             </div>
           </div>
         </div>
@@ -625,344 +635,726 @@ $lightNav = true;
   </section>
 
   {{-- ============================================================
-       04. THE FOUNDER STORY (The 5-Stage Leadership Arc)
+       04. THE FOUNDER STORY — Horizontal Accordion
        ============================================================ --}}
-  <section id="founder-story" class="py-20 lg:py-32 bg-forest overflow-hidden relative">
+  <section id="founder-story" class="relative overflow-hidden" style="background:#080f0c; padding:100px 5%;">
 
-    {{-- Ambient radial glows --}}
-    <div class="pointer-events-none absolute -top-32 left-1/4 h-[500px] w-[500px] rounded-full bg-peach/8 blur-3xl" aria-hidden="true"></div>
-    <div class="pointer-events-none absolute -bottom-20 right-1/3 h-[400px] w-[400px] rounded-full bg-peach/5 blur-3xl" aria-hidden="true"></div>
+    {{-- Ambient glows --}}
+    <div class="pointer-events-none absolute -top-40 left-1/4 h-[500px] w-[500px] rounded-full blur-3xl" style="background:rgba(255,178,120,0.06);" aria-hidden="true"></div>
+    <div class="pointer-events-none absolute -bottom-20 right-1/4 h-[400px] w-[400px] rounded-full blur-3xl" style="background:rgba(12,58,48,0.15);" aria-hidden="true"></div>
 
-    <div class="mx-auto max-w-shell px-5 lg:px-8 relative z-10">
+    {{-- Section Header --}}
+    {{-- Section Header --}}
+    <div class="text-center max-w-5xl mx-auto mb-16 relative z-10 px-4">
+      <span class="inline-block text-[0.8rem] font-bold tracking-[2px] uppercase px-5 py-2 rounded-full" style="background:#ffd2b1; color:#080f0c;">
+        Your Journey Matters
+      </span>
+      <h2 class="mt-6 text-3xl sm:text-4xl lg:text-[2.85rem] xl:text-[3.25rem] font-extrabold leading-tight text-white md:whitespace-nowrap" style="letter-spacing:-1.5px;">
+        Your Story in Five Powerful Chapters
+      </h2>
+      <p class="mt-5 text-lg leading-relaxed max-w-2xl mx-auto" style="color:rgba(255,210,177,0.85);">
+        Every institution carries a story that goes far deeper than its prospectus. We help you tell it.
+      </p>
+    </div>
 
-      {{-- Section Header --}}
-      <div class="text-center max-w-2xl mx-auto">
-        <span class="inline-flex items-center gap-2 rounded-full border border-peach/25 bg-white/5 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-peach">
-          <span class="h-1.5 w-1.5 rounded-full bg-peach"></span>
-          The Narrative Framework
-        </span>
-        <h2 class="mt-5 text-3xl font-black sm:text-4xl lg:text-[2.75rem] text-cream" style="letter-spacing:-1.5px;">
-          The Founder Arc: Five Chapters That Define Your Legacy
-        </h2>
-        <p class="mt-4 text-cream/60 text-[1.05rem] leading-relaxed">
-          Every institution carries a story that goes far deeper than its prospectus. We help you tell it.
-        </p>
+    {{-- Horizontal Accordion --}}
+    <div class="story-accordion relative z-10">
+
+      {{-- Panel 01 — The Beginning --}}
+      <div class="story-panel" style="--panel-img:url('{{ asset('images/assets/story-01-beginning.jpg') }}');">
+        <div class="panel-overlay"></div>
+        <span class="panel-num">01</span>
+        <span class="panel-vtitle">The Beginning</span>
+        <div class="panel-detail">
+          <h3 class="panel-heading"><i class="fa-solid fa-seedling mr-3 text-[#ffd2b1]"></i>The Beginning</h3>
+          <p class="panel-text">Why did you start? What was the personal conviction that made you lay the first foundation stone?</p>
+        </div>
       </div>
 
-      {{-- Large Arc Path SVG connector (desktop only) --}}
-      <div class="hidden lg:block relative mt-20" aria-hidden="true">
-        <svg class="absolute top-[88px] left-0 w-full overflow-visible" height="60" viewBox="0 0 1200 60" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M60 30 C180 30 180 55 300 55 C420 55 420 5 540 5 C660 5 660 55 780 55 C900 55 900 5 1020 5 C1140 5 1140 30 1200 30"
-                stroke="#ffd2b1" stroke-opacity="0.18" stroke-width="1.5" stroke-dasharray="6 4" fill="none"/>
-        </svg>
+      {{-- Panel 02 — The Struggle --}}
+      <div class="story-panel" style="--panel-img:url('{{ asset('images/assets/story-02-struggle.jpg') }}');">
+        <div class="panel-overlay"></div>
+        <span class="panel-num">02</span>
+        <span class="panel-vtitle">The Struggle</span>
+        <div class="panel-detail">
+          <h3 class="panel-heading"><i class="fa-solid fa-fire mr-3 text-[#ffd2b1]"></i>The Struggle</h3>
+          <p class="panel-text">What almost broke the vision? The financial storms, regulatory walls, and sleepless nights that tested everything.</p>
+        </div>
       </div>
 
-      {{-- 5 Phases --}}
-      <div class="mt-16 lg:mt-0 grid gap-6 sm:grid-cols-2 lg:grid-cols-5 relative">
-
-        {{-- Phase 01 — The Beginning --}}
-        <div class="group flex flex-col rounded-3xl border border-peach/15 bg-forest-deep/60 backdrop-blur-sm overflow-hidden transition hover:border-peach/35 hover:bg-forest-mid/40 hover:-translate-y-2 duration-300 lg:mt-0">
-          <div class="w-full h-44 overflow-hidden">
-            <img src="{{ asset('images/assets/arc-01-beginning.jpg') }}" alt="The Beginning — the spark of conviction" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
-          </div>
-          <div class="p-7">
-            <div class="flex items-center gap-2 mb-3">
-              <span class="text-[10px] font-black uppercase tracking-widest text-peach/50">Phase</span>
-              <span class="text-2xl font-black text-peach/30" style="letter-spacing:-1px;">01</span>
-            </div>
-            <h3 class="text-lg font-black text-cream" style="letter-spacing:-0.5px;">The Beginning</h3>
-            <p class="mt-2 text-sm leading-relaxed text-cream/55">
-              Why did you start? What was the personal conviction that made you lay the first foundation stone?
-            </p>
-          </div>
+      {{-- Panel 03 — The Turning Point --}}
+      <div class="story-panel" style="--panel-img:url('{{ asset('images/assets/story-03-turning-point.jpg') }}');">
+        <div class="panel-overlay"></div>
+        <span class="panel-num">03</span>
+        <span class="panel-vtitle">The Turning Point</span>
+        <div class="panel-detail">
+          <h3 class="panel-heading"><i class="fa-solid fa-sun mr-3 text-[#ffd2b1]"></i>The Turning Point</h3>
+          <p class="panel-text">What changed everything? The breakthrough moment when the institution crossed into public trust and recognition.</p>
         </div>
+      </div>
 
-        {{-- Phase 02 — The Struggle --}}
-        <div class="group flex flex-col rounded-3xl border border-peach/15 bg-forest-deep/60 backdrop-blur-sm overflow-hidden transition hover:border-peach/35 hover:bg-forest-mid/40 hover:-translate-y-2 duration-300 lg:mt-12">
-          <div class="w-full h-44 overflow-hidden">
-            <img src="{{ asset('images/assets/arc-02-struggle.jpg') }}" alt="The Struggle — storms and challenges" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
-          </div>
-          <div class="p-7">
-            <div class="flex items-center gap-2 mb-3">
-              <span class="text-[10px] font-black uppercase tracking-widest text-peach/50">Phase</span>
-              <span class="text-2xl font-black text-peach/30" style="letter-spacing:-1px;">02</span>
-            </div>
-            <h3 class="text-lg font-black text-cream" style="letter-spacing:-0.5px;">The Struggle</h3>
-            <p class="mt-2 text-sm leading-relaxed text-cream/55">
-              What almost broke the vision? The financial storms, regulatory walls, and sleepless nights that tested everything.
-            </p>
-          </div>
+      {{-- Panel 04 — The Lesson --}}
+      <div class="story-panel" style="--panel-img:url('{{ asset('images/assets/story-04-lesson.jpg') }}');">
+        <div class="panel-overlay"></div>
+        <span class="panel-num">04</span>
+        <span class="panel-vtitle">The Lesson</span>
+        <div class="panel-detail">
+          <h3 class="panel-heading"><i class="fa-solid fa-compass mr-3 text-[#ffd2b1]"></i>The Lesson</h3>
+          <p class="panel-text">What did the journey teach you? Hard-won principles that every aspiring education founder needs to hear.</p>
         </div>
+      </div>
 
-        {{-- Phase 03 — The Turning Point --}}
-        <div class="group flex flex-col rounded-3xl border border-peach/15 bg-forest-deep/60 backdrop-blur-sm overflow-hidden transition hover:border-peach/35 hover:bg-forest-mid/40 hover:-translate-y-2 duration-300 lg:-mt-4">
-          <div class="w-full h-44 overflow-hidden">
-            <img src="{{ asset('images/assets/arc-03-turning-point.jpg') }}" alt="The Turning Point — sunrise and breakthrough" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
-          </div>
-          <div class="p-7">
-            <div class="flex items-center gap-2 mb-3">
-              <span class="text-[10px] font-black uppercase tracking-widest text-peach/50">Phase</span>
-              <span class="text-2xl font-black text-peach/30" style="letter-spacing:-1px;">03</span>
-            </div>
-            <h3 class="text-lg font-black text-cream" style="letter-spacing:-0.5px;">The Turning Point</h3>
-            <p class="mt-2 text-sm leading-relaxed text-cream/55">
-              What changed everything? The breakthrough moment when the institution crossed into public trust and recognition.
-            </p>
-          </div>
+      {{-- Panel 05 — The Future --}}
+      <div class="story-panel" style="--panel-img:url('{{ asset('images/assets/story-05-future.jpg') }}');">
+        <div class="panel-overlay"></div>
+        <span class="panel-num">05</span>
+        <span class="panel-vtitle">The Future</span>
+        <div class="panel-detail">
+          <h3 class="panel-heading"><i class="fa-solid fa-rocket mr-3 text-[#ffd2b1]"></i>The Future</h3>
+          <p class="panel-text">Where is education heading next? How you're positioning your institution and its students for an AI-native world.</p>
         </div>
-
-        {{-- Phase 04 — The Lesson --}}
-        <div class="group flex flex-col rounded-3xl border border-peach/15 bg-forest-deep/60 backdrop-blur-sm overflow-hidden transition hover:border-peach/35 hover:bg-forest-mid/40 hover:-translate-y-2 duration-300 lg:mt-12">
-          <div class="w-full h-44 overflow-hidden">
-            <img src="{{ asset('images/assets/arc-04-lesson.jpg') }}" alt="The Lesson — compass and wisdom" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
-          </div>
-          <div class="p-7">
-            <div class="flex items-center gap-2 mb-3">
-              <span class="text-[10px] font-black uppercase tracking-widest text-peach/50">Phase</span>
-              <span class="text-2xl font-black text-peach/30" style="letter-spacing:-1px;">04</span>
-            </div>
-            <h3 class="text-lg font-black text-cream" style="letter-spacing:-0.5px;">The Lesson</h3>
-            <p class="mt-2 text-sm leading-relaxed text-cream/55">
-              What did the journey teach you? Hard-won principles that every aspiring education founder needs to hear.
-            </p>
-          </div>
-        </div>
-
-        {{-- Phase 05 — The Future --}}
-        <div class="group flex flex-col rounded-3xl border border-peach/20 bg-peach/10 backdrop-blur-sm overflow-hidden transition hover:border-peach/45 hover:bg-peach/15 hover:-translate-y-2 duration-300 lg:mt-0">
-          <div class="w-full h-44 overflow-hidden">
-            <img src="{{ asset('images/assets/arc-05-future.jpg') }}" alt="The Future — rocket and ambition" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
-          </div>
-          <div class="p-7">
-            <div class="flex items-center gap-2 mb-3">
-              <span class="text-[10px] font-black uppercase tracking-widest text-peach/60">Phase</span>
-              <span class="text-2xl font-black text-peach/45" style="letter-spacing:-1px;">05</span>
-            </div>
-            <h3 class="text-lg font-black text-cream" style="letter-spacing:-0.5px;">The Future</h3>
-            <p class="mt-2 text-sm leading-relaxed text-cream/60">
-              Where is education heading next? How you're positioning your institution and its students for an AI-native world.
-            </p>
-          </div>
-        </div>
-
       </div>
 
     </div>
+
+    <style>
+      /* ── Horizontal Story Accordion ── */
+      .story-accordion {
+        display: flex;
+        width: 100%;
+        max-width: 1400px;
+        height: 560px;
+        gap: 14px;
+        margin: 0 auto;
+      }
+
+      .story-panel {
+        position: relative;
+        flex: 1;
+        border-radius: 28px;
+        overflow: hidden;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        background: var(--panel-img) center/cover no-repeat;
+        transition: flex 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+      }
+
+      .panel-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(4,8,6,0.94) 0%, rgba(4,8,6,0.55) 45%, rgba(4,8,6,0.2) 100%);
+        transition: background 0.5s ease;
+      }
+
+      .story-panel:hover .panel-overlay {
+        background: linear-gradient(to top, rgba(4,8,6,0.97) 0%, rgba(4,8,6,0.82) 45%, rgba(4,8,6,0.3) 100%);
+      }
+
+      .story-panel:hover {
+        flex: 5;
+      }
+
+      .panel-num {
+        position: absolute;
+        top: 24px;
+        right: 28px;
+        font-size: 3.5rem;
+        font-weight: 800;
+        color: rgba(255, 255, 255, 0.4);
+        line-height: 1;
+        z-index: 2;
+        text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+        transition: all 0.7s ease;
+      }
+
+      .story-panel:hover .panel-num {
+        font-size: 7.5rem;
+        top: -10px;
+        right: -5px;
+        color: rgba(255, 255, 255, 0.15);
+      }
+
+      .panel-vtitle {
+        position: absolute;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: nowrap;
+        font-size: 1.35rem;
+        font-weight: 800;
+        letter-spacing: 1.5px;
+        color: #ffffff;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        z-index: 3;
+        transition: opacity 0.3s ease;
+        text-shadow: 0 2px 12px rgba(0,0,0,0.95), 0 0 20px rgba(0,0,0,0.9);
+      }
+
+      .story-panel:hover .panel-vtitle {
+        opacity: 0;
+      }
+
+      .panel-detail {
+        position: relative;
+        z-index: 3;
+        padding: 44px 40px;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        transition-delay: 0s;
+        min-width: 320px;
+      }
+
+      .story-panel:hover .panel-detail {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.18s;
+      }
+
+      .panel-heading {
+        font-size: 2.15rem;
+        font-weight: 800;
+        color: #ffffff;
+        margin-bottom: 14px;
+        display: flex;
+        align-items: center;
+        text-shadow: 0 2px 12px rgba(0,0,0,0.9);
+      }
+
+      .panel-text {
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: #ffffff;
+        line-height: 1.75;
+        text-shadow: 0 2px 10px rgba(0,0,0,0.95);
+        max-width: 700px;
+      }
+
+      /* ── Mobile: stack vertically ── */
+      @media (max-width: 900px) {
+        .story-accordion {
+          flex-direction: column;
+          height: auto;
+          gap: 12px;
+        }
+
+        .story-panel {
+          min-height: 200px;
+          flex: none !important;
+        }
+
+        .story-panel:hover {
+          flex: none !important;
+          min-height: 320px;
+        }
+
+        .panel-vtitle {
+          writing-mode: horizontal-tb;
+          bottom: auto;
+          top: 50%;
+          left: 30px;
+          transform: translateY(-50%);
+          font-size: 1.25rem;
+        }
+
+        .panel-detail {
+          min-width: auto;
+          padding: 24px;
+        }
+
+        .panel-heading {
+          font-size: 1.6rem;
+        }
+
+        .panel-text {
+          font-size: 1.05rem;
+        }
+      }
+    </style>
+
   </section>
 
   {{-- ============================================================
-       05. WHAT WE TALK ABOUT (Themes in Modern Education)
+       05. WHAT WE TALK ABOUT (Interactive Thematic Explorer)
        ============================================================ --}}
-  <section class="py-20 lg:py-28 bg-cream-warm border-b border-cream-edge">
-    <div class="mx-auto max-w-shell px-5 lg:px-8">
-      
-      <div class="max-w-2xl">
-        <span class="text-xs font-bold uppercase tracking-widest text-forest-mid">
-          Curated Discourse
-        </span>
-        <h2 class="mt-3 text-3xl font-black sm:text-4xl lg:text-[2.75rem] text-forest" style="letter-spacing:-1.5px;">
-          What We Talk About
-        </h2>
-        <p class="mt-4 text-forest/75 text-[1.05rem] leading-relaxed">
-          Conversations anchored in the most decisive themes governing Indian and global education today.
-        </p>
+  <section id="what-we-talk-about" class="py-20 lg:py-28 bg-cream-warm border-b border-cream-edge relative">
+    <div class="thematic-explorer-wrap mx-auto max-w-shell px-5 lg:px-8">
+      <div class="thematic-explorer-inner flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
+        
+        <!-- Left Side: Header, Description & Topic Buttons Grid (2 per line) -->
+        <div class="thematic-left-col w-full lg:w-[52%] flex flex-col">
+          <span class="inline-block text-[0.8rem] font-bold tracking-[2px] uppercase px-4 py-1.5 rounded-full bg-forest/10 text-forest mb-4 self-start">
+            Curated Discourse
+          </span>
+          <h2 class="text-3xl sm:text-4xl lg:text-[2.65rem] font-black leading-[1.15] text-forest mb-5" style="letter-spacing:-1.2px;">
+            What We Talk About
+          </h2>
+          <p class="text-base sm:text-lg text-forest/75 border-l-4 border-forest pl-5 leading-relaxed mb-7">
+            Conversations anchored in the most decisive themes governing Indian and global education today. Explore the topics to learn more.
+          </p>
+
+          <!-- 6 Topics Grid: 2 per line on the Left side -->
+          <div class="thematic-topics-grid grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-3.5 w-full">
+            <div role="button" tabindex="0" class="thematic-topic-btn active" data-topic="0">
+              <span class="thematic-btn-icon"><i class="fa-solid fa-microphone"></i></span>
+              <span class="thematic-btn-title">Founder Journeys &amp; Leadership</span>
+            </div>
+            <div role="button" tabindex="0" class="thematic-topic-btn" data-topic="1">
+              <span class="thematic-btn-icon"><i class="fa-solid fa-microchip"></i></span>
+              <span class="thematic-btn-title">AI, ERP &amp; Campus Tech</span>
+            </div>
+            <div role="button" tabindex="0" class="thematic-topic-btn" data-topic="2">
+              <span class="thematic-btn-icon"><i class="fa-solid fa-rocket"></i></span>
+              <span class="thematic-btn-title">The Future of Education</span>
+            </div>
+            <div role="button" tabindex="0" class="thematic-topic-btn" data-topic="3">
+              <span class="thematic-btn-icon"><i class="fa-solid fa-chart-line"></i></span>
+              <span class="thematic-btn-title">The Business of Education</span>
+            </div>
+            <div role="button" tabindex="0" class="thematic-topic-btn" data-topic="4">
+              <span class="thematic-btn-icon"><i class="fa-solid fa-arrow-rotate-right"></i></span>
+              <span class="thematic-btn-title">Transformation &amp; Turnarounds</span>
+            </div>
+            <div role="button" tabindex="0" class="thematic-topic-btn" data-topic="5">
+              <span class="thematic-btn-icon"><i class="fa-solid fa-earth-americas"></i></span>
+              <span class="thematic-btn-title">Social Impact &amp; Nation Building</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side: Sticky Dynamic Preview Panel -->
+        <div class="thematic-right-col w-full lg:w-[48%] lg:sticky lg:top-[110px]">
+          <div class="thematic-preview-panel rounded-3xl bg-white border border-cream-edge p-6 sm:p-8 shadow-xl transition-all duration-300">
+            <div class="thematic-preview-content" id="thematicPreviewContainer">
+              <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Topic Preview" class="thematic-preview-image w-full h-[240px] sm:h-[340px] object-cover rounded-2xl bg-cream-warm mb-6" id="thematicPrevImage">
+              <div class="thematic-preview-text-content flex flex-col sm:flex-row gap-5 items-start">
+                <div class="thematic-preview-icon-wrapper h-14 w-14 rounded-2xl bg-forest/10 text-forest flex items-center justify-center text-2xl shrink-0">
+                  <i class="fa-solid fa-microphone" id="thematicPrevIcon"></i>
+                </div>
+                <div>
+                  <h3 class="thematic-preview-title text-2xl font-bold text-forest mb-2" id="thematicPrevTitle">Founder Journeys &amp; Leadership</h3>
+                  <p class="thematic-preview-desc text-base text-forest/75 leading-relaxed" id="thematicPrevDesc">Unfiltered conversations on personal resilience, team culture, governance, and institutional endurance.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-
-        {{-- Theme 1 --}}
-        <div class="rounded-2xl border border-cream-edge bg-white p-7 transition hover:border-forest hover:shadow-md">
-          <div class="h-10 w-10 rounded-xl bg-forest/10 flex items-center justify-center text-forest">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/>
-            </svg>
-          </div>
-          <h3 class="mt-5 text-xl font-bold text-forest">Founder Journeys &amp; Leadership</h3>
-          <p class="mt-2.5 text-sm leading-relaxed text-forest/70">
-            Unfiltered conversations on personal resilience, team culture, governance, and institutional endurance.
-          </p>
-        </div>
-
-        {{-- Theme 2 --}}
-        <div class="rounded-2xl border border-cream-edge bg-white p-7 transition hover:border-forest hover:shadow-md">
-          <div class="h-10 w-10 rounded-xl bg-forest/10 flex items-center justify-center text-forest">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/>
-            </svg>
-          </div>
-          <h3 class="mt-5 text-xl font-bold text-forest">AI, ERP &amp; Campus Tech</h3>
-          <p class="mt-2.5 text-sm leading-relaxed text-forest/70">
-            Navigating digital transformation, adopting generative AI responsibly, and modernizing campus operations.
-          </p>
-        </div>
-
-        {{-- Theme 3 --}}
-        <div class="rounded-2xl border border-cream-edge bg-white p-7 transition hover:border-forest hover:shadow-md">
-          <div class="h-10 w-10 rounded-xl bg-forest/10 flex items-center justify-center text-forest">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-            </svg>
-          </div>
-          <h3 class="mt-5 text-xl font-bold text-forest">The Future of Education</h3>
-          <p class="mt-2.5 text-sm leading-relaxed text-forest/70">
-            Shifting from rote academics to skill-first mastery, global curriculums, and entrepreneurial mindsets.
-          </p>
-        </div>
-
-        {{-- Theme 4 --}}
-        <div class="rounded-2xl border border-cream-edge bg-white p-7 transition hover:border-forest hover:shadow-md">
-          <div class="h-10 w-10 rounded-xl bg-forest/10 flex items-center justify-center text-forest">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
-            </svg>
-          </div>
-          <h3 class="mt-5 text-xl font-bold text-forest">The Business of Education</h3>
-          <p class="mt-2.5 text-sm leading-relaxed text-forest/70">
-            Infrastructure financing, fee structures, regulatory compliance, faculty retention, and sustainable campus models.
-          </p>
-        </div>
-
-        {{-- Theme 5 --}}
-        <div class="rounded-2xl border border-cream-edge bg-white p-7 transition hover:border-forest hover:shadow-md">
-          <div class="h-10 w-10 rounded-xl bg-forest/10 flex items-center justify-center text-forest">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
-            </svg>
-          </div>
-          <h3 class="mt-5 text-xl font-bold text-forest">Transformation &amp; Turnarounds</h3>
-          <p class="mt-2.5 text-sm leading-relaxed text-forest/70">
-            How legacy schools and colleges adapt, rebrand, elevate placements, and regain regional eminence.
-          </p>
-        </div>
-
-        {{-- Theme 6 --}}
-        <div class="rounded-2xl border border-cream-edge bg-white p-7 transition hover:border-forest hover:shadow-md">
-          <div class="h-10 w-10 rounded-xl bg-forest/10 flex items-center justify-center text-forest">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-          </div>
-          <h3 class="mt-5 text-xl font-bold text-forest">Social Impact &amp; Nation Building</h3>
-          <p class="mt-2.5 text-sm leading-relaxed text-forest/70">
-            Providing accessible, high-quality education in Tier 2/3 cities and creating upward mobility for first-generation learners.
-          </p>
-        </div>
-
-      </div>
-
     </div>
+
+    <style>
+      .thematic-preview-content {
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 0.35s ease, transform 0.35s ease;
+      }
+      .thematic-preview-content.fade {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      .thematic-topic-btn {
+        background: #ffffff;
+        border: 1.5px solid #e7ded2;
+        border-radius: 16px;
+        padding: 16px 18px;
+        display: flex;
+        align-items: center;
+        gap: 13px;
+        cursor: pointer;
+        text-align: left;
+        transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+        width: 100%;
+        min-height: 72px;
+        user-select: none;
+      }
+      .thematic-topic-btn:hover {
+        border-color: #0c3a30;
+        background: rgba(12, 58, 48, 0.03);
+        transform: translateY(-2px);
+      }
+      .thematic-topic-btn.active {
+        border-color: #0c3a30;
+        background: #0c3a30;
+        box-shadow: 0 8px 20px -5px rgba(12, 58, 48, 0.26);
+        transform: translateY(-2px);
+      }
+      .thematic-btn-icon {
+        color: #14513f;
+        font-size: 1.15rem;
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        background: rgba(12, 58, 48, 0.06);
+        text-align: center;
+        transition: all 0.25s ease;
+        flex-shrink: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .thematic-btn-icon i {
+        font-family: "Font Awesome 6 Free" !important;
+        font-weight: 900 !important;
+        font-style: normal !important;
+      }
+      .thematic-topic-btn:hover .thematic-btn-icon {
+        color: #0c3a30;
+        background: rgba(12, 58, 48, 0.12);
+        transform: scale(1.05);
+      }
+      .thematic-topic-btn.active .thematic-btn-icon {
+        color: #ffd2b1;
+        background: rgba(255, 255, 255, 0.15);
+        transform: scale(1.05);
+      }
+      .thematic-btn-title {
+        font-size: 0.94rem;
+        font-weight: 700;
+        color: #0c3a30;
+        line-height: 1.32;
+        transition: color 0.25s ease;
+      }
+      .thematic-topic-btn.active .thematic-btn-title {
+        color: #ffffff;
+      }
+    </style>
+
+    <script>
+      (function initThematicExplorer() {
+        const topicData = [
+          {
+            title: "Founder Journeys & Leadership",
+            desc: "Unfiltered conversations on personal resilience, team culture, governance, and institutional endurance.",
+            icon: "fa-solid fa-microphone",
+            img: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+          },
+          {
+            title: "AI, ERP & Campus Tech",
+            desc: "Navigating digital transformation, adopting generative AI responsibly, and modernizing campus operations.",
+            icon: "fa-solid fa-microchip",
+            img: "https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+          },
+          {
+            title: "The Future of Education",
+            desc: "Shifting from rote academics to skill-first mastery, global curriculums, and entrepreneurial mindsets.",
+            icon: "fa-solid fa-rocket",
+            img: "https://images.pexels.com/photos/5212361/pexels-photo-5212361.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+          },
+          {
+            title: "The Business of Education",
+            desc: "Infrastructure financing, fee structures, regulatory compliance, faculty retention, and sustainable campus models.",
+            icon: "fa-solid fa-chart-line",
+            img: "https://images.pexels.com/photos/3183186/pexels-photo-3183186.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+          },
+          {
+            title: "Transformation & Turnarounds",
+            desc: "How legacy schools and colleges adapt, rebrand, elevate placements, and regain regional eminence.",
+            icon: "fa-solid fa-arrow-rotate-right",
+            img: "https://images.pexels.com/photos/267507/pexels-photo-267507.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+          },
+          {
+            title: "Social Impact & Nation Building",
+            desc: "Providing accessible, high-quality education in Tier 2/3 cities and creating upward mobility for first-generation learners.",
+            icon: "fa-solid fa-earth-americas",
+            img: "https://images.pexels.com/photos/3184654/pexels-photo-3184654.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+          }
+        ];
+
+        const buttons = document.querySelectorAll('.thematic-topic-btn');
+        const container = document.getElementById('thematicPreviewContainer');
+        const prevImg = document.getElementById('thematicPrevImage');
+        const prevIcon = document.getElementById('thematicPrevIcon');
+        const prevTitle = document.getElementById('thematicPrevTitle');
+        const prevDesc = document.getElementById('thematicPrevDesc');
+
+        if (!buttons.length || !container) return;
+
+        let currentActive = 0;
+
+        function updateTopic(index) {
+          if (index === currentActive) return;
+
+          buttons.forEach(b => b.classList.remove('active'));
+          buttons[index].classList.add('active');
+          currentActive = index;
+
+          container.classList.add('fade');
+          setTimeout(() => {
+            const data = topicData[index];
+            if (prevImg) prevImg.src = data.img;
+            if (prevIcon) prevIcon.className = data.icon;
+            if (prevTitle) prevTitle.textContent = data.title;
+            if (prevDesc) prevDesc.textContent = data.desc;
+            container.classList.remove('fade');
+          }, 300);
+        }
+
+        buttons.forEach(button => {
+          button.addEventListener('mouseenter', function () {
+            const index = parseInt(this.getAttribute('data-topic'));
+            updateTopic(index);
+          });
+          button.addEventListener('click', function () {
+            const index = parseInt(this.getAttribute('data-topic'));
+            updateTopic(index);
+          });
+        });
+      })();
+    </script>
   </section>
 
   {{-- ============================================================
        06. WHY JOIN THE CONVERSATION? (6 Value Propositions)
        ============================================================ --}}
-  <section class="py-20 lg:py-28 bg-white border-b border-cream-edge">
-    <div class="mx-auto max-w-shell px-5 lg:px-8">
+  <section class="py-20 lg:py-28 bg-white border-b border-cream-edge relative overflow-hidden">
+    {{-- Ambient subtle glows --}}
+    <div class="pointer-events-none absolute -top-40 right-1/4 h-[500px] w-[500px] rounded-full bg-peach/20 blur-3xl" aria-hidden="true"></div>
+    <div class="pointer-events-none absolute -bottom-32 left-1/4 h-[400px] w-[400px] rounded-full bg-forest/5 blur-3xl" aria-hidden="true"></div>
+
+    <div class="mx-auto max-w-shell px-5 lg:px-8 relative z-10">
 
       <div class="text-center max-w-3xl mx-auto">
-        <span class="rounded-full bg-peach/40 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-forest">
+        <span class="inline-flex items-center gap-2 rounded-full bg-peach/40 border border-forest/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-forest shadow-xs">
+          <span class="h-1.5 w-1.5 rounded-full bg-forest"></span>
           Tangible Value
         </span>
-        <h2 class="mt-4 text-[1.9rem] font-black sm:text-[2.2rem] lg:text-[2.6rem] text-forest whitespace-nowrap" style="letter-spacing:-1.5px;">
+        <h2 class="mt-4 text-[1.95rem] font-black sm:text-[2.3rem] lg:text-[2.65rem] text-forest" style="letter-spacing:-1.5px;">
           Why Be Part of the Conversation?
         </h2>
-        <p class="mt-4 text-forest/75 text-[1.05rem] leading-relaxed">
-          Your story, your platform, your institutional legacy — all on the national stage.
+        <p class="mt-4 text-forest/75 text-[1.05rem] leading-relaxed max-w-2xl mx-auto">
+          Your story, your platform, your institutional legacy — magnified on the national stage.
         </p>
       </div>
 
-      <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {{-- 6 Visual Media Cards Grid --}}
+      <div class="mt-14 grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
 
-        {{-- Card 1 --}}
-        <div class="flex items-start gap-4 rounded-2xl border border-cream-edge bg-cream p-6 transition hover:border-forest/30 hover:shadow-md">
-          <div class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-forest shadow-sm">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-peach" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.07A1 1 0 0121 8.845v6.31a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/>
-            </svg>
+        {{-- Card 1: Broadcast Recording --}}
+        <article class="group flex flex-col justify-between rounded-3xl border border-cream-edge bg-cream-card overflow-hidden shadow-xs hover:shadow-xl hover:border-forest/25 hover:-translate-y-1.5 transition-all duration-300">
+          <div class="h-52 w-full overflow-hidden relative bg-cream-warm">
+            <img src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=800&q=80" 
+                 alt="Professional broadcast studio with microhpone and multi-camera setup" 
+                 class="h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent"></div>
+            <div class="absolute top-4 left-4">
+              <span class="inline-flex items-center gap-1.5 rounded-full bg-black/60 backdrop-blur-md px-3 py-1 text-[10px] font-black uppercase tracking-widest text-peach border border-white/10">
+                <span class="h-1.5 w-1.5 rounded-full bg-peach animate-pulse"></span>
+                Studio Broadcast
+              </span>
+            </div>
+            <div class="absolute bottom-3.5 right-4 h-9 w-9 rounded-xl bg-white/90 backdrop-blur-md grid place-items-center text-forest shadow-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.07A1 1 0 0121 8.845v6.31a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/>
+              </svg>
+            </div>
           </div>
-          <div>
-            <h3 class="text-[15px] font-bold text-forest leading-tight">Professional Broadcast Recording</h3>
-            <p class="mt-1.5 text-sm leading-relaxed text-forest/65">
-              High-definition multi-camera video, studio audio, and cinematic post-production for national distribution.
-            </p>
+          <div class="p-6 sm:p-7 flex flex-col flex-1 justify-between">
+            <div>
+              <h3 class="text-xl font-bold text-forest leading-snug group-hover:text-forest-mid transition">
+                Professional Broadcast Recording
+              </h3>
+              <p class="mt-2.5 text-sm leading-relaxed text-forest/70">
+                High-definition multi-camera video, studio audio, and cinematic post-production engineered for national distribution.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-cream-edge flex items-center">
+              <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-forest/80 bg-cream-warm border border-cream-edge px-3 py-1 rounded-full">
+                <svg class="h-3.5 w-3.5 text-forest" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                4K Multi-Camera &amp; Studio Audio
+              </span>
+            </div>
           </div>
-        </div>
+        </article>
 
-        {{-- Card 2 --}}
-        <div class="flex items-start gap-4 rounded-2xl border border-cream-edge bg-cream p-6 transition hover:border-forest/30 hover:shadow-md">
-          <div class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-forest shadow-sm">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-peach" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/>
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
+        {{-- Card 2: Digital Presence --}}
+        <article class="group flex flex-col justify-between rounded-3xl border border-cream-edge bg-cream-card overflow-hidden shadow-xs hover:shadow-xl hover:border-forest/25 hover:-translate-y-1.5 transition-all duration-300">
+          <div class="h-52 w-full overflow-hidden relative bg-cream-warm">
+            <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80" 
+                 alt="Digital media syndication across streaming platforms" 
+                 class="h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent"></div>
+            <div class="absolute top-4 left-4">
+              <span class="inline-flex items-center gap-1.5 rounded-full bg-black/60 backdrop-blur-md px-3 py-1 text-[10px] font-black uppercase tracking-widest text-peach border border-white/10">
+                <span class="h-1.5 w-1.5 rounded-full bg-peach animate-pulse"></span>
+                Digital Reach
+              </span>
+            </div>
+            <div class="absolute bottom-3.5 right-4 h-9 w-9 rounded-xl bg-white/90 backdrop-blur-md grid place-items-center text-forest shadow-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
           </div>
-          <div>
-            <h3 class="text-[15px] font-bold text-forest leading-tight">Elevated Digital Presence</h3>
-            <p class="mt-1.5 text-sm leading-relaxed text-forest/65">
-              Featured across YouTube, Spotify, LinkedIn, and the YCX digital ecosystem — reaching the right audience.
-            </p>
+          <div class="p-6 sm:p-7 flex flex-col flex-1 justify-between">
+            <div>
+              <h3 class="text-xl font-bold text-forest leading-snug group-hover:text-forest-mid transition">
+                Elevated Digital Presence
+              </h3>
+              <p class="mt-2.5 text-sm leading-relaxed text-forest/70">
+                Featured across YouTube, Spotify, LinkedIn, and the YCX digital ecosystem — putting your leadership in front of decision-makers.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-cream-edge flex items-center">
+              <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-forest/80 bg-cream-warm border border-cream-edge px-3 py-1 rounded-full">
+                <svg class="h-3.5 w-3.5 text-forest" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                YouTube, Spotify &amp; LinkedIn Syndication
+              </span>
+            </div>
           </div>
-        </div>
+        </article>
 
-        {{-- Card 3 --}}
-        <div class="flex items-start gap-4 rounded-2xl border border-cream-edge bg-cream p-6 transition hover:border-forest/30 hover:shadow-md">
-          <div class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-forest shadow-sm">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-peach" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
-            </svg>
+        {{-- Card 3: Thought Leadership --}}
+        <article class="group flex flex-col justify-between rounded-3xl border border-cream-edge bg-cream-card overflow-hidden shadow-xs hover:shadow-xl hover:border-forest/25 hover:-translate-y-1.5 transition-all duration-300">
+          <div class="h-52 w-full overflow-hidden relative bg-cream-warm">
+            <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=800&q=80" 
+                 alt="Keynote leadership stage and authoritative discourse" 
+                 class="h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent"></div>
+            <div class="absolute top-4 left-4">
+              <span class="inline-flex items-center gap-1.5 rounded-full bg-black/60 backdrop-blur-md px-3 py-1 text-[10px] font-black uppercase tracking-widest text-peach border border-white/10">
+                <span class="h-1.5 w-1.5 rounded-full bg-peach animate-pulse"></span>
+                Authority
+              </span>
+            </div>
+            <div class="absolute bottom-3.5 right-4 h-9 w-9 rounded-xl bg-white/90 backdrop-blur-md grid place-items-center text-forest shadow-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+              </svg>
+            </div>
           </div>
-          <div>
-            <h3 class="text-[15px] font-bold text-forest leading-tight">Authoritative Thought Leadership</h3>
-            <p class="mt-1.5 text-sm leading-relaxed text-forest/65">
-              Position yourself as a visionary voice in modern education — a benchmark for institutions across India.
-            </p>
+          <div class="p-6 sm:p-7 flex flex-col flex-1 justify-between">
+            <div>
+              <h3 class="text-xl font-bold text-forest leading-snug group-hover:text-forest-mid transition">
+                Authoritative Thought Leadership
+              </h3>
+              <p class="mt-2.5 text-sm leading-relaxed text-forest/70">
+                Position yourself as a visionary voice in modern education — an authoritative national benchmark for institutions across India.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-cream-edge flex items-center">
+              <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-forest/80 bg-cream-warm border border-cream-edge px-3 py-1 rounded-full">
+                <svg class="h-3.5 w-3.5 text-forest" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                National Benchmark Voice
+              </span>
+            </div>
           </div>
-        </div>
+        </article>
 
-        {{-- Card 4 --}}
-        <div class="flex items-start gap-4 rounded-2xl border border-cream-edge bg-cream p-6 transition hover:border-forest/30 hover:shadow-md">
-          <div class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-forest shadow-sm">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-peach" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
-            </svg>
+        {{-- Card 4: Founder Network --}}
+        <article class="group flex flex-col justify-between rounded-3xl border border-cream-edge bg-cream-card overflow-hidden shadow-xs hover:shadow-xl hover:border-forest/25 hover:-translate-y-1.5 transition-all duration-300">
+          <div class="h-52 w-full overflow-hidden relative bg-cream-warm">
+            <img src="https://images.unsplash.com/photo-1528747045269-390fe33c19f2?auto=format&fit=crop&w=800&q=80" 
+                 alt="Closed-door executive roundtable of educational founders" 
+                 class="h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent"></div>
+            <div class="absolute top-4 left-4">
+              <span class="inline-flex items-center gap-1.5 rounded-full bg-black/60 backdrop-blur-md px-3 py-1 text-[10px] font-black uppercase tracking-widest text-peach border border-white/10">
+                <span class="h-1.5 w-1.5 rounded-full bg-peach animate-pulse"></span>
+                Peer Network
+              </span>
+            </div>
+            <div class="absolute bottom-3.5 right-4 h-9 w-9 rounded-xl bg-white/90 backdrop-blur-md grid place-items-center text-forest shadow-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+            </div>
           </div>
-          <div>
-            <h3 class="text-[15px] font-bold text-forest leading-tight">Closed-Door Founder Network</h3>
-            <p class="mt-1.5 text-sm leading-relaxed text-forest/65">
-              Exclusive private roundtables and conclaves with founders and chairpersons of 120+ institutions.
-            </p>
+          <div class="p-6 sm:p-7 flex flex-col flex-1 justify-between">
+            <div>
+              <h3 class="text-xl font-bold text-forest leading-snug group-hover:text-forest-mid transition">
+                Closed-Door Founder Network
+              </h3>
+              <p class="mt-2.5 text-sm leading-relaxed text-forest/70">
+                Exclusive private roundtables, conclaves, and strategic peer exchanges with founders and chairpersons of 120+ institutions.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-cream-edge flex items-center">
+              <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-forest/80 bg-cream-warm border border-cream-edge px-3 py-1 rounded-full">
+                <svg class="h-3.5 w-3.5 text-forest" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                120+ Founders &amp; Chairpersons Circle
+              </span>
+            </div>
           </div>
-        </div>
+        </article>
 
-        {{-- Card 5 --}}
-        <div class="flex items-start gap-4 rounded-2xl border border-cream-edge bg-cream p-6 transition hover:border-forest/30 hover:shadow-md">
-          <div class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-forest shadow-sm">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-peach" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-            </svg>
+        {{-- Card 5: Institutional Storytelling --}}
+        <article class="group flex flex-col justify-between rounded-3xl border border-cream-edge bg-cream-card overflow-hidden shadow-xs hover:shadow-xl hover:border-forest/25 hover:-translate-y-1.5 transition-all duration-300">
+          <div class="h-52 w-full overflow-hidden relative bg-cream-warm">
+            <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=800&q=80" 
+                 alt="Historic university campus architecture and heritage" 
+                 class="h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent"></div>
+            <div class="absolute top-4 left-4">
+              <span class="inline-flex items-center gap-1.5 rounded-full bg-black/60 backdrop-blur-md px-3 py-1 text-[10px] font-black uppercase tracking-widest text-peach border border-white/10">
+                <span class="h-1.5 w-1.5 rounded-full bg-peach animate-pulse"></span>
+                Campus Trust
+              </span>
+            </div>
+            <div class="absolute bottom-3.5 right-4 h-9 w-9 rounded-xl bg-white/90 backdrop-blur-md grid place-items-center text-forest shadow-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+              </svg>
+            </div>
           </div>
-          <div>
-            <h3 class="text-[15px] font-bold text-forest leading-tight">Institutional Storytelling</h3>
-            <p class="mt-1.5 text-sm leading-relaxed text-forest/65">
-              Give parents, faculty, and alumni an authentic, compelling reason to trust your campus — beyond the brochure.
-            </p>
+          <div class="p-6 sm:p-7 flex flex-col flex-1 justify-between">
+            <div>
+              <h3 class="text-xl font-bold text-forest leading-snug group-hover:text-forest-mid transition">
+                Institutional Storytelling
+              </h3>
+              <p class="mt-2.5 text-sm leading-relaxed text-forest/70">
+                Give parents, faculty, students, and alumni an authentic, compelling reason to trust your campus — far beyond any brochure.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-cream-edge flex items-center">
+              <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-forest/80 bg-cream-warm border border-cream-edge px-3 py-1 rounded-full">
+                <svg class="h-3.5 w-3.5 text-forest" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                Authentic Heritage &amp; Trust
+              </span>
+            </div>
           </div>
-        </div>
+        </article>
 
-        {{-- Card 6 --}}
-        <div class="flex items-start gap-4 rounded-2xl border border-cream-edge bg-cream p-6 transition hover:border-forest/30 hover:shadow-md">
-          <div class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-forest shadow-sm">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-peach" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-            </svg>
+        {{-- Card 6: Direct Student Programs --}}
+        <article class="group flex flex-col justify-between rounded-3xl border border-cream-edge bg-cream-card overflow-hidden shadow-xs hover:shadow-xl hover:border-forest/25 hover:-translate-y-1.5 transition-all duration-300">
+          <div class="h-52 w-full overflow-hidden relative bg-cream-warm">
+            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80" 
+                 alt="Students collaborating and participating in masterclass workshops" 
+                 class="h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent"></div>
+            <div class="absolute top-4 left-4">
+              <span class="inline-flex items-center gap-1.5 rounded-full bg-black/60 backdrop-blur-md px-3 py-1 text-[10px] font-black uppercase tracking-widest text-peach border border-white/10">
+                <span class="h-1.5 w-1.5 rounded-full bg-peach animate-pulse"></span>
+                Student Success
+              </span>
+            </div>
+            <div class="absolute bottom-3.5 right-4 h-9 w-9 rounded-xl bg-white/90 backdrop-blur-md grid place-items-center text-forest shadow-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+              </svg>
+            </div>
           </div>
-          <div>
-            <h3 class="text-[15px] font-bold text-forest leading-tight">Direct Student Programs</h3>
-            <p class="mt-1.5 text-sm leading-relaxed text-forest/65">
-              Unlock YCX masterclasses, industry speaker sessions, internship connects, and campus ambassadors for your students.
-            </p>
+          <div class="p-6 sm:p-7 flex flex-col flex-1 justify-between">
+            <div>
+              <h3 class="text-xl font-bold text-forest leading-snug group-hover:text-forest-mid transition">
+                Direct Student Programs
+              </h3>
+              <p class="mt-2.5 text-sm leading-relaxed text-forest/70">
+                Unlock YCX masterclasses, top industry speaker sessions, internship connects, and student campus ambassadors for your campus.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-cream-edge flex items-center">
+              <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-forest/80 bg-cream-warm border border-cream-edge px-3 py-1 rounded-full">
+                <svg class="h-3.5 w-3.5 text-forest" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                Masterclasses &amp; Internship Connects
+              </span>
+            </div>
           </div>
-        </div>
+        </article>
 
       </div>
 
@@ -1082,44 +1474,45 @@ $lightNav = true;
   {{-- ============================================================
        08. SHARE YOUR STORY FINAL CTA BANNER
        ============================================================ --}}
-  <section class="py-20 lg:py-24 bg-forest text-cream relative overflow-hidden">
-    {{-- Background Accent Ring --}}
-    <div class="pointer-events-none absolute -bottom-32 -right-32 h-[450px] w-[450px] rounded-full border border-peach/15" aria-hidden="true"></div>
+  <section class="py-20 lg:py-28 bg-gradient-to-b from-[#fbf8f4] via-[#f7f2ea] to-[#efe6d8] text-forest relative overflow-hidden border-t border-cream-edge">
+    {{-- Soft Ambient Radial Rings --}}
+    <div class="pointer-events-none absolute -bottom-32 -right-32 h-[480px] w-[480px] rounded-full border border-forest/10 bg-peach/25 blur-2xl" aria-hidden="true"></div>
+    <div class="pointer-events-none absolute -top-32 -left-32 h-[420px] w-[420px] rounded-full border border-forest/5 bg-forest/5 blur-3xl" aria-hidden="true"></div>
 
     <div class="mx-auto max-w-shell px-5 lg:px-8 relative z-10 text-center">
       
-      <span class="inline-flex items-center gap-2 rounded-full border border-peach/30 bg-white/5 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-peach">
-        <span class="h-2 w-2 rounded-full bg-peach animate-pulse"></span>
+      <span class="inline-flex items-center gap-2 rounded-full border border-forest/15 bg-white/80 backdrop-blur-sm px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-forest shadow-xs">
+        <span class="h-2 w-2 rounded-full bg-forest animate-pulse"></span>
         Educational Founder’s Series
       </span>
 
-      <h2 class="mt-6 text-3xl font-black sm:text-4xl lg:text-[3.25rem] text-cream max-w-3xl mx-auto leading-tight" style="letter-spacing:-2px;">
+      <h2 class="mt-6 text-3xl font-black sm:text-4xl lg:text-[3.25rem] text-forest max-w-3xl mx-auto leading-tight" style="letter-spacing:-2px;">
         Because Better Schools Build a Brighter India.
       </h2>
 
-      <p class="mt-5 text-[1.1rem] leading-relaxed text-cream/75 max-w-2xl mx-auto font-normal">
+      <p class="mt-5 text-[1.1rem] leading-relaxed text-forest/75 max-w-2xl mx-auto font-normal">
         Your journey has inspired hundreds of students and faculty members. It's time to share that wisdom with the wider nation.
       </p>
 
       <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
         <a href="#founder-form" 
-           class="rounded-full bg-peach px-8 py-4 text-sm font-bold uppercase tracking-wider text-forest transition hover:bg-white hover:text-forest shadow-lg">
+           class="rounded-full bg-forest px-8 py-4 text-sm font-bold uppercase tracking-wider text-peach transition hover:bg-forest-mid hover:text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5">
           Share Your Story Now →
         </a>
         <a href="{{ url('/contact') }}" 
-           class="rounded-full border border-cream/30 bg-transparent px-8 py-4 text-sm font-bold uppercase tracking-wider text-cream transition hover:border-cream hover:bg-white/10">
+           class="rounded-full border-2 border-forest/20 bg-white/70 px-8 py-4 text-sm font-bold uppercase tracking-wider text-forest transition hover:border-forest hover:bg-white shadow-xs hover:-translate-y-0.5">
           Speak With Our Team
         </a>
       </div>
 
-      <div class="mt-10 flex flex-wrap items-center justify-center gap-6 text-xs text-cream/60">
-        <span>Education Leaders</span>
-        <span>•</span>
-        <span>Idea Exchange</span>
-        <span>•</span>
-        <span>Institutional Collaboration</span>
-        <span>•</span>
-        <span>Real Impact</span>
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs font-semibold text-forest/70">
+        <span class="rounded-full bg-white/80 border border-forest/10 px-3.5 py-1.5 shadow-xs">Education Leaders</span>
+        <span class="text-forest/30">•</span>
+        <span class="rounded-full bg-white/80 border border-forest/10 px-3.5 py-1.5 shadow-xs">Idea Exchange</span>
+        <span class="text-forest/30">•</span>
+        <span class="rounded-full bg-white/80 border border-forest/10 px-3.5 py-1.5 shadow-xs">Institutional Collaboration</span>
+        <span class="text-forest/30">•</span>
+        <span class="rounded-full bg-white/80 border border-forest/10 px-3.5 py-1.5 shadow-xs">Real Impact</span>
       </div>
 
     </div>
@@ -1161,17 +1554,38 @@ $lightNav = true;
     s1.hidden = (n === 2);
     s2.hidden = (n === 1);
 
-    document.querySelectorAll('[data-indicator]').forEach(function (li) {
-      var on = li.getAttribute('data-indicator') === String(n);
-      var bubble = li.querySelector('[data-bubble]');
-      if (bubble) {
-        bubble.className = on
-          ? 'grid h-7 w-7 shrink-0 place-items-center rounded-full bg-forest text-xs font-bold text-peach'
-          : 'grid h-7 w-7 shrink-0 place-items-center rounded-full border border-forest/25 text-xs font-semibold text-forest/50';
-      }
-      var label = li.querySelector('span:last-child');
-      if (label) {
-        label.className = on ? 'text-xs font-semibold text-forest' : 'text-xs font-semibold text-forest/50';
+    document.querySelectorAll('[data-indicator]').forEach(function (card) {
+      var step = parseInt(card.getAttribute('data-indicator'));
+      var on = step === n;
+      var completed = step < n;
+      var bubble = card.querySelector('[data-bubble]');
+      var tag = card.querySelector('[data-tag]');
+      var label = card.querySelector('[data-label]');
+
+      if (on) {
+        card.className = 'flex items-center gap-2.5 py-2.5 px-3.5 rounded-xl bg-forest text-white shadow-sm border border-forest transition-all duration-300 cursor-default';
+        if (bubble) {
+          bubble.className = 'grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-white/15 text-peach text-xs font-bold transition-all';
+          bubble.innerHTML = (step === 1) ? '<i class="fa-solid fa-user text-[11px]"></i>' : '<i class="fa-solid fa-building-columns text-[11px]"></i>';
+        }
+        if (tag) tag.className = 'text-[10px] font-bold uppercase tracking-wider text-peach';
+        if (label) label.className = 'text-xs font-bold text-white truncate';
+      } else if (completed) {
+        card.className = 'flex items-center gap-2.5 py-2.5 px-3.5 rounded-xl bg-forest/10 text-forest border border-forest/20 transition-all duration-300 cursor-pointer hover:bg-forest/15';
+        if (bubble) {
+          bubble.className = 'grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-forest text-peach text-xs font-bold transition-all';
+          bubble.innerHTML = '<i class="fa-solid fa-check text-[11px]"></i>';
+        }
+        if (tag) tag.className = 'text-[10px] font-bold uppercase tracking-wider text-forest/70';
+        if (label) label.className = 'text-xs font-bold text-forest truncate';
+      } else {
+        card.className = 'flex items-center gap-2.5 py-2.5 px-3.5 rounded-xl bg-transparent text-forest/50 border border-transparent transition-all duration-300 cursor-default';
+        if (bubble) {
+          bubble.className = 'grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-cream-edge/70 text-forest/40 text-xs font-semibold transition-all';
+          bubble.innerHTML = '<i class="fa-solid fa-building-columns text-[11px]"></i>';
+        }
+        if (tag) tag.className = 'text-[10px] font-semibold uppercase tracking-wider text-forest/40';
+        if (label) label.className = 'text-xs font-semibold text-forest/60 truncate';
       }
     });
 
@@ -1179,6 +1593,16 @@ $lightNav = true;
     var f = (n === 1 ? s1 : s2).querySelector('input, select');
     if (f) f.focus({ preventScroll: true });
   }
+
+  // Allow clicking completed Step 1 card to go back
+  document.querySelectorAll('[data-indicator]').forEach(function (card) {
+    card.addEventListener('click', function () {
+      var step = parseInt(card.getAttribute('data-indicator'));
+      if (step === 1 && s1.hidden) {
+        setStep(1);
+      }
+    });
+  });
 
   if (nextBtn) {
     nextBtn.addEventListener('click', function () {
