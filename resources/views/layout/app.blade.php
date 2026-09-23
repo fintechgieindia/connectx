@@ -68,9 +68,18 @@
             margin-right: calc(var(--bs-gutter-x, 1.5rem) * -.5);
             margin-left: calc(var(--bs-gutter-x, 1.5rem) * -.5);
         }
-        /* ── Nav page-specific hamburger line color ─────────── */
-        /* Pages with light/cream backgrounds override the white lines */
+        /* ── Nav hamburger line color ───────────────────────── */
+        /* Default / dark hero pages (e.g. index): white hamburger at first (unscrolled) */
         #hdr:not(.scrolled) .ycx-hamburger span {
+            background: #ffffff;
+        }
+        /* Pages with light/cream backgrounds override the white lines when unscrolled */
+        #hdr.light-hero-nav:not(.scrolled) .ycx-hamburger span,
+        .light-nav #hdr:not(.scrolled) .ycx-hamburger span {
+            background: #0c3a30;
+        }
+        /* When scrolled, header is white, so hamburger turns dark green */
+        #hdr.scrolled .ycx-hamburger span {
             background: #0c3a30;
         }
     </style>

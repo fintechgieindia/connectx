@@ -404,7 +404,7 @@
 
 /* Page-level override for light hero pages */
 .light-nav .ycx-hamburger span,
-#hdr:not(.scrolled) .ycx-hamburger span {
+.light-hero-nav:not(.scrolled) .ycx-hamburger span {
   background: #0c3a30;
 }
 
