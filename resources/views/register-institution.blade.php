@@ -663,7 +663,6 @@ $lightNav = true;
       {{-- Panel 01 — The Beginning --}}
       <div class="story-panel" style="--panel-img:url('{{ asset('images/assets/story-01-beginning.jpg') }}');">
         <div class="panel-overlay"></div>
-        <span class="panel-num">01</span>
         <span class="panel-vtitle">The Beginning</span>
         <div class="panel-detail">
           <h3 class="panel-heading"><i class="fa-solid fa-seedling mr-3 text-[#ffd2b1]"></i>The Beginning</h3>
@@ -674,7 +673,6 @@ $lightNav = true;
       {{-- Panel 02 — The Struggle --}}
       <div class="story-panel" style="--panel-img:url('{{ asset('images/assets/story-02-struggle.jpg') }}');">
         <div class="panel-overlay"></div>
-        <span class="panel-num">02</span>
         <span class="panel-vtitle">The Struggle</span>
         <div class="panel-detail">
           <h3 class="panel-heading"><i class="fa-solid fa-fire mr-3 text-[#ffd2b1]"></i>The Struggle</h3>
@@ -685,7 +683,6 @@ $lightNav = true;
       {{-- Panel 03 — The Turning Point --}}
       <div class="story-panel" style="--panel-img:url('{{ asset('images/assets/story-03-turning-point.jpg') }}');">
         <div class="panel-overlay"></div>
-        <span class="panel-num">03</span>
         <span class="panel-vtitle">The Turning Point</span>
         <div class="panel-detail">
           <h3 class="panel-heading"><i class="fa-solid fa-sun mr-3 text-[#ffd2b1]"></i>The Turning Point</h3>
@@ -696,7 +693,6 @@ $lightNav = true;
       {{-- Panel 04 — The Lesson --}}
       <div class="story-panel" style="--panel-img:url('{{ asset('images/assets/story-04-lesson.jpg') }}');">
         <div class="panel-overlay"></div>
-        <span class="panel-num">04</span>
         <span class="panel-vtitle">The Lesson</span>
         <div class="panel-detail">
           <h3 class="panel-heading"><i class="fa-solid fa-compass mr-3 text-[#ffd2b1]"></i>The Lesson</h3>
@@ -707,7 +703,6 @@ $lightNav = true;
       {{-- Panel 05 — The Future --}}
       <div class="story-panel" style="--panel-img:url('{{ asset('images/assets/story-05-future.jpg') }}');">
         <div class="panel-overlay"></div>
-        <span class="panel-num">05</span>
         <span class="panel-vtitle">The Future</span>
         <div class="panel-detail">
           <h3 class="panel-heading"><i class="fa-solid fa-rocket mr-3 text-[#ffd2b1]"></i>The Future</h3>
@@ -756,45 +751,30 @@ $lightNav = true;
         flex: 5;
       }
 
-      .panel-num {
-        position: absolute;
-        top: 24px;
-        right: 28px;
-        font-size: 3.5rem;
-        font-weight: 800;
-        color: rgba(255, 255, 255, 0.4);
-        line-height: 1;
-        z-index: 2;
-        text-shadow: 0 2px 10px rgba(0,0,0,0.8);
-        transition: all 0.7s ease;
-      }
-
-      .story-panel:hover .panel-num {
-        font-size: 7.5rem;
-        top: -10px;
-        right: -5px;
-        color: rgba(255, 255, 255, 0.15);
-      }
-
       .panel-vtitle {
         position: absolute;
-        bottom: 40px;
-        left: 50%;
-        transform: translateX(-50%);
-        white-space: nowrap;
-        font-size: 1.35rem;
+        bottom: 34px;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        padding: 0 16px;
+        text-align: center;
+        font-size: clamp(1.1rem, 1.25vw, 1.35rem);
         font-weight: 800;
-        letter-spacing: 1.5px;
+        letter-spacing: 0.5px;
+        line-height: 1.3;
         color: #ffffff;
-        writing-mode: vertical-rl;
+        writing-mode: horizontal-tb;
         text-orientation: mixed;
         z-index: 3;
-        transition: opacity 0.3s ease;
-        text-shadow: 0 2px 12px rgba(0,0,0,0.95), 0 0 20px rgba(0,0,0,0.9);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        text-shadow: 0 2px 14px rgba(0,0,0,0.95), 0 0 20px rgba(0,0,0,0.9);
+        pointer-events: none;
       }
 
       .story-panel:hover .panel-vtitle {
         opacity: 0;
+        transform: translateY(8px);
       }
 
       .panel-detail {
@@ -853,10 +833,12 @@ $lightNav = true;
 
         .panel-vtitle {
           writing-mode: horizontal-tb;
-          bottom: auto;
-          top: 50%;
-          left: 30px;
-          transform: translateY(-50%);
+          bottom: 24px;
+          top: auto;
+          left: 24px;
+          right: 24px;
+          transform: none;
+          text-align: left;
           font-size: 1.25rem;
         }
 
