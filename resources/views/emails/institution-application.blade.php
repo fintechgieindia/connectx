@@ -52,28 +52,34 @@
                 <th>Institution Type</th>
                 <td>{{ $institution_type }}</td>
             </tr>
+            @if(!empty($board_or_university) && $board_or_university !== 'N/A')
             <tr>
                 <th>Board / University</th>
                 <td>{{ $board_or_university }}</td>
             </tr>
+            @endif
             @if(!empty($year_of_establishment))
             <tr>
                 <th>Year of Establishment</th>
                 <td>{{ $year_of_establishment }}</td>
             </tr>
             @endif
+            @if(!empty($student_strength) && $student_strength !== 'N/A')
             <tr>
                 <th>Student Strength</th>
                 <td>{{ $student_strength }}</td>
             </tr>
+            @endif
             <tr>
                 <th>City</th>
                 <td>{{ $city }}</td>
             </tr>
+            @if(!empty($state) && $state !== 'N/A')
             <tr>
                 <th>State</th>
                 <td>{{ $state }}</td>
             </tr>
+            @endif
             @if(!empty($website))
             <tr>
                 <th>Institution Website</th>

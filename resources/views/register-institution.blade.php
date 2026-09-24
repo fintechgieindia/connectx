@@ -251,7 +251,7 @@ $lightNav = true;
             </div>
 
             {{-- 2-Step Segmented Navigation Cards (No Horizontal Line) --}}
-            <div class="mt-4 sm:mt-5 grid grid-cols-2 gap-1.5 sm:gap-2 p-1 sm:p-1.5 rounded-2xl bg-cream-warm border border-cream-edge" aria-label="Registration Steps">
+            <div id="stepsIndicator" class="mt-4 sm:mt-5 grid grid-cols-2 gap-1.5 sm:gap-2 p-1 sm:p-1.5 rounded-2xl bg-cream-warm border border-cream-edge" aria-label="Registration Steps">
               {{-- Step 1 --}}
               <div data-indicator="1" class="flex items-center gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3.5 rounded-xl bg-forest text-white shadow-sm border border-forest transition-all duration-300 cursor-pointer">
                 <span data-bubble class="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-white/15 text-peach text-xs font-bold transition-all">
@@ -276,7 +276,32 @@ $lightNav = true;
             </div>
 
             {{-- FORM ELEMENT --}}
-            <form id="founderRegForm" class="mt-4 sm:mt-5" novalidate>
+            <form id="founderRegForm" action="{{ route('institution.submit') }}" method="POST" class="mt-4 sm:mt-5" novalidate>
+              @csrf
+
+              {{-- INLINE ERROR CONTAINER --}}
+              <div id="formErrorMessage" class="hidden mb-4 rounded-xl border border-red-200 bg-red-50 p-3 text-xs text-red-700 font-medium"></div>
+
+              @if(session('success'))
+                <script>
+                  document.addEventListener('DOMContentLoaded', function() {
+                    var s1 = document.getElementById('step1');
+                    var s2 = document.getElementById('step2');
+                    var done = document.getElementById('formSuccessState');
+                    var stepsIndicator = document.getElementById('stepsIndicator');
+                    if (s1) s1.hidden = true;
+                    if (s2) s2.hidden = true;
+                    if (stepsIndicator) stepsIndicator.hidden = true;
+                    if (done) done.hidden = false;
+                  });
+                </script>
+              @endif
+
+              @if(session('error'))
+                <div class="mb-4 rounded-xl border border-red-200 bg-red-50 p-3 text-xs text-red-700 font-medium">
+                  {{ session('error') }}
+                </div>
+              @endif
 
               {{-- STEP 1: ABOUT THE FOUNDER / LEADER --}}
               <fieldset id="step1">
@@ -310,7 +335,7 @@ $lightNav = true;
                       <label for="phone" class="block text-xs font-bold uppercase tracking-wider text-forest/85">Phone / WhatsApp <span class="text-red-600">*</span></label>
                       <input id="phone" name="phone" type="tel" required placeholder="+91 98765 43210"
                         class="mt-1.5 w-full rounded-xl border border-cream-edge bg-cream/50 px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm text-forest placeholder:text-forest/35 outline-none transition focus:border-forest focus:bg-white" />
-                      <p class="error-msg">Enter a reachable phone number.</p>
+                    <p class="error-msg">Enter a reachable phone number.</p>
                     </div>
                   </div>
 
@@ -372,12 +397,12 @@ $lightNav = true;
                     <select id="interest" name="interest" required
                       class="mt-1.5 w-full rounded-xl border border-cream-edge bg-cream/50 px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm text-forest outline-none transition focus:border-forest focus:bg-white">
                       <option value="">Select What You'd Like to Explore</option>
-                      <option value="Podcast Feature">🎙️ Video Podcast Feature (The Education Business Room)</option>
-                      <option value="Founder Panel">🗣️ Educational Leadership Panel Discussion</option>
-                      <option value="Campus Leadership Talks">🏛️ Campus Leadership Talks &amp; Keynotes</option>
-                      <option value="Student Masterclasses">💡 Student Masterclasses &amp; Workshops</option>
-                      <option value="Closed-Door Meetups">🤝 Closed-Door Founder &amp; Correspondent Meetups</option>
-                      <option value="Comprehensive Partnership">🌟 Comprehensive Institutional Partnership (All Programs)</option>
+                      <option value="Video Podcast Feature (The Education Business Room)">🎙️ Video Podcast Feature (The Education Business Room)</option>
+                      <option value="Educational Leadership Panel Discussion">🗣️ Educational Leadership Panel Discussion</option>
+                      <option value="Campus Leadership Talks & Keynotes">🏛️ Campus Leadership Talks &amp; Keynotes</option>
+                      <option value="Student Masterclasses & Workshops">💡 Student Masterclasses &amp; Workshops</option>
+                      <option value="Closed-Door Founder & Correspondent Meetups">🤝 Closed-Door Founder &amp; Correspondent Meetups</option>
+                      <option value="Comprehensive Institutional Partnership (All Programs)">🌟 Comprehensive Institutional Partnership (All Programs)</option>
                     </select>
                     <p class="error-msg">Please select what you would like to explore.</p>
                   </div>
@@ -393,9 +418,10 @@ $lightNav = true;
                   <button type="button" id="backBtn" class="text-xs font-bold text-forest/70 underline underline-offset-4 hover:text-forest">
                     ← Back
                   </button>
-                  <button type="submit"
-                    class="rounded-full bg-forest px-6 sm:px-7 py-3 text-xs font-bold uppercase tracking-wider text-peach transition hover:bg-forest-mid shadow-sm">
-                    Submit Profile →
+                  <button type="submit" id="submitBtn"
+                    class="rounded-full bg-forest px-6 sm:px-7 py-3 text-xs font-bold uppercase tracking-wider text-peach transition hover:bg-forest-mid shadow-sm flex items-center justify-center gap-2">
+                    <span id="submitBtnText">Submit Profile →</span>
+                    <span id="submitBtnSpinner" class="hidden"><i class="fa-solid fa-circle-notch fa-spin"></i> Submitting...</span>
                   </button>
                 </div>
               </fieldset>
@@ -1761,11 +1787,87 @@ $lightNav = true;
         return;
       }
 
-      // UI submission state
-      s1.hidden = true;
-      s2.hidden = true;
-      if (done) done.hidden = false;
-      if (live) live.textContent = 'Story submitted successfully.';
+      var submitBtn = document.getElementById('submitBtn');
+      var submitBtnText = document.getElementById('submitBtnText');
+      var submitBtnSpinner = document.getElementById('submitBtnSpinner');
+      var errorMsg = document.getElementById('formErrorMessage');
+      var stepsIndicator = document.getElementById('stepsIndicator');
+
+      if (errorMsg) {
+        errorMsg.classList.add('hidden');
+        errorMsg.textContent = '';
+      }
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        if (submitBtnText) submitBtnText.classList.add('hidden');
+        if (submitBtnSpinner) submitBtnSpinner.classList.remove('hidden');
+      }
+
+      var formData = new FormData(form);
+
+      fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'X-Requested-With': 'XMLHttpRequest',
+          'Accept': 'application/json'
+        }
+      })
+      .then(function (res) {
+        return res.json().then(function (data) {
+          return { ok: res.ok, status: res.status, data: data };
+        }).catch(function () {
+          return { ok: res.ok, status: res.status, data: {} };
+        });
+      })
+      .then(function (result) {
+        if (result.ok && (result.data.success || result.data.message)) {
+          s1.hidden = true;
+          s2.hidden = true;
+          if (stepsIndicator) stepsIndicator.hidden = true;
+          if (done) done.hidden = false;
+          if (live) live.textContent = 'Registration submitted successfully.';
+
+          var founderForm = document.getElementById('founder-form');
+          if (founderForm) {
+            founderForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        } else {
+          var err = 'Unable to submit registration. Please try again.';
+          if (result.data && result.data.errors) {
+            var firstErrKey = Object.keys(result.data.errors)[0];
+            err = result.data.errors[firstErrKey][0] || err;
+          } else if (result.data && result.data.message) {
+            err = result.data.message;
+          }
+          if (errorMsg) {
+            errorMsg.textContent = err;
+            errorMsg.classList.remove('hidden');
+          } else {
+            alert(err);
+          }
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            if (submitBtnText) submitBtnText.classList.remove('hidden');
+            if (submitBtnSpinner) submitBtnSpinner.classList.add('hidden');
+          }
+        }
+      })
+      .catch(function (error) {
+        console.error('Submission error:', error);
+        if (errorMsg) {
+          errorMsg.textContent = 'A network or server error occurred. Please check your connection and try again.';
+          errorMsg.classList.remove('hidden');
+        } else {
+          alert('A network or server error occurred. Please try again.');
+        }
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          if (submitBtnText) submitBtnText.classList.remove('hidden');
+          if (submitBtnSpinner) submitBtnSpinner.classList.add('hidden');
+        }
+      });
     });
   }
 

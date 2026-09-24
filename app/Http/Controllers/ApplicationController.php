@@ -664,32 +664,72 @@ class ApplicationController extends Controller
 
     public function submitInstitution(Request $request)
     {
+        // 1. Normalize input field aliases from the registration form
+        if (!$request->has('contact_name') && $request->filled('name')) {
+            $request->merge(['contact_name' => $request->input('name')]);
+        }
+        if (!$request->has('designation') && $request->filled('role')) {
+            $request->merge(['designation' => $request->input('role')]);
+        }
+        if (!$request->has('institution_name') && $request->filled('inst')) {
+            $request->merge(['institution_name' => $request->input('inst')]);
+        }
+        if (!$request->has('institution_type') && $request->filled('type')) {
+            $request->merge(['institution_type' => $request->input('type')]);
+        }
+        if (!$request->has('website') && $request->filled('site')) {
+            $request->merge(['website' => $request->input('site')]);
+        }
+
+        // Handle areas_of_interest / interest (whether passed as string or array)
+        if (!$request->has('areas_of_interest') && $request->filled('interest')) {
+            $interestVal = $request->input('interest');
+            $request->merge(['areas_of_interest' => is_array($interestVal) ? $interestVal : [$interestVal]]);
+        } elseif (is_string($request->input('areas_of_interest'))) {
+            $request->merge(['areas_of_interest' => [$request->input('areas_of_interest')]]);
+        }
+
+        // Handle city & state (e.g., if passed as "Coimbatore, TN" or individual fields)
+        if ($request->filled('city') && !$request->filled('state')) {
+            $cityRaw = $request->input('city');
+            if (str_contains($cityRaw, ',')) {
+                $parts = array_map('trim', explode(',', $cityRaw, 2));
+                $request->merge([
+                    'city'  => $parts[0] ?: $cityRaw,
+                    'state' => !empty($parts[1]) ? $parts[1] : 'N/A',
+                ]);
+            } else {
+                $request->merge(['state' => 'N/A']);
+            }
+        }
+
         $validated = $request->validate([
             // Contact Person
-            'contact_name'        => 'required|string|max:255',
-            'designation'         => 'required|string|max:255',
-            'phone'               => 'required|string|max:50',
-            'email'               => 'required|email|max:255',
+            'contact_name'          => 'required|string|max:255',
+            'designation'           => 'required|string|max:255',
+            'phone'                 => 'required|string|max:50',
+            'email'                 => 'required|email|max:255',
 
             // Institution Details
-            'institution_name'    => 'required|string|max:255',
-            'institution_type'    => 'required|string|in:School,College,Both',
-            'board_or_university' => 'required|string|max:255',
-            'year_of_establishment' => 'nullable|digits:4|integer|min:1800|max:' . date('Y'),
-            'student_strength'    => 'required|string|max:100',
-            'city'                => 'required|string|max:100',
-            'state'               => 'required|string|max:100',
-            'website'             => 'nullable|url|max:255',
+            'institution_name'      => 'required|string|max:255',
+            'institution_type'      => 'required|string|max:255',
+            'board_or_university'   => 'nullable|string|max:255',
+            'year_of_establishment' => 'nullable|string|max:50',
+            'student_strength'      => 'nullable|string|max:100',
+            'city'                  => 'required|string|max:100',
+            'state'                 => 'nullable|string|max:100',
+            'website'               => 'nullable|url|max:255',
 
             // Collaboration Interest
-            'areas_of_interest'   => 'required|array|min:1',
-            'areas_of_interest.*' => 'string|max:100',
-            'heard_about_ycx'     => 'nullable|string|max:255',
-            'message'             => 'nullable|string|max:3000',
+            'areas_of_interest'     => 'required|array|min:1',
+            'areas_of_interest.*'   => 'string|max:255',
+            'heard_about_ycx'       => 'nullable|string|max:255',
+            'message'               => 'nullable|string|max:3000',
         ]);
 
-        // Encode areas_of_interest array as JSON for storage
-        $validated['areas_of_interest'] = json_encode($validated['areas_of_interest']);
+        $boardOrUniv = !empty($validated['board_or_university']) ? $validated['board_or_university'] : 'N/A';
+        $studentStrength = !empty($validated['student_strength']) ? $validated['student_strength'] : 'N/A';
+        $state = !empty($validated['state']) ? $validated['state'] : 'N/A';
 
         try {
             \Illuminate\Support\Facades\Log::info('--- INSTITUTION REGISTRATION SUBMISSION START ---');
@@ -702,22 +742,24 @@ class ApplicationController extends Controller
                 'email'                 => $validated['email'],
                 'institution_name'      => $validated['institution_name'],
                 'institution_type'      => $validated['institution_type'],
-                'board_or_university'   => $validated['board_or_university'],
+                'board_or_university'   => $boardOrUniv,
                 'year_of_establishment' => $validated['year_of_establishment'] ?? null,
-                'student_strength'      => $validated['student_strength'],
+                'student_strength'      => $studentStrength,
                 'city'                  => $validated['city'],
-                'state'                 => $validated['state'],
+                'state'                 => $state,
                 'website'               => $validated['website'] ?? null,
-                'areas_of_interest'     => $validated['areas_of_interest'],
+                'areas_of_interest'     => json_encode($validated['areas_of_interest']),
                 'heard_about_ycx'       => $validated['heard_about_ycx'] ?? null,
                 'message'               => $validated['message'] ?? null,
                 'status'                => 'pending',
             ]);
             \Illuminate\Support\Facades\Log::info('InstitutionRegistration saved to database. ID: ' . $institution->id);
 
-            // Prepare email data with decoded areas for display
+            // Prepare email data for templates
             $emailData = $validated;
-            $emailData['areas_of_interest'] = json_decode($validated['areas_of_interest'], true);
+            $emailData['board_or_university'] = $boardOrUniv;
+            $emailData['student_strength'] = $studentStrength;
+            $emailData['state'] = $state;
             $emailData['institution_message'] = $validated['message'] ?? null;
             $emailData['user_message'] = $validated['message'] ?? null;
             unset($emailData['message']);
@@ -743,9 +785,25 @@ class ApplicationController extends Controller
             \Illuminate\Support\Facades\Log::info('User email sent.');
             \Illuminate\Support\Facades\Log::info('--- INSTITUTION REGISTRATION SUBMISSION END ---');
 
-            return back()->with('success', 'Your institution has been successfully registered with Young Chanakya X! Our team will reach out to you shortly.');
+            $successMsg = 'Your institution has been successfully registered with Young Chanakya X! Our team will reach out to you shortly.';
+
+            if ($request->ajax() || $request->wantsJson()) {
+                return response()->json([
+                    'success' => true,
+                    'message' => $successMsg,
+                ]);
+            }
+
+            return back()->with('success', $successMsg);
         } catch (\Exception $e) {
             logger()->error('SMTP Institution Registration failure: ' . $e->getMessage());
+
+            if ($request->ajax() || $request->wantsJson()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Unable to submit registration. Please try again.',
+                ], 500);
+            }
 
             return back()->withInput()->with('error', 'Unable to submit registration. Please try again.');
         }

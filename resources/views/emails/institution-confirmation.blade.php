@@ -51,7 +51,7 @@
             </tr>
             <tr>
                 <th>City &amp; State</th>
-                <td>{{ $city }}, {{ $state }}</td>
+                <td>{{ $city }}{{ (!empty($state) && $state !== 'N/A') ? ', ' . $state : '' }}</td>
             </tr>
         </table>
 
