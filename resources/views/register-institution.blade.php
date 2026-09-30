@@ -713,18 +713,29 @@ $lightNav = true;
     <style>
       .profile-card {
         position: relative;
-        border-radius: 1.25rem;
+        border-radius: 1rem;
         overflow: hidden;
-        height: 420px;
+        height: 290px;
         cursor: default;
         transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         box-shadow: 0 4px 20px rgba(12, 58, 48, 0.08);
-        flex: 1;
-        min-width: 0;
+        width: 100%;
+      }
+      @media (min-width: 640px) {
+        .profile-card {
+          height: 350px;
+          border-radius: 1.15rem;
+        }
+      }
+      @media (min-width: 1024px) {
+        .profile-card {
+          height: 420px;
+          border-radius: 1.25rem;
+        }
       }
       .profile-card:hover {
-        transform: translateY(-8px) scale(1.02);
-        box-shadow: 0 24px 48px rgba(12, 58, 48, 0.18);
+        transform: translateY(-6px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(12, 58, 48, 0.18);
         z-index: 2;
       }
       .profile-card img {
@@ -741,7 +752,7 @@ $lightNav = true;
       .profile-card-overlay {
         position: absolute;
         inset: 0;
-        background: linear-gradient(to top, rgba(7, 24, 20, 0.92) 0%, rgba(7, 24, 20, 0.55) 45%, rgba(7, 24, 20, 0.08) 100%);
+        background: linear-gradient(to top, rgba(7, 24, 20, 0.94) 0%, rgba(7, 24, 20, 0.58) 50%, rgba(7, 24, 20, 0.08) 100%);
         transition: background 0.4s ease;
       }
       .profile-card:hover .profile-card-overlay {
@@ -766,21 +777,55 @@ $lightNav = true;
         bottom: 0;
         left: 0;
         right: 0;
-        padding: 1.25rem 1rem;
+        padding: 0.9rem 0.75rem;
         z-index: 2;
       }
+      @media (min-width: 640px) {
+        .profile-card-body {
+          padding: 1.15rem 0.95rem;
+        }
+      }
+      @media (min-width: 1024px) {
+        .profile-card-body {
+          padding: 1.25rem 1rem;
+        }
+      }
       .profile-card-title {
-        font-size: 0.9rem;
+        font-size: 0.82rem;
         font-weight: 800;
         color: #ffffff;
-        line-height: 1.3;
-        margin-bottom: 0.4rem;
-        letter-spacing: -0.3px;
+        line-height: 1.25;
+        margin-bottom: 0.25rem;
+        letter-spacing: -0.2px;
+      }
+      @media (min-width: 640px) {
+        .profile-card-title {
+          font-size: 0.88rem;
+          margin-bottom: 0.35rem;
+        }
+      }
+      @media (min-width: 1024px) {
+        .profile-card-title {
+          font-size: 0.9rem;
+          margin-bottom: 0.4rem;
+          letter-spacing: -0.3px;
+        }
       }
       .profile-card-desc {
-        font-size: 0.72rem;
-        color: rgba(255, 255, 255, 0.75);
-        line-height: 1.5;
+        font-size: 0.68rem;
+        color: rgba(255, 255, 255, 0.82);
+        line-height: 1.4;
+      }
+      @media (min-width: 640px) {
+        .profile-card-desc {
+          font-size: 0.7rem;
+        }
+      }
+      @media (min-width: 1024px) {
+        .profile-card-desc {
+          font-size: 0.72rem;
+          line-height: 1.5;
+        }
       }
     </style>
     <div class="mx-auto max-w-[1440px] px-3.5 sm:px-6 lg:px-6 xl:px-8">
@@ -797,8 +842,8 @@ $lightNav = true;
         </p>
       </div>
 
-      {{-- 6 Vertical Image Cards — One Row --}}
-      <div class="mt-10 sm:mt-14 flex gap-3 lg:gap-4 items-stretch">
+      {{-- 6 Vertical Image Cards — 2 per row on mobile, 6 in one row on desktop --}}
+      <div class="mt-8 sm:mt-12 lg:mt-14 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-3.5 lg:gap-4 items-stretch">
 
         {{-- Card 1: College Correspondents --}}
         <article class="profile-card group">
@@ -1890,45 +1935,43 @@ $lightNav = true;
   {{-- ============================================================
        08. SHARE YOUR STORY FINAL CTA BANNER
        ============================================================ --}}
-  <section class="py-16 sm:py-20 lg:py-28 bg-gradient-to-b from-[#fbf8f4] via-[#f7f2ea] to-[#efe6d8] text-forest relative overflow-hidden border-t border-cream-edge">
+  <section class="py-14 sm:py-20 lg:py-28 bg-gradient-to-b from-[#fbf8f4] via-[#f7f2ea] to-[#efe6d8] text-forest relative overflow-hidden border-t border-cream-edge">
     {{-- Soft Ambient Radial Rings --}}
     <div class="pointer-events-none absolute -bottom-32 -right-32 h-[480px] w-[480px] rounded-full border border-forest/10 bg-peach/25 blur-2xl" aria-hidden="true"></div>
     <div class="pointer-events-none absolute -top-32 -left-32 h-[420px] w-[420px] rounded-full border border-forest/5 bg-forest/5 blur-3xl" aria-hidden="true"></div>
 
-    <div class="mx-auto max-w-shell px-3.5 sm:px-6 lg:px-8 relative z-10 text-center">
+    <div class="mx-auto max-w-shell px-4 sm:px-6 lg:px-8 relative z-10 text-center">
       
-      <span class="inline-flex items-center gap-2 rounded-full border border-forest/15 bg-white/80 backdrop-blur-sm px-3.5 sm:px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-forest shadow-xs">
-        <span class="h-2 w-2 rounded-full bg-forest animate-pulse"></span>
+      <span class="inline-flex items-center gap-2 rounded-full border border-forest/15 bg-white/90 backdrop-blur-sm px-3.5 sm:px-4 py-1.5 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-forest shadow-xs">
+        <span class="h-2 w-2 rounded-full bg-[#c8743a] animate-pulse"></span>
         Educational Founder’s Series
       </span>
 
-      <h2 class="mt-4 sm:mt-6 text-2xl sm:text-4xl lg:text-[3.25rem] font-black text-forest max-w-3xl mx-auto leading-tight" style="letter-spacing:-1.2px;">
-        Because Better Schools Build a Brighter India.
+      <h2 class="mt-4 sm:mt-6 text-[25px] sm:text-4xl lg:text-[3.25rem] font-black text-forest max-w-3xl mx-auto leading-[1.2] sm:leading-tight" style="letter-spacing:-1.2px;">
+        Because Better Schools Build a <span style="color:#c8743a;">Brighter India.</span>
       </h2>
 
-      <p class="mt-3 sm:mt-5 text-sm sm:text-[1.1rem] leading-relaxed text-forest/75 max-w-2xl mx-auto font-normal">
+      <p class="mt-3.5 sm:mt-5 text-sm sm:text-base lg:text-[1.1rem] leading-relaxed text-forest/75 max-w-2xl mx-auto font-normal px-1 sm:px-0">
         Your journey has inspired hundreds of students and faculty members. It's time to share that wisdom with the wider nation.
       </p>
 
-      <div class="mt-7 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+      <div class="mt-7 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-xs sm:max-w-none mx-auto w-full">
         <a href="#founder-form" 
-           class="w-full sm:w-auto text-center rounded-full bg-forest px-7 sm:px-8 py-3.5 sm:py-4 text-xs sm:text-sm font-bold uppercase tracking-wider text-peach transition hover:bg-forest-mid hover:text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5">
-          Share Your Story Now →
+           class="w-full sm:w-auto text-center rounded-full bg-forest px-6 sm:px-8 py-3.5 sm:py-4 text-xs sm:text-sm font-bold uppercase tracking-wider text-peach transition hover:bg-forest-mid hover:text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 inline-flex items-center justify-center gap-2">
+          <span>Share Your Story Now</span>
+          <i class="fa-solid fa-arrow-right text-xs"></i>
         </a>
         <a href="{{ url('/contact') }}" 
-           class="w-full sm:w-auto text-center rounded-full border-2 border-forest/20 bg-white/70 px-7 sm:px-8 py-3.5 sm:py-4 text-xs sm:text-sm font-bold uppercase tracking-wider text-forest transition hover:border-forest hover:bg-white shadow-xs hover:-translate-y-0.5">
+           class="w-full sm:w-auto text-center rounded-full border-2 border-forest/20 bg-white/80 px-6 sm:px-8 py-3.5 sm:py-4 text-xs sm:text-sm font-bold uppercase tracking-wider text-forest transition hover:border-forest hover:bg-white shadow-xs hover:-translate-y-0.5 inline-flex items-center justify-center">
           Speak With Our Team
         </a>
       </div>
 
-      <div class="mt-7 sm:mt-10 flex flex-wrap items-center justify-center gap-1.5 sm:gap-3 text-[11px] sm:text-xs font-semibold text-forest/70">
-        <span class="rounded-full bg-white/80 border border-forest/10 px-2.5 sm:px-3.5 py-1 sm:py-1.5 shadow-xs">Education Leaders</span>
-        <span class="text-forest/30">•</span>
-        <span class="rounded-full bg-white/80 border border-forest/10 px-2.5 sm:px-3.5 py-1 sm:py-1.5 shadow-xs">Idea Exchange</span>
-        <span class="text-forest/30">•</span>
-        <span class="rounded-full bg-white/80 border border-forest/10 px-2.5 sm:px-3.5 py-1 sm:py-1.5 shadow-xs">Institutional Collaboration</span>
-        <span class="text-forest/30">•</span>
-        <span class="rounded-full bg-white/80 border border-forest/10 px-2.5 sm:px-3.5 py-1 sm:py-1.5 shadow-xs">Real Impact</span>
+      <div class="mt-7 sm:mt-10 flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-[11px] sm:text-xs font-semibold text-forest/75 max-w-lg mx-auto">
+        <span class="rounded-full bg-white/90 border border-forest/15 px-3 sm:px-3.5 py-1.5 shadow-xs">Education Leaders</span>
+        <span class="rounded-full bg-white/90 border border-forest/15 px-3 sm:px-3.5 py-1.5 shadow-xs">Idea Exchange</span>
+        <span class="rounded-full bg-white/90 border border-forest/15 px-3 sm:px-3.5 py-1.5 shadow-xs">Institutional Collaboration</span>
+        <span class="rounded-full bg-white/90 border border-forest/15 px-3 sm:px-3.5 py-1.5 shadow-xs">Real Impact</span>
       </div>
 
     </div>
