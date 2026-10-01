@@ -69,6 +69,20 @@ $lightNav = true;
     color: #0c3a30;
     -webkit-font-smoothing: antialiased;
   }
+
+  /* All body, paragraph, and card descriptions strictly regular 400 */
+  p,
+  .profile-card-desc,
+  .panel-text,
+  .talk-card p,
+  article p,
+  section p,
+  .roadmap-card p,
+  .timeline-step p,
+  .story-panel p {
+    font-weight: 400 !important;
+  }
+
   /* Fixed site navbar hamburger color on light cream background */
   #hdr:not(.scrolled) .ycx-hamburger span {
     background: #0c3a30 !important;
@@ -94,6 +108,92 @@ $lightNav = true;
   }
   .field-error ~ .error-msg, .error-msg.show {
     display: block;
+  }
+
+  /* Become a Partner Form Style */
+  .partner-form-box {
+    background: #ffffff;
+    padding: 38px 36px;
+    border-radius: 22px;
+    box-shadow: 0 15px 60px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(231, 222, 210, 0.8);
+    position: relative;
+  }
+  @media (max-width: 576px) {
+    .partner-form-box {
+      padding: 24px 18px;
+    }
+  }
+
+  .partner-form-box label {
+    display: block;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #0c3a30;
+    margin-bottom: 7px;
+  }
+
+  .partner-form-box .form-control,
+  .partner-form-box select {
+    height: 52px;
+    border-radius: 12px;
+    border: 1px solid #e5e5e5;
+    padding: 0 16px;
+    font-size: 14.5px;
+    color: #0c3a30;
+    box-shadow: none;
+    transition: all .25s ease;
+    background: #ffffff;
+    width: 100%;
+    outline: none;
+  }
+
+  .partner-form-box .form-control:focus,
+  .partner-form-box select:focus {
+    border-color: #0c3a30;
+    box-shadow: 0 0 0 3px rgba(12, 58, 48, 0.10);
+    background: #ffffff;
+  }
+
+  .partner-form-box select {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%230c3a30' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 14px 10px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding-right: 38px;
+  }
+
+  .partner-form-box select option {
+    color: #0c3a30;
+    background: #ffffff;
+  }
+
+  .partner-submit-btn {
+    width: 100%;
+    height: 52px;
+    border: none;
+    border-radius: 12px;
+    background: #0c3a30;
+    color: #ffd2b1;
+    font-size: 15px;
+    font-weight: 700;
+    transition: all .3s ease;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 4px 14px rgba(12, 58, 48, 0.18);
+  }
+
+  .partner-submit-btn:hover {
+    background: #14513f;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(12, 58, 48, 0.25);
   }
 
   /* Arc Timeline Step Connectors */
@@ -323,28 +423,28 @@ $lightNav = true;
     100% { transform: translateY(0); }
   }
 
-  /* Masters' Union Button with Dual Sliding Arrow (Luxury Tricolor Theme) */
+  /* Masters' Union Button with Dual Sliding Arrow (Theme Peach Color) */
   .btn-breather {
     display: inline-flex;
     align-items: center;
     gap: 0.85rem;
     padding: 0.85rem 1.85rem;
     border-radius: 9999px;
-    background: linear-gradient(135deg, #0c3a30 0%, #071f1a 100%);
-    color: #ffd2b1;
+    background: #ffd2b1;
+    color: #0c3a30;
     font-weight: 700;
     font-size: 0.94rem;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 4px 18px rgba(12, 58, 48, 0.35), 0 0 0 1px rgba(12, 58, 48, 0.15);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 210, 177, 0.35);
     text-decoration: none;
     cursor: pointer;
-    border: 1px solid rgba(12, 58, 48, 0.2);
+    border: 1px solid rgba(255, 210, 177, 0.5);
   }
   .btn-breather:hover {
-    background: linear-gradient(135deg, #14513f 0%, #0c3a30 100%);
-    color: #ffffff;
+    background: #ffffff;
+    color: #0c3a30;
     transform: translateY(-2px);
-    box-shadow: 0 8px 26px rgba(12, 58, 48, 0.45), 0 0 16px rgba(12, 58, 48, 0.2);
+    box-shadow: 0 8px 26px rgba(0, 0, 0, 0.35), 0 0 18px rgba(255, 210, 177, 0.5);
   }
   .btn-breather .arrow-wrap {
     position: relative;
@@ -451,254 +551,204 @@ $lightNav = true;
               <span class="grid h-7 w-7 sm:h-8 sm:w-8 shrink-0 place-items-center rounded-lg bg-peach text-forest text-xs sm:text-sm shadow-xs">
                 <i class="fa-solid fa-video"></i>
               </span>
-              <span class="text-[11px] sm:text-xs font-semibold leading-tight text-forest">Video Podcast Feature</span>
+              <span class="text-[11px] sm:text-xs font-normal leading-tight text-forest">Video Podcast Feature</span>
             </div>
             <div class="flex items-center gap-2 sm:gap-2.5 rounded-xl border border-cream-edge bg-white/80 p-2 sm:p-3 shadow-xs hover:border-forest/20 transition-colors">
               <span class="grid h-7 w-7 sm:h-8 sm:w-8 shrink-0 place-items-center rounded-lg bg-peach text-forest text-xs sm:text-sm shadow-xs">
                 <i class="fa-solid fa-award"></i>
               </span>
-              <span class="text-[11px] sm:text-xs font-semibold leading-tight text-forest">National Spotlight</span>
+              <span class="text-[11px] sm:text-xs font-normal leading-tight text-forest">National Spotlight</span>
             </div>
             <div class="flex items-center gap-2 sm:gap-2.5 rounded-xl border border-cream-edge bg-white/80 p-2 sm:p-3 shadow-xs hover:border-forest/20 transition-colors">
               <span class="grid h-7 w-7 sm:h-8 sm:w-8 shrink-0 place-items-center rounded-lg bg-peach text-forest text-xs sm:text-sm shadow-xs">
                 <i class="fa-solid fa-handshake"></i>
               </span>
-              <span class="text-[11px] sm:text-xs font-semibold leading-tight text-forest">Founder Circle Meetups</span>
+              <span class="text-[11px] sm:text-xs font-normal leading-tight text-forest">Founder Circle Meetups</span>
             </div>
             <div class="flex items-center gap-2 sm:gap-2.5 rounded-xl border border-cream-edge bg-white/80 p-2 sm:p-3 shadow-xs hover:border-forest/20 transition-colors">
               <span class="grid h-7 w-7 sm:h-8 sm:w-8 shrink-0 place-items-center rounded-lg bg-peach text-forest text-xs sm:text-sm shadow-xs">
                 <i class="fa-solid fa-building-columns"></i>
               </span>
-              <span class="text-[11px] sm:text-xs font-semibold leading-tight text-forest">Campus Leadership Talks</span>
+              <span class="text-[11px] sm:text-xs font-normal leading-tight text-forest">Campus Leadership Talks</span>
             </div>
             <div class="flex items-center gap-2 sm:gap-2.5 rounded-xl border border-cream-edge bg-white/80 p-2 sm:p-3 shadow-xs hover:border-forest/20 transition-colors">
               <span class="grid h-7 w-7 sm:h-8 sm:w-8 shrink-0 place-items-center rounded-lg bg-peach text-forest text-xs sm:text-sm shadow-xs">
                 <i class="fa-solid fa-briefcase"></i>
               </span>
-              <span class="text-[11px] sm:text-xs font-semibold leading-tight text-forest">Internship Connect</span>
+              <span class="text-[11px] sm:text-xs font-normal leading-tight text-forest">Internship Connect</span>
             </div>
             <div class="flex items-center gap-2 sm:gap-2.5 rounded-xl border border-cream-edge bg-white/80 p-2 sm:p-3 shadow-xs hover:border-forest/20 transition-colors">
               <span class="grid h-7 w-7 sm:h-8 sm:w-8 shrink-0 place-items-center rounded-lg bg-peach text-forest text-xs sm:text-sm shadow-xs">
                 <i class="fa-solid fa-rocket"></i>
               </span>
-              <span class="text-[11px] sm:text-xs font-semibold leading-tight text-forest">Student Masterclasses</span>
+              <span class="text-[11px] sm:text-xs font-normal leading-tight text-forest">Student Masterclasses</span>
             </div>
           </div>
 
         </div>
 
-        {{-- RIGHT COLUMN: HERO FORM (Direct Access For Founders & Leaders) --}}
+        {{-- RIGHT COLUMN: HERO FORM (Become a Partner Style 1-Page Form) --}}
         <div id="founder-form">
-          <div class="hero-glass-card rounded-2xl sm:rounded-[1.85rem] p-4 sm:p-7 lg:p-9">
+          <div class="partner-form-box" id="partner-form">
 
             {{-- Card Header --}}
-            <div class="pb-1">
-              <div class="flex items-center justify-between">
-                <span class="rounded-full bg-forest/10 px-3 py-1 text-[10.5px] sm:text-[11px] font-bold uppercase tracking-wider text-forest">
+            <div class="mb-5">
+              <div class="flex items-center justify-between mb-2">
+                <span class="rounded-full bg-forest/10 px-3.5 py-1 text-[11px] font-bold uppercase tracking-wider text-forest">
                   Executive Registration
                 </span>
-                <span class="text-xs font-medium text-forest/60">Takes 2 mins</span>
+                <span class="text-xs text-forest/60 font-medium">1-Page Direct Access</span>
               </div>
-              <h2 class="mt-3 text-xl sm:text-[1.75rem] font-bold leading-tight text-forest">
-                Share Your Journey
+              <h2 class="text-2xl sm:text-[1.75rem] font-bold text-forest leading-tight">
+                Register Your Institution
               </h2>
-              <p class="mt-1 text-xs sm:text-sm text-forest/70">
-                Join The Education Business Room or bring YCX programs to your campus.
+              <p class="text-xs sm:text-sm text-forest/70 mt-1">
+                Share your journey with <strong>The Education Business Room</strong>.
               </p>
             </div>
 
-            {{-- Connected Circular Step Nodes: ( 1 ) ──── ( 2 ) --}}
-            <div id="stepsIndicator" class="mt-5 mb-3 flex items-center justify-between gap-3 sm:gap-4 w-full" aria-label="Registration Steps">
-              {{-- Step Node 1 --}}
-              <div data-indicator="1" role="button" tabindex="0"
-                class="flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 shrink-0 rounded-full bg-forest text-peach font-bold text-xs sm:text-sm border-2 border-forest shadow-xs transition-all duration-300 cursor-pointer">
-                <span>1</span>
-              </div>
+            {{-- INLINE ERROR CONTAINER --}}
+            <div id="formErrorMessage" class="hidden mb-4 rounded-xl border border-red-200 bg-red-50 p-3.5 text-xs text-red-700 font-medium"></div>
 
-              {{-- Connecting Line --}}
-              <div class="flex-1 h-0.5 bg-cream-edge relative rounded-full overflow-hidden">
-                <div id="stepProgressLine" class="h-full bg-forest transition-all duration-300 w-0"></div>
+            @if(session('error') || (isset($errors) && $errors->any()))
+              <div class="mb-4 rounded-xl border border-red-200 bg-red-50 p-3.5 text-xs text-red-700 font-medium">
+                <i class="fa-solid fa-triangle-exclamation me-1.5"></i>
+                @if(session('error'))
+                  {{ session('error') }}
+                @else
+                  {{ $errors->first() }}
+                @endif
               </div>
+            @endif
 
-              {{-- Step Node 2 --}}
-              <div data-indicator="2"
-                class="flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 shrink-0 rounded-full bg-white text-forest/40 font-bold text-xs sm:text-sm border-2 border-cream-edge transition-all duration-300 cursor-default">
-                <span>2</span>
+            {{-- 1-PAGE FORM (BECOME A PARTNER STYLE) --}}
+            <form id="founderRegForm" action="{{ route('institution.submit') }}" method="POST" novalidate>
+              @csrf
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
+
+                {{-- 1. Full Name --}}
+                <div class="col-span-1">
+                  <label for="name">Full Name <span class="text-red-600">*</span></label>
+                  <input type="text"
+                    id="name"
+                    name="name"
+                    value="{{ old('name') }}"
+                    class="form-control"
+                    placeholder="Full Name" required>
+                  <p class="error-msg">Please enter your name.</p>
+                </div>
+
+                {{-- 2. Designation --}}
+                <div class="col-span-1">
+                  <label for="designation">Designation <span class="text-red-600">*</span></label>
+                  <input type="text"
+                    id="designation"
+                    name="designation"
+                    value="{{ old('designation') }}"
+                    class="form-control"
+                    placeholder="e.g. Correspondent, Principal, Founder" required>
+                  <p class="error-msg">Enter your designation.</p>
+                </div>
+
+                {{-- 3. Phone --}}
+                <div class="col-span-1">
+                  <label for="phone">Phone <span class="text-red-600">*</span></label>
+                  <input type="tel"
+                    id="phone"
+                    name="phone"
+                    value="{{ old('phone') }}"
+                    class="form-control"
+                    placeholder="E.g. +91 98765 43210" required>
+                  <p class="error-msg">Enter a reachable phone number.</p>
+                </div>
+
+                {{-- 4. Email --}}
+                <div class="col-span-1">
+                  <label for="email">Email <span class="text-red-600">*</span></label>
+                  <input type="email"
+                    id="email"
+                    name="email"
+                    value="{{ old('email') }}"
+                    class="form-control"
+                    placeholder="name@institution.edu.in" required>
+                  <p class="error-msg">Enter a valid email address.</p>
+                </div>
+
+                {{-- 5. Institution / Group Name --}}
+                <div class="col-span-1">
+                  <label for="institution_name">Institution/Group Name <span class="text-red-600">*</span></label>
+                  <input type="text"
+                    id="institution_name"
+                    name="institution_name"
+                    value="{{ old('institution_name') }}"
+                    class="form-control"
+                    placeholder="Institution / Group Name" required>
+                  <p class="error-msg">Enter your institution or group name.</p>
+                </div>
+
+                {{-- 6. Category --}}
+                <div class="col-span-1">
+                  <label for="institution_type">Category <span class="text-red-600">*</span></label>
+                  <select id="institution_type" name="institution_type" class="form-control" required>
+                    <option value="" disabled {{ old('institution_type') ? '' : 'selected' }}>Select Category</option>
+                    @foreach([
+                      'School / K-12 Group',
+                      'College / University',
+                      'Both School & College',
+                      'Education Enterprise'
+                    ] as $cat)
+                      <option value="{{ $cat }}" {{ old('institution_type') == $cat ? 'selected' : '' }}>{{ $cat }}</option>
+                    @endforeach
+                  </select>
+                  <p class="error-msg">Please select a category.</p>
+                </div>
+
+                {{-- 7. Website URL (optional) --}}
+                <div class="col-span-1 sm:col-span-2">
+                  <label for="website">Website URL <span class="text-forest/45 font-normal text-xs">(optional)</span></label>
+                  <input type="url"
+                    id="website"
+                    name="website"
+                    value="{{ old('website') }}"
+                    class="form-control"
+                    placeholder="https://yourinstitution.edu.in">
+                </div>
+
+                {{-- Submit Button --}}
+                <div class="col-span-1 sm:col-span-2 mt-2">
+                  <button type="submit" id="submitBtn" class="partner-submit-btn">
+                    <span id="submitBtnText">Register Your Institution</span>
+                    <span id="submitBtnSpinner" class="hidden"><i class="fa-solid fa-circle-notch fa-spin me-1.5"></i> Submitting...</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                  </button>
+                  <p class="text-[11.5px] text-center text-forest/50 mt-2.5">
+                    Confidential · Direct Young Chanakya X Executive Access
+                  </p>
+                </div>
+
+              </div>
+            </form>
+
+            {{-- SUCCESS STATE --}}
+            <div id="formSuccessState" @if(!session('success')) hidden @endif class="py-8 text-center">
+              <div class="mx-auto grid h-14 w-14 place-items-center rounded-full bg-forest text-peach">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <h3 class="mt-4 text-2xl font-bold text-forest">Registration Received</h3>
+              <p class="mx-auto mt-2 max-w-sm text-xs leading-relaxed text-forest/75">
+                Thank you for connecting with <strong>The Education Business Room</strong>. Our curation team will review your profile and reach out within 2–3 working days to coordinate the conversation format.
+              </p>
+              <div class="mt-5">
+                <a href="#untold-stories" class="text-xs font-bold text-forest underline underline-offset-4">
+                  Explore the Leadership Stories below ↓
+                </a>
               </div>
             </div>
 
-            {{-- FORM ELEMENT --}}
-            <form id="founderRegForm" action="{{ route('institution.submit') }}" method="POST" class="mt-4 sm:mt-5" novalidate>
-              @csrf
-
-              {{-- INLINE ERROR CONTAINER --}}
-              <div id="formErrorMessage" class="hidden mb-4 rounded-xl border border-red-200 bg-red-50 p-3 text-xs text-red-700 font-medium"></div>
-
-              @if(session('success'))
-                <script>
-                  document.addEventListener('DOMContentLoaded', function() {
-                    var s1 = document.getElementById('step1');
-                    var s2 = document.getElementById('step2');
-                    var done = document.getElementById('formSuccessState');
-                    var stepsIndicator = document.getElementById('stepsIndicator');
-                    if (s1) s1.hidden = true;
-                    if (s2) s2.hidden = true;
-                    if (stepsIndicator) stepsIndicator.hidden = true;
-                    if (done) done.hidden = false;
-                  });
-                </script>
-              @endif
-
-              @if(session('error'))
-                <div class="mb-4 rounded-xl border border-red-200 bg-red-50 p-3 text-xs text-red-700 font-medium">
-                  {{ session('error') }}
-                </div>
-              @endif
-
-              {{-- STEP 1: ABOUT THE FOUNDER / LEADER --}}
-              <fieldset id="step1">
-                <legend class="sr-only">About the Founder / Leader</legend>
-                <div class="space-y-3.5 sm:space-y-4">
-                  <div>
-                    <label for="name" class="block text-xs font-bold uppercase tracking-wider text-forest/85">Your Full Name <span class="text-red-600">*</span></label>
-                    <input id="name" name="name" type="text" required placeholder="e.g. Dr. Ramesh Chander"
-                      class="mt-1.5 w-full rounded-xl border border-cream-edge bg-cream/50 px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm text-forest placeholder:text-forest/35 outline-none transition focus:border-forest focus:bg-white" />
-                    <p class="error-msg">Please enter your name.</p>
-                  </div>
-
-                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
-                    <div>
-                      <label for="role" class="block text-xs font-bold uppercase tracking-wider text-forest/85">Your Role <span class="text-red-600">*</span></label>
-                      <select id="role" name="role" required
-                        class="mt-1.5 w-full rounded-xl border border-cream-edge bg-cream/50 px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm text-forest outline-none transition focus:border-forest focus:bg-white">
-                        <option value="">Select Role</option>
-                        <option value="School Founder / Owner">School Founder / Owner</option>
-                        <option value="College Correspondent">College Correspondent</option>
-                        <option value="College Chairperson">College Chairperson</option>
-                        <option value="Principal / Director">Principal / Director</option>
-                        <option value="Education Entrepreneur">Education Entrepreneur</option>
-                        <option value="Trustee / Board Member">Trustee / Board Member</option>
-                        <option value="Other">Other Executive</option>
-                      </select>
-                      <p class="error-msg">Select your designation.</p>
-                    </div>
-
-                    <div>
-                      <label for="phone" class="block text-xs font-bold uppercase tracking-wider text-forest/85">Phone / WhatsApp <span class="text-red-600">*</span></label>
-                      <input id="phone" name="phone" type="tel" required placeholder="+91 98765 43210"
-                        class="mt-1.5 w-full rounded-xl border border-cream-edge bg-cream/50 px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm text-forest placeholder:text-forest/35 outline-none transition focus:border-forest focus:bg-white" />
-                    <p class="error-msg">Enter a reachable phone number.</p>
-                    </div>
-                  </div>
-
-                  <div>
-                    <label for="email" class="block text-xs font-bold uppercase tracking-wider text-forest/85">Official / Personal Email <span class="text-red-600">*</span></label>
-                    <input id="email" name="email" type="email" required placeholder="founder@institution.edu.in"
-                      class="mt-1.5 w-full rounded-xl border border-cream-edge bg-cream/50 px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm text-forest placeholder:text-forest/35 outline-none transition focus:border-forest focus:bg-white" />
-                    <p class="error-msg">Enter a valid email address.</p>
-                  </div>
-                </div>
-
-                <div class="mt-5 sm:mt-6 flex flex-col sm:flex-row items-center justify-between gap-3 pt-2">
-                  <span class="text-[11px] text-forest/50 text-center sm:text-left">Confidential · Direct YCX Team Access</span>
-                  <button type="button" id="nextBtn"
-                    class="w-full sm:w-auto text-center rounded-full bg-forest px-6 sm:px-7 py-3 text-xs font-bold uppercase tracking-wider text-peach transition hover:bg-forest-mid shadow-sm">
-                    Continue to Institution →
-                  </button>
-                </div>
-              </fieldset>
-
-              {{-- STEP 2: ABOUT THE INSTITUTION & PARTICIPATION --}}
-              <fieldset id="step2" hidden>
-                <legend class="sr-only">About Your Institution</legend>
-                <div class="space-y-3.5 sm:space-y-4">
-                  <div>
-                    <label for="inst" class="block text-xs font-bold uppercase tracking-wider text-forest/85">Institution / Group Name <span class="text-red-600">*</span></label>
-                    <input id="inst" name="inst" type="text" required placeholder="e.g. Sri Krishna Educational Trust"
-                      class="mt-1.5 w-full rounded-xl border border-cream-edge bg-cream/50 px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm text-forest placeholder:text-forest/35 outline-none transition focus:border-forest focus:bg-white" />
-                    <p class="error-msg">Enter your institution or group name.</p>
-                  </div>
-
-                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
-                    <div>
-                      <label for="type" class="block text-xs font-bold uppercase tracking-wider text-forest/85">Category <span class="text-red-600">*</span></label>
-                      <select id="type" name="type" required
-                        class="mt-1.5 w-full rounded-xl border border-cream-edge bg-cream/50 px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm text-forest outline-none transition focus:border-forest focus:bg-white">
-                        <option value="">Select Type</option>
-                        <option value="School / Group of Schools">School / K-12 Group</option>
-                        <option value="College / University">College / University</option>
-                        <option value="Both School & College">Both School &amp; College</option>
-                        <option value="Education Enterprise">EdTech / Education Co</option>
-                      </select>
-                      <p class="error-msg">Select institution type.</p>
-                    </div>
-
-                    <div>
-                      <label for="city" class="block text-xs font-bold uppercase tracking-wider text-forest/85">City &amp; State <span class="text-red-600">*</span></label>
-                      <input id="city" name="city" type="text" required placeholder="Coimbatore, TN"
-                        class="mt-1.5 w-full rounded-xl border border-cream-edge bg-cream/50 px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm text-forest placeholder:text-forest/35 outline-none transition focus:border-forest focus:bg-white" />
-                      <p class="error-msg">Enter city and state.</p>
-                    </div>
-                  </div>
-
-                  {{-- What would you like to explore? (Dropdown) --}}
-                  <div>
-                    <label for="interest" class="block text-xs font-bold uppercase tracking-wider text-forest/85">
-                      What Would You Like to Explore? <span class="text-red-600">*</span>
-                    </label>
-                    <select id="interest" name="interest" required
-                      class="mt-1.5 w-full rounded-xl border border-cream-edge bg-cream/50 px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm text-forest outline-none transition focus:border-forest focus:bg-white">
-                      <option value="">Select What You'd Like to Explore</option>
-                      <option value="Video Podcast Feature (The Education Business Room)">Video Podcast Feature (The Education Business Room)</option>
-                      <option value="Educational Leadership Panel Discussion">Educational Leadership Panel Discussion</option>
-                      <option value="Campus Leadership Talks & Keynotes">Campus Leadership Talks &amp; Keynotes</option>
-                      <option value="Student Masterclasses & Workshops">Student Masterclasses &amp; Workshops</option>
-                      <option value="Closed-Door Founder & Correspondent Meetups">Closed-Door Founder &amp; Correspondent Meetups</option>
-                      <option value="Comprehensive Institutional Partnership (All Programs)">Comprehensive Institutional Partnership (All Programs)</option>
-                    </select>
-                    <p class="error-msg">Please select what you would like to explore.</p>
-                  </div>
-
-                  <div>
-                    <label for="site" class="block text-xs font-bold uppercase tracking-wider text-forest/85">Institution Website / LinkedIn <span class="font-normal text-forest/50">(Optional)</span></label>
-                    <input id="site" name="site" type="url" placeholder="https://yourinstitution.edu.in"
-                      class="mt-1.5 w-full rounded-xl border border-cream-edge bg-cream/50 px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm text-forest placeholder:text-forest/35 outline-none transition focus:border-forest focus:bg-white" />
-                  </div>
-                </div>
-
-                <div class="mt-5 sm:mt-6 flex items-center justify-between gap-3 pt-2">
-                  <button type="button" id="backBtn" class="text-xs font-bold text-forest/70 underline underline-offset-4 hover:text-forest">
-                    ← Back
-                  </button>
-                  <button type="submit" id="submitBtn"
-                    class="rounded-full bg-forest px-6 sm:px-7 py-3 text-xs font-bold uppercase tracking-wider text-peach transition hover:bg-forest-mid shadow-sm flex items-center justify-center gap-2">
-                    <span id="submitBtnText">Submit Profile →</span>
-                    <span id="submitBtnSpinner" class="hidden"><i class="fa-solid fa-circle-notch fa-spin"></i> Submitting...</span>
-                  </button>
-                </div>
-              </fieldset>
-
-              {{-- SUCCESS STATE --}}
-              <div id="formSuccessState" hidden class="py-8 text-center">
-                <div class="mx-auto grid h-14 w-14 place-items-center rounded-full bg-forest text-peach">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                </div>
-                <h3 class="mt-4 text-2xl font-bold text-forest">Story Received</h3>
-                <p class="mx-auto mt-2 max-w-sm text-xs leading-relaxed text-forest/75">
-                  Thank you for connecting with <strong>The Education Business Room</strong>. Our curation team will review your profile and reach out within 2–3 working days to coordinate the conversation format.
-                </p>
-                <div class="mt-5">
-                  <a href="#founder-story" class="text-xs font-bold text-forest underline underline-offset-4">
-                    Explore the Founder Arc below ↓
-                  </a>
-                </div>
-              </div>
-
-              <p id="liveStatus" aria-live="polite" class="sr-only"></p>
-            </form>
-
+            <p id="liveStatus" aria-live="polite" class="sr-only"></p>
           </div>
         </div>
 
@@ -777,44 +827,67 @@ $lightNav = true;
         bottom: 0;
         left: 0;
         right: 0;
-        padding: 0.9rem 0.75rem;
+        padding: 0.85rem 0.65rem;
         z-index: 2;
       }
       @media (min-width: 640px) {
         .profile-card-body {
-          padding: 1.15rem 0.95rem;
+          padding: 1rem 0.75rem;
         }
       }
       @media (min-width: 1024px) {
         .profile-card-body {
-          padding: 1.25rem 1rem;
+          padding: 1.15rem 0.65rem;
+        }
+      }
+      @media (min-width: 1280px) {
+        .profile-card-body {
+          padding: 1.25rem 0.85rem;
         }
       }
       .profile-card-title {
-        font-size: 0.82rem;
+        font-size: 0.80rem;
         font-weight: 800;
         color: #ffffff;
         line-height: 1.25;
         margin-bottom: 0.25rem;
         letter-spacing: -0.2px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
       @media (min-width: 640px) {
         .profile-card-title {
           font-size: 0.88rem;
-          margin-bottom: 0.35rem;
+          margin-bottom: 0.3rem;
         }
       }
       @media (min-width: 1024px) {
         .profile-card-title {
-          font-size: 0.9rem;
-          margin-bottom: 0.4rem;
-          letter-spacing: -0.3px;
+          font-size: 0.80rem;
+          margin-bottom: 0.35rem;
+          letter-spacing: -0.25px;
+        }
+      }
+      @media (min-width: 1280px) {
+        .profile-card-title {
+          font-size: 0.86rem;
+        }
+      }
+      @media (min-width: 1440px) {
+        .profile-card-title {
+          font-size: 0.92rem;
         }
       }
       .profile-card-desc {
         font-size: 0.68rem;
+        font-weight: 400;
         color: rgba(255, 255, 255, 0.82);
         line-height: 1.4;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
       }
       @media (min-width: 640px) {
         .profile-card-desc {
@@ -824,7 +897,7 @@ $lightNav = true;
       @media (min-width: 1024px) {
         .profile-card-desc {
           font-size: 0.72rem;
-          line-height: 1.5;
+          line-height: 1.45;
         }
       }
     </style>
@@ -838,7 +911,7 @@ $lightNav = true;
           Who Is This Conversation For?
         </h2>
         <p class="mt-3 sm:mt-4 text-forest/75 text-sm sm:text-[1.05rem] leading-relaxed">
-          We invite leaders from across the education continuum who are carrying the responsibility of institutions and inspiring the next generation of builders.
+          For leaders shaping institutions and inspiring the next generation.
         </p>
       </div>
 
@@ -852,8 +925,8 @@ $lightNav = true;
           <div class="profile-card-overlay"></div>
           <div class="profile-card-accent"></div>
           <div class="profile-card-body">
-            <h3 class="profile-card-title">College Correspondents</h3>
-            <p class="profile-card-desc">Preserving institutional values and navigating generational transitions with accountability.</p>
+            <h3 class="profile-card-title" title="College Correspondents">College Correspondents</h3>
+            <p class="profile-card-desc">Preserving core values and generational legacy.</p>
           </div>
         </article>
 
@@ -864,8 +937,8 @@ $lightNav = true;
           <div class="profile-card-overlay"></div>
           <div class="profile-card-accent"></div>
           <div class="profile-card-body">
-            <h3 class="profile-card-title">College Chairpersons</h3>
-            <p class="profile-card-desc">Leading institutions through rapid educational change, expansion, and accreditations.</p>
+            <h3 class="profile-card-title" title="College Chairpersons">College Chairpersons</h3>
+            <p class="profile-card-desc">Steering campus vision and strategic growth.</p>
           </div>
         </article>
 
@@ -876,8 +949,8 @@ $lightNav = true;
           <div class="profile-card-overlay"></div>
           <div class="profile-card-accent"></div>
           <div class="profile-card-body">
-            <h3 class="profile-card-title">School Founders &amp; Owners</h3>
-            <p class="profile-card-desc">Turning conviction into real campuses, overcoming early hurdles, and nurturing young minds.</p>
+            <h3 class="profile-card-title" title="School Founders & Owners">School Founders &amp; Owners</h3>
+            <p class="profile-card-desc">Building enduring campuses with conviction.</p>
           </div>
         </article>
 
@@ -888,8 +961,8 @@ $lightNav = true;
           <div class="profile-card-overlay"></div>
           <div class="profile-card-accent"></div>
           <div class="profile-card-body">
-            <h3 class="profile-card-title">Principals &amp; Directors</h3>
-            <p class="profile-card-desc">Guiding teaching culture and balancing academic rigour with student well-being.</p>
+            <h3 class="profile-card-title" title="Principals & Directors">Principals &amp; Directors</h3>
+            <p class="profile-card-desc">Fostering teaching culture and student success.</p>
           </div>
         </article>
 
@@ -900,8 +973,8 @@ $lightNav = true;
           <div class="profile-card-overlay"></div>
           <div class="profile-card-accent"></div>
           <div class="profile-card-body">
-            <h3 class="profile-card-title">Education Entrepreneurs</h3>
-            <p class="profile-card-desc">Pioneering skill-first learning academies and AI-enabled educational ecosystems.</p>
+            <h3 class="profile-card-title" title="Education Entrepreneurs">Education Entrepreneurs</h3>
+            <p class="profile-card-desc">Pioneering modern skill-first models.</p>
           </div>
         </article>
 
@@ -912,8 +985,8 @@ $lightNav = true;
           <div class="profile-card-overlay"></div>
           <div class="profile-card-accent"></div>
           <div class="profile-card-body">
-            <h3 class="profile-card-title">Trustees &amp; Board Members</h3>
-            <p class="profile-card-desc">Driving partnerships, capital allocation, and progressive campus transformation.</p>
+            <h3 class="profile-card-title" title="Trustees & Board Members">Trustees &amp; Board Members</h3>
+            <p class="profile-card-desc">Guiding governance and strategic capital.</p>
           </div>
         </article>
 
@@ -925,11 +998,11 @@ $lightNav = true;
   {{-- ============================================================
        03. THE UNTOLD STORIES OF THE PEOPLE WHO BUILT THE CAMPUS
        ============================================================ --}}
-  <section id="untold-stories" class="py-16 sm:py-20 lg:py-24 bg-[#ffd2b1] text-forest relative overflow-hidden border-t border-b border-orange-200/60">
-    {{-- Indian Tricolor Inspired Luxury Ambient Glows --}}
-    <div class="pointer-events-none absolute -top-28 -left-28 h-[520px] w-[520px] rounded-full bg-gradient-to-br from-orange-500/22 via-amber-500/12 to-transparent blur-3xl opacity-80" aria-hidden="true"></div>
-    <div class="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-sky-500/5 blur-3xl" aria-hidden="true"></div>
-    <div class="pointer-events-none absolute -bottom-28 -right-28 h-[520px] w-[520px] rounded-full bg-gradient-to-tl from-emerald-600/18 via-teal-500/10 to-transparent blur-3xl opacity-80" aria-hidden="true"></div>
+  <section id="untold-stories" class="py-16 sm:py-20 lg:py-24 text-white relative overflow-hidden border-t border-b border-white/5"
+           style="background: #09101a; background: linear-gradient(175deg, #0d1522 0%, #09101a 50%, #050a10 100%);">
+    {{-- Soft Ambient Glows Matching Deep Slate Midnight Theme --}}
+    <div class="pointer-events-none absolute -top-32 right-1/4 h-[550px] w-[550px] rounded-full bg-cyan-950/20 blur-3xl opacity-60" aria-hidden="true"></div>
+    <div class="pointer-events-none absolute -bottom-32 left-1/4 h-[450px] w-[450px] rounded-full bg-blue-950/25 blur-3xl opacity-60" aria-hidden="true"></div>
 
     <div class="mx-auto max-w-shell px-3.5 sm:px-6 lg:px-8 relative z-10">
       
@@ -938,51 +1011,50 @@ $lightNav = true;
         {{-- Left Side: Narrative & Animated CTA (Masters' Union Style) --}}
         <div class="lg:col-span-5">
 
-          <h2 class="text-2xl sm:text-4xl lg:text-[2.65rem] xl:text-[3rem] font-black leading-[1.18] text-forest" style="letter-spacing:-1.2px;">
-            The Untold Stories of the People Who <br />
-            <span class="italic font-serif font-normal text-transparent bg-clip-text" style="background-image: linear-gradient(90deg, #0c3a30 0%, #14513f 50%, #f97316 100%); -webkit-background-clip: text; background-clip: text;">
-              Built the Campus.
-            </span>
+          <h2 class="text-2xl sm:text-4xl lg:text-[2.65rem] xl:text-[3rem] font-black leading-[1.15] text-white" style="letter-spacing:-1.2px;">
+            The Untold Stories of <br class="hidden sm:inline" />
+            the People Who <br />
+            <span class="italic font-serif font-normal" style="color: #ffd2b1;">Built the</span>
+            <span class="italic font-serif font-normal" style="color: #6ee7b7;">Campus.</span>
           </h2>
 
-          <p class="mt-4 text-[0.95rem] sm:text-[1.02rem] leading-relaxed text-forest/75">
+          <p class="mt-4 text-[0.95rem] sm:text-[1.02rem] leading-relaxed text-slate-300">
             Every great campus begins with an authentic story of risk, resilience, and turning points. We bring these foundational journeys to light — unscripted, reflective, and deeply valuable for the education community.
           </p>
 
-          {{-- 5 Core Focus Areas with Brand Favicon Chips --}}
+          {{-- 4 Core Focus Areas with Brand Favicon Chips --}}
           <div class="mt-7 flex flex-wrap gap-2.5">
             {{-- 01. Founder Conversations --}}
-            <div class="inline-flex items-center gap-2.5 px-3.5 py-2 rounded-xl border border-forest/20 bg-white/50 hover:border-forest/50 hover:bg-white/70 transition-all duration-300 group shadow-xs cursor-default">
-              <span class="w-6 h-6 rounded-lg bg-forest/10 border border-forest/20 flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:border-forest/40 transition-all duration-300">
+            <div class="inline-flex items-center gap-2.5 px-3.5 py-2 rounded-xl border border-white/10 bg-white/[0.05] hover:border-white/20 hover:bg-white/[0.08] transition-all duration-300 group shadow-xs cursor-default">
+              <span class="w-6 h-6 rounded-lg bg-white/10 border border-white/15 flex items-center justify-center shrink-0 group-hover:scale-110 transition-all duration-300">
                 <img src="{{ asset('images/fav-icon/icon.png') }}" class="w-3.5 h-3.5 object-contain" alt="YCX" />
               </span>
-              <span class="text-xs sm:text-[13px] font-semibold text-forest/90 group-hover:text-forest">Founder Conversations</span>
+              <span class="text-xs sm:text-[13px] font-normal text-slate-200 group-hover:text-white">Founder Conversations</span>
             </div>
 
             {{-- 02. Campus Heritage --}}
-            <div class="inline-flex items-center gap-2.5 px-3.5 py-2 rounded-xl border border-forest/20 bg-white/50 hover:border-forest/50 hover:bg-white/70 transition-all duration-300 group shadow-xs cursor-default">
-              <span class="w-6 h-6 rounded-lg bg-forest/10 border border-forest/20 flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:border-forest/40 transition-all duration-300">
+            <div class="inline-flex items-center gap-2.5 px-3.5 py-2 rounded-xl border border-white/10 bg-white/[0.05] hover:border-white/20 hover:bg-white/[0.08] transition-all duration-300 group shadow-xs cursor-default">
+              <span class="w-6 h-6 rounded-lg bg-white/10 border border-white/15 flex items-center justify-center shrink-0 group-hover:scale-110 transition-all duration-300">
                 <img src="{{ asset('images/fav-icon/icon.png') }}" class="w-3.5 h-3.5 object-contain" alt="YCX" />
               </span>
-              <span class="text-xs sm:text-[13px] font-semibold text-forest/90 group-hover:text-forest">Campus Heritage</span>
+              <span class="text-xs sm:text-[13px] font-normal text-slate-200 group-hover:text-white">Campus Heritage</span>
             </div>
 
             {{-- 03. Education Innovation --}}
-            <div class="inline-flex items-center gap-2.5 px-3.5 py-2 rounded-xl border border-forest/20 bg-white/50 hover:border-forest/50 hover:bg-white/70 transition-all duration-300 group shadow-xs cursor-default">
-              <span class="w-6 h-6 rounded-lg bg-forest/10 border border-forest/20 flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:border-forest/40 transition-all duration-300">
+            <div class="inline-flex items-center gap-2.5 px-3.5 py-2 rounded-xl border border-white/10 bg-white/[0.05] hover:border-white/20 hover:bg-white/[0.08] transition-all duration-300 group shadow-xs cursor-default">
+              <span class="w-6 h-6 rounded-lg bg-white/10 border border-white/15 flex items-center justify-center shrink-0 group-hover:scale-110 transition-all duration-300">
                 <img src="{{ asset('images/fav-icon/icon.png') }}" class="w-3.5 h-3.5 object-contain" alt="YCX" />
               </span>
-              <span class="text-xs sm:text-[13px] font-semibold text-forest/90 group-hover:text-forest">Education Innovation</span>
+              <span class="text-xs sm:text-[13px] font-normal text-slate-200 group-hover:text-white">Education Innovation</span>
             </div>
 
             {{-- 04. Business of Education --}}
-            <div class="inline-flex items-center gap-2.5 px-3.5 py-2 rounded-xl border border-forest/20 bg-white/50 hover:border-forest/50 hover:bg-white/70 transition-all duration-300 group shadow-xs cursor-default">
-              <span class="w-6 h-6 rounded-lg bg-forest/10 border border-forest/20 flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:border-forest/40 transition-all duration-300">
+            <div class="inline-flex items-center gap-2.5 px-3.5 py-2 rounded-xl border border-white/10 bg-white/[0.05] hover:border-white/20 hover:bg-white/[0.08] transition-all duration-300 group shadow-xs cursor-default">
+              <span class="w-6 h-6 rounded-lg bg-white/10 border border-white/15 flex items-center justify-center shrink-0 group-hover:scale-110 transition-all duration-300">
                 <img src="{{ asset('images/fav-icon/icon.png') }}" class="w-3.5 h-3.5 object-contain" alt="YCX" />
               </span>
-              <span class="text-xs sm:text-[13px] font-semibold text-forest/90 group-hover:text-forest">Business of Education</span>
+              <span class="text-xs sm:text-[13px] font-normal text-slate-200 group-hover:text-white">Business of Education</span>
             </div>
-
           </div>
 
           {{-- Masters' Union Style Pill Button with Animated Dual-Arrow --}}
@@ -1271,7 +1343,7 @@ $lightNav = true;
 
       .panel-text {
         font-size: 1.2rem;
-        font-weight: 500;
+        font-weight: 400;
         color: #ffffff;
         line-height: 1.75;
         text-shadow: 0 2px 10px rgba(0,0,0,0.95);
@@ -1625,15 +1697,15 @@ $lightNav = true;
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-4.5 xl:gap-5 items-stretch">
         
         {{-- Left Content Block --}}
-        <div class="flex flex-col justify-between pr-0 lg:pr-6 py-2 sm:py-3 col-span-1 md:col-span-2 lg:col-span-1">
+        <div class="flex flex-col justify-center pr-0 lg:pr-6 py-1 sm:py-2 col-span-1 md:col-span-2 lg:col-span-1">
           <div>
-            <span class="inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-wider mb-4 sm:mb-5 border border-forest/15 shadow-xs"
+            <span class="inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-wider mb-3 sm:mb-3.5 border border-forest/15 shadow-xs"
                   style="background: rgba(255, 210, 177, 0.5); color: #0c3a30;">
               <span class="h-1.5 w-1.5 rounded-full bg-forest"></span>
               Tangible Value
             </span>
-            <h2 class="text-3xl sm:text-4xl lg:text-[40px] xl:text-[44px] font-black text-forest leading-[1.12] mb-3.5 sm:mb-4"
-                style="letter-spacing:-1.3px;">
+            <h2 class="text-3xl sm:text-4xl lg:text-[40px] xl:text-[42px] font-black text-forest leading-[1.12] mb-2.5 sm:mb-3"
+                style="letter-spacing:-1px;">
               Why Be Part of the <span style="color:#c8743a;">Conversation?</span>
             </h2>
             <p class="text-sm sm:text-[15px] leading-relaxed text-forest/75 max-w-md">
@@ -1641,7 +1713,7 @@ $lightNav = true;
             </p>
           </div>
 
-          <div class="mt-6 sm:mt-8">
+          <div class="mt-4 sm:mt-5">
             <a href="#founder-form"
                class="inline-flex items-center gap-2.5 rounded-full px-5 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-bold text-white transition-all duration-300 shadow-sm hover:shadow-lg hover:gap-3.5 group"
                style="background: #0c3a30;">
@@ -1654,21 +1726,19 @@ $lightNav = true;
         {{-- Top Row 2 Cards --}}
         @foreach($topCards as $card)
         <article class="group bg-white rounded-2xl sm:rounded-[22px] overflow-hidden border border-[#e8ded2] shadow-xs hover:shadow-xl hover:-translate-y-1 hover:border-forest/30 transition-all duration-300 flex flex-col">
-          <div class="h-52 sm:h-56 lg:h-64 w-full overflow-hidden relative bg-[#f2ece2]">
+          <div class="h-44 sm:h-48 lg:h-50 w-full overflow-hidden relative bg-[#f2ece2]">
             <img src="{{ $card['image'] }}" 
                  alt="{{ $card['alt'] }}" 
                  class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" 
                  loading="lazy" />
           </div>
-          <div class="p-5 sm:p-5.5 flex flex-col flex-1 justify-between bg-white">
-            <div>
-              <h3 class="text-[16px] sm:text-[17px] font-bold text-forest leading-snug group-hover:text-[#c8743a] transition-colors mb-1.5">
-                {{ $card['title'] }}
-              </h3>
-              <p class="text-xs sm:text-[13px] leading-relaxed text-forest/70">
-                {{ $card['desc'] }}
-              </p>
-            </div>
+          <div class="pt-3.5 pb-4 px-4 sm:pt-4 sm:pb-4.5 sm:px-5 flex flex-col flex-1 justify-start bg-white">
+            <h3 class="text-[16px] sm:text-[17px] font-bold text-forest leading-snug group-hover:text-[#c8743a] transition-colors mb-1 sm:mb-1.5">
+              {{ $card['title'] }}
+            </h3>
+            <p class="text-xs sm:text-[13px] leading-relaxed text-forest/70">
+              {{ $card['desc'] }}
+            </p>
           </div>
         </article>
         @endforeach
@@ -1679,21 +1749,19 @@ $lightNav = true;
       <div class="mt-4 sm:mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 lg:gap-4 xl:gap-4.5">
         @foreach($bottomCards as $card)
         <article class="group bg-white rounded-2xl sm:rounded-[22px] overflow-hidden border border-[#e8ded2] shadow-xs hover:shadow-xl hover:-translate-y-1 hover:border-forest/30 transition-all duration-300 flex flex-col">
-          <div class="h-44 sm:h-48 lg:h-52 w-full overflow-hidden relative bg-[#f2ece2]">
+          <div class="h-36 sm:h-40 lg:h-44 w-full overflow-hidden relative bg-[#f2ece2]">
             <img src="{{ $card['image'] }}" 
                  alt="{{ $card['alt'] }}" 
                  class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" 
                  loading="lazy" />
           </div>
-          <div class="p-5 sm:p-5.5 flex flex-col flex-1 justify-between bg-white">
-            <div>
-              <h3 class="text-[16px] sm:text-[17px] font-bold text-forest leading-snug group-hover:text-[#c8743a] transition-colors mb-1.5">
-                {{ $card['title'] }}
-              </h3>
-              <p class="text-xs sm:text-[13px] leading-relaxed text-forest/70">
-                {{ $card['desc'] }}
-              </p>
-            </div>
+          <div class="pt-3.5 pb-4 px-4 sm:pt-4 sm:pb-4.5 sm:px-5 flex flex-col flex-1 justify-start bg-white">
+            <h3 class="text-[16px] sm:text-[17px] font-bold text-forest leading-snug group-hover:text-[#c8743a] transition-colors mb-1 sm:mb-1.5">
+              {{ $card['title'] }}
+            </h3>
+            <p class="text-xs sm:text-[13px] leading-relaxed text-forest/70">
+              {{ $card['desc'] }}
+            </p>
           </div>
         </article>
         @endforeach
@@ -1714,19 +1782,19 @@ $lightNav = true;
     <div class="pointer-events-none absolute inset-0" aria-hidden="true"
          style="background-image: radial-gradient(circle at 15% 15%, rgba(255,210,177,0.35) 0%, transparent 45%), radial-gradient(circle at 85% 85%, rgba(12,58,48,0.06) 0%, transparent 45%);"></div>
 
-    <div class="relative z-10 mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24" style="max-width:1400px;">
+    <div class="relative z-10 mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-14 lg:py-16" style="max-width:1400px;">
 
       {{-- ── Header ── --}}
-      <div class="text-center mb-14 sm:mb-20">
-        <span class="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wider mb-5 bg-white/90 border border-forest/15 text-forest shadow-xs">
+      <div class="text-center mb-8 sm:mb-10">
+        <span class="inline-flex items-center gap-2 rounded-full px-3.5 py-1 text-xs font-bold uppercase tracking-wider mb-2.5 bg-white/90 border border-forest/15 text-forest shadow-xs">
           <span class="h-2 w-2 rounded-full bg-[#c8743a] animate-pulse"></span>
           The Production Journey
         </span>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight mb-4 text-forest"
-            style="letter-spacing:-1.5px;">
+        <h2 class="text-3xl sm:text-4xl lg:text-[2.65rem] font-black leading-tight mb-2 text-forest"
+            style="letter-spacing:-1.2px;">
           How the <span style="color:#c8743a;">Conversation</span> Works
         </h2>
-        <p class="text-sm sm:text-base max-w-xl mx-auto leading-relaxed"
+        <p class="text-sm sm:text-[15px] max-w-xl mx-auto leading-relaxed"
            style="color:rgba(12, 58, 48, 0.72);">
           Zero rehearsed scripts, zero gotcha questions — total respect for your schedule and your story.
         </p>
@@ -1819,8 +1887,8 @@ $lightNav = true;
            ═══════════════════════════════ --}}
       <div class="hidden lg:block relative">
 
-        {{-- Connecting line straight through the center of all 5 circles --}}
-        <div class="absolute top-[52px] left-[10%] right-[10%] h-[3px] -translate-y-1/2 z-0 rounded-full pointer-events-none"
+        {{-- Connecting line straight through the center of all 5 circles (82px circle -> center 41px) --}}
+        <div class="absolute top-[41px] left-[10%] right-[10%] h-[2.5px] -translate-y-1/2 z-0 rounded-full pointer-events-none"
              style="background: linear-gradient(90deg, rgb(12, 58, 48) 0%, #ffd2b1 25%, rgb(12, 58, 48) 50%, #ffd2b1 75%, rgb(12, 58, 48) 100%);
                     box-shadow: 0 2px 8px rgba(12, 58, 48, 0.15);"></div>
 
@@ -1829,30 +1897,30 @@ $lightNav = true;
           <div class="hiw-step-col flex flex-col items-center text-center opacity-0 group"
                style="transform:translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; transition-delay:{{ $i * 120 }}ms;">
             
-            {{-- Theme Circle --}}
-            <div class="relative flex items-center justify-center rounded-full mb-6 flex-shrink-0 transition-transform duration-300 group-hover:scale-105"
-                 style="width:104px; height:104px; background:#ffffff;">
+            {{-- Theme Circle: Reduced padding & sleeker number --}}
+            <div class="relative flex items-center justify-center rounded-full mb-4 flex-shrink-0 transition-transform duration-300 group-hover:scale-105"
+                 style="width:82px; height:82px; background:#ffffff;">
               <div class="absolute inset-0 rounded-full"
-                   style="margin:-4px; background:{{ $step['ring'] }}; border-radius:9999px; box-shadow:0 8px 20px -3px {{ $step['glow'] }};"></div>
+                   style="margin:-3px; background:{{ $step['ring'] }}; border-radius:9999px; box-shadow:0 6px 16px -2px {{ $step['glow'] }};"></div>
               <div class="absolute inset-0 rounded-full z-10 flex flex-col items-center justify-center"
-                   style="background:{{ $step['inner_bg'] }}; margin:3px; border-radius:9999px; border:{{ $step['inner_border'] }};">
-                <span class="text-[10px] font-bold uppercase tracking-widest leading-none mb-1" style="color:{{ $step['step_color'] }};">STEP</span>
-                <span class="text-3xl font-black leading-none" style="color:{{ $step['num_color'] }};">{{ $step['num'] }}</span>
+                   style="background:{{ $step['inner_bg'] }}; margin:2.5px; border-radius:9999px; border:{{ $step['inner_border'] }};">
+                <span class="text-[8.5px] font-bold uppercase tracking-widest leading-none mb-0.5" style="color:{{ $step['step_color'] }};">STEP</span>
+                <span class="text-[21px] sm:text-[22px] font-black leading-none" style="color:{{ $step['num_color'] }};">{{ $step['num'] }}</span>
               </div>
             </div>
 
             {{-- Content Card: Straight in the middle directly aligned to the circle --}}
-            <div class="w-full bg-white/95 rounded-2xl p-4 sm:p-5 xl:p-6 border border-[#e8ded2] shadow-xs hover:shadow-xl hover:-translate-y-1 hover:border-forest/40 transition-all duration-300 flex flex-col items-center text-center flex-1">
-              <span class="h-10 w-10 rounded-xl inline-grid place-items-center mb-3 flex-shrink-0 shadow-xs"
+            <div class="w-full bg-white/95 rounded-2xl p-3.5 sm:p-4 xl:p-4.5 border border-[#e8ded2] shadow-xs hover:shadow-lg hover:-translate-y-1 hover:border-forest/40 transition-all duration-300 flex flex-col items-center text-center flex-1">
+              <span class="h-8 w-8 rounded-lg inline-grid place-items-center mb-2 flex-shrink-0 shadow-xs"
                     style="background:{{ $step['ibg'] }}; border:1.5px solid {{ $step['iborder'] }}; color:{{ $step['ic'] }};">
-                <i class="fa-solid {{ $step['icon'] }} text-base"></i>
+                <i class="fa-solid {{ $step['icon'] }} text-sm"></i>
               </span>
-              <div class="w-full flex items-center justify-center mb-2">
-                <h3 class="text-[14px] sm:text-[15px] lg:text-[14px] xl:text-[16px] font-black text-forest leading-snug tracking-tight whitespace-nowrap text-center">
+              <div class="w-full flex items-center justify-center mb-1.5">
+                <h3 class="text-[13.5px] sm:text-[14px] xl:text-[15px] font-bold text-forest leading-snug tracking-tight whitespace-nowrap text-center">
                   {{ $step['title'] }}
                 </h3>
               </div>
-              <p class="text-[12.5px] sm:text-[13px] leading-relaxed text-forest/75 flex-1 flex items-center justify-center text-center">
+              <p class="text-[11.5px] sm:text-[12px] xl:text-[12.5px] leading-relaxed text-forest/75 flex-1 flex items-center justify-center text-center">
                 {{ $step['body'] }}
               </p>
             </div>
@@ -1867,34 +1935,34 @@ $lightNav = true;
       {{-- ═══════════════════════════════
            MOBILE: Vertical stack
            ═══════════════════════════════ --}}
-      <div class="lg:hidden space-y-4">
+      <div class="lg:hidden space-y-3">
 
         @foreach($lightSteps as $i => $step)
-        <div class="hiw-mob-step bg-white/95 rounded-2xl p-4 sm:p-5 border border-[#e8ded2] shadow-xs flex items-start gap-4 opacity-0"
+        <div class="hiw-mob-step bg-white/95 rounded-2xl p-3.5 sm:p-4 border border-[#e8ded2] shadow-xs flex items-start gap-3.5 opacity-0"
              style="transform:translateX(-20px); transition: opacity 0.55s ease, transform 0.55s ease; transition-delay:{{ $i * 120 }}ms;">
           
           {{-- Circle --}}
           <div class="relative flex-shrink-0 flex items-center justify-center rounded-full"
-               style="width:68px; height:68px; background:#ffffff;">
+               style="width:56px; height:56px; background:#ffffff;">
             <div class="absolute inset-0 rounded-full"
-                 style="margin:-3px; background:{{ $step['ring'] }}; border-radius:9999px; box-shadow:0 4px 14px {{ $step['glow'] }};"></div>
+                 style="margin:-2.5px; background:{{ $step['ring'] }}; border-radius:9999px; box-shadow:0 3px 10px {{ $step['glow'] }};"></div>
             <div class="absolute inset-0 rounded-full z-10 flex flex-col items-center justify-center"
-                 style="background:{{ $step['inner_bg'] }}; margin:2.5px; border-radius:9999px; border:{{ $step['inner_border'] }};">
-              <span class="text-[8px] font-bold uppercase tracking-widest leading-none mb-0.5" style="color:{{ $step['step_color'] }};">STEP</span>
-              <span class="text-xl font-black leading-none" style="color:{{ $step['num_color'] }};">{{ $step['num'] }}</span>
+                 style="background:{{ $step['inner_bg'] }}; margin:2px; border-radius:9999px; border:{{ $step['inner_border'] }};">
+              <span class="text-[7.5px] font-bold uppercase tracking-widest leading-none mb-0.5" style="color:{{ $step['step_color'] }};">STEP</span>
+              <span class="text-base font-black leading-none" style="color:{{ $step['num_color'] }};">{{ $step['num'] }}</span>
             </div>
           </div>
 
           {{-- Content --}}
           <div class="flex-1 pt-0.5">
-            <div class="flex items-center gap-2 mb-1.5">
-              <span class="h-6 w-6 rounded-md inline-grid place-items-center text-[11px] flex-shrink-0"
-                    style="background:{{ $step['ibg'] }}; border:1.5px solid {{ $step['iborder'] }}; color:{{ $step['ic'] }};">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="h-5.5 w-5.5 rounded-md inline-grid place-items-center text-[10px] flex-shrink-0"
+                    style="width:22px; height:22px; background:{{ $step['ibg'] }}; border:1.5px solid {{ $step['iborder'] }}; color:{{ $step['ic'] }};">
                 <i class="fa-solid {{ $step['icon'] }}"></i>
               </span>
-              <h3 class="text-[15px] sm:text-[16px] font-black text-forest leading-tight tracking-tight whitespace-nowrap">{{ $step['title'] }}</h3>
+              <h3 class="text-[14px] sm:text-[15px] font-bold text-forest leading-tight tracking-tight whitespace-nowrap">{{ $step['title'] }}</h3>
             </div>
-            <p class="text-[12.5px] sm:text-[13px] leading-relaxed text-forest/75">{{ $step['body'] }}</p>
+            <p class="text-[12px] sm:text-[12.5px] leading-relaxed text-forest/75">{{ $step['body'] }}</p>
           </div>
 
         </div>
@@ -1967,13 +2035,6 @@ $lightNav = true;
         </a>
       </div>
 
-      <div class="mt-7 sm:mt-10 flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-[11px] sm:text-xs font-semibold text-forest/75 max-w-lg mx-auto">
-        <span class="rounded-full bg-white/90 border border-forest/15 px-3 sm:px-3.5 py-1.5 shadow-xs">Education Leaders</span>
-        <span class="rounded-full bg-white/90 border border-forest/15 px-3 sm:px-3.5 py-1.5 shadow-xs">Idea Exchange</span>
-        <span class="rounded-full bg-white/90 border border-forest/15 px-3 sm:px-3.5 py-1.5 shadow-xs">Institutional Collaboration</span>
-        <span class="rounded-full bg-white/90 border border-forest/15 px-3 sm:px-3.5 py-1.5 shadow-xs">Real Impact</span>
-      </div>
-
     </div>
   </section>
 
@@ -1987,12 +2048,8 @@ $lightNav = true;
   'use strict';
 
   var form = document.getElementById('founderRegForm'),
-      s1 = document.getElementById('step1'),
-      s2 = document.getElementById('step2'),
       done = document.getElementById('formSuccessState'),
-      live = document.getElementById('liveStatus'),
-      nextBtn = document.getElementById('nextBtn'),
-      backBtn = document.getElementById('backBtn');
+      live = document.getElementById('liveStatus');
 
   function mark(f, bad) {
     f.classList.toggle('field-error', bad);
@@ -2009,65 +2066,6 @@ $lightNav = true;
     return first;
   }
 
-  function setStep(n) {
-    s1.hidden = (n === 2);
-    s2.hidden = (n === 1);
-
-    var progressLine = document.getElementById('stepProgressLine');
-    if (progressLine) {
-      progressLine.style.width = (n === 2) ? '100%' : '0%';
-    }
-
-    document.querySelectorAll('[data-indicator]').forEach(function (card) {
-      var step = parseInt(card.getAttribute('data-indicator'));
-      var on = step === n;
-      var completed = step < n;
-
-      if (on) {
-        card.className = 'flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 shrink-0 rounded-full bg-forest text-peach font-bold text-xs sm:text-sm border-2 border-forest shadow-xs transition-all duration-300 cursor-default';
-        card.innerHTML = '<span>' + step + '</span>';
-      } else if (completed) {
-        card.className = 'flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 shrink-0 rounded-full bg-forest text-peach font-bold text-xs sm:text-sm border-2 border-forest transition-all duration-300 cursor-pointer hover:scale-110';
-        card.innerHTML = '<i class="fa-solid fa-check text-[11px]"></i>';
-      } else {
-        card.className = 'flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 shrink-0 rounded-full bg-white text-forest/40 font-bold text-xs sm:text-sm border-2 border-cream-edge transition-all duration-300 cursor-default';
-        card.innerHTML = '<span>' + step + '</span>';
-      }
-    });
-
-    if (live) live.textContent = 'Step ' + n + ' of 2';
-    var f = (n === 1 ? s1 : s2).querySelector('input, select');
-    if (f) f.focus({ preventScroll: true });
-  }
-
-  // Allow clicking completed Step 1 card to go back
-  document.querySelectorAll('[data-indicator]').forEach(function (card) {
-    card.addEventListener('click', function () {
-      var step = parseInt(card.getAttribute('data-indicator'));
-      if (step === 1 && s1.hidden) {
-        setStep(1);
-      }
-    });
-  });
-
-  if (nextBtn) {
-    nextBtn.addEventListener('click', function () {
-      var bad = validate(s1);
-      if (bad) {
-        bad.focus();
-        if (live) live.textContent = 'Please fill out all required details.';
-        return;
-      }
-      setStep(2);
-    });
-  }
-
-  if (backBtn) {
-    backBtn.addEventListener('click', function () {
-      setStep(1);
-    });
-  }
-
   if (form) {
     var clearHandler = function (e) {
       if (e.target.classList.contains('field-error') && e.target.checkValidity()) {
@@ -2079,7 +2077,7 @@ $lightNav = true;
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      var bad = validate(s2);
+      var bad = validate(form);
 
       if (bad) {
         bad.focus();
@@ -2091,7 +2089,6 @@ $lightNav = true;
       var submitBtnText = document.getElementById('submitBtnText');
       var submitBtnSpinner = document.getElementById('submitBtnSpinner');
       var errorMsg = document.getElementById('formErrorMessage');
-      var stepsIndicator = document.getElementById('stepsIndicator');
 
       if (errorMsg) {
         errorMsg.classList.add('hidden');
@@ -2123,9 +2120,7 @@ $lightNav = true;
       })
       .then(function (result) {
         if (result.ok && (result.data.success || result.data.message)) {
-          s1.hidden = true;
-          s2.hidden = true;
-          if (stepsIndicator) stepsIndicator.hidden = true;
+          form.hidden = true;
           if (done) done.hidden = false;
           if (live) live.textContent = 'Registration submitted successfully.';
 
@@ -2144,6 +2139,7 @@ $lightNav = true;
           if (errorMsg) {
             errorMsg.textContent = err;
             errorMsg.classList.remove('hidden');
+            errorMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
           } else {
             alert(err);
           }
@@ -2170,8 +2166,6 @@ $lightNav = true;
       });
     });
   }
-
-  // Desktop hover expansion and description display is driven smoothly via CSS :hover
 })();
 </script>
 <script>

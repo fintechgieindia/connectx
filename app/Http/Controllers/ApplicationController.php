@@ -674,11 +674,23 @@ class ApplicationController extends Controller
         if (!$request->has('institution_name') && $request->filled('inst')) {
             $request->merge(['institution_name' => $request->input('inst')]);
         }
+        if (!$request->has('institution_name') && $request->filled('company')) {
+            $request->merge(['institution_name' => $request->input('company')]);
+        }
         if (!$request->has('institution_type') && $request->filled('type')) {
             $request->merge(['institution_type' => $request->input('type')]);
         }
+        if (!$request->has('institution_type') && $request->filled('category')) {
+            $request->merge(['institution_type' => $request->input('category')]);
+        }
         if (!$request->has('website') && $request->filled('site')) {
             $request->merge(['website' => $request->input('site')]);
+        }
+        if ($request->filled('website')) {
+            $site = trim($request->input('website'));
+            if ($site !== '' && !preg_match('~^https?://~i', $site)) {
+                $request->merge(['website' => 'https://' . $site]);
+            }
         }
 
         // Handle areas_of_interest / interest (whether passed as string or array)
@@ -687,6 +699,8 @@ class ApplicationController extends Controller
             $request->merge(['areas_of_interest' => is_array($interestVal) ? $interestVal : [$interestVal]]);
         } elseif (is_string($request->input('areas_of_interest'))) {
             $request->merge(['areas_of_interest' => [$request->input('areas_of_interest')]]);
+        } elseif (!$request->has('areas_of_interest') || empty($request->input('areas_of_interest'))) {
+            $request->merge(['areas_of_interest' => ['The Education Business Room']]);
         }
 
         // Handle city & state (e.g., if passed as "Coimbatore, TN" or individual fields)
@@ -701,6 +715,8 @@ class ApplicationController extends Controller
             } else {
                 $request->merge(['state' => 'N/A']);
             }
+        } elseif (!$request->filled('city')) {
+            $request->merge(['city' => 'N/A', 'state' => 'N/A']);
         }
 
         $validated = $request->validate([
@@ -716,20 +732,31 @@ class ApplicationController extends Controller
             'board_or_university'   => 'nullable|string|max:255',
             'year_of_establishment' => 'nullable|string|max:50',
             'student_strength'      => 'nullable|string|max:100',
-            'city'                  => 'required|string|max:100',
+            'city'                  => 'nullable|string|max:100',
             'state'                 => 'nullable|string|max:100',
             'website'               => 'nullable|url|max:255',
 
             // Collaboration Interest
-            'areas_of_interest'     => 'required|array|min:1',
+            'areas_of_interest'     => 'nullable|array',
             'areas_of_interest.*'   => 'string|max:255',
             'heard_about_ycx'       => 'nullable|string|max:255',
             'message'               => 'nullable|string|max:3000',
+        ], [
+            'contact_name.required'     => 'Please enter your full name.',
+            'designation.required'      => 'Please enter your designation.',
+            'phone.required'            => 'Please enter your phone number.',
+            'email.required'            => 'Please enter your email address.',
+            'email.email'               => 'Please enter a valid email address.',
+            'institution_name.required' => 'Please enter your institution or group name.',
+            'institution_type.required' => 'Please select a category.',
+            'website.url'               => 'Please enter a valid website URL (e.g. https://yourinstitution.edu.in).',
         ]);
 
         $boardOrUniv = !empty($validated['board_or_university']) ? $validated['board_or_university'] : 'N/A';
         $studentStrength = !empty($validated['student_strength']) ? $validated['student_strength'] : 'N/A';
+        $city = !empty($validated['city']) ? $validated['city'] : 'N/A';
         $state = !empty($validated['state']) ? $validated['state'] : 'N/A';
+        $areasOfInterest = !empty($validated['areas_of_interest']) ? $validated['areas_of_interest'] : ['The Education Business Room'];
 
         try {
             \Illuminate\Support\Facades\Log::info('--- INSTITUTION REGISTRATION SUBMISSION START ---');
@@ -745,10 +772,10 @@ class ApplicationController extends Controller
                 'board_or_university'   => $boardOrUniv,
                 'year_of_establishment' => $validated['year_of_establishment'] ?? null,
                 'student_strength'      => $studentStrength,
-                'city'                  => $validated['city'],
+                'city'                  => $city,
                 'state'                 => $state,
                 'website'               => $validated['website'] ?? null,
-                'areas_of_interest'     => json_encode($validated['areas_of_interest']),
+                'areas_of_interest'     => json_encode($areasOfInterest),
                 'heard_about_ycx'       => $validated['heard_about_ycx'] ?? null,
                 'message'               => $validated['message'] ?? null,
                 'status'                => 'pending',
@@ -759,7 +786,9 @@ class ApplicationController extends Controller
             $emailData = $validated;
             $emailData['board_or_university'] = $boardOrUniv;
             $emailData['student_strength'] = $studentStrength;
+            $emailData['city'] = $city;
             $emailData['state'] = $state;
+            $emailData['areas_of_interest'] = $areasOfInterest;
             $emailData['institution_message'] = $validated['message'] ?? null;
             $emailData['user_message'] = $validated['message'] ?? null;
             unset($emailData['message']);
