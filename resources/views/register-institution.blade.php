@@ -287,28 +287,42 @@ $lightNav = true;
 
   /* What We Talk About Thematic Cards */
   .talk-card {
-    background: #ffffff;
-    border: 1px solid #e7ded2;
+    background: #fffdfa;
+    border: 1.5px solid #ebd9c8;
     border-radius: 1.25rem;
-    overflow: hidden;
+    padding: 0.85rem;
     transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
     flex-direction: column;
     height: 100%;
-    box-shadow: 0 2px 10px rgba(12, 58, 48, 0.04);
+    box-shadow: 0 4px 16px rgba(12, 58, 48, 0.04);
+  }
+  @media (min-width: 640px) {
+    .talk-card {
+      border-radius: 1.35rem;
+      padding: 0.95rem;
+    }
   }
   .talk-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 16px 32px -10px rgba(12, 58, 48, 0.12);
-    border-color: rgba(12, 58, 48, 0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px -8px rgba(12, 58, 48, 0.12);
+    border-color: #d1b89d;
+    background: #ffffff;
   }
   .talk-card-image {
     position: relative;
     width: 100%;
     height: 190px;
+    border-radius: 0.85rem;
     overflow: hidden;
     background: #f5eee5;
     flex-shrink: 0;
+  }
+  @media (min-width: 640px) {
+    .talk-card-image {
+      height: 205px;
+      border-radius: 0.95rem;
+    }
   }
   .talk-card-image img {
     width: 100%;
@@ -318,6 +332,21 @@ $lightNav = true;
   }
   .talk-card:hover .talk-card-image img {
     transform: scale(1.05);
+  }
+  .talk-card-badge {
+    position: absolute;
+    top: 0.7rem;
+    left: 0.7rem;
+    background: #ffd2b1;
+    color: #0c3a30;
+    font-size: 0.68rem;
+    font-weight: 800;
+    padding: 0.28rem 0.75rem;
+    border-radius: 9999px;
+    letter-spacing: 0.3px;
+    border: 1px solid rgba(240, 180, 137, 0.9);
+    box-shadow: 0 2px 8px rgba(12, 58, 48, 0.15);
+    z-index: 2;
   }
 
   /* How It Works Sequential Revealing Animation */
@@ -497,6 +526,43 @@ $lightNav = true;
   .breather-card:hover img {
     transform: scale(1.08);
   }
+
+  /* Focus Area Solid White Labels */
+  .focus-area-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.5rem 0.95rem;
+    border-radius: 0.75rem;
+    background-color: #ffffff !important;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: default;
+  }
+  .focus-area-label:hover {
+    background-color: #f8fafc !important;
+    border-color: #cbd5e1;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
+  }
+  .focus-area-label .label-text {
+    font-size: 13px;
+    font-weight: 700;
+    color: #0f172a !important;
+    letter-spacing: -0.2px;
+  }
+  .focus-area-label .label-icon-box {
+    width: 1.625rem;
+    height: 1.625rem;
+    border-radius: 0.5rem;
+    background-color: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
 </style>
 @endpush
 
@@ -592,17 +658,11 @@ $lightNav = true;
           <div class="partner-form-box" id="partner-form">
 
             {{-- Card Header --}}
-            <div class="mb-5">
-              <div class="flex items-center justify-between mb-2">
-                <span class="rounded-full bg-forest/10 px-3.5 py-1 text-[11px] font-bold uppercase tracking-wider text-forest">
-                  Executive Registration
-                </span>
-                <span class="text-xs text-forest/60 font-medium">1-Page Direct Access</span>
-              </div>
+            <div class="mb-7 sm:mb-8">
               <h2 class="text-2xl sm:text-[1.75rem] font-bold text-forest leading-tight">
                 Register Your Institution
               </h2>
-              <p class="text-xs sm:text-sm text-forest/70 mt-1">
+              <p class="text-xs sm:text-sm text-forest/70 mt-1.5 sm:mt-2">
                 Share your journey with <strong>The Education Business Room</strong>.
               </p>
             </div>
@@ -827,56 +887,53 @@ $lightNav = true;
         bottom: 0;
         left: 0;
         right: 0;
-        padding: 0.85rem 0.65rem;
+        padding: 0.9rem 0.75rem;
         z-index: 2;
       }
       @media (min-width: 640px) {
         .profile-card-body {
-          padding: 1rem 0.75rem;
+          padding: 1.15rem 0.95rem;
         }
       }
       @media (min-width: 1024px) {
         .profile-card-body {
-          padding: 1.15rem 0.65rem;
-        }
-      }
-      @media (min-width: 1280px) {
-        .profile-card-body {
-          padding: 1.25rem 0.85rem;
+          padding: 1.25rem 1rem;
         }
       }
       .profile-card-title {
-        font-size: 0.80rem;
+        font-size: 0.95rem;
         font-weight: 800;
         color: #ffffff;
         line-height: 1.25;
-        margin-bottom: 0.25rem;
+        margin-bottom: 0.35rem;
         letter-spacing: -0.2px;
-        white-space: nowrap;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
         overflow: hidden;
-        text-overflow: ellipsis;
+        word-break: break-word;
       }
       @media (min-width: 640px) {
         .profile-card-title {
-          font-size: 0.88rem;
-          margin-bottom: 0.3rem;
+          font-size: 1.05rem;
+          margin-bottom: 0.4rem;
         }
       }
       @media (min-width: 1024px) {
         .profile-card-title {
-          font-size: 0.80rem;
-          margin-bottom: 0.35rem;
-          letter-spacing: -0.25px;
+          font-size: 1.08rem;
+          margin-bottom: 0.4rem;
+          letter-spacing: -0.3px;
         }
       }
       @media (min-width: 1280px) {
         .profile-card-title {
-          font-size: 0.86rem;
+          font-size: 1.15rem;
         }
       }
       @media (min-width: 1440px) {
         .profile-card-title {
-          font-size: 0.92rem;
+          font-size: 1.22rem;
         }
       }
       .profile-card-desc {
@@ -1025,35 +1082,35 @@ $lightNav = true;
           {{-- 4 Core Focus Areas with Brand Favicon Chips --}}
           <div class="mt-7 flex flex-wrap gap-2.5">
             {{-- 01. Founder Conversations --}}
-            <div class="inline-flex items-center gap-2.5 px-3.5 py-2 rounded-xl border border-white/10 bg-white/[0.05] hover:border-white/20 hover:bg-white/[0.08] transition-all duration-300 group shadow-xs cursor-default">
-              <span class="w-6 h-6 rounded-lg bg-white/10 border border-white/15 flex items-center justify-center shrink-0 group-hover:scale-110 transition-all duration-300">
-                <img src="{{ asset('images/fav-icon/icon.png') }}" class="w-3.5 h-3.5 object-contain" alt="YCX" />
+            <div class="focus-area-label group">
+              <span class="label-icon-box group-hover:scale-105 transition-transform duration-300">
+                <img src="{{ asset('images/fav-icon/icon.png') }}" class="w-4 h-4 object-contain" alt="YCX" />
               </span>
-              <span class="text-xs sm:text-[13px] font-normal text-slate-200 group-hover:text-white">Founder Conversations</span>
+              <span class="label-text">Founder Conversations</span>
             </div>
 
             {{-- 02. Campus Heritage --}}
-            <div class="inline-flex items-center gap-2.5 px-3.5 py-2 rounded-xl border border-white/10 bg-white/[0.05] hover:border-white/20 hover:bg-white/[0.08] transition-all duration-300 group shadow-xs cursor-default">
-              <span class="w-6 h-6 rounded-lg bg-white/10 border border-white/15 flex items-center justify-center shrink-0 group-hover:scale-110 transition-all duration-300">
-                <img src="{{ asset('images/fav-icon/icon.png') }}" class="w-3.5 h-3.5 object-contain" alt="YCX" />
+            <div class="focus-area-label group">
+              <span class="label-icon-box group-hover:scale-105 transition-transform duration-300">
+                <img src="{{ asset('images/fav-icon/icon.png') }}" class="w-4 h-4 object-contain" alt="YCX" />
               </span>
-              <span class="text-xs sm:text-[13px] font-normal text-slate-200 group-hover:text-white">Campus Heritage</span>
+              <span class="label-text">Campus Heritage</span>
             </div>
 
             {{-- 03. Education Innovation --}}
-            <div class="inline-flex items-center gap-2.5 px-3.5 py-2 rounded-xl border border-white/10 bg-white/[0.05] hover:border-white/20 hover:bg-white/[0.08] transition-all duration-300 group shadow-xs cursor-default">
-              <span class="w-6 h-6 rounded-lg bg-white/10 border border-white/15 flex items-center justify-center shrink-0 group-hover:scale-110 transition-all duration-300">
-                <img src="{{ asset('images/fav-icon/icon.png') }}" class="w-3.5 h-3.5 object-contain" alt="YCX" />
+            <div class="focus-area-label group">
+              <span class="label-icon-box group-hover:scale-105 transition-transform duration-300">
+                <img src="{{ asset('images/fav-icon/icon.png') }}" class="w-4 h-4 object-contain" alt="YCX" />
               </span>
-              <span class="text-xs sm:text-[13px] font-normal text-slate-200 group-hover:text-white">Education Innovation</span>
+              <span class="label-text">Education Innovation</span>
             </div>
 
             {{-- 04. Business of Education --}}
-            <div class="inline-flex items-center gap-2.5 px-3.5 py-2 rounded-xl border border-white/10 bg-white/[0.05] hover:border-white/20 hover:bg-white/[0.08] transition-all duration-300 group shadow-xs cursor-default">
-              <span class="w-6 h-6 rounded-lg bg-white/10 border border-white/15 flex items-center justify-center shrink-0 group-hover:scale-110 transition-all duration-300">
-                <img src="{{ asset('images/fav-icon/icon.png') }}" class="w-3.5 h-3.5 object-contain" alt="YCX" />
+            <div class="focus-area-label group">
+              <span class="label-icon-box group-hover:scale-105 transition-transform duration-300">
+                <img src="{{ asset('images/fav-icon/icon.png') }}" class="w-4 h-4 object-contain" alt="YCX" />
               </span>
-              <span class="text-xs sm:text-[13px] font-normal text-slate-200 group-hover:text-white">Business of Education</span>
+              <span class="label-text">Business of Education</span>
             </div>
           </div>
 
@@ -1534,102 +1591,156 @@ $lightNav = true;
         {{-- Card 01: Founder Journeys & Leadership --}}
         <article class="talk-card group">
           <div class="talk-card-image">
+            <span class="talk-card-badge">Theme 01</span>
             <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
                  alt="Founder Journeys & Leadership" 
                  loading="lazy" />
           </div>
-          <div class="p-5 sm:p-6 flex flex-col flex-1">
+          <div class="pt-3.5 pb-1 px-1 flex flex-col flex-1">
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-peach/40 border border-peach/60 text-[11px] font-bold uppercase tracking-wider text-forest mb-2 self-start">
+              Leadership &amp; Governance
+            </span>
             <h3 class="text-base sm:text-lg font-bold text-forest leading-snug line-clamp-2 group-hover:text-forest-mid transition-colors">
               Founder Journeys &amp; Leadership
             </h3>
             <p class="mt-2 text-xs sm:text-[13px] text-forest/75 leading-relaxed">
               Real stories of conviction, governance, and building institutions that endure.
             </p>
+            <div class="mt-auto pt-3.5 border-t border-[#ebd9c8]/70 flex items-center justify-between">
+              <span class="text-xs sm:text-[13px] font-bold text-[#b85d19] group-hover:text-forest transition-colors inline-flex items-center gap-1.5">
+                View Topic Details <i class="fa-solid fa-arrow-up-right-from-square text-[10px] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+              </span>
+            </div>
           </div>
         </article>
 
         {{-- Card 02: AI, ERP & Campus Tech --}}
         <article class="talk-card group">
           <div class="talk-card-image">
+            <span class="talk-card-badge">Theme 02</span>
             <img src="https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
                  alt="AI, ERP & Campus Tech" 
                  loading="lazy" />
           </div>
-          <div class="p-5 sm:p-6 flex flex-col flex-1">
+          <div class="pt-3.5 pb-1 px-1 flex flex-col flex-1">
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-peach/40 border border-peach/60 text-[11px] font-bold uppercase tracking-wider text-forest mb-2 self-start">
+              Campus Tech &amp; AI
+            </span>
             <h3 class="text-base sm:text-lg font-bold text-forest leading-snug line-clamp-2 group-hover:text-forest-mid transition-colors">
               AI, ERP &amp; Campus Tech
             </h3>
             <p class="mt-2 text-xs sm:text-[13px] text-forest/75 leading-relaxed">
               How campuses adopt AI, modernize ERP systems, and build smarter learning environments.
             </p>
+            <div class="mt-auto pt-3.5 border-t border-[#ebd9c8]/70 flex items-center justify-between">
+              <span class="text-xs sm:text-[13px] font-bold text-[#b85d19] group-hover:text-forest transition-colors inline-flex items-center gap-1.5">
+                View Topic Details <i class="fa-solid fa-arrow-up-right-from-square text-[10px] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+              </span>
+            </div>
           </div>
         </article>
 
         {{-- Card 03: The Future of Education --}}
         <article class="talk-card group">
           <div class="talk-card-image">
+            <span class="talk-card-badge">Theme 03</span>
             <img src="https://images.pexels.com/photos/3184328/pexels-photo-3184328.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
                  alt="The Future of Education" 
                  loading="lazy" />
           </div>
-          <div class="p-5 sm:p-6 flex flex-col flex-1">
+          <div class="pt-3.5 pb-1 px-1 flex flex-col flex-1">
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-peach/40 border border-peach/60 text-[11px] font-bold uppercase tracking-wider text-forest mb-2 self-start">
+              Academic Innovation
+            </span>
             <h3 class="text-base sm:text-lg font-bold text-forest leading-snug line-clamp-2 group-hover:text-forest-mid transition-colors">
               The Future of Education
             </h3>
             <p class="mt-2 text-xs sm:text-[13px] text-forest/75 leading-relaxed">
               From rote learning to skill-first, globally relevant education models.
             </p>
+            <div class="mt-auto pt-3.5 border-t border-[#ebd9c8]/70 flex items-center justify-between">
+              <span class="text-xs sm:text-[13px] font-bold text-[#b85d19] group-hover:text-forest transition-colors inline-flex items-center gap-1.5">
+                View Topic Details <i class="fa-solid fa-arrow-up-right-from-square text-[10px] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+              </span>
+            </div>
           </div>
         </article>
 
         {{-- Card 04: The Business of Education --}}
         <article class="talk-card group">
           <div class="talk-card-image">
+            <span class="talk-card-badge">Theme 04</span>
             <img src="https://images.pexels.com/photos/3183186/pexels-photo-3183186.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
                  alt="The Business of Education" 
                  loading="lazy" />
           </div>
-          <div class="p-5 sm:p-6 flex flex-col flex-1">
+          <div class="pt-3.5 pb-1 px-1 flex flex-col flex-1">
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-peach/40 border border-peach/60 text-[11px] font-bold uppercase tracking-wider text-forest mb-2 self-start">
+              Institutional Growth
+            </span>
             <h3 class="text-base sm:text-lg font-bold text-forest leading-snug line-clamp-2 group-hover:text-forest-mid transition-colors">
               The Business of Education
             </h3>
             <p class="mt-2 text-xs sm:text-[13px] text-forest/75 leading-relaxed">
               Fee structures, faculty retention, and the economics of scaling campuses.
             </p>
+            <div class="mt-auto pt-3.5 border-t border-[#ebd9c8]/70 flex items-center justify-between">
+              <span class="text-xs sm:text-[13px] font-bold text-[#b85d19] group-hover:text-forest transition-colors inline-flex items-center gap-1.5">
+                View Topic Details <i class="fa-solid fa-arrow-up-right-from-square text-[10px] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+              </span>
+            </div>
           </div>
         </article>
 
         {{-- Card 05: Transformation & Turnarounds --}}
         <article class="talk-card group">
           <div class="talk-card-image">
+            <span class="talk-card-badge">Theme 05</span>
             <img src="https://images.pexels.com/photos/267507/pexels-photo-267507.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
                  alt="Transformation & Turnarounds" 
                  loading="lazy" />
           </div>
-          <div class="p-5 sm:p-6 flex flex-col flex-1">
+          <div class="pt-3.5 pb-1 px-1 flex flex-col flex-1">
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-peach/40 border border-peach/60 text-[11px] font-bold uppercase tracking-wider text-forest mb-2 self-start">
+              Campus Transformation
+            </span>
             <h3 class="text-base sm:text-lg font-bold text-forest leading-snug line-clamp-2 group-hover:text-forest-mid transition-colors">
               Transformation &amp; Turnarounds
             </h3>
             <p class="mt-2 text-xs sm:text-[13px] text-forest/75 leading-relaxed">
               Legacy institutions adapting, rebranding, and reclaiming relevance.
             </p>
+            <div class="mt-auto pt-3.5 border-t border-[#ebd9c8]/70 flex items-center justify-between">
+              <span class="text-xs sm:text-[13px] font-bold text-[#b85d19] group-hover:text-forest transition-colors inline-flex items-center gap-1.5">
+                View Topic Details <i class="fa-solid fa-arrow-up-right-from-square text-[10px] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+              </span>
+            </div>
           </div>
         </article>
 
         {{-- Card 06: Social Impact & Nation Building --}}
         <article class="talk-card group">
           <div class="talk-card-image">
+            <span class="talk-card-badge">Theme 06</span>
             <img src="https://images.pexels.com/photos/3184654/pexels-photo-3184654.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
                  alt="Social Impact & Nation Building" 
                  loading="lazy" />
           </div>
-          <div class="p-5 sm:p-6 flex flex-col flex-1">
+          <div class="pt-3.5 pb-1 px-1 flex flex-col flex-1">
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-peach/40 border border-peach/60 text-[11px] font-bold uppercase tracking-wider text-forest mb-2 self-start">
+              Nation Building
+            </span>
             <h3 class="text-base sm:text-lg font-bold text-forest leading-snug line-clamp-2 group-hover:text-forest-mid transition-colors">
               Social Impact &amp; Nation Building
             </h3>
             <p class="mt-2 text-xs sm:text-[13px] text-forest/75 leading-relaxed">
               Quality education reaching Tier 2/3 cities and first-generation learners.
             </p>
+            <div class="mt-auto pt-3.5 border-t border-[#ebd9c8]/70 flex items-center justify-between">
+              <span class="text-xs sm:text-[13px] font-bold text-[#b85d19] group-hover:text-forest transition-colors inline-flex items-center gap-1.5">
+                View Topic Details <i class="fa-solid fa-arrow-up-right-from-square text-[10px] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+              </span>
+            </div>
           </div>
         </article>
 
