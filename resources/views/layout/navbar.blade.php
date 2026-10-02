@@ -82,7 +82,7 @@
                     <i class="bi bi-calendar-event"></i> Event
                 </a>
                 <a href="{{ url('/register-institution') }}" onclick="closeDrawer()" class="{{ request()->is('register-institution') ? 'active' : '' }}">
-                    <i class="bi bi-building"></i> Register Institution
+                    <i class="bi bi-building"></i> Institution Partnership
                 </a>
             </div>
         </div>
@@ -236,7 +236,7 @@
                 <a href="{{ url('/register-institution') }}" class="ycx-dropdown-item {{ request()->is('register-institution') ? 'active' : '' }}" role="menuitem">
                     <span class="ycx-dropdown-icon"><i class="bi bi-building-fill"></i></span>
                     <span class="ycx-dropdown-text">
-                        <strong>Register Institution</strong>
+                        <strong>Institution Partnership</strong>
                         <small>Schools &amp; colleges</small>
                     </span>
                 </a>

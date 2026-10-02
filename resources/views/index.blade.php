@@ -300,15 +300,16 @@ Shaping the Next Generation of Future Leaders</h2>                <p class="sec-
 
 .hcw-wrapper .hcw-heading {
     color: #ffffff !important;
-    font-size: clamp(28px, 4vw, 45px) !important;
+    font-size: clamp(24px, 2.8vw, 42px) !important;
     font-weight: 400 !important;
-    margin: 0 0 48px;
-    letter-spacing: -0.3px !important;
+    margin: 0 0 24px;
+    letter-spacing: -1px !important;
+    line-height: 1.15 !important;
 }
 
 .hcw-wrapper .hcw-heading span {
     font-style: italic !important;
-    font-weight: 500 !important;
+    font-weight: 400 !important;
     color: #ffd2b1 !important;
 }
 
@@ -353,8 +354,7 @@ Shaping the Next Generation of Future Leaders</h2>                <p class="sec-
 .hcw-wrapper .hcw-step-title {
     color: #ffffff !important;
     font-size: 20px !important;
-    font-size: 20px !important;
-    font-weight: 500 !important;
+    font-weight: 400 !important;
     margin: 0 0 8px;
     line-height: 1.35 !important;
 }
@@ -475,10 +475,10 @@ Shaping the Next Generation of Future Leaders</h2>                <p class="sec-
 <div class="mt-4 hcw-wrapper">
     <div class="container">
         <div class="eyebrow rv" style="font-size: 10px; font-weight: 700; letter-spacing: 3px;">Our Process</div>
-        <p class="cx-heading hcw-heading" style="font-size: clamp(34px, 4vw, 56px) !important; font-weight: 900 !important; line-height: 1.15 !important; letter-spacing: -2px !important;">
-            How <span>Young Chanakya X</span> &nbsp;Works
+        <p class="cx-heading hcw-heading" style="font-size: clamp(24px, 2.8vw, 42px) !important; font-weight: 400 !important; line-height: 1.15 !important; letter-spacing: -1px !important;">
+            How <span style="font-weight: 400 !important;">Young Chanakya X</span> &nbsp;Works
         </p>
-        <p class="sec-desc rv" style="color: rgba(255, 255, 255, 0.75) !important; max-width: 600px; margin-top: -20px; margin-bottom: 44px; line-height: 1.6;">
+        <p class="sec-desc rv" style="color: rgba(255, 255, 255, 0.75) !important; max-width: 600px; margin-top: -12px; margin-bottom: 44px; line-height: 1.6; font-weight: 400 !important;">
             Follow these simple steps to join the Young Chanakya X network, access premium lounges, and launch high-impact collaborations.
         </p>
     
@@ -877,7 +877,7 @@ Shaping the Next Generation of Future Leaders</h2>                <p class="sec-
     }
     .why-heading {
         font-size: clamp(32px, 4vw, 48px);
-        font-weight: 900;
+        font-weight: 700;
         letter-spacing: -1px;
         margin-bottom: 24px;
         color: var(--white);
@@ -1218,7 +1218,7 @@ Shaping the Next Generation of Future Leaders</h2>                <p class="sec-
 <div class="container">
     <div class="section-head">
         <div class="eyebrow rv" style="font-size: 10px; font-weight: 700; letter-spacing: 3px;">Event Listing</div>
-        <h2 class="sec-title rv" style="font-size: clamp(34px, 4vw, 56px); font-weight: 900; line-height: 1.15;">Curated Events for Every Creator Journey</h2>
+        <h2 class="sec-title rv" style="font-size: clamp(34px, 4vw, 56px); font-weight: 700; line-height: 1.15;">Curated Events for Every Creator Journey</h2>
         <p class="sec-desc rv" style="margin-top: 16px; max-width: 600px; margin-bottom: 0; margin-left: auto; margin-right: auto; line-height: 1.6;">Explore upcoming panels, awards gala ceremonies, regional conferences, and exclusive brand sponsorship opportunities.</p>
     </div>
 
@@ -1334,7 +1334,7 @@ Shaping the Next Generation of Future Leaders</h2>                <p class="sec-
 
         <div class="section-head">
             <div class="eyebrow rv" style="font-size: 10px; font-weight: 700; letter-spacing: 3px;">Engage & Support</div>
-            <h2 class="sec-title rv" style="font-size: clamp(34px, 4vw, 56px); font-weight: 900; line-height: 1.15;">Partner & sponsor</h2>
+            <h2 class="sec-title rv" style="font-size: clamp(34px, 4vw, 56px); font-weight: 700; line-height: 1.15;">Partner & sponsor</h2>
             <p class="sec-desc rv" style="margin-top: 16px; max-width: 600px; margin-bottom: 0; margin-left: auto; margin-right: auto; line-height: 1.6;">Join hands with Young Chanakya X to build the premier ecosystem for C-suite leaders, creators, and innovators. Choose how you want to make an impact.</p>
         </div>
 
@@ -1460,7 +1460,7 @@ Shaping the Next Generation of Future Leaders</h2>                <p class="sec-
     <div class="container">
         <div class="section-head text-center" style="margin-bottom: 50px;">
             <div class="eyebrow rv" style="font-size: 10px; font-weight: 700; letter-spacing: 3px;">Ways to Engage</div>
-            <h2 class="sec-title rv" style="color: var(--primary-dark); font-size: clamp(34px, 4vw, 56px); font-weight: 900; line-height: 1.15;">Be Part of the Experience</h2>
+            <h2 class="sec-title rv" style="color: var(--primary-dark); font-size: clamp(34px, 4vw, 56px); font-weight: 700; line-height: 1.15;">Be Part of the Experience</h2>
             <p class="sec-desc rv" style="margin-top: 16px; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6;">Explore a range of initiatives designed to connect you with industry leaders, ideas, and opportunities.</p>
         </div>
     </div>
@@ -1505,7 +1505,7 @@ Shaping the Next Generation of Future Leaders</h2>                <p class="sec-
     <div class="cx-wrapper">
         <div class="cx-editorial-header text-center">
             <div class="eyebrow rv" style="margin-bottom: 12px; font-size: 10px; font-weight: 700; letter-spacing: 3px;">Young Chanakya X Experiences</div>
-            <h2 class="cx-main-heading" style="margin-bottom: 16px; font-size: clamp(34px, 4vw, 56px); font-weight: 900; line-height: 1.15;">Creator Spaces & Events</h2>
+            <h2 class="cx-main-heading" style="margin-bottom: 16px; font-size: clamp(34px, 4vw, 56px); font-weight: 700; line-height: 1.15;">Creator Spaces & Events</h2>
             <p class="sec-desc rv mx-auto" style="margin-bottom: 0; line-height: 1.6; max-width: 600px;">We provide professional recording studios, creative lounges, and city meetups to help you create content, meet people, and grow your audience.</p>
         </div>
 

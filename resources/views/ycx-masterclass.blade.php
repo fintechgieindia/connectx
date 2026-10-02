@@ -299,7 +299,7 @@ $seo = [
     <div class="wrap">
       <div class="section-head text-center mx-auto" style="margin-bottom: 56px; max-width: 900px;">
         <span class="eyebrow">Questions, Answered</span>
-        <h2 class="sec-title" style="font-weight: 700; color: var(--primary);">Frequently Asked Questions</h2>
+        <h2 class="sec-title" style="font-weight: 400; color: var(--primary);">Frequently Asked Questions</h2>
         <p class="sec-desc" style="font-size: 16px; color: var(--grey); margin-top: 12px; line-height: 1.6;">Find answers to common questions about the application process, program details, and expectations.</p>
       </div>
       <div class="faq-grid">

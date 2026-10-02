@@ -506,7 +506,7 @@
 
 .faq-q span.qtext {
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 400;
   color: var(--primary);
 }
 
@@ -651,12 +651,16 @@
   padding: 26px 0;
   cursor: pointer;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 400;
   color: var(--primary);
   text-align: left;
   background: transparent;
   border: none;
   width: 100%;
+}
+
+.faq-q span {
+  font-weight: 400;
 }
 
 .faq-q .plus {
@@ -686,6 +690,7 @@
 .faq-a p {
   padding-bottom: 26px;
   font-size: 14.5px;
+  font-weight: 400;
   color: var(--grey);
   line-height: 1.65;
   text-align: left;

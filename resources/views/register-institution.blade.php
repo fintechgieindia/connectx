@@ -563,6 +563,33 @@ $lightNav = true;
     justify-content: center;
     flex-shrink: 0;
   }
+
+  /* Why Be Part of the Conversation Cards */
+  .conversation-card {
+    background-color: #fffaf5 !important;
+    border: 1px solid #ebd9c8 !important;
+    border-radius: 1.35rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 6px -1px rgba(12, 58, 48, 0.05);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .conversation-card:hover {
+    transform: translateY(-2px);
+    border-color: #d8c2ad !important;
+    box-shadow: 0 4px 10px -2px rgba(12, 58, 48, 0.08);
+  }
+  .conversation-card .conversation-card-body {
+    background-color: #fffaf5 !important;
+  }
+  .conversation-card .conversation-card-title {
+    color: #c8743a !important;
+    transition: color 0.25s ease;
+  }
+  .conversation-card:hover .conversation-card-title {
+    color: #0c3a30 !important;
+  }
 </style>
 @endpush
 
@@ -601,7 +628,7 @@ $lightNav = true;
           </div>
 
           {{-- Main Hero Headline --}}
-          <h1 class="mt-5 sm:mt-6 text-[1.95rem] font-black leading-[1.12] sm:text-4xl lg:text-[3.25rem] text-forest" style="letter-spacing:-1.2px;">
+          <h1 class="mt-5 sm:mt-6 text-[1.95rem] font-bold leading-[1.12] sm:text-4xl lg:text-[3.25rem] text-forest" style="letter-spacing:-1.2px;">
             Where India's Education
             <span class="block" style="color:#14513f;">Leaders Speak First.</span>
           </h1>
@@ -736,7 +763,7 @@ $lightNav = true;
                 </div>
 
                 {{-- 5. Institution / Group Name --}}
-                <div class="col-span-1">
+                <div class="col-span-1 sm:col-span-2">
                   <label for="institution_name">Institution/Group Name <span class="text-red-600">*</span></label>
                   <input type="text"
                     id="institution_name"
@@ -765,7 +792,7 @@ $lightNav = true;
                 </div>
 
                 {{-- 7. Website URL (optional) --}}
-                <div class="col-span-1 sm:col-span-2">
+                <div class="col-span-1">
                   <label for="website">Website URL <span class="text-forest/45 font-normal text-xs">(optional)</span></label>
                   <input type="url"
                     id="website"
@@ -964,7 +991,7 @@ $lightNav = true;
         <span class="rounded-full bg-peach/40 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-forest">
           The Leadership Circle
         </span>
-        <h2 class="mt-4 text-2xl sm:text-4xl lg:text-[2.75rem] font-black text-forest" style="letter-spacing:-1.2px;">
+        <h2 class="mt-4 text-2xl sm:text-4xl lg:text-[2.75rem] font-bold text-forest" style="letter-spacing:-1.2px;">
           Who Is This Conversation For?
         </h2>
         <p class="mt-3 sm:mt-4 text-forest/75 text-sm sm:text-[1.05rem] leading-relaxed">
@@ -1018,7 +1045,7 @@ $lightNav = true;
           <div class="profile-card-overlay"></div>
           <div class="profile-card-accent"></div>
           <div class="profile-card-body">
-            <h3 class="profile-card-title" title="Principals & Directors">Principals &amp; Directors</h3>
+            <h3 class="profile-card-title" title="Principals & Directors">Principals &amp; <br />Directors</h3>
             <p class="profile-card-desc">Fostering teaching culture and student success.</p>
           </div>
         </article>
@@ -1068,7 +1095,7 @@ $lightNav = true;
         {{-- Left Side: Narrative & Animated CTA (Masters' Union Style) --}}
         <div class="lg:col-span-5">
 
-          <h2 class="text-2xl sm:text-4xl lg:text-[2.65rem] xl:text-[3rem] font-black leading-[1.15] text-white" style="letter-spacing:-1.2px;">
+          <h2 class="text-2xl sm:text-4xl lg:text-[2.65rem] xl:text-[3rem] font-bold leading-[1.15] text-white" style="letter-spacing:-1.2px;">
             The Untold Stories of <br class="hidden sm:inline" />
             the People Who <br />
             <span class="italic font-serif font-normal" style="color: #ffd2b1;">Built the</span>
@@ -1364,7 +1391,7 @@ $lightNav = true;
         padding: 0 16px;
         text-align: center;
         font-size: clamp(1.1rem, 1.25vw, 1.35rem);
-        font-weight: 800;
+        font-weight: 400;
         letter-spacing: 0.5px;
         line-height: 1.3;
         color: #ffffff;
@@ -1390,7 +1417,7 @@ $lightNav = true;
 
       .panel-heading {
         font-size: 2.15rem;
-        font-weight: 800;
+        font-weight: 400;
         color: #ffffff;
         margin-bottom: 14px;
         display: flex;
@@ -1569,20 +1596,17 @@ $lightNav = true;
 
     <div class="mx-auto max-w-shell px-3.5 sm:px-6 lg:px-8 relative z-10">
 
-      {{-- Section Header: Title & Description on Left, Pill Badge on Right --}}
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10 sm:mb-14">
-        <div class="max-w-2xl">
-          <span class="rounded-full bg-peach/40 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-forest inline-block shadow-2xs">
-            Curated Discourse
-          </span>
-          <h2 class="mt-4 text-2xl sm:text-4xl lg:text-[2.75rem] font-black text-forest leading-tight" style="letter-spacing:-1.2px;">
-            What We Talk About
-          </h2>
-          <p class="mt-3 text-sm sm:text-base text-forest/75 leading-relaxed font-normal">
-            Conversations anchored in decisive themes governing modern Indian and global education. Real challenges, strategic decisions, and leadership conviction.
-          </p>
-        </div>
-
+      {{-- Section Header: Centered --}}
+      <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+        <span class="rounded-full bg-peach/40 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-forest inline-block shadow-2xs">
+          Curated Discourse
+        </span>
+        <h2 class="mt-4 text-2xl sm:text-4xl lg:text-[2.75rem] font-bold text-forest leading-tight" style="letter-spacing:-1.2px;">
+          What We Talk About
+        </h2>
+        <p class="mt-3 text-sm sm:text-base text-forest/75 leading-relaxed font-normal max-w-2xl mx-auto">
+          Conversations anchored in decisive themes governing modern Indian and global education. Real challenges, strategic decisions, and leadership conviction.
+        </p>
       </div>
 
       {{-- 6 Thematic Cards (Clean, Easy-to-Scan Grid) --}}
@@ -1596,7 +1620,7 @@ $lightNav = true;
                  alt="Founder Journeys & Leadership" 
                  loading="lazy" />
           </div>
-          <div class="pt-3.5 pb-1 px-1 flex flex-col flex-1">
+          <div class="pt-3.5 pb-2 px-1 flex flex-col flex-1">
             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-peach/40 border border-peach/60 text-[11px] font-bold uppercase tracking-wider text-forest mb-2 self-start">
               Leadership &amp; Governance
             </span>
@@ -1606,11 +1630,6 @@ $lightNav = true;
             <p class="mt-2 text-xs sm:text-[13px] text-forest/75 leading-relaxed">
               Real stories of conviction, governance, and building institutions that endure.
             </p>
-            <div class="mt-auto pt-3.5 border-t border-[#ebd9c8]/70 flex items-center justify-between">
-              <span class="text-xs sm:text-[13px] font-bold text-[#b85d19] group-hover:text-forest transition-colors inline-flex items-center gap-1.5">
-                View Topic Details <i class="fa-solid fa-arrow-up-right-from-square text-[10px] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
-              </span>
-            </div>
           </div>
         </article>
 
@@ -1622,7 +1641,7 @@ $lightNav = true;
                  alt="AI, ERP & Campus Tech" 
                  loading="lazy" />
           </div>
-          <div class="pt-3.5 pb-1 px-1 flex flex-col flex-1">
+          <div class="pt-3.5 pb-2 px-1 flex flex-col flex-1">
             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-peach/40 border border-peach/60 text-[11px] font-bold uppercase tracking-wider text-forest mb-2 self-start">
               Campus Tech &amp; AI
             </span>
@@ -1632,11 +1651,6 @@ $lightNav = true;
             <p class="mt-2 text-xs sm:text-[13px] text-forest/75 leading-relaxed">
               How campuses adopt AI, modernize ERP systems, and build smarter learning environments.
             </p>
-            <div class="mt-auto pt-3.5 border-t border-[#ebd9c8]/70 flex items-center justify-between">
-              <span class="text-xs sm:text-[13px] font-bold text-[#b85d19] group-hover:text-forest transition-colors inline-flex items-center gap-1.5">
-                View Topic Details <i class="fa-solid fa-arrow-up-right-from-square text-[10px] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
-              </span>
-            </div>
           </div>
         </article>
 
@@ -1648,7 +1662,7 @@ $lightNav = true;
                  alt="The Future of Education" 
                  loading="lazy" />
           </div>
-          <div class="pt-3.5 pb-1 px-1 flex flex-col flex-1">
+          <div class="pt-3.5 pb-2 px-1 flex flex-col flex-1">
             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-peach/40 border border-peach/60 text-[11px] font-bold uppercase tracking-wider text-forest mb-2 self-start">
               Academic Innovation
             </span>
@@ -1658,11 +1672,6 @@ $lightNav = true;
             <p class="mt-2 text-xs sm:text-[13px] text-forest/75 leading-relaxed">
               From rote learning to skill-first, globally relevant education models.
             </p>
-            <div class="mt-auto pt-3.5 border-t border-[#ebd9c8]/70 flex items-center justify-between">
-              <span class="text-xs sm:text-[13px] font-bold text-[#b85d19] group-hover:text-forest transition-colors inline-flex items-center gap-1.5">
-                View Topic Details <i class="fa-solid fa-arrow-up-right-from-square text-[10px] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
-              </span>
-            </div>
           </div>
         </article>
 
@@ -1674,7 +1683,7 @@ $lightNav = true;
                  alt="The Business of Education" 
                  loading="lazy" />
           </div>
-          <div class="pt-3.5 pb-1 px-1 flex flex-col flex-1">
+          <div class="pt-3.5 pb-2 px-1 flex flex-col flex-1">
             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-peach/40 border border-peach/60 text-[11px] font-bold uppercase tracking-wider text-forest mb-2 self-start">
               Institutional Growth
             </span>
@@ -1684,11 +1693,6 @@ $lightNav = true;
             <p class="mt-2 text-xs sm:text-[13px] text-forest/75 leading-relaxed">
               Fee structures, faculty retention, and the economics of scaling campuses.
             </p>
-            <div class="mt-auto pt-3.5 border-t border-[#ebd9c8]/70 flex items-center justify-between">
-              <span class="text-xs sm:text-[13px] font-bold text-[#b85d19] group-hover:text-forest transition-colors inline-flex items-center gap-1.5">
-                View Topic Details <i class="fa-solid fa-arrow-up-right-from-square text-[10px] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
-              </span>
-            </div>
           </div>
         </article>
 
@@ -1700,7 +1704,7 @@ $lightNav = true;
                  alt="Transformation & Turnarounds" 
                  loading="lazy" />
           </div>
-          <div class="pt-3.5 pb-1 px-1 flex flex-col flex-1">
+          <div class="pt-3.5 pb-2 px-1 flex flex-col flex-1">
             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-peach/40 border border-peach/60 text-[11px] font-bold uppercase tracking-wider text-forest mb-2 self-start">
               Campus Transformation
             </span>
@@ -1710,11 +1714,6 @@ $lightNav = true;
             <p class="mt-2 text-xs sm:text-[13px] text-forest/75 leading-relaxed">
               Legacy institutions adapting, rebranding, and reclaiming relevance.
             </p>
-            <div class="mt-auto pt-3.5 border-t border-[#ebd9c8]/70 flex items-center justify-between">
-              <span class="text-xs sm:text-[13px] font-bold text-[#b85d19] group-hover:text-forest transition-colors inline-flex items-center gap-1.5">
-                View Topic Details <i class="fa-solid fa-arrow-up-right-from-square text-[10px] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
-              </span>
-            </div>
           </div>
         </article>
 
@@ -1726,7 +1725,7 @@ $lightNav = true;
                  alt="Social Impact & Nation Building" 
                  loading="lazy" />
           </div>
-          <div class="pt-3.5 pb-1 px-1 flex flex-col flex-1">
+          <div class="pt-3.5 pb-2 px-1 flex flex-col flex-1">
             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-peach/40 border border-peach/60 text-[11px] font-bold uppercase tracking-wider text-forest mb-2 self-start">
               Nation Building
             </span>
@@ -1736,11 +1735,6 @@ $lightNav = true;
             <p class="mt-2 text-xs sm:text-[13px] text-forest/75 leading-relaxed">
               Quality education reaching Tier 2/3 cities and first-generation learners.
             </p>
-            <div class="mt-auto pt-3.5 border-t border-[#ebd9c8]/70 flex items-center justify-between">
-              <span class="text-xs sm:text-[13px] font-bold text-[#b85d19] group-hover:text-forest transition-colors inline-flex items-center gap-1.5">
-                View Topic Details <i class="fa-solid fa-arrow-up-right-from-square text-[10px] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
-              </span>
-            </div>
           </div>
         </article>
 
@@ -1815,7 +1809,7 @@ $lightNav = true;
               <span class="h-1.5 w-1.5 rounded-full bg-forest"></span>
               Tangible Value
             </span>
-            <h2 class="text-3xl sm:text-4xl lg:text-[40px] xl:text-[42px] font-black text-forest leading-[1.12] mb-2.5 sm:mb-3"
+            <h2 class="text-3xl sm:text-4xl lg:text-[40px] xl:text-[42px] font-bold text-forest leading-[1.12] mb-2.5 sm:mb-3"
                 style="letter-spacing:-1px;">
               Why Be Part of the <span style="color:#c8743a;">Conversation?</span>
             </h2>
@@ -1836,15 +1830,15 @@ $lightNav = true;
 
         {{-- Top Row 2 Cards --}}
         @foreach($topCards as $card)
-        <article class="group bg-white rounded-2xl sm:rounded-[22px] overflow-hidden border border-[#e8ded2] shadow-xs hover:shadow-xl hover:-translate-y-1 hover:border-forest/30 transition-all duration-300 flex flex-col">
+        <article class="conversation-card group">
           <div class="h-44 sm:h-48 lg:h-50 w-full overflow-hidden relative bg-[#f2ece2]">
             <img src="{{ $card['image'] }}" 
                  alt="{{ $card['alt'] }}" 
                  class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" 
                  loading="lazy" />
           </div>
-          <div class="pt-3.5 pb-4 px-4 sm:pt-4 sm:pb-4.5 sm:px-5 flex flex-col flex-1 justify-start bg-white">
-            <h3 class="text-[16px] sm:text-[17px] font-bold text-forest leading-snug group-hover:text-[#c8743a] transition-colors mb-1 sm:mb-1.5">
+          <div class="pt-3.5 pb-4 px-4 sm:pt-4 sm:pb-4.5 sm:px-5 flex flex-col flex-1 justify-start conversation-card-body">
+            <h3 class="text-[16px] sm:text-[17px] font-bold leading-snug conversation-card-title mb-1 sm:mb-1.5">
               {{ $card['title'] }}
             </h3>
             <p class="text-xs sm:text-[13px] leading-relaxed text-forest/70">
@@ -1859,15 +1853,15 @@ $lightNav = true;
       {{-- Row 2: 4 Cards on desktop --}}
       <div class="mt-4 sm:mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 lg:gap-4 xl:gap-4.5">
         @foreach($bottomCards as $card)
-        <article class="group bg-white rounded-2xl sm:rounded-[22px] overflow-hidden border border-[#e8ded2] shadow-xs hover:shadow-xl hover:-translate-y-1 hover:border-forest/30 transition-all duration-300 flex flex-col">
+        <article class="conversation-card group">
           <div class="h-36 sm:h-40 lg:h-44 w-full overflow-hidden relative bg-[#f2ece2]">
             <img src="{{ $card['image'] }}" 
                  alt="{{ $card['alt'] }}" 
                  class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" 
                  loading="lazy" />
           </div>
-          <div class="pt-3.5 pb-4 px-4 sm:pt-4 sm:pb-4.5 sm:px-5 flex flex-col flex-1 justify-start bg-white">
-            <h3 class="text-[16px] sm:text-[17px] font-bold text-forest leading-snug group-hover:text-[#c8743a] transition-colors mb-1 sm:mb-1.5">
+          <div class="pt-3.5 pb-4 px-4 sm:pt-4 sm:pb-4.5 sm:px-5 flex flex-col flex-1 justify-start conversation-card-body">
+            <h3 class="text-[16px] sm:text-[17px] font-bold leading-snug conversation-card-title mb-1 sm:mb-1.5">
               {{ $card['title'] }}
             </h3>
             <p class="text-xs sm:text-[13px] leading-relaxed text-forest/70">
@@ -1901,7 +1895,7 @@ $lightNav = true;
           <span class="h-2 w-2 rounded-full bg-[#c8743a] animate-pulse"></span>
           The Production Journey
         </span>
-        <h2 class="text-3xl sm:text-4xl lg:text-[2.65rem] font-black leading-tight mb-2 text-forest"
+        <h2 class="text-3xl sm:text-4xl lg:text-[2.65rem] font-bold leading-tight mb-2 text-forest"
             style="letter-spacing:-1.2px;">
           How the <span style="color:#c8743a;">Conversation</span> Works
         </h2>
@@ -2126,7 +2120,7 @@ $lightNav = true;
         Educational Founder’s Series
       </span>
 
-      <h2 class="mt-4 sm:mt-6 text-[25px] sm:text-4xl lg:text-[3.25rem] font-black text-forest max-w-3xl mx-auto leading-[1.2] sm:leading-tight" style="letter-spacing:-1.2px;">
+      <h2 class="mt-4 sm:mt-6 text-[25px] sm:text-4xl lg:text-[3.25rem] font-bold text-forest max-w-3xl mx-auto leading-[1.2] sm:leading-tight" style="letter-spacing:-1.2px;">
         Because Better Schools Build a <span style="color:#c8743a;">Brighter India.</span>
       </h2>
 
