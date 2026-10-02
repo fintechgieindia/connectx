@@ -231,7 +231,7 @@ body {
   border-radius: 100px;
   font-family: 'Manrope', sans-serif;
   font-size: 15px;
-  font-weight: 800;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -248,7 +248,7 @@ body {
   border-radius: 100px;
   font-family: 'Manrope', sans-serif;
   font-size: 15px;
-  font-weight: 700;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -264,7 +264,7 @@ body {
   border-radius: 100px;
   font-family: 'Manrope', sans-serif;
   font-size: 15px;
-  font-weight: 800;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -2062,7 +2062,7 @@ body {
   opacity: 0;
   transition: max-width 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, margin-right 0.3s ease;
   color: #0c3a30;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 13px;
   margin-right: 0;
   text-transform: uppercase;
@@ -2187,7 +2187,7 @@ body {
   border-radius: 100px;
   padding: 12px 32px;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 600;
   text-decoration: none;
   transition: all 0.25s ease;
   margin-top: auto;
@@ -2225,7 +2225,7 @@ body {
   border-radius: 100px;
   padding: 12px 32px;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 600;
   text-decoration: none;
   transition: all 0.25s ease;
   box-shadow: 0 4px 10px rgba(12, 58, 48, 0.1);

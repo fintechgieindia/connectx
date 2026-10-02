@@ -329,7 +329,7 @@
   text-align: center;
   padding: 12px;
   border-radius: 100px;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 13px;
   transition: all 0.3s ease;
 }
@@ -961,7 +961,7 @@
   display: inline-block;
   background: #ffca95;
   color: #071f1a;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 14.5px;
   padding: 14px 36px;
   border-radius: 100px;

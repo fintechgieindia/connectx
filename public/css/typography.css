@@ -220,55 +220,75 @@ button,
 .btn-main,
 .btn-hero-primary,
 .btn-hero-outline,
+.btn-hero-secondary,
 .btn-join,
 .fs-website-btn,
 .partner-submit-btn,
+.application-submit-btn,
 .cta-btn,
 .about-btn-1,
 .about-btn-2,
 .btn-four,
+.ycx-cta-btn,
+.mc-btn,
+.mem-cta-btn,
+.com-card-btn,
+.tier-btn-primary,
+.tier-btn-outline,
+.interactive-arrow-btn,
+.btn-breather,
 [class*="btn-"],
 input[type="submit"],
 input[type="button"] {
     font-family: 'Manrope', sans-serif !important;
-    font-weight: 700 !important;
+    font-weight: 600 !important;
     letter-spacing: 0.2px !important;
     line-height: 1.4 !important;
     border-radius: 50px !important;
 }
 
-/* Hero buttons keep their larger size */
+/* Ensure buttons with fw-bold class also use 600 */
+button.fw-bold,
+.btn.fw-bold,
+a.btn.fw-bold,
+[class*="btn-"].fw-bold {
+    font-weight: 600 !important;
+}
+
+/* Hero buttons */
 .btn-hero-primary,
 .btn-hero-outline,
 .btn-hero-secondary {
     font-size: 15px !important;
-    font-weight: 800 !important;
+    font-weight: 600 !important;
 }
 
 /* Header / join button */
 .btn-join,
-.fs-website-btn {
+.fs-website-btn,
+.ycx-cta-btn {
     font-size: 13px !important;
-    font-weight: 800 !important;
+    font-weight: 600 !important;
 }
 
 /* Submit / form buttons */
-.partner-submit-btn {
+.partner-submit-btn,
+.application-submit-btn {
     font-size: 16px !important;
-    font-weight: 700 !important;
+    font-weight: 600 !important;
 }
 
 /* Contact form send button */
 .btn-four {
     font-size: 15px !important;
-    font-weight: 700 !important;
+    font-weight: 600 !important;
 }
 
 /* Navigation pill buttons on events page */
 .custom-pill-nav .nav-link-item {
     font-family: 'Manrope', sans-serif !important;
     font-size: 0.82rem !important;
-    font-weight: 700 !important;
+    font-weight: 600 !important;
     letter-spacing: 0.5px !important;
     text-transform: uppercase !important;
 }
