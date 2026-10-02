@@ -501,7 +501,7 @@ $seo = [
                                 <div class="cluster-title-icon"><i class="bi bi-building-gear"></i></div>
                                 <div>
                                     <!-- <span class="text-uppercase fw-bold text-muted small tracking-wide">Segment</span> -->
-                                    <h2 class="h4 fw-bold m-0 text-dark" style="font-weight: 800; margin-bottom: 6px !important;">Business & Entrepreneurship</h2>
+                                    <h3 class="m-0 text-dark" style="font-weight: 400; margin-bottom: 6px !important;">Business & Entrepreneurship</h3>
                                     <p class="text-muted small m-0">Scale engines, industrial innovators, enterprise owners, and market strategists managing global expansions.</p>
                                 </div>
                             </div>
@@ -528,7 +528,7 @@ $seo = [
                                 <div class="cluster-title-icon"><i class="bi bi-cpu"></i></div>
                                 <div>
                                     <!-- <span class="text-uppercase fw-bold text-muted small tracking-wide">Segment</span> -->
-                                    <h2 class="h4 fw-bold m-0 text-dark" style="font-weight: 800; margin-bottom: 6px !important;">Innovation & Technology</h2>
+                                    <h3 class="m-0 text-dark" style="font-weight: 400; margin-bottom: 6px !important;">Innovation & Technology</h3>
                                     <p class="text-muted small m-0">Architects designing structural software architectures, AI data systems, and complex engineering frameworks.</p>
                                 </div>
                             </div>
@@ -557,7 +557,7 @@ $seo = [
                                 <div class="cluster-title-icon"><i class="bi bi-graph-up-arrow"></i></div>
                                 <div>
                                     <!-- <span class="text-uppercase fw-bold text-muted small tracking-wide">Segment 03</span> -->
-                                    <h2 class="h4 fw-bold m-0 text-dark" style="font-weight: 800; margin-bottom: 6px !important;">Finance, Investment & Policy</h2>
+                                    <h3 class="m-0 text-dark" style="font-weight: 400; margin-bottom: 6px !important;">Finance, Investment & Policy</h3>
                                     <p class="text-muted small m-0">Venture vehicles, allocation managers, structural legal compliance advisors, and system regulators.</p>
                                 </div>
                             </div>
@@ -586,7 +586,7 @@ $seo = [
                                 <div class="cluster-title-icon"><i class="bi bi-bezier2"></i></div>
                                 <div>
                                     <!-- <span class="text-uppercase fw-bold text-muted small tracking-wide">Segment 04</span> -->
-                                    <h2 class="h4 fw-bold m-0 text-dark" style="font-weight: 800; margin-bottom: 6px !important;">Creative, Media & Marketing</h2>
+                                    <h3 class="m-0 text-dark" style="font-weight: 400; margin-bottom: 6px !important;">Creative, Media & Marketing</h3>
                                     <p class="text-muted small m-0">Architects of message distribution pipelines, enterprise brand strategists, and functional design thinkers.</p>
                                 </div>
                             </div>
@@ -612,7 +612,7 @@ $seo = [
                                 <div class="cluster-title-icon"><i class="bi bi-globe"></i></div>
                                 <div>
                                     <!-- <span class="text-uppercase fw-bold text-muted small tracking-wide">Segment 05</span> -->
-                                    <h2 class="h4 fw-bold m-0 text-dark" style="font-weight: 800; margin-bottom: 6px !important;">Social Impact & Academic Research</h2>
+                                    <h3 class="m-0 text-dark" style="font-weight: 400; margin-bottom: 6px !important;">Social Impact & Academic Research</h3>
                                     <p class="text-muted small m-0">Sustainability operators, research scholars, global academic authorities, and structural change mentors.</p>
                                 </div>
                             </div>

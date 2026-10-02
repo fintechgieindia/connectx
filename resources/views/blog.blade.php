@@ -129,7 +129,7 @@ $seo = [
                                     <span>•</span>
                                     <span>{{ $item->read_time }}</span> --}}
                                 </div>
-                                <a href="{{ route('insights.detail', $item->slug) }}" class="card-title">{{ $item->title }}</a>
+                                <h3 class="card-title"><a href="{{ route('insights.detail', $item->slug) }}">{{ $item->title }}</a></h3>
                                 <p class="card-excerpt">{{ $item->excerpt }}</p>
                             </div>
                         </div>

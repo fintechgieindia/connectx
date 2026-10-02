@@ -391,9 +391,12 @@ $seo = [
         cursor: pointer;
         font-family: 'Poppins', sans-serif !important;
         font-size: 18px;
-        font-weight: 700;
+        font-weight: 400;
         color: #0c3a30;
         text-align: left;
+    }
+    .faq-q span {
+        font-weight: 400;
     }
     .faq-q .plus {
         width: 26px;

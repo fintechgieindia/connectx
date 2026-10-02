@@ -585,3 +585,12 @@ select::placeholder {
 .fw-medium { font-weight: 500 !important; }
 .fw-normal { font-weight: 400 !important; }
 .fw-light { font-weight: 300 !important; }
+
+/* ── 22. FAQ Accordion Typography ───────────────────────── */
+.faq-q,
+.faq-q span,
+.faq-q span.qtext,
+.faq-a,
+.faq-a p {
+    font-weight: 400 !important;
+}

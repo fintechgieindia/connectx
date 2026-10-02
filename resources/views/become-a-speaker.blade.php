@@ -789,9 +789,13 @@ $seo = [
     cursor: pointer;
     font-family: 'Manrope', sans-serif !important;
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 400;
     color: var(--ink);
     text-align: left;
+  }
+
+  .speaker-body .faq-q span {
+    font-weight: 400;
   }
 
   .speaker-body .faq-q .plus {
@@ -821,6 +825,7 @@ $seo = [
   .speaker-body .faq-a p {
     padding-bottom: 26px;
     font-size: 14.5px;
+    font-weight: 400;
     color: var(--text-soft);
     line-height: 1.65;
     text-align: left;

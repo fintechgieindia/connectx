@@ -782,9 +782,13 @@
   cursor: pointer;
   font-family: 'Manrope', sans-serif;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 400;
   color: var(--green);
   text-align: left;
+}
+
+.become-a-feature-body .faq-q span {
+  font-weight: 400;
 }
 
 .become-a-feature-body .faq-q .plus {
