@@ -268,6 +268,31 @@ $seo = [
     .st-bg-grey-green {
         background-color: #f8f6f2;
     }
+
+    /* Spacing between Why Stories Matter and Your Story, Your Impact */
+    .why-stories-matter-sec {
+        padding-bottom: 30px !important;
+    }
+    .your-story-impact-sec {
+        padding-top: 40px !important;
+    }
+    @media (max-width: 991px) {
+        .why-stories-matter-sec {
+            padding-bottom: 20px !important;
+        }
+        .your-story-impact-sec {
+            padding-top: 25px !important;
+        }
+    }
+    @media (max-width: 767px) {
+        .why-stories-matter-sec {
+            padding-bottom: 15px !important;
+        }
+        .your-story-impact-sec {
+            padding-top: 20px !important;
+        }
+    }
+
     .st-eyebrow {
         display: inline-flex;
         align-items: center;
@@ -1119,7 +1144,7 @@ $seo = [
 </section> --}}
 
 <!-- EDITORIAL LENS (WHAT MAKES A GREAT STORY) -->
-<section class="st-section st-bg-white">
+<section class="st-section st-bg-white why-stories-matter-sec">
     <div class="container">
         <div class="row align-items-stretch g-5">
             <div class="col-lg-6 order-lg-2">
@@ -1270,7 +1295,7 @@ $seo = [
 </section> --}}
 
 <!-- WHY GET FEATURED -->
-<section class="st-section st-bg-white">
+<section class="st-section st-bg-white your-story-impact-sec">
     <div class="container">
         <div class="text-center mx-auto mb-5" style="max-width: 800px;">
             <div class="st-eyebrow">YOUR STORY, YOUR IMPACT</div>

@@ -876,7 +876,7 @@ CONNECTX PARTNERSHIP OPPORTUNITIES
   }
   .tier-name { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #2e7d62; margin-bottom: 10px; }
   .tier-card.featured .tier-name { color: #ffd2b1; }
-  .tier-title { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; font-weight: 700; color: #0c3a30; margin-bottom: 6px; }
+  .tier-title { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; font-weight: 400; color: #0c3a30; margin-bottom: 6px; }
   .tier-card.featured .tier-title { color: #fdf9f5; }
   .tier-tagline { font-size: 13px; color: #5a5a5a; margin-bottom: 22px; line-height: 1.5; }
   .tier-card.featured .tier-tagline { color: rgba(253,249,245,0.7); }
@@ -917,7 +917,7 @@ CONNECTX PARTNERSHIP OPPORTUNITIES
   <div class="container">
     <div class="section-head text-center" style="margin-bottom: 50px;">
         <div class="eyebrow rv" style="color: #0c3a30; font-size: 10px; font-weight: 700; letter-spacing: 3px;">Young Chanakya X</div>
-        <h2 class="sec-title rv" style="color: #0c3a30; font-size: clamp(34px, 4vw, 56px); font-weight: 900; line-height: 1.15;">Partnership Opportunities</h2>
+        <h2 class="sec-title rv" style="color: #0c3a30; font-size: clamp(34px, 4vw, 56px); font-weight: 400; line-height: 1.15;">Partnership Opportunities</h2>
         <p class="sec-desc rv mx-auto" style="margin-top: 16px; max-width: 600px; line-height: 1.6;">Explore our dynamic partnership levels tailored for visibility, networking, and creative collaboration.</p>
     </div>
 

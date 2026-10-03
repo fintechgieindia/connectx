@@ -601,12 +601,17 @@ section {
 
 .cta-section .section-title {
   font-size: clamp(3rem, 5vw, 5rem);
+  font-weight: 400 !important;
+  letter-spacing: -1.2px !important;
+  line-height: 1.2 !important;
   margin-bottom: 16px;
-  color: #89b2a8;
+  color: #ffffff;
 }
 
 .cta-section .section-title .italic-accent {
-  font-style: italic;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  letter-spacing: -1.2px !important;
   color: var(--orange);
 }
 

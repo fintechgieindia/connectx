@@ -746,7 +746,7 @@ $seo = [
   .speaker-body .cta-banner h2 {
     font-family: 'Manrope', sans-serif !important;
     font-size: clamp(34px, 4vw, 56px) !important;
-    font-weight: 900 !important;
+    font-weight: 400 !important;
     color: var(--ink) !important;
     letter-spacing: -2px !important;
     max-width: 700px;
@@ -2047,7 +2047,7 @@ $seo = [
     "></div>
 
     <div class="wrap" style="position: relative; z-index: 1;">
-      <h2 class="sec-title" style="color: #ffffff !important; letter-spacing: -2px;">Have a Story that Needs a Bigger Room?</h2>
+      <h2 class="sec-title" style="color: #ffffff !important; letter-spacing: -2px; font-weight: 400 !important;">Have a Story that Needs a Bigger Room?</h2>
       <p class="sec-desc" style="color: rgba(255,250,244,0.85) !important;">If you have ideas, expertise, or practical experiences that can educate and inspire others, we'd love to welcome you to the YCX Talks stage.</p>
       <a href="#speakerForm" class="btn btn-primary" style="background: #ffd2b1; color: #0c3a30 !important; font-weight: 700;">Become a Speaker</a>
     </div>

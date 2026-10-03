@@ -528,17 +528,39 @@ $lightNav = true;
   }
 
   /* Focus Area Solid White Labels */
+  .focus-area-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+    max-width: 480px;
+  }
+  @media (min-width: 640px) {
+    .focus-area-grid {
+      gap: 0.625rem;
+      max-width: 520px;
+    }
+  }
+
   .focus-area-label {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: 0.625rem;
-    padding: 0.5rem 0.95rem;
-    border-radius: 0.75rem;
+    gap: 0.35rem;
+    padding: 0.45rem 0.5rem;
+    border-radius: 0.65rem;
     background-color: #ffffff !important;
     border: 1px solid #e2e8f0;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     cursor: default;
+    width: 100%;
+    min-width: 0;
+  }
+  @media (min-width: 640px) {
+    .focus-area-label {
+      padding: 0.5rem 0.85rem;
+      gap: 0.625rem;
+      border-radius: 0.75rem;
+    }
   }
   .focus-area-label:hover {
     background-color: #f8fafc !important;
@@ -547,21 +569,36 @@ $lightNav = true;
     box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
   }
   .focus-area-label .label-text {
-    font-size: 13px;
+    font-size: 11px;
     font-weight: 700;
     color: #0f172a !important;
     letter-spacing: -0.2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  @media (min-width: 640px) {
+    .focus-area-label .label-text {
+      font-size: 13px;
+    }
   }
   .focus-area-label .label-icon-box {
-    width: 1.625rem;
-    height: 1.625rem;
-    border-radius: 0.5rem;
+    width: 1.35rem;
+    height: 1.35rem;
+    border-radius: 0.45rem;
     background-color: #f1f5f9;
     border: 1px solid #e2e8f0;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+  }
+  @media (min-width: 640px) {
+    .focus-area-label .label-icon-box {
+      width: 1.625rem;
+      height: 1.625rem;
+      border-radius: 0.5rem;
+    }
   }
 
   /* Why Be Part of the Conversation Cards */
@@ -1004,7 +1041,7 @@ $lightNav = true;
 
         {{-- Card 1: College Correspondents --}}
         <article class="profile-card group">
-          <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=700&q=80"
+          <img src="{{ asset('images/media/institution/college-correspondents.jpg') }}"
                alt="College Correspondents" loading="lazy" />
           <div class="profile-card-overlay"></div>
           <div class="profile-card-accent"></div>
@@ -1016,7 +1053,7 @@ $lightNav = true;
 
         {{-- Card 2: College Chairpersons --}}
         <article class="profile-card group">
-          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=700&q=80"
+          <img src="{{ asset('images/media/institution/college-chairpersons.jpg') }}"
                alt="College Chairpersons" loading="lazy" />
           <div class="profile-card-overlay"></div>
           <div class="profile-card-accent"></div>
@@ -1028,7 +1065,7 @@ $lightNav = true;
 
         {{-- Card 3: School Founders & Owners --}}
         <article class="profile-card group">
-          <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=700&q=80"
+          <img src="{{ asset('images/media/institution/school-founders.jpg') }}"
                alt="School Founders & Owners" loading="lazy" />
           <div class="profile-card-overlay"></div>
           <div class="profile-card-accent"></div>
@@ -1040,7 +1077,7 @@ $lightNav = true;
 
         {{-- Card 4: Principals & Directors --}}
         <article class="profile-card group">
-          <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=700&q=80"
+          <img src="{{ asset('images/media/institution/principals-directors.jpg') }}"
                alt="Principals & Directors" loading="lazy" />
           <div class="profile-card-overlay"></div>
           <div class="profile-card-accent"></div>
@@ -1052,7 +1089,7 @@ $lightNav = true;
 
         {{-- Card 5: Education Entrepreneurs --}}
         <article class="profile-card group">
-          <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=700&q=80"
+          <img src="{{ asset('images/media/institution/education-entrepreneurs.jpg') }}"
                alt="Education Entrepreneurs" loading="lazy" />
           <div class="profile-card-overlay"></div>
           <div class="profile-card-accent"></div>
@@ -1064,7 +1101,7 @@ $lightNav = true;
 
         {{-- Card 6: Trustees & Board Members --}}
         <article class="profile-card group">
-          <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=700&q=80"
+          <img src="{{ asset('images/media/institution/trustees-board.jpg') }}"
                alt="Trustees & Board Members" loading="lazy" />
           <div class="profile-card-overlay"></div>
           <div class="profile-card-accent"></div>
@@ -1106,12 +1143,12 @@ $lightNav = true;
             Every great campus begins with an authentic story of risk, resilience, and turning points. We bring these foundational journeys to light — unscripted, reflective, and deeply valuable for the education community.
           </p>
 
-          {{-- 4 Core Focus Areas with Brand Favicon Chips --}}
-          <div class="mt-7 flex flex-wrap gap-2.5">
+          {{-- 4 Core Focus Areas with Brand Favicon Chips (2 below 2 grid) --}}
+          <div class="mt-7 focus-area-grid">
             {{-- 01. Founder Conversations --}}
             <div class="focus-area-label group">
               <span class="label-icon-box group-hover:scale-105 transition-transform duration-300">
-                <img src="{{ asset('images/fav-icon/icon.png') }}" class="w-4 h-4 object-contain" alt="YCX" />
+                <img src="{{ asset('images/fav-icon/icon.png') }}" class="w-3.5 h-3.5 sm:w-4 sm:h-4 object-contain" alt="YCX" />
               </span>
               <span class="label-text">Founder Conversations</span>
             </div>
@@ -1119,7 +1156,7 @@ $lightNav = true;
             {{-- 02. Campus Heritage --}}
             <div class="focus-area-label group">
               <span class="label-icon-box group-hover:scale-105 transition-transform duration-300">
-                <img src="{{ asset('images/fav-icon/icon.png') }}" class="w-4 h-4 object-contain" alt="YCX" />
+                <img src="{{ asset('images/fav-icon/icon.png') }}" class="w-3.5 h-3.5 sm:w-4 sm:h-4 object-contain" alt="YCX" />
               </span>
               <span class="label-text">Campus Heritage</span>
             </div>
@@ -1127,7 +1164,7 @@ $lightNav = true;
             {{-- 03. Education Innovation --}}
             <div class="focus-area-label group">
               <span class="label-icon-box group-hover:scale-105 transition-transform duration-300">
-                <img src="{{ asset('images/fav-icon/icon.png') }}" class="w-4 h-4 object-contain" alt="YCX" />
+                <img src="{{ asset('images/fav-icon/icon.png') }}" class="w-3.5 h-3.5 sm:w-4 sm:h-4 object-contain" alt="YCX" />
               </span>
               <span class="label-text">Education Innovation</span>
             </div>
@@ -1135,7 +1172,7 @@ $lightNav = true;
             {{-- 04. Business of Education --}}
             <div class="focus-area-label group">
               <span class="label-icon-box group-hover:scale-105 transition-transform duration-300">
-                <img src="{{ asset('images/fav-icon/icon.png') }}" class="w-4 h-4 object-contain" alt="YCX" />
+                <img src="{{ asset('images/fav-icon/icon.png') }}" class="w-3.5 h-3.5 sm:w-4 sm:h-4 object-contain" alt="YCX" />
               </span>
               <span class="label-text">Business of Education</span>
             </div>

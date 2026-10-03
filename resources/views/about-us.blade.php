@@ -54,10 +54,14 @@ $seo = [
 @endpush
 
 @push('styles')
-<link rel="stylesheet" href="{{ asset('css/custom-home.css') }}">
-<link rel="stylesheet" href="{{ asset('css/about-us.css') }}">
+<link rel="stylesheet" href="{{ asset('css/custom-home.css') }}?v={{ time() }}">
+<link rel="stylesheet" href="{{ asset('css/about-us.css') }}?v={{ time() }}">
 <link rel="stylesheet" href="{{ asset('css/home-2.css') }}?v={{ time() }}">
 <style>
+    .founder-title,
+    .founder-section .founder-title {
+        color: #ffffff !important;
+    }
     #hdr:not(.scrolled) .hamburger span {
         background: #0c3a30 !important;
     }
@@ -173,7 +177,7 @@ $seo = [
   <div class="bg-text">Young Chanakya X</div>
   <div class="founder-inner">
     <div class="section-label light">Founder Statement</div>
-    <h2 class="founder-title">Why We Built This</h2>
+    <h2 class="founder-title text-white" style="color: #ffffff !important;">Why We Built This</h2>
     <span class="quote-mark">"</span>
     <p class="founder-quote">
       Young Chanakya X is built to bring creators together in a structured ecosystem where they can <em>connect, collaborate, and be seen.</em> Our focus is simple — create spaces for real conversations, enable meaningful collaborations, and help creators grow their influence through content and community.
@@ -614,7 +618,7 @@ $seo = [
     <div class="cta-bg-ring r3"></div>
     <div class="cta-inner">
       <div class="section-label light">Ready to Grow?</div>
-      <h2 class="section-title light">Your Voice Deserves<br>a <span class="italic-accent">Bigger Stage</span></h2>
+      <h2 class="section-title light fw-normal" style="font-weight: 400 !important; letter-spacing: -1.2px !important; line-height: 1.2 !important;">Your Voice Deserves<br>a <span class="italic-accent fw-normal" style="font-style: normal !important; font-weight: 400 !important; letter-spacing: -1.2px !important;">Bigger Stage</span></h2>
       <p class="cta-tagline">If you are a creator, influencer, speaker, or community builder — Young Chanakya X is built for
         you.</p>
       <div class="cta-features">

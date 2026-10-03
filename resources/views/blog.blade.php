@@ -18,7 +18,7 @@ $seo = [
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500;1,9..144,600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ asset('css/custom-home.css') }}">
-<link rel="stylesheet" href="{{ asset('css/blog.css') }}">
+<link rel="stylesheet" href="{{ asset('css/blog.css') }}?v={{ time() }}">
 <style>
   #hdr:not(.scrolled) .hamburger span {
       background: #ffffff !important;
