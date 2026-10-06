@@ -1653,8 +1653,8 @@ $lightNav = true;
         <article class="talk-card group">
           <div class="talk-card-image">
             <span class="talk-card-badge">Theme 01</span>
-            <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
-                 alt="Founder Journeys & Leadership" 
+            <img src="{{ asset('images/media/institution/talk-founder-leadership.jpg') }}" 
+                 alt="Founder Journeys &amp; Leadership" 
                  loading="lazy" />
           </div>
           <div class="pt-3.5 pb-2 px-1 flex flex-col flex-1">
@@ -1674,8 +1674,8 @@ $lightNav = true;
         <article class="talk-card group">
           <div class="talk-card-image">
             <span class="talk-card-badge">Theme 02</span>
-            <img src="https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
-                 alt="AI, ERP & Campus Tech" 
+            <img src="{{ asset('images/media/institution/talk-campus-tech.jpg') }}" 
+                 alt="AI, ERP &amp; Campus Tech" 
                  loading="lazy" />
           </div>
           <div class="pt-3.5 pb-2 px-1 flex flex-col flex-1">
@@ -1695,7 +1695,7 @@ $lightNav = true;
         <article class="talk-card group">
           <div class="talk-card-image">
             <span class="talk-card-badge">Theme 03</span>
-            <img src="https://images.pexels.com/photos/3184328/pexels-photo-3184328.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+            <img src="{{ asset('images/media/institution/talk-future-education.jpg') }}" 
                  alt="The Future of Education" 
                  loading="lazy" />
           </div>
@@ -1716,7 +1716,7 @@ $lightNav = true;
         <article class="talk-card group">
           <div class="talk-card-image">
             <span class="talk-card-badge">Theme 04</span>
-            <img src="https://images.pexels.com/photos/3183186/pexels-photo-3183186.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+            <img src="{{ asset('images/media/institution/talk-business-education.jpg') }}" 
                  alt="The Business of Education" 
                  loading="lazy" />
           </div>
@@ -1737,8 +1737,8 @@ $lightNav = true;
         <article class="talk-card group">
           <div class="talk-card-image">
             <span class="talk-card-badge">Theme 05</span>
-            <img src="https://images.pexels.com/photos/267507/pexels-photo-267507.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
-                 alt="Transformation & Turnarounds" 
+            <img src="{{ asset('images/media/institution/talk-transformation.jpg') }}" 
+                 alt="Transformation &amp; Turnarounds" 
                  loading="lazy" />
           </div>
           <div class="pt-3.5 pb-2 px-1 flex flex-col flex-1">
@@ -1758,8 +1758,8 @@ $lightNav = true;
         <article class="talk-card group">
           <div class="talk-card-image">
             <span class="talk-card-badge">Theme 06</span>
-            <img src="https://images.pexels.com/photos/3184654/pexels-photo-3184654.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
-                 alt="Social Impact & Nation Building" 
+            <img src="{{ asset('images/media/institution/talk-social-impact.jpg') }}" 
+                 alt="Social Impact &amp; Nation Building" 
                  loading="lazy" />
           </div>
           <div class="pt-3.5 pb-2 px-1 flex flex-col flex-1">
@@ -1796,13 +1796,13 @@ $lightNav = true;
         [
           'title' => 'Professional Broadcast Recording',
           'desc'  => 'Studio-grade 4K multi-camera filming and cinematic post-production.',
-          'image' => 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=900&q=80',
+          'image' => asset('images/media/institution/conv-broadcast-recording.jpg'),
           'alt'   => 'Professional broadcast recording studio'
         ],
         [
           'title' => 'Elevated Digital Presence',
           'desc'  => 'Distribution across YouTube, Spotify, LinkedIn, and the YCX network.',
-          'image' => 'https://images.unsplash.com/photo-1589903308904-1010c2294adc?auto=format&fit=crop&w=900&q=80',
+          'image' => asset('images/media/institution/conv-digital-presence.jpg'),
           'alt'   => 'Digital presence and multi-platform distribution'
         ],
       ];
@@ -1811,25 +1811,25 @@ $lightNav = true;
         [
           'title' => 'Authoritative Thought Leadership',
           'desc'  => 'Positioning your leadership as a trusted national benchmark.',
-          'image' => 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80',
+          'image' => asset('images/media/institution/conv-thought-leadership.jpg'),
           'alt'   => 'Authoritative thought leadership on national stage'
         ],
         [
           'title' => 'Closed-Door Founder Network',
           'desc'  => 'Exclusive peer roundtables with chairpersons of 120+ institutions.',
-          'image' => 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=80',
+          'image' => asset('images/media/institution/conv-founder-network.jpg'),
           'alt'   => 'Closed-door roundtables and founder network'
         ],
         [
           'title' => 'Institutional Storytelling',
           'desc'  => 'Inspiring genuine trust and heritage among parents, students, and alumni.',
-          'image' => 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=800&q=80',
+          'image' => asset('images/media/institution/conv-institutional-storytelling.jpg'),
           'alt'   => 'Historic campus heritage and institutional storytelling'
         ],
         [
           'title' => 'Direct Student Programs',
           'desc'  => 'Masterclasses, industry speakers, and student ambassador connects.',
-          'image' => 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80',
+          'image' => asset('images/media/institution/conv-student-programs.jpg'),
           'alt'   => 'Direct student masterclasses and campus programs'
         ],
       ];
