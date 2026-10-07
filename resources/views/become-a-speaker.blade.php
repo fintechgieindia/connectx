@@ -993,7 +993,23 @@ $seo = [
     gap: 40px;
   }
   .about-img-container {
-    height: 360px;
+    height: 380px;
+  }
+}
+@media (max-width: 767px) {
+  .about-img-container {
+    height: 280px;
+  }
+  .visual-box {
+    height: 280px;
+  }
+}
+@media (max-width: 480px) {
+  .about-img-container {
+    height: 240px;
+  }
+  .visual-box {
+    height: 240px;
   }
 }
 .tracklist-card{
@@ -1126,8 +1142,8 @@ $seo = [
 }
 .talk-thumb {
   position: relative;
-  height: 220px;
   width: 100%;
+  aspect-ratio: 16 / 10;
   overflow: hidden;
 }
 .talk-thumb img {
@@ -1265,7 +1281,8 @@ $seo = [
     border-radius: 20px;
   }
   .talk-thumb {
-    height: 200px;
+    height: auto;
+    aspect-ratio: 4 / 3;
   }
   .talk-body {
     padding: 22px 20px;
@@ -1291,7 +1308,8 @@ $seo = [
     border-radius: 16px;
   }
   .talk-thumb {
-    height: 180px;
+    height: auto;
+    aspect-ratio: 4 / 3;
   }
   .talk-tag {
     top: 14px;

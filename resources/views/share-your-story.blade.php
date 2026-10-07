@@ -617,159 +617,400 @@ $seo = [
 
     /* Featured Categories (Horizontal Scroll) from ycx.html.html */
     /* Featured Categories (Horizontal Scroll) from ycx.html.html */
-    #categories {
-        --theme-green: #0c3a30;
-        --theme-peach: #ffd2b1;
-        --bg-dark: #0c3a30;
-        --text-main: #f0f5f3;
-        --text-muted: #96aca6;
-        --accent-peach: #ffd2b1;
-        --accent-peach-light: #ffe5d1;
-        --accent-gradient: linear-gradient(135deg, var(--theme-peach), var(--accent-peach-light));
-        --font-head: 'Outfit', sans-serif;
-        --font-body: 'Poppins', sans-serif;
-
-        background-color: var(--bg-dark) !important;
+    /* ================================================================
+       JOURNEY SHOWCASE SECTION ("Every Journey Has Something to Teach")
+       ================================================================ */
+    #categories.journey-showcase-section {
+        position: relative;
+        padding: 100px 0 110px;
+        background: radial-gradient(circle at 50% 0%, rgba(200, 116, 58, 0.1) 0%, transparent 60%), #07261f !important;
         overflow: hidden;
-        padding: 80px 0;
-        font-family: var(--font-body);
+        color: #f0f5f3;
     }
 
-    #categories h2 {
-        font-family: var(--font-head);
-        color: var(--text-main) !important;
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
+    .journey-ambient-glow {
+        position: absolute;
+        top: -150px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 700px;
+        height: 500px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(255, 210, 177, 0.12) 0%, transparent 70%);
+        filter: blur(80px);
+        pointer-events: none;
+        z-index: 0;
     }
 
-    #categories h3 {
-        font-family: var(--font-head);
+    .journey-ambient-glow-2 {
+        position: absolute;
+        bottom: -200px;
+        right: -100px;
+        width: 500px;
+        height: 500px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(12, 58, 48, 0.6) 0%, transparent 70%);
+        filter: blur(100px);
+        pointer-events: none;
+        z-index: 0;
     }
 
-    #categories .gradient-text {
-        background: var(--accent-gradient);
+    /* Section Header */
+    .journey-header {
+        max-width: 820px;
+        margin-bottom: 40px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .journey-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 16px;
+        border-radius: 100px;
+        background: rgba(255, 210, 177, 0.1);
+        border: 1px solid rgba(255, 210, 177, 0.25);
+        color: #ffd2b1;
+        font-size: 11.5px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+        backdrop-filter: blur(10px);
+    }
+
+    .journey-eyebrow .pulse-pip {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #ffd2b1;
+        box-shadow: 0 0 10px #ffd2b1;
+        animation: journeyPulse 2s infinite ease-in-out;
+    }
+
+    @keyframes journeyPulse {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    .journey-title {
+        font-family: 'Fraunces', 'Playfair Display', Georgia, serif;
+        font-size: clamp(2rem, 4vw, 3.25rem);
+        font-weight: 600;
+        color: #ffffff !important;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+        margin-bottom: 16px;
+    }
+
+    .journey-title-accent {
+        color: #ffd2b1;
+        background: linear-gradient(135deg, #ffd2b1 0%, #ffca95 50%, #c8743a 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
         display: inline-block;
     }
 
-    .categories-wrapper {
+    .journey-subtitle {
+        color: rgba(240, 245, 243, 0.8) !important;
+        font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+        max-width: 680px;
+        margin: 0 auto;
+        line-height: 1.65;
+        font-weight: 400;
+    }
+
+    /* Navigation Bar */
+    .journey-nav-bar {
+        position: relative;
+        z-index: 2;
+    }
+
+    .journey-arrow-btn {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        background: rgba(255, 255, 255, 0.05);
+        color: #ffffff;
         display: flex;
-        gap: 2rem;
-        padding: 2rem 0;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        backdrop-filter: blur(10px);
+        outline: none;
+    }
+
+    .journey-arrow-btn:hover:not(:disabled) {
+        background: #ffd2b1;
+        color: #07261f;
+        border-color: #ffd2b1;
+        transform: scale(1.08);
+        box-shadow: 0 6px 20px rgba(255, 210, 177, 0.3);
+    }
+
+    .journey-arrow-btn:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+    }
+
+    /* Carousel Track */
+    .journey-track {
+        display: flex;
+        gap: 22px;
         overflow-x: auto;
-        /* No snap — JS handles smooth momentum scrolling */
-        scrollbar-width: none; /* Firefox */
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        padding: 16px 4px 28px;
+        margin: 0 -4px;
+        scrollbar-width: none;
+        cursor: grab;
     }
 
-    .categories-wrapper::-webkit-scrollbar {
-        display: none; /* Chrome */
+    .journey-track.is-dragging {
+        cursor: grabbing;
+        user-select: none;
+        scroll-snap-type: none;
+        scroll-behavior: auto;
     }
 
-    .category-panel {
-        min-width: 350px;
-        height: 420px;
-        border-radius: 30px;
-        padding: 28px 28px;
-        display: flex;
-        flex-direction: column;
-        position: relative;
-        transition: all 0.4s ease;
-        border: 1px solid rgba(12, 58, 48, 0.08) !important;
-        overflow: hidden;
-        background: #ffffff !important;
-    }
-
-    .category-panel::before {
-        content: '';
-        position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
-        border-radius: 30px;
-        background: #ff7a30;
-        opacity: 0;
-        z-index: 0;
-        transition: opacity 0.5s ease;
-    }
-
-    .category-panel:hover::before {
-        opacity: 0.04;
-    }
-
-    .category-panel:hover {
-        transform: scale(1.02);
-        border-color: #ff7a30 !important;
-    }
-
-    .category-panel > * {
-        position: relative;
-        z-index: 1;
-    }
-
-    .category-panel h3 {
-        font-size: 22px;
-        margin-bottom: 0.5rem;
-        color: #0c3a30 !important;
-    }
-
-    .cat-number {
+    .journey-track::-webkit-scrollbar {
         display: none;
     }
-    .cat-icon-box {
-        color: var(--orange) !important;
-        font-size: 1.8rem;
-        display: block;
-        margin-bottom: 0.8rem;
-    }
 
-    .cat-desc {
-        color: #4d6459 !important;
-        font-size: 0.95rem;
-        line-height: 1.5;
-        margin-bottom: 0;
-    }
-
-    .cat-img-box {
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        width: 85%;
-        height: 200px;
-        border-radius: 24px 0 0 0;
+    /* Cinematic Journey Card */
+    .journey-card {
+        flex: 0 0 320px;
+        height: 420px;
+        border-radius: 22px;
+        position: relative;
         overflow: hidden;
-        border-left: 2px solid #a1a1a1;
-        border-top: 2px solid #a1a1a1;
-        z-index: 1;
+        scroll-snap-align: start;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: #0c3a30;
+        transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                    box-shadow 0.45s ease,
+                    border-color 0.45s ease,
+                    opacity 0.4s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 24px;
+        box-shadow: 0 12px 32px -10px rgba(0, 0, 0, 0.5);
+        text-decoration: none;
+        color: #ffffff !important;
     }
 
-    .cat-img-box img {
+    .journey-card.is-hidden {
+        display: none !important;
+    }
+
+    .journey-card:hover {
+        transform: translateY(-8px);
+        border-color: rgba(255, 210, 177, 0.45);
+        box-shadow: 0 24px 50px -12px rgba(0, 0, 0, 0.7),
+                    0 0 32px rgba(255, 210, 177, 0.16);
+    }
+
+    .journey-card-bg {
+        position: absolute;
+        inset: 0;
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        object-position: center top;
+        transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                    filter 0.5s ease;
+        z-index: 0;
+        filter: brightness(0.85);
     }
 
-    .category-panel:hover .cat-img-box img {
-        transform: scale(1.1);
-    }
-    
-    .cat-arrow {
-        display: none;
+    .journey-card:hover .journey-card-bg {
+        transform: scale(1.08);
+        filter: brightness(0.96);
     }
 
-    /* Scroll Reveal Animations for Explore Conversations */
-    #categories .reveal {
-        opacity: 0;
-        transform: translateY(40px);
-        transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+    .journey-card-scrim {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background: linear-gradient(180deg, 
+            rgba(7, 38, 31, 0.35) 0%, 
+            rgba(7, 38, 31, 0.55) 45%, 
+            rgba(6, 28, 23, 0.94) 80%, 
+            rgba(6, 28, 23, 0.99) 100%);
+        pointer-events: none;
+        transition: opacity 0.4s ease;
     }
 
-    #categories .reveal.active {
-        opacity: 1;
-        transform: translateY(0);
+    .journey-card:hover .journey-card-scrim {
+        background: linear-gradient(180deg, 
+            rgba(7, 38, 31, 0.2) 0%, 
+            rgba(7, 38, 31, 0.5) 40%, 
+            rgba(6, 28, 23, 0.96) 80%, 
+            rgba(6, 28, 23, 0.99) 100%);
+    }
+
+    /* Card Top Bar */
+    .journey-card-top {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+    }
+
+    .journey-card-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 6px 14px;
+        border-radius: 100px;
+        background: rgba(7, 38, 31, 0.78);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 210, 177, 0.35);
+        color: #ffd2b1;
+        font-size: 11.5px;
+        font-weight: 700;
+        letter-spacing: 0.6px;
+        text-transform: uppercase;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+    }
+
+    .journey-card-badge i {
+        font-size: 13px;
+        color: #ffd2b1;
+    }
+
+    /* Card Bottom Content */
+    .journey-card-bottom {
+        position: relative;
+        z-index: 2;
+        padding-top: 16px;
+    }
+
+    .journey-card-kicker {
+        display: block;
+        font-family: 'Manrope', sans-serif;
+        font-size: 11px;
+        font-weight: 800;
+        color: #c8743a;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        margin-bottom: 6px;
+    }
+
+    .journey-card-title {
+        font-family: 'Fraunces', 'Playfair Display', Georgia, serif;
+        font-size: 23px;
+        font-weight: 700;
+        color: #ffffff !important;
+        line-height: 1.25;
+        margin-bottom: 10px;
+        transition: color 0.3s ease;
+    }
+
+    .journey-card:hover .journey-card-title {
+        color: #ffd2b1 !important;
+    }
+
+    .journey-card-desc {
+        font-size: 13.5px;
+        line-height: 1.55;
+        color: rgba(240, 245, 243, 0.82) !important;
+        margin-bottom: 0;
+        font-weight: 400;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    /* Pagination / Progress */
+    .journey-pagination {
+        position: relative;
+        z-index: 2;
+    }
+
+    .journey-dots {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+    }
+
+    .journey-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        outline: none;
+    }
+
+    .journey-dot:hover {
+        background: rgba(255, 210, 177, 0.6);
+        transform: scale(1.2);
+    }
+
+    .journey-dot.active {
+        width: 24px;
+        border-radius: 10px;
+        background: #ffd2b1;
+        box-shadow: 0 0 10px rgba(255, 210, 177, 0.5);
+    }
+
+    /* Mobile Responsive Tweaks */
+    @media (max-width: 767px) {
+        #categories.journey-showcase-section {
+            padding: 70px 0 80px;
+        }
+
+        .journey-header {
+            margin-bottom: 24px;
+        }
+
+        .journey-title {
+            font-size: 26px;
+        }
+
+        .journey-track {
+            padding: 10px 4px 20px;
+            gap: 16px;
+        }
+
+        .journey-card {
+            flex: 0 0 82vw;
+            max-width: 310px;
+            height: 390px;
+            padding: 20px;
+            border-radius: 20px;
+        }
+
+        .journey-card-title {
+            font-size: 20px;
+        }
+
+        .journey-card-desc {
+            font-size: 13px;
+            -webkit-line-clamp: 3;
+            margin-bottom: 0;
+        }
+
+        .journey-arrow-btn {
+            width: 38px;
+            height: 38px;
+            font-size: 14px;
+        }
     }
 </style>
-
 
 <div class="authority-hero-section d-flex align-items-center position-relative">
     <div class="container pt-150 pb-100">
@@ -941,126 +1182,176 @@ $seo = [
     </div>
 </section>
 
-<!-- EXPLORE CONVERSATIONS -->
-<section id="categories">
-    <div class="container">
-        <!-- Section Title & Description Center Aligned -->
-        <div class="text-center mx-auto mb-5" style="max-width: 800px;">
-            <div class="st-eyebrow" style="color: #ffd2b1 !important;">WHAT YOU CAN SHARE</div>
-            <h2 class="st-heading" style="color: #ffffff !important;">Every Journey Has Something to Teach</h2>
-            <p class="st-subheading mx-auto" style="color: rgba(255, 255, 255, 0.8) !important;">Whether it's a breakthrough, a challenge, or a life-changing experience, we welcome stories that inspire learning, growth, and meaningful conversations.</p>
+<!-- EXPLORE CONVERSATIONS / JOURNEY SHOWCASE -->
+<section id="categories" class="journey-showcase-section">
+    <div class="journey-ambient-glow" aria-hidden="true"></div>
+    <div class="journey-ambient-glow-2" aria-hidden="true"></div>
+
+    <div class="container position-relative" style="z-index: 2;">
+        <!-- Section Header -->
+        <div class="journey-header text-center mx-auto">
+            <div class="journey-eyebrow">
+                <span class="pulse-pip"></span>
+                <span>WHAT YOU CAN SHARE</span>
+            </div>
+            <h2 class="journey-title">
+                Every Journey Has <span class="journey-title-accent">Something to Teach</span>
+            </h2>
+            <p class="journey-subtitle">
+                Whether it's a breakthrough, a challenge, or a life-changing experience, we welcome stories that inspire learning, growth, and meaningful conversations.
+            </p>
         </div>
-        <div class="categories-wrapper reveal">
-            <!-- 01 Life Lessons -->
-            <div class="category-panel">
-                <div class="cat-content">
-                    <div class="cat-icon-box"><i class="bi bi-journals"></i></div>
-                    <h3>Life Lessons</h3>
-                    <p class="cat-desc">Share personal transformations, philosophies, and guiding principles.</p>
-                </div>
-                <div class="cat-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-               
-                <div class="cat-img-box">
-                    <img src="{{ asset('images/media/share-your-story/life-lessons.webp') }}" alt="Life Lessons">
+
+        <!-- Carousel Showcase Wrapper -->
+        <div class="journey-carousel-wrapper">
+            <!-- Minimal Navigation Arrows (Right Aligned) -->
+            <div class="journey-nav-bar d-flex justify-content-end align-items-center mb-3">
+                <div class="journey-arrows d-flex gap-2">
+                    <button type="button" class="journey-arrow-btn journey-prev-btn" id="journeyPrevBtn" aria-label="Previous story theme">
+                        <i class="bi bi-chevron-left"></i>
+                    </button>
+                    <button type="button" class="journey-arrow-btn journey-next-btn" id="journeyNextBtn" aria-label="Next story theme">
+                        <i class="bi bi-chevron-right"></i>
+                    </button>
                 </div>
             </div>
 
-            <!-- 02 Failure & Comeback -->
-            <div class="category-panel">
-                <div class="cat-content">
-                    <div class="cat-icon-box"><i class="bi bi-arrow-repeat"></i></div>
-                    <h3>Failure & Comeback</h3>
-                    <p class="cat-desc">Describe setbacks, resilience, and how you rebounded stronger.</p>
-                </div>
-                <div class="cat-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            <!-- The Scrollable Track -->
+            <div class="journey-track" id="journeyTrack">
 
-                <div class="cat-img-box">
-                    <img src="{{ asset('images/media/share-your-story/comeback.webp') }}" alt="Failure & Comeback">
-                </div>
+                <!-- 01 Life Lessons -->
+                <article class="journey-card">
+                    <img class="journey-card-bg" src="{{ asset('images/media/share-your-story/life-lessons.webp') }}" alt="Life Lessons" loading="lazy">
+                    <div class="journey-card-scrim"></div>
+                    <div class="journey-card-top">
+                        <span class="journey-card-badge">
+                            <i class="bi bi-journals"></i> 01 • Life Lessons
+                        </span>
+                    </div>
+                    <div class="journey-card-bottom">
+                        <span class="journey-card-kicker">Personal Transformation</span>
+                        <h3 class="journey-card-title">Life Lessons</h3>
+                        <p class="journey-card-desc">Share personal transformations, philosophies, and guiding principles that shaped your worldview and decision making.</p>
+                    </div>
+                </article>
+
+                <!-- 02 Failure & Comeback -->
+                <article class="journey-card">
+                    <img class="journey-card-bg" src="{{ asset('images/media/share-your-story/comeback.webp') }}" alt="Failure &amp; Comeback" loading="lazy">
+                    <div class="journey-card-scrim"></div>
+                    <div class="journey-card-top">
+                        <span class="journey-card-badge">
+                            <i class="bi bi-arrow-repeat"></i> 02 • Comeback
+                        </span>
+                    </div>
+                    <div class="journey-card-bottom">
+                        <span class="journey-card-kicker">Resilience &amp; Grit</span>
+                        <h3 class="journey-card-title">Failure &amp; Comeback</h3>
+                        <p class="journey-card-desc">Describe setbacks, turning points, and how you persevered through crisis to rebound stronger than ever.</p>
+                    </div>
+                </article>
+
+                <!-- 03 Entrepreneur Journey -->
+                <article class="journey-card">
+                    <img class="journey-card-bg" src="{{ asset('images/media/share-your-story/entrepreneur-journey.jpg') }}" alt="Entrepreneur Journey" loading="lazy">
+                    <div class="journey-card-scrim"></div>
+                    <div class="journey-card-top">
+                        <span class="journey-card-badge">
+                            <i class="bi bi-briefcase-fill"></i> 03 • Entrepreneur
+                        </span>
+                    </div>
+                    <div class="journey-card-bottom">
+                        <span class="journey-card-kicker">Founders &amp; Builders</span>
+                        <h3 class="journey-card-title">Entrepreneur Journey</h3>
+                        <p class="journey-card-desc">Tell the candid story of how you started from scratch, bootstrapped, pivoted, and built an enduring business.</p>
+                    </div>
+                </article>
+
+                <!-- 04 Startup Story -->
+                <article class="journey-card">
+                    <img class="journey-card-bg" src="{{ asset('images/media/share-your-story/startup-story.webp') }}" alt="Startup Story" loading="lazy">
+                    <div class="journey-card-scrim"></div>
+                    <div class="journey-card-top">
+                        <span class="journey-card-badge">
+                            <i class="bi bi-rocket-takeoff-fill"></i> 04 • Startup Story
+                        </span>
+                    </div>
+                    <div class="journey-card-bottom">
+                        <span class="journey-card-kicker">Innovation &amp; Scale</span>
+                        <h3 class="journey-card-title">Startup Story</h3>
+                        <p class="journey-card-desc">From ideation to MVP launch, product-market fit, and the pivotal hurdles of scaling up your vision.</p>
+                    </div>
+                </article>
+
+                <!-- 05 Career Journey -->
+                <article class="journey-card">
+                    <img class="journey-card-bg" src="{{ asset('images/media/share-your-story/career-journey.webp') }}" alt="Career Journey" loading="lazy">
+                    <div class="journey-card-scrim"></div>
+                    <div class="journey-card-top">
+                        <span class="journey-card-badge">
+                            <i class="bi bi-person-badge-fill"></i> 05 • Career
+                        </span>
+                    </div>
+                    <div class="journey-card-bottom">
+                        <span class="journey-card-kicker">Pivots &amp; Growth</span>
+                        <h3 class="journey-card-title">Career Journey</h3>
+                        <p class="journey-card-desc">Highlight defining career transitions, breaking boundaries, finding mentorship, and lessons learned on the way.</p>
+                    </div>
+                </article>
+
+                <!-- 06 Leadership Experience -->
+                <article class="journey-card">
+                    <img class="journey-card-bg" src="{{ asset('images/media/share-your-story/leadership-experience.webp') }}" alt="Leadership Experience" loading="lazy">
+                    <div class="journey-card-scrim"></div>
+                    <div class="journey-card-top">
+                        <span class="journey-card-badge">
+                            <i class="bi bi-award-fill"></i> 06 • Leadership
+                        </span>
+                    </div>
+                    <div class="journey-card-bottom">
+                        <span class="journey-card-kicker">Teams &amp; Vision</span>
+                        <h3 class="journey-card-title">Leadership Experience</h3>
+                        <p class="journey-card-desc">Insights on steering high-performance teams, fostering accountability, and leading with empathy through high stakes.</p>
+                    </div>
+                </article>
+
+                <!-- 07 Business Lessons -->
+                <article class="journey-card">
+                    <img class="journey-card-bg" src="{{ asset('images/media/share-your-story/business-lessons.webp') }}" alt="Business Lessons" loading="lazy">
+                    <div class="journey-card-scrim"></div>
+                    <div class="journey-card-top">
+                        <span class="journey-card-badge">
+                            <i class="bi bi-graph-up-arrow"></i> 07 • Business
+                        </span>
+                    </div>
+                    <div class="journey-card-bottom">
+                        <span class="journey-card-kicker">Commercial Playbook</span>
+                        <h3 class="journey-card-title">Business Lessons</h3>
+                        <p class="journey-card-desc">Practical operational insights, unit economics, market expansion decisions, and avoiding critical pitfalls.</p>
+                    </div>
+                </article>
+
+                <!-- 08 Personal Growth -->
+                <article class="journey-card">
+                    <img class="journey-card-bg" src="{{ asset('images/media/share-your-story/personal-growth.webp') }}" alt="Personal Growth" loading="lazy">
+                    <div class="journey-card-scrim"></div>
+                    <div class="journey-card-top">
+                        <span class="journey-card-badge">
+                            <i class="bi bi-heart-pulse-fill"></i> 08 • Growth
+                        </span>
+                    </div>
+                    <div class="journey-card-bottom">
+                        <span class="journey-card-kicker">Mindset &amp; Habits</span>
+                        <h3 class="journey-card-title">Personal Growth</h3>
+                        <p class="journey-card-desc">Transformative inner breakthroughs, daily discipline frameworks, and mental models that catalyzed self-mastery.</p>
+                    </div>
+                </article>
+
             </div>
 
-            <!-- 03 Entrepreneur Journey -->
-            <div class="category-panel">
-                <div class="cat-content">
-                    <div class="cat-icon-box"><i class="bi bi-briefcase-fill"></i></div>
-                    <h3>Entrepreneur Journey</h3>
-                    <p class="cat-desc">Tell the story of how you started, pivoted, and built your business.</p>
-                </div>
-                <div class="cat-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-
-                <div class="cat-img-box">
-                    <img src="{{ asset('images/media/share-your-story/entrepreneur-journey.jpg') }}" alt="Entrepreneur Journey">
-                </div>
-            </div>
-
-            <!-- 04 Startup Story -->
-            <div class="category-panel">
-                <div class="cat-content">
-                    <div class="cat-icon-box"><i class="bi bi-rocket-fill"></i></div>
-                    <h3>Startup Story</h3>
-                    <p class="cat-desc">From ideation to launch, share your product breakthroughs and milestones.</p>
-                </div>
-                <div class="cat-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-
-                <div class="cat-img-box">
-                    <img src="{{ asset('images/media/share-your-story/startup-story.webp') }}" alt="Startup Story">
-                </div>
-            </div>
-
-            <!-- 05 Career Journey -->
-            <div class="category-panel">
-                <div class="cat-content">
-                    <div class="cat-icon-box"><i class="bi bi-person-badge-fill"></i></div>
-                    <h3>Career Journey</h3>
-                    <p class="cat-desc">Highlight key pivots, climbing the corporate ladder, and lessons learned.</p>
-                </div>
-                <div class="cat-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-
-                <div class="cat-img-box">
-                    <img src="{{ asset('images/media/share-your-story/career-journey.webp') }}" alt="Career Journey">
-                </div>
-            </div>
-
-            <!-- 06 Leadership Experience -->
-            <div class="category-panel">
-                <div class="cat-content">
-                    <div class="cat-icon-box"><i class="bi bi-award-fill"></i></div>
-                    <h3>Leadership Experience</h3>
-                    <p class="cat-desc">Insights on managing teams, building cultures, and driving visions.</p>
-                </div>
-                <div class="cat-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-
-                <div class="cat-img-box">
-                    <img src="{{ asset('images/media/share-your-story/leadership-experience.webp') }}" alt="Leadership Experience">
-                </div>
-            </div>
-
-            <!-- 07 Business Lessons -->
-            <div class="category-panel">
-                <div class="cat-content">
-                    <div class="cat-icon-box"><i class="bi bi-graph-up-arrow"></i></div>
-                    <h3>Business Lessons</h3>
-                    <p class="cat-desc">Functional strategies, operational insights, and commercial scaling.</p>
-                </div>
-                <div class="cat-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-
-                <div class="cat-img-box">
-                    <img src="{{ asset('images/media/share-your-story/business-lessons.webp') }}" alt="Business Lessons">
-                </div>
-            </div>
-
-            <!-- 08 Personal Growth -->
-            <div class="category-panel">
-                <div class="cat-content">
-                    <div class="cat-icon-box"><i class="bi bi-heart-fill"></i></div>
-                    <h3>Personal Growth</h3>
-                    <p class="cat-desc">Self-improvement milestones, habit transformations, and mental shifts.</p>
-                </div>
-                <div class="cat-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-
-                <div class="cat-img-box">
-                    <img src="{{ asset('images/media/share-your-story/personal-growth.webp') }}" alt="Personal Growth">
-                </div>
+            <!-- Minimal Dots Pagination (Centered) -->
+            <div class="journey-pagination d-flex justify-content-center align-items-center mt-3 pt-2">
+                <div class="journey-dots" id="journeyDots"></div>
             </div>
         </div>
     </div>
@@ -1494,178 +1785,118 @@ $seo = [
 
 
 
-        // Scroll Reveal Animations for Explore Conversations
-        const revealElements = document.querySelectorAll('#categories .reveal');
-        
-        const revealOptions = {
-            threshold: 0.15,
-            rootMargin: "0px 0px -50px 0px"
-        };
+        // ── Minimal Smooth Journey Carousel ──────────
+        (function() {
+            const track = document.getElementById('journeyTrack');
+            const prevBtn = document.getElementById('journeyPrevBtn');
+            const nextBtn = document.getElementById('journeyNextBtn');
+            const dotsContainer = document.getElementById('journeyDots');
+            const cards = Array.from(document.querySelectorAll('.journey-card'));
 
-        const revealObserver = new IntersectionObserver(function(entries, observer) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
+            if (!track || !cards.length) return;
+
+            // 1. Generate Navigation Dots
+            function renderDots() {
+                if (!dotsContainer) return;
+                dotsContainer.innerHTML = '';
+                cards.forEach((card, idx) => {
+                    const dot = document.createElement('button');
+                    dot.type = 'button';
+                    dot.className = 'journey-dot' + (idx === 0 ? ' active' : '');
+                    dot.setAttribute('aria-label', 'Go to story ' + (idx + 1));
+                    dot.addEventListener('click', () => scrollToIndex(idx));
+                    dotsContainer.appendChild(dot);
+                });
+            }
+
+            // 2. Scroll to Index
+            function scrollToIndex(idx) {
+                if (!cards[idx]) return;
+                const card = cards[idx];
+                const trackPadding = parseInt(window.getComputedStyle(track).paddingLeft) || 0;
+                const targetLeft = card.offsetLeft - track.offsetLeft - trackPadding;
+                track.scrollTo({ left: targetLeft, behavior: 'smooth' });
+            }
+
+            // 3. Stride Calculation (Card width + gap)
+            function getStride() {
+                if (!cards.length) return 340;
+                const card = cards[0];
+                const gap = parseInt(window.getComputedStyle(track).gap) || 20;
+                return card.offsetWidth + gap;
+            }
+
+            // 4. Update Active Dot and Arrow States on Scroll
+            function updateIndicators() {
+                const scrollLeft = track.scrollLeft;
+                const stride = getStride();
+                let activeIdx = Math.round(scrollLeft / stride);
+                activeIdx = Math.max(0, Math.min(activeIdx, cards.length - 1));
+
+                if (dotsContainer) {
+                    const dots = dotsContainer.querySelectorAll('.journey-dot');
+                    dots.forEach((dot, i) => {
+                        dot.classList.toggle('active', i === activeIdx);
+                    });
                 }
+
+                if (prevBtn) {
+                    prevBtn.disabled = track.scrollLeft <= 5;
+                }
+                if (nextBtn) {
+                    const maxScroll = track.scrollWidth - track.clientWidth - 5;
+                    nextBtn.disabled = track.scrollLeft >= maxScroll;
+                }
+            }
+
+            // 5. Arrow Click Handlers
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    track.scrollBy({ left: -getStride(), behavior: 'smooth' });
+                });
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    track.scrollBy({ left: getStride(), behavior: 'smooth' });
+                });
+            }
+
+            // 6. Smooth Mouse Drag for Desktop
+            let isDown = false;
+            let startX = 0;
+            let scrollLeftStart = 0;
+
+            track.addEventListener('mousedown', (e) => {
+                isDown = true;
+                track.classList.add('is-dragging');
+                startX = e.pageX - track.offsetLeft;
+                scrollLeftStart = track.scrollLeft;
             });
-        }, revealOptions);
 
-        revealElements.forEach(el => {
-            revealObserver.observe(el);
-        });
+            window.addEventListener('mouseup', () => {
+                if (!isDown) return;
+                isDown = false;
+                track.classList.remove('is-dragging');
+            });
 
-        // ── Buttery smooth momentum horizontal scroll for #categories ──────────
-        (function () {
-            var section = document.getElementById('categories');
-            var wrapper = section ? section.querySelector('.categories-wrapper') : null;
-            if (!section || !wrapper) return;
-
-            var locked        = false;
-            var frozenScrollY = 0;
-            var allCardsSeen  = false;
-            var touchStartY   = 0;
-            var touchStartX   = 0;
-
-            // Momentum state — velocity accumulates from wheel ticks and decays each frame
-            var scrollPos  = 0;   // actual rendered position (float)
-            var velocity   = 0;   // pixels per frame
-            var friction   = 0.88; // 0–1: higher = glides longer, lower = stops faster
-            var rafId      = null;
-
-            /* ── Main animation loop ──────────────────────────────────────────── */
-            function tick() {
-                velocity *= friction;           // decay velocity each frame
-                scrollPos += velocity;
-
-                // Clamp to valid range
-                var max = wrapper.scrollWidth - wrapper.clientWidth;
-                if (scrollPos < 0) { scrollPos = 0; velocity = 0; }
-                if (scrollPos > max) { scrollPos = max; velocity = 0; }
-
-                wrapper.scrollLeft = scrollPos;
-
-                // Check if last card is now in view
-                if (scrollPos >= max - 2) {
-                    allCardsSeen = true;
-                    releaseLock();
-                }
-
-                // Keep loop alive while there is meaningful movement
-                if (Math.abs(velocity) > 0.3) {
-                    rafId = requestAnimationFrame(tick);
-                } else {
-                    velocity = 0;
-                    rafId = null;
-                }
-            }
-
-            function startTick() {
-                if (!rafId) rafId = requestAnimationFrame(tick);
-            }
-
-            /* ── Check if last card is fully in view ─────────────────────────── */
-            function isLastCardVisible() {
-                var max = wrapper.scrollWidth - wrapper.clientWidth;
-                return scrollPos >= max - 2;
-            }
-
-            /* ── Lock page at current scroll Y ──────────────────────────────── */
-            function engageLock() {
-                if (locked || allCardsSeen) return;
-                frozenScrollY = window.scrollY;
-                scrollPos     = wrapper.scrollLeft;
-                locked = true;
-            }
-
-            /* ── Release page lock ───────────────────────────────────────────── */
-            function releaseLock() {
-                locked = false;
-            }
-
-            /* ── Hold page position while locked ────────────────────────────── */
-            function onPageScroll() {
-                if (!locked) {
-                    var r = section.getBoundingClientRect();
-                    if (r.bottom < 0) {
-                        // Section scrolled out of view going up — full reset
-                        scrollPos    = 0;
-                        velocity     = 0;
-                        wrapper.scrollLeft = 0;
-                        allCardsSeen = false;
-                    }
-                    return;
-                }
-                if (window.scrollY !== frozenScrollY) {
-                    window.scrollTo({ top: frozenScrollY, behavior: 'instant' });
-                }
-            }
-
-            /* ── Wheel handler ───────────────────────────────────────────────── */
-            window.addEventListener('wheel', function (e) {
-                if (allCardsSeen) return;
-
-                var sRect = section.getBoundingClientRect();
-
-                // Engage lock when section top reaches the viewport top
-                if (e.deltaY > 0 && sRect.top <= window.innerHeight && sRect.top > -section.offsetHeight) {
-                    if (sRect.top <= 20) engageLock();
-                }
-
-                if (!locked) return;
-
+            track.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
                 e.preventDefault();
+                const x = e.pageX - track.offsetLeft;
+                const walk = (x - startX) * 1.4;
+                track.scrollLeft = scrollLeftStart - walk;
+            });
 
-                // Normalise across mouse wheel (deltaMode=0 pixels, mode=1 lines)
-                var raw = e.deltaMode === 1 ? e.deltaY * 30 : e.deltaY;
-
-                // Add a gentle fraction to velocity — keeps it slow & natural
-                velocity += raw * 0.35;
-
-                // Cap maximum speed so it never feels rushed
-                var maxVel = 18;
-                if (velocity >  maxVel) velocity =  maxVel;
-                if (velocity < -maxVel) velocity = -maxVel;
-
-                startTick();
-            }, { passive: false });
-
-            /* ── Page scroll listener ────────────────────────────────────────── */
-            window.addEventListener('scroll', onPageScroll, { passive: false });
-
-            /* ── Touch support ───────────────────────────────────────────────── */
-            section.addEventListener('touchstart', function (e) {
-                touchStartY = e.touches[0].clientY;
-                touchStartX = e.touches[0].clientX;
-                velocity    = 0; // kill any momentum on new touch
+            // Throttled scroll listener
+            let scrollTimer;
+            track.addEventListener('scroll', () => {
+                if (scrollTimer) cancelAnimationFrame(scrollTimer);
+                scrollTimer = requestAnimationFrame(updateIndicators);
             }, { passive: true });
 
-            section.addEventListener('touchmove', function (e) {
-                if (allCardsSeen) return;
-
-                var dy = touchStartY - e.touches[0].clientY;
-                var dx = Math.abs(e.touches[0].clientX - touchStartX);
-
-                if (Math.abs(dy) < dx) return; // mostly horizontal — native handles
-
-                var sRect = section.getBoundingClientRect();
-                if (sRect.top <= 20) engageLock();
-
-                if (!locked) return;
-                e.preventDefault();
-
-                velocity += dy * 0.6;
-                touchStartY = e.touches[0].clientY;
-                touchStartX = e.touches[0].clientX;
-                startTick();
-            }, { passive: false });
-
-            /* ── Release lock when section fully leaves the viewport ─────────── */
-            var io = new IntersectionObserver(function (entries) {
-                entries.forEach(function (entry) {
-                    if (!entry.isIntersecting) releaseLock();
-                });
-            }, { threshold: 0.05 });
-            io.observe(section);
+            renderDots();
+            updateIndicators();
         })();
     });
 

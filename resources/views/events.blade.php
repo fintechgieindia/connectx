@@ -183,7 +183,8 @@ $seo = [
         position: relative;
         border-radius: 20px;
         overflow: hidden;
-        height: 240px;
+        aspect-ratio: 16 / 10;
+        height: auto;
     }
     .card-frame-media img {
         transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
@@ -372,7 +373,8 @@ $seo = [
             border-radius: 20px;
         }
         .card-frame-media {
-            height: 200px;
+            aspect-ratio: 16 / 10;
+            height: auto;
         }
     }
 
@@ -385,7 +387,8 @@ $seo = [
             row-gap: 20px !important;
         }
         .card-frame-media {
-            height: 180px;
+            aspect-ratio: 16 / 10;
+            height: auto;
         }
         .ux-curated-card {
             border-radius: 16px;
@@ -397,7 +400,8 @@ $seo = [
 
     @media (max-width: 480px) {
         .card-frame-media {
-            height: 160px;
+            aspect-ratio: 16 / 10;
+            height: auto;
         }
         .ux-curated-card .card-body-content {
             padding-top: 14px !important;

@@ -153,13 +153,13 @@
 
 @media(max-width:720px) {
   .mentor-carousel-track img {
-    width: 160px;
-    height: 160px;
+    width: 180px;
+    height: 220px;
     border-radius: 16px;
   }
 
   .mentor-carousel-track {
-    width: calc(180px * 12);
+    width: calc(200px * 12);
     gap: 20px;
   }
 
@@ -169,7 +169,7 @@
     }
 
     100% {
-      transform: translateX(calc(-180px * 6));
+      transform: translateX(calc(-200px * 6));
     }
   }
 }
@@ -359,6 +359,10 @@
     grid-template-columns: repeat(2, 1fr);
     max-width: 768px;
   }
+
+  .mc-banner {
+    height: 240px;
+  }
 }
 
 @media(max-width:720px) {
@@ -367,6 +371,10 @@
   .mc-grid.mc-3 {
     grid-template-columns: 1fr;
     max-width: 440px;
+  }
+
+  .mc-banner {
+    height: 220px;
   }
 }
 

@@ -1789,7 +1789,7 @@ $lightNav = true;
     <div class="pointer-events-none absolute -top-40 right-1/4 h-[500px] w-[500px] rounded-full bg-peach/20 blur-3xl" aria-hidden="true"></div>
     <div class="pointer-events-none absolute -bottom-32 left-1/4 h-[400px] w-[400px] rounded-full bg-forest/5 blur-3xl" aria-hidden="true"></div>
 
-    <div class="mx-auto px-4 sm:px-6 lg:px-8 relative z-10" style="max-width:1400px;">
+    <div class="mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10" style="max-width:1400px;">
 
       @php
       $topCards = [
@@ -1924,7 +1924,7 @@ $lightNav = true;
     <div class="pointer-events-none absolute inset-0" aria-hidden="true"
          style="background-image: radial-gradient(circle at 15% 15%, rgba(255,210,177,0.35) 0%, transparent 45%), radial-gradient(circle at 85% 85%, rgba(12,58,48,0.06) 0%, transparent 45%);"></div>
 
-    <div class="relative z-10 mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-14 lg:py-16" style="max-width:1400px;">
+    <div class="relative z-10 mx-auto px-3.5 sm:px-6 lg:px-8 py-12 sm:py-14 lg:py-16" style="max-width:1400px;">
 
       {{-- ── Header ── --}}
       <div class="text-center mb-8 sm:mb-10">
@@ -2150,7 +2150,7 @@ $lightNav = true;
     <div class="pointer-events-none absolute -bottom-32 -right-32 h-[480px] w-[480px] rounded-full border border-forest/10 bg-peach/25 blur-2xl" aria-hidden="true"></div>
     <div class="pointer-events-none absolute -top-32 -left-32 h-[420px] w-[420px] rounded-full border border-forest/5 bg-forest/5 blur-3xl" aria-hidden="true"></div>
 
-    <div class="mx-auto max-w-shell px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+    <div class="mx-auto max-w-shell px-3.5 sm:px-6 lg:px-8 relative z-10 text-center">
       
       <span class="inline-flex items-center gap-2 rounded-full border border-forest/15 bg-white/90 backdrop-blur-sm px-3.5 sm:px-4 py-1.5 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-forest shadow-xs">
         <span class="h-2 w-2 rounded-full bg-[#c8743a] animate-pulse"></span>
@@ -2158,7 +2158,7 @@ $lightNav = true;
       </span>
 
       <h2 class="mt-4 sm:mt-6 text-[25px] sm:text-4xl lg:text-[3.25rem] font-bold text-forest max-w-3xl mx-auto leading-[1.2] sm:leading-tight" style="letter-spacing:-1.2px;">
-        Because Better Schools Build a <span style="color:#c8743a;">Brighter India.</span>
+        Because Better Schools Build<br class="sm:hidden"> a <span style="color:#c8743a;">Brighter India.</span>
       </h2>
 
       <p class="mt-3.5 sm:mt-5 text-sm sm:text-base lg:text-[1.1rem] leading-relaxed text-forest/75 max-w-2xl mx-auto font-normal px-1 sm:px-0">

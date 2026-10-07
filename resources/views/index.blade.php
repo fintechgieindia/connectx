@@ -201,6 +201,18 @@ $seo = [
                 gap: 40px;
             }
         }
+        @media (max-width: 767px) {
+            #founder .container {
+                padding-left: 20px !important;
+                padding-right: 20px !important;
+            }
+        }
+        @media (max-width: 479px) {
+            #founder .container {
+                padding-left: 18px !important;
+                padding-right: 18px !important;
+            }
+        }
     </style>
     <div class="container">
         <div class="founder-grid">
