@@ -60,7 +60,7 @@ $seo = [
         </div>
         <div class="col-lg-6">
           <div class="hero-visual">
-            <img class="hero-image" src="{{ asset('images/media/career-internship.png') }}" alt="Young professionals collaborating">
+            <img class="hero-image" src="{{ asset('images/media/career/career-hero-banner.jpg') }}" alt="Team collaborating at Young Chanakya X creative media studio" loading="eager">
           </div>
         </div>
       </div>
