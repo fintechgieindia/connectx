@@ -1794,43 +1794,49 @@ $lightNav = true;
       @php
       $topCards = [
         [
-          'title' => 'Professional Broadcast Recording',
-          'desc'  => 'Studio-grade 4K multi-camera filming and cinematic post-production.',
-          'image' => asset('images/media/institution/conv-broadcast-recording.jpg'),
-          'alt'   => 'Professional broadcast recording studio'
+          'title'      => 'Professional Broadcast Recording',
+          'desc'       => 'Studio-grade 4K multi-camera filming and cinematic post-production.',
+          'image'      => asset('images/media/institution/conv-broadcast-recording.jpg'),
+          'alt'        => 'Professional broadcast recording studio',
+          'object_pos' => 'center center'
         ],
         [
-          'title' => 'Elevated Digital Presence',
-          'desc'  => 'Distribution across YouTube, Spotify, LinkedIn, and the YCX network.',
-          'image' => asset('images/media/institution/conv-digital-presence.jpg'),
-          'alt'   => 'Digital presence and multi-platform distribution'
+          'title'      => 'Elevated Digital Presence',
+          'desc'       => 'Distribution across YouTube, Spotify, LinkedIn, and the YCX network.',
+          'image'      => asset('images/media/institution/conv-digital-presence.jpg'),
+          'alt'        => 'Digital presence and multi-platform distribution',
+          'object_pos' => 'center center'
         ],
       ];
 
       $bottomCards = [
         [
-          'title' => 'Authoritative Thought Leadership',
-          'desc'  => 'Positioning your leadership as a trusted national benchmark.',
-          'image' => asset('images/media/institution/conv-thought-leadership.jpg'),
-          'alt'   => 'Authoritative thought leadership on national stage'
+          'title'      => 'Authoritative Thought Leadership',
+          'desc'       => 'Positioning your leadership as a trusted national benchmark.',
+          'image'      => asset('images/media/institution/conv-thought-leadership.jpg'),
+          'alt'        => 'Authoritative thought leadership on national stage',
+          'object_pos' => 'center 15%'
         ],
         [
-          'title' => 'Closed-Door Founder Network',
-          'desc'  => 'Exclusive peer roundtables with chairpersons of 120+ institutions.',
-          'image' => asset('images/media/institution/conv-founder-network.jpg'),
-          'alt'   => 'Closed-door roundtables and founder network'
+          'title'      => 'Closed-Door Founder Network',
+          'desc'       => 'Exclusive peer roundtables with chairpersons of 120+ institutions.',
+          'image'      => asset('images/media/institution/conv-founder-network.jpg'),
+          'alt'        => 'Closed-door roundtables and founder network',
+          'object_pos' => 'center center'
         ],
         [
-          'title' => 'Institutional Storytelling',
-          'desc'  => 'Inspiring genuine trust and heritage among parents, students, and alumni.',
-          'image' => asset('images/media/institution/conv-institutional-storytelling.jpg'),
-          'alt'   => 'Historic campus heritage and institutional storytelling'
+          'title'      => 'Institutional Storytelling',
+          'desc'       => 'Inspiring genuine trust and heritage among parents, students, and alumni.',
+          'image'      => asset('images/media/institution/conv-institutional-storytelling.jpg'),
+          'alt'        => 'Historic campus heritage and institutional storytelling',
+          'object_pos' => 'center 20%'
         ],
         [
-          'title' => 'Direct Student Programs',
-          'desc'  => 'Masterclasses, industry speakers, and student ambassador connects.',
-          'image' => asset('images/media/institution/conv-student-programs.jpg'),
-          'alt'   => 'Direct student masterclasses and campus programs'
+          'title'      => 'Direct Student Programs',
+          'desc'       => 'Masterclasses, industry speakers, and student ambassador connects.',
+          'image'      => asset('images/media/institution/conv-student-programs.jpg'),
+          'alt'        => 'Direct student masterclasses and campus programs',
+          'object_pos' => 'center 12%'
         ],
       ];
       @endphp
@@ -1868,13 +1874,14 @@ $lightNav = true;
         {{-- Top Row 2 Cards --}}
         @foreach($topCards as $card)
         <article class="conversation-card group">
-          <div class="h-44 sm:h-48 lg:h-50 w-full overflow-hidden relative bg-[#f2ece2]">
+          <div class="h-60 sm:h-48 lg:h-50 w-full overflow-hidden relative bg-[#f2ece2]">
             <img src="{{ $card['image'] }}" 
                  alt="{{ $card['alt'] }}" 
                  class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                 style="object-position: {{ $card['object_pos'] ?? 'center center' }};"
                  loading="lazy" />
           </div>
-          <div class="pt-3.5 pb-4 px-4 sm:pt-4 sm:pb-4.5 sm:px-5 flex flex-col flex-1 justify-start conversation-card-body">
+          <div class="pt-4 pb-4.5 px-4.5 sm:pt-4 sm:pb-4.5 sm:px-5 flex flex-col flex-1 justify-start conversation-card-body">
             <h3 class="text-[16px] sm:text-[17px] font-bold leading-snug conversation-card-title mb-1 sm:mb-1.5">
               {{ $card['title'] }}
             </h3>
@@ -1891,13 +1898,14 @@ $lightNav = true;
       <div class="mt-4 sm:mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 lg:gap-4 xl:gap-4.5">
         @foreach($bottomCards as $card)
         <article class="conversation-card group">
-          <div class="h-36 sm:h-40 lg:h-44 w-full overflow-hidden relative bg-[#f2ece2]">
+          <div class="h-60 sm:h-40 lg:h-44 w-full overflow-hidden relative bg-[#f2ece2]">
             <img src="{{ $card['image'] }}" 
                  alt="{{ $card['alt'] }}" 
                  class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                 style="object-position: {{ $card['object_pos'] ?? 'center center' }};"
                  loading="lazy" />
           </div>
-          <div class="pt-3.5 pb-4 px-4 sm:pt-4 sm:pb-4.5 sm:px-5 flex flex-col flex-1 justify-start conversation-card-body">
+          <div class="pt-4 pb-4.5 px-4.5 sm:pt-4 sm:pb-4.5 sm:px-5 flex flex-col flex-1 justify-start conversation-card-body">
             <h3 class="text-[16px] sm:text-[17px] font-bold leading-snug conversation-card-title mb-1 sm:mb-1.5">
               {{ $card['title'] }}
             </h3>
