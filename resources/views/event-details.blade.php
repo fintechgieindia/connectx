@@ -168,12 +168,67 @@
     }
 
     // SEO setup
+    $eventCanonical = 'https://connectx.youngchanakya.com/event-details/' . $currentEvent['slug'];
     $seo = [
         'title'       => $currentEvent['title'] . ' | Young Chanakya X Events',
-        'description' => $currentEvent['desc'] . ' Join elite business spaces for market changemakers.',
+        'description' => $currentEvent['desc'] . ' Join Young Chanakya X for this event in ' . $currentEvent['location'] . '.',
         'keywords'    => 'Young Chanakya X, ' . $currentEvent['category'] . ', ' . $currentEvent['host'] . ', business events 2026',
         'image'       => $currentEvent['img'],
         'type'        => 'website',
+        'canonical'   => $eventCanonical,
+    ];
+
+    $eventSchema = [
+        '@context' => 'https://schema.org',
+        '@graph' => [
+            [
+                '@type' => 'Event',
+                '@id' => $eventCanonical . '#event',
+                'name' => $currentEvent['title'],
+                'description' => $currentEvent['desc'],
+                'startDate' => '2026-07-18',
+                'eventStatus' => 'https://schema.org/EventScheduled',
+                'eventAttendanceMode' => 'https://schema.org/OfflineEventAttendanceMode',
+                'location' => [
+                    '@type' => 'Place',
+                    'name' => $currentEvent['location'],
+                    'address' => [
+                        '@type' => 'PostalAddress',
+                        'addressLocality' => 'Bengaluru',
+                        'addressCountry' => 'IN'
+                    ]
+                ],
+                'organizer' => [
+                    '@type' => 'Organization',
+                    'name' => 'Young Chanakya X',
+                    'url' => 'https://connectx.youngchanakya.com'
+                ]
+            ],
+            [
+                '@type' => 'BreadcrumbList',
+                '@id' => $eventCanonical . '#breadcrumb',
+                'itemListElement' => [
+                    [
+                        '@type' => 'ListItem',
+                        'position' => 1,
+                        'name' => 'Home',
+                        'item' => 'https://connectx.youngchanakya.com/'
+                    ],
+                    [
+                        '@type' => 'ListItem',
+                        'position' => 2,
+                        'name' => 'Events',
+                        'item' => 'https://connectx.youngchanakya.com/events'
+                    ],
+                    [
+                        '@type' => 'ListItem',
+                        'position' => 3,
+                        'name' => $currentEvent['title'],
+                        'item' => $eventCanonical
+                    ]
+                ]
+            ]
+        ]
     ];
 @endphp
 
@@ -181,29 +236,7 @@
 
 @push('seo')
 <script type="application/ld+json">
-{!! json_encode([
-    "@" . "context" => "https://schema.org",
-    "@" . "type" => "Event",
-    "name" => $currentEvent['title'],
-    "description" => $currentEvent['desc'],
-    "startDate" => "2026-07-18",
-    "eventStatus" => "https://schema.org/EventScheduled",
-    "eventAttendanceMode" => "https://schema.org/OfflineEventAttendanceMode",
-    "location" => [
-        "@" . "type" => "Place",
-        "name" => $currentEvent['location'],
-        "address" => [
-            "@" . "type" => "PostalAddress",
-            "addressLocality" => "Bengaluru",
-            "addressCountry" => "IN"
-        ]
-    ],
-    "organizer" => [
-        "@" . "type" => "Organization",
-        "name" => "Young Chanakya X",
-        "url" => "https://connectx.youngchanakya.com"
-    ]
-]) !!}
+{!! json_encode($eventSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
 </script>
 @endpush
 

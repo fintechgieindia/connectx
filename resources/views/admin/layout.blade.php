@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>@yield('title', 'Admin Panel — ConnectX YCX')</title>
+  <meta name="robots" content="noindex, nofollow">
   <meta name="description" content="Young Chanakya X Admin Dashboard">
   <link rel="icon" type="image/png" href="{{ asset('images/fav-icon/icon.png') }}">
   <link rel="shortcut icon" href="{{ asset('images/fav-icon/icon.png') }}">

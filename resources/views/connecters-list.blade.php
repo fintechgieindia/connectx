@@ -18,21 +18,43 @@ $seo = [
 @verbatim
 {
     "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "@id": "https://connectx.youngchanakya.com/connectors#webpage",
-    "url": "https://connectx.youngchanakya.com/connectors",
-    "name": "Connectors Directory | Young Chanakya X",
-    "description": "Explore the Young Chanakya X Connectors Directory to discover professionals, founders, creators, mentors, educators, and community members across diverse industries.",
-    "inLanguage": "en-IN",
-    "isPartOf": {
-        "@type": "WebSite",
-        "@id": "https://connectx.youngchanakya.com/#website"
-    },
-    "about": {
-        "@type": "Organization",
-        "name": "Young Chanakya X",
-        "url": "https://connectx.youngchanakya.com/"
-    }
+    "@graph": [
+        {
+            "@type": "CollectionPage",
+            "@id": "https://connectx.youngchanakya.com/connectors#webpage",
+            "url": "https://connectx.youngchanakya.com/connectors",
+            "name": "Connectors Directory | Young Chanakya X",
+            "description": "Explore the Young Chanakya X Connectors Directory to discover professionals, founders, creators, mentors, educators, and community members across diverse industries.",
+            "inLanguage": "en-IN",
+            "isPartOf": {
+                "@type": "WebSite",
+                "@id": "https://connectx.youngchanakya.com/#website"
+            },
+            "about": {
+                "@type": "Organization",
+                "name": "Young Chanakya X",
+                "url": "https://connectx.youngchanakya.com/"
+            }
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://connectx.youngchanakya.com/connectors#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://connectx.youngchanakya.com/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Connectors Directory",
+                    "item": "https://connectx.youngchanakya.com/connectors"
+                }
+            ]
+        }
+    ]
 }
 @endverbatim
 </script>

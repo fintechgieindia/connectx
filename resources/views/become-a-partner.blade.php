@@ -18,31 +18,64 @@ $seo = [
 @verbatim
 {
     "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Become a Partner | Young Chanakya X",
-    "url": "https://connectx.youngchanakya.com/become-a-partner",
-    "description": "Partner with Young Chanakya X to co-create events, knowledge initiatives, community programs, and strategic collaborations that drive meaningful impact.",
-    "provider": {
-        "@type": "Organization",
-        "name": "Young Chanakya X",
-        "url": "https://connectx.youngchanakya.com/"
-    },
-    "serviceType": "Creator Ecosystem Partnership",
-    "areaServed": {
-        "@type": "Country",
-        "name": "India"
-    },
-    "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Partnership Types",
-        "itemListElement": [
-            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Content Partnerships"}},
-            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Brand Collaborations"}},
-            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Media Partnerships"}},
-            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Community Partnerships"}},
-            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Event Partnerships"}}
-        ]
-    }
+    "@graph": [
+        {
+            "@type": "WebPage",
+            "@id": "https://connectx.youngchanakya.com/become-a-partner#webpage",
+            "url": "https://connectx.youngchanakya.com/become-a-partner",
+            "name": "Become a Partner | Young Chanakya X",
+            "description": "Partner with Young Chanakya X to co-create events, knowledge initiatives, community programs, and strategic collaborations that drive meaningful impact.",
+            "isPartOf": {
+                "@type": "WebSite",
+                "@id": "https://connectx.youngchanakya.com/#website"
+            }
+        },
+        {
+            "@type": "Service",
+            "name": "Become a Partner | Young Chanakya X",
+            "url": "https://connectx.youngchanakya.com/become-a-partner",
+            "description": "Partner with Young Chanakya X to co-create events, knowledge initiatives, community programs, and strategic collaborations that drive meaningful impact.",
+            "provider": {
+                "@type": "Organization",
+                "name": "Young Chanakya X",
+                "url": "https://connectx.youngchanakya.com/"
+            },
+            "serviceType": "Creator Ecosystem Partnership",
+            "areaServed": {
+                "@type": "Country",
+                "name": "India"
+            },
+            "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Partnership Types",
+                "itemListElement": [
+                    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Content Partnerships"}},
+                    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Brand Collaborations"}},
+                    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Media Partnerships"}},
+                    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Community Partnerships"}},
+                    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Event Partnerships"}}
+                ]
+            }
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://connectx.youngchanakya.com/become-a-partner#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://connectx.youngchanakya.com/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Become a Partner",
+                    "item": "https://connectx.youngchanakya.com/become-a-partner"
+                }
+            ]
+        }
+    ]
 }
 @endverbatim
 </script>

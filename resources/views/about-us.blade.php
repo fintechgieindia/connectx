@@ -18,36 +18,54 @@ $seo = [
 @verbatim
 {
     "@context": "https://schema.org",
-    "@type": "AboutPage",
-    "@id": "https://connectx.youngchanakya.com/about#webpage",
-    "url": "https://connectx.youngchanakya.com/about",
-    "name": "About Us | Young Chanakya X",
-    "description": "Learn about Young Chanakya X, a community connecting students, professionals, entrepreneurs, creators, and leaders through stories, knowledge, events, and collaboration.",
-    "inLanguage": "en-IN",
-    "isPartOf": {
-        "@type": "WebSite",
-        "@id": "https://connectx.youngchanakya.com/#website"
-    },
-    "about": {
-        "@type": "Organization",
-        "name": "Young Chanakya X",
-        "url": "https://connectx.youngchanakya.com/",
-        "founder": {
-            "@type": "Person",
-            "name": "Young Chanakya",
-            "jobTitle": "Founder & Visionary",
-            "worksFor": {
+    "@graph": [
+        {
+            "@type": "AboutPage",
+            "@id": "https://connectx.youngchanakya.com/about#webpage",
+            "url": "https://connectx.youngchanakya.com/about",
+            "name": "About Us | Young Chanakya X",
+            "description": "Learn about Young Chanakya X, a community connecting students, professionals, entrepreneurs, creators, and leaders through stories, knowledge, events, and collaboration.",
+            "inLanguage": "en-IN",
+            "isPartOf": {
+                "@type": "WebSite",
+                "@id": "https://connectx.youngchanakya.com/#website"
+            },
+            "about": {
                 "@type": "Organization",
-                "name": "Young Chanakya X"
+                "name": "Young Chanakya X",
+                "url": "https://connectx.youngchanakya.com/",
+                "founder": {
+                    "@type": "Person",
+                    "name": "Young Chanakya",
+                    "jobTitle": "Founder & Visionary",
+                    "worksFor": {
+                        "@type": "Organization",
+                        "name": "Young Chanakya X"
+                    }
+                },
+                "foundingDate": "2024",
+                "description": "Young Chanakya X is built to bring creators together in a structured ecosystem where they can connect, collaborate, and be seen."
             }
         },
-        "foundingDate": "2024",
-        "description": "Young Chanakya X is built to bring creators together in a structured ecosystem where they can connect, collaborate, and be seen.",
-        "numberOfEmployees": {
-            "@type": "QuantitativeValue",
-            "minValue": 1
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://connectx.youngchanakya.com/about#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://connectx.youngchanakya.com/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "About Us",
+                    "item": "https://connectx.youngchanakya.com/about"
+                }
+            ]
         }
-    }
+    ]
 }
 @endverbatim
 </script>

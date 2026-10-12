@@ -3,7 +3,7 @@
  * Insights Listing Page SEO Data
  */
 $seo = [
-    'title'       => 'Insights | Young Chanakya X',
+    'title'       => 'Insights & Perspectives | Young Chanakya X',
     'description' => 'Read stories, insights, expert perspectives, and community updates from Young Chanakya X on leadership, entrepreneurship, careers, networking, and personal growth.',
     'keywords'    => 'YCX blog, leadership insights, entrepreneurship, career advice, networking, business stories, community blog, knowledge hub, Young Chanakya X articles, professional growth',
     'image'       => asset('images/assets/seo-share.jpg'),
@@ -12,6 +12,53 @@ $seo = [
 @endphp
 
 @extends('layout.app')
+
+@push('seo')
+<script type="application/ld+json">
+@verbatim
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "CollectionPage",
+            "@id": "https://connectx.youngchanakya.com/insights#webpage",
+            "url": "https://connectx.youngchanakya.com/insights",
+            "name": "Insights & Perspectives | Young Chanakya X",
+            "description": "Read stories, insights, expert perspectives, and community updates from Young Chanakya X on leadership, entrepreneurship, careers, networking, and personal growth.",
+            "inLanguage": "en-IN",
+            "isPartOf": {
+                "@type": "WebSite",
+                "@id": "https://connectx.youngchanakya.com/#website"
+            },
+            "about": {
+                "@type": "Organization",
+                "name": "Young Chanakya X",
+                "url": "https://connectx.youngchanakya.com/"
+            }
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://connectx.youngchanakya.com/insights#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://connectx.youngchanakya.com/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Insights",
+                    "item": "https://connectx.youngchanakya.com/insights"
+                }
+            ]
+        }
+    ]
+}
+@endverbatim
+</script>
+@endpush
 
 @push('styles')
 <link rel="preconnect" href="https://fonts.googleapis.com">

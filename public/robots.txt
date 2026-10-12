@@ -9,11 +9,15 @@ Allow: /
 Allow: /about
 Allow: /become-a-partner
 Allow: /become-a-sponsor
-Allow: /connecters-list
+Allow: /connectors
 Allow: /events
 Allow: /contact
 
-# ── Disallow private/system paths ────────────────────────────────
+# ── Disallow private, administrative & sensitive paths ───────────
+Disallow: /admin/
+Disallow: /admin
+Disallow: /uploads/resumes/
+Disallow: /check-db
 Disallow: /storage/
 Disallow: /bootstrap/
 Disallow: /.env

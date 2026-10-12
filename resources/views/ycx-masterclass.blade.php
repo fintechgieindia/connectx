@@ -3,15 +3,148 @@
  * YCX Masterclasses Page SEO Data
  */
 $seo = [
-    'title'       => 'YCX Masterclasses — Young Chanakya X',
-    'description' => 'Your first step to building a career or startup — learn from India\'s sharpest young achievers in live, action-packed sessions.',
-    'keywords'    => 'masterclass, YCX masterclass, career, startup, learn online, Young Chanakya X',
+    'title'       => 'Masterclasses — Practical Skills & Mentorship | Young Chanakya X',
+    'description' => 'Build practical skills through expert-led masterclasses by Young Chanakya X. Learn from top achievers in live, interactive sessions for careers, startups, and personal growth.',
+    'keywords'    => 'masterclass, YCX masterclass, career masterclass, startup training, live learning, online masterclass, Young Chanakya X masterclass',
     'image'       => asset('images/assets/seo-share.jpg'),
     'type'        => 'website',
 ];
 @endphp
 
 @extends('layout.app')
+
+@push('seo')
+<script type="application/ld+json">
+@verbatim
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "WebPage",
+            "@id": "https://connectx.youngchanakya.com/masterclass#webpage",
+            "url": "https://connectx.youngchanakya.com/masterclass",
+            "name": "Masterclasses — Practical Skills & Mentorship | Young Chanakya X",
+            "description": "Build practical skills through expert-led masterclasses by Young Chanakya X. Learn from top achievers in live, interactive sessions for careers, startups, and personal growth.",
+            "inLanguage": "en-IN",
+            "isPartOf": {
+                "@type": "WebSite",
+                "@id": "https://connectx.youngchanakya.com/#website"
+            },
+            "about": {
+                "@type": "Organization",
+                "name": "Young Chanakya X",
+                "url": "https://connectx.youngchanakya.com/"
+            }
+        },
+        {
+            "@type": "FAQPage",
+            "@id": "https://connectx.youngchanakya.com/masterclass#faq",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "How will I get the link to attend the masterclass?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "You'll receive your individual session link on the email address and WhatsApp number you register with, along with reminders before the masterclass."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What is the difficulty level of the concepts taught in the class?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Every masterclass starts from first principles and builds up — no prior experience is assumed, and mentors keep things practical rather than theoretical."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "In which language will the masterclass be conducted?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "All masterclasses are conducted in simple, spoken English."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Will I get a recording of the masterclass?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yes, lifetime access to the masterclass video recording will be provided to all registered participants within 24 hours of the live session."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Is there any certificate provided upon completion?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yes, a digital Certificate of Completion signed by the mentor and Young Chanakya X will be issued to your registered email address."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Are there any prerequisites or software requirements?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Just one — Zoom should be installed on your device, and you should be logged in with the email address you registered with."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Where should I seek assistance before/after registering?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Email us anytime at youngchanakya.x@gmail.com from your registered email ID and our team will help you right away."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Can I change my batch or slot after registering?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yes, you can request a slot change up to 4 hours before the session starts by contacting our support team via email or WhatsApp."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Is this masterclass live or pre-recorded?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "All our featured masterclasses are 100% live and interactive, allowing you to ask questions and discuss concepts directly with the mentor."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What if I register but am unable to attend the session?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Don't worry! If you miss the live session, you will still receive the complete recording, templates, and certificate."
+                    }
+                }
+            ]
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://connectx.youngchanakya.com/masterclass#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://connectx.youngchanakya.com/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Masterclasses",
+                    "item": "https://connectx.youngchanakya.com/masterclass"
+                }
+            ]
+        }
+    ]
+}
+@endverbatim
+</script>
+@endpush
 
 @push('styles')
 <link rel="stylesheet" href="{{ asset('css/ycx-masterclass.css') }}?v={{ time() }}">

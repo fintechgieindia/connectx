@@ -64,11 +64,25 @@ $seo = [
                 "availableLanguage": ["English", "Hindi"]
             },
             "sameAs": [
-                "https://www.linkedin.com/company/connectx",
-                "https://www.instagram.com/connectx",
-                "https://twitter.com/connectx",
-                "https://www.youtube.com/@connectx"
+                "https://www.linkedin.com/company/youngchanakyax/",
+                "https://www.youtube.com/channel/UCunrW6XIpxgonRXd6CjQ9eQ",
+                "https://www.facebook.com/YoungChanakyaX",
+                "https://www.instagram.com/youngchanakyax/",
+                "https://www.threads.com/@youngchanakyax"
             ]
+        },
+        {
+            "@type": "WebPage",
+            "@id": "https://connectx.youngchanakya.com/#webpage",
+            "url": "https://connectx.youngchanakya.com/",
+            "name": "Young Chanakya X — Global Creator Ecosystem by Young Chanakya",
+            "description": "Young Chanakya X is a premium global creator ecosystem connecting influencers, podcasters, speakers, founders, and brands through collaborations, exclusive events, and creator lounges.",
+            "isPartOf": {
+                "@id": "https://connectx.youngchanakya.com/#website"
+            },
+            "about": {
+                "@id": "https://connectx.youngchanakya.com/#organization"
+            }
         }
     ]
 }
@@ -113,7 +127,7 @@ $seo = [
             <div class="hero-overlay"></div>
             <div class="hero-grain"></div>
             <div class="hero-content">
-                <h1>Share Your Journey &amp;<br><em>Become a Speaker</em></h1>
+                <h2 class="hero-heading">Share Your Journey &amp;<br><em>Become a Speaker</em></h2>
                 <p class="hero-desc">Bring your personal story, business insights, or functional expertise to our signature stage and connect with a highly engaged audience.
                 </p>
                 <div class="hero-btns">

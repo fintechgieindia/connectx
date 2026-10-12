@@ -3,15 +3,149 @@
  * Internships Page
  */
 $seo = [
-    'title'       => 'Internship | Young Chanakya X',
+    'title'       => 'Internship Programs & Opportunities | Young Chanakya X',
     'description' => 'Start your career with a Young Chanakya X internship. Gain hands-on experience, learn from real projects, and grow with an innovative community.',
     'keywords'    => 'YCX internship, internships, student internship, internship program, learning experience, career development, community internship, Young Chanakya X internship, students, training',
     'image'       => asset('images/assets/seo-share.jpg'),
     'type'        => 'website',
+    'canonical'   => 'https://connectx.youngchanakya.com/internship',
 ];
 @endphp
 
 @extends('layout.app')
+
+@push('seo')
+<script type="application/ld+json">
+@verbatim
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "CollectionPage",
+            "@id": "https://connectx.youngchanakya.com/internship#webpage",
+            "url": "https://connectx.youngchanakya.com/internship",
+            "name": "Internship Programs & Opportunities | Young Chanakya X",
+            "description": "Start your career with a Young Chanakya X internship. Gain hands-on experience, learn from real projects, and grow with an innovative community.",
+            "inLanguage": "en-IN",
+            "isPartOf": {
+                "@type": "WebSite",
+                "@id": "https://connectx.youngchanakya.com/#website"
+            },
+            "about": {
+                "@type": "Organization",
+                "name": "Young Chanakya X",
+                "url": "https://connectx.youngchanakya.com/"
+            }
+        },
+        {
+            "@type": "FAQPage",
+            "@id": "https://connectx.youngchanakya.com/internship#faq",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "What's the duration of the internship?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Most internships run 3 to 6 months, with some flexibility around your academic schedule."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Do I need prior experience?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "No — we look for curiosity and initiative more than a polished resume. Some tracks, like Tech, expect basic fundamentals."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Will I get a certificate?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yes — every intern who completes the program receives a certificate and a letter of recommendation."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Can this convert into a full-time role?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "It can, if there's a strong mutual fit and an open role at the time you finish."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Can I do this while still studying?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yes — most of our interns are current students. We'll work with your schedule wherever we can."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Is there an application deadline?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Each cohort has a fixed application window — applications are reviewed on a rolling basis within that cycle."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Is every track fully remote?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "It varies by track — some, like Community, work best hybrid, and others are fully flexible. We'll clarify this on your intro call."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What tools should I be familiar with?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "It depends on your track — we'll share a short list relevant to your role before you start, so nothing catches you off guard."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Can I apply for more than one track?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "We'd recommend applying for the one you're most excited about — but let us know in your application if you're open to more than one."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Who do I contact if I have more questions?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Reach out through the application form and mention your question — our team responds to every message personally."
+                    }
+                }
+            ]
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://connectx.youngchanakya.com/internship#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://connectx.youngchanakya.com/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Internships",
+                    "item": "https://connectx.youngchanakya.com/internship"
+                }
+            ]
+        }
+    ]
+}
+@endverbatim
+</script>
+@endpush
 
 @push('styles')
 <link rel="preconnect" href="https://fonts.googleapis.com">

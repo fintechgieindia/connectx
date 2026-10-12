@@ -3,15 +3,149 @@
  * Become a Speaker Page SEO Data
  */
 $seo = [
-    'title'       => 'YCX Talks | Young Chanakya X',
+    'title'       => 'Apply to Speak at YCX Talks | Young Chanakya X',
     'description' => 'Apply to speak at YCX Talks and share your knowledge, expertise, and ideas through live talks, workshops, and community learning sessions.',
     'keywords'    => 'YCX Talks, become a speaker, public speaking, expert talks, keynote speaker, workshops, knowledge sharing, leadership talks, Young Chanakya X talks, speaker application',
     'image'       => asset('images/assets/seo-share.jpg'),
     'type'        => 'website',
+    'canonical'   => 'https://connectx.youngchanakya.com/become-a-speaker',
 ];
 @endphp
 
 @extends('layout.app')
+
+@push('seo')
+<script type="application/ld+json">
+@verbatim
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "WebPage",
+            "@id": "https://connectx.youngchanakya.com/become-a-speaker#webpage",
+            "url": "https://connectx.youngchanakya.com/become-a-speaker",
+            "name": "Apply to Speak at YCX Talks | Young Chanakya X",
+            "description": "Apply to speak at YCX Talks and share your knowledge, expertise, and ideas through live talks, workshops, and community learning sessions.",
+            "inLanguage": "en-IN",
+            "isPartOf": {
+                "@type": "WebSite",
+                "@id": "https://connectx.youngchanakya.com/#website"
+            },
+            "about": {
+                "@type": "Organization",
+                "name": "Young Chanakya X",
+                "url": "https://connectx.youngchanakya.com/"
+            }
+        },
+        {
+            "@type": "FAQPage",
+            "@id": "https://connectx.youngchanakya.com/become-a-speaker#faq",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "How do I become a YCX speaker?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Fill out the application form above with your story and details. Our team reviews it and reaches out within 5–7 working days if it's a fit."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Who can apply?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Students, entrepreneurs, founders, professionals, creators, mentors, educators, investors, and business leaders — if you have a story or expertise worth sharing, you're welcome to apply."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Is there a cost to speak at YCX?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "No. Speaking on YCX is free. We invest in producing your story because we believe it's worth telling well."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What languages can I speak in?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Whatever language you're most fluent and expressive in. We currently support English, Hindi, Tamil, Telugu, and are actively expanding to more."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Can I nominate someone else?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yes — use the 'Someone else' option in the form and share as much as you can about their story. We'll take it from there."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What happens after I submit the form?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Our team reviews every application. If shortlisted, we'll set up a short discovery call to learn more about your story and next steps."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Do I get help preparing my talk?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yes! Our editorial team works closely with you on story structure, presentation, and rehearsals to ensure you're fully prepared."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What formats are available for talks?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "We match stories to the best format—which could be a video podcast episode, a live stage talk, a panel discussion, or a small workshop."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Can I apply with multiple different stories?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yes. If you have different experiences or lessons that serve different target audiences, feel free to apply again with a new concept."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Who will be in the audience?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "You will speak to an active community of creators, corporate professionals, college students, and founders looking for real, actionable wisdom."
+                    }
+                }
+            ]
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://connectx.youngchanakya.com/become-a-speaker#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://connectx.youngchanakya.com/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "YCX Talks",
+                    "item": "https://connectx.youngchanakya.com/become-a-speaker"
+                }
+            ]
+        }
+    ]
+}
+@endverbatim
+</script>
+@endpush
 
 @push('styles')
 <link rel="preconnect" href="https://fonts.googleapis.com">

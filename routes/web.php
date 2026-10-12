@@ -119,7 +119,7 @@ Route::get('/masterclass', function () {
 
 
 Route::get('/speaker-talk', function () {
-    return view('speaker-talk');
+    return redirect('/become-a-speaker', 301);
 })->name('speaker.talk');
 
 Route::get('/share-your-story', function () {

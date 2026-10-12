@@ -234,7 +234,7 @@
 </style>
 
 <!-- LANDSCAPE MOUNTAIN BACKGROUND FOOTER (SEAMLESSLY ATTACHED) -->
-<div class="footer-landscape-sec">
+<footer class="footer-landscape-sec" role="contentinfo">
     <div class="container">
         
         <!-- ATTACHED TOP TAGLINE SECTION -->
@@ -359,7 +359,7 @@
             </div>
         </div>
     </div>
-</div>
+</footer>
 
 <!-- Scroll Top -->
 <button class="scroll-top">

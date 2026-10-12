@@ -6,12 +6,56 @@ $seo = [
     'title'       => 'Privacy Policy | Young Chanakya X',
     'description' => 'Read the Young Chanakya X Privacy Policy to understand how we collect, use, store, and protect your personal information while using our platform and services.',
     'keywords'    => 'Young Chanakya X privacy policy, privacy policy, data protection, personal information, user privacy, data security, privacy practices, YCX privacy, website privacy, information policy',
-    'image'       => asset('images/assets/seo-share.jpg'),
+    'image'       => 'https://connectx.youngchanakya.com/images/assets/seo-share.jpg',
     'type'        => 'website',
+    'canonical'   => 'https://connectx.youngchanakya.com/privacy-policy',
 ];
 @endphp
 
 @extends('layout.app')
+
+@push('seo')
+<script type="application/ld+json">
+@verbatim
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://connectx.youngchanakya.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Privacy Policy",
+          "item": "https://connectx.youngchanakya.com/privacy-policy"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://connectx.youngchanakya.com/privacy-policy#webpage",
+      "url": "https://connectx.youngchanakya.com/privacy-policy",
+      "name": "Privacy Policy | Young Chanakya X",
+      "description": "Read the Young Chanakya X Privacy Policy to understand how we collect, use, store, and protect your personal information.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://connectx.youngchanakya.com/#website",
+        "name": "Young Chanakya X",
+        "url": "https://connectx.youngchanakya.com"
+      },
+      "inLanguage": "en-IN"
+    }
+  ]
+}
+@endverbatim
+</script>
+@endpush
 
 @push('styles')
 <link rel="preconnect" href="https://fonts.googleapis.com">

@@ -18,21 +18,129 @@ $seo = [
 @verbatim
 {
     "@context": "https://schema.org",
-    "@type": "WebPage",
-    "@id": "https://connectx.youngchanakya.com/share-your-story#webpage",
-    "url": "https://connectx.youngchanakya.com/share-your-story",
-    "name": "Share Your Story | Young Chanakya X",
-    "description": "Share your personal or professional journey with Young Chanakya X and inspire others through authentic stories, valuable lessons, and real-life experiences.",
-    "inLanguage": "en-IN",
-    "isPartOf": {
-        "@type": "WebSite",
-        "@id": "https://connectx.youngchanakya.com/#website"
-    },
-    "about": {
-        "@type": "Organization",
-        "name": "Young Chanakya X",
-        "url": "https://connectx.youngchanakya.com/"
-    }
+    "@graph": [
+        {
+            "@type": "WebPage",
+            "@id": "https://connectx.youngchanakya.com/share-your-story#webpage",
+            "url": "https://connectx.youngchanakya.com/share-your-story",
+            "name": "Share Your Story | Young Chanakya X",
+            "description": "Share your personal or professional journey with Young Chanakya X and inspire others through authentic stories, valuable lessons, and real-life experiences.",
+            "inLanguage": "en-IN",
+            "isPartOf": {
+                "@type": "WebSite",
+                "@id": "https://connectx.youngchanakya.com/#website"
+            },
+            "about": {
+                "@type": "Organization",
+                "name": "Young Chanakya X",
+                "url": "https://connectx.youngchanakya.com/"
+            }
+        },
+        {
+            "@type": "FAQPage",
+            "@id": "https://connectx.youngchanakya.com/share-your-story#faq",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "Who should share their story on YCX?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Anyone with a journey to share—founders, professionals, creators, students, and community builders who have faced challenges, learned valuable lessons, or achieved meaningful goals."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What kind of stories are you looking for?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "We look for authentic, unfiltered narratives about career pivots, overcoming business failures, leadership triumphs, lessons from building startups, and personal transformations."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Is there any fee to submit or publish a story?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "No. Sharing your story with YCX is completely free. We cover all production and editorial resources."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How long should my story proposal be?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Keep it concise. Focus on the core timeline, the main challenge you faced, and the key lessons you walked away with."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What happens after I submit my proposal?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Our editorial curators will review your application. If it matches our upcoming publication schedule, we'll schedule a discovery call with you."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Will I receive help preparing my story?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yes! Our editorial and writing team works closely with you to structure your story, polish the details, and highlight the key takeaways."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What format will my story be published in?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "We feature stories in written profiles, video podcast episodes, social media features, and occasionally on our live keynote stages."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Can I submit a story on behalf of someone else?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Absolutely. You can submit details about another builder or leader's journey, and our team will reach out if there's a fit."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How long does the review process take?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Our team reviews every proposal within 5–7 working days and will contact you directly if we're moving forward."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Do I need to be a seasoned writer or public speaker?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Not at all. We value raw experiences and authentic wisdom over professional speaking skills. Our curators help you find the best way to tell your story."
+                    }
+                }
+            ]
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://connectx.youngchanakya.com/share-your-story#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://connectx.youngchanakya.com/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Share Your Story",
+                    "item": "https://connectx.youngchanakya.com/share-your-story"
+                }
+            ]
+        }
+    ]
 }
 @endverbatim
 </script>

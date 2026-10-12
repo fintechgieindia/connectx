@@ -18,30 +18,63 @@ $seo = [
 @verbatim
 {
     "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Become a Sponsor | Young Chanakya X",
-    "url": "https://connectx.youngchanakya.com/become-a-sponsor",
-    "description": "Sponsor Young Chanakya X and showcase your brand through events, podcasts, networking, workshops, and community initiatives with meaningful audience engagement.",
-    "provider": {
-        "@type": "Organization",
-        "name": "Young Chanakya X",
-        "url": "https://connectx.youngchanakya.com/"
-    },
-    "serviceType": "Event & Creator Ecosystem sponsorship",
-    "areaServed": {
-        "@type": "Country",
-        "name": "India"
-    },
-    "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "sponsorship Packages",
-        "itemListElement": [
-            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Title sponsorship"}},
-            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Event sponsorship"}},
-            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Community sponsorship"}},
-            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Creator Ecosystem sponsorship"}}
-        ]
-    }
+    "@graph": [
+        {
+            "@type": "WebPage",
+            "@id": "https://connectx.youngchanakya.com/become-a-sponsor#webpage",
+            "url": "https://connectx.youngchanakya.com/become-a-sponsor",
+            "name": "Become a Sponsor | Young Chanakya X",
+            "description": "Sponsor Young Chanakya X and showcase your brand through events, podcasts, networking, workshops, and community initiatives with meaningful audience engagement.",
+            "isPartOf": {
+                "@type": "WebSite",
+                "@id": "https://connectx.youngchanakya.com/#website"
+            }
+        },
+        {
+            "@type": "Service",
+            "name": "Become a Sponsor | Young Chanakya X",
+            "url": "https://connectx.youngchanakya.com/become-a-sponsor",
+            "description": "Sponsor Young Chanakya X and showcase your brand through events, podcasts, networking, workshops, and community initiatives with meaningful audience engagement.",
+            "provider": {
+                "@type": "Organization",
+                "name": "Young Chanakya X",
+                "url": "https://connectx.youngchanakya.com/"
+            },
+            "serviceType": "Event & Creator Ecosystem sponsorship",
+            "areaServed": {
+                "@type": "Country",
+                "name": "India"
+            },
+            "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Sponsorship Packages",
+                "itemListElement": [
+                    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Title sponsorship"}},
+                    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Event sponsorship"}},
+                    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Community sponsorship"}},
+                    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Creator Ecosystem sponsorship"}}
+                ]
+            }
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://connectx.youngchanakya.com/become-a-sponsor#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://connectx.youngchanakya.com/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Become a Sponsor",
+                    "item": "https://connectx.youngchanakya.com/become-a-sponsor"
+                }
+            ]
+        }
+    ]
 }
 @endverbatim
 </script>

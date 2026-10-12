@@ -2,16 +2,95 @@
 /**
  * Job Detail Page SEO Data
  */
+$categoryName = $job->category === 'internship' ? 'Internship' : 'Career';
+$categoryPath = $job->category === 'internship' ? 'internship' : 'career';
+$canonicalUrl = 'https://connectx.youngchanakya.com/' . $categoryPath . '/' . $job->slug;
+$seoDescription = !empty($job->tagline)
+    ? $job->tagline . ' Apply for the ' . $job->title . ' (' . $categoryName . ') role at Young Chanakya X.'
+    : 'Apply for the ' . $job->title . ' (' . $categoryName . ') role at Young Chanakya X. ' . ($job->department ? 'Department: ' . $job->department . '.' : '');
+$seoDescription = \Illuminate\Support\Str::limit(strip_tags($seoDescription), 160);
+
 $seo = [
-    'title'       => $job->title . ' — Young Chanakya X',
-    'description' => $job->tagline ?? 'Join the Young Chanakya X team and make a difference.',
-    'keywords'    => 'careers, internships, ' . $job->title . ', work at Young Chanakya X',
-    'image'       => asset('images/assets/seo-share.jpg'),
+    'title'       => $job->title . ' (' . $categoryName . ') | Young Chanakya X',
+    'description' => $seoDescription,
+    'keywords'    => 'careers, internships, ' . $job->title . ', work at Young Chanakya X, ' . $job->department,
+    'image'       => 'https://connectx.youngchanakya.com/images/assets/seo-share.jpg',
     'type'        => 'website',
+    'canonical'   => $canonicalUrl,
 ];
+
+$employmentType = $job->category === 'internship' ? 'INTERN' : (stripos($job->work_mode, 'part') !== false ? 'PART_TIME' : 'FULL_TIME');
+$isRemote = stripos($job->work_mode, 'remote') !== false || stripos($job->location ?? '', 'remote') !== false;
+$datePosted = $job->created_at ? $job->created_at->toIso8601String() : '2026-01-01T00:00:00+05:30';
+
+$jobSchema = [
+    '@context' => 'https://schema.org',
+    '@graph' => [
+        [
+            '@type' => 'BreadcrumbList',
+            'itemListElement' => [
+                [
+                    '@type' => 'ListItem',
+                    'position' => 1,
+                    'name' => 'Home',
+                    'item' => 'https://connectx.youngchanakya.com'
+                ],
+                [
+                    '@type' => 'ListItem',
+                    'position' => 2,
+                    'name' => $categoryName . 's',
+                    'item' => 'https://connectx.youngchanakya.com/' . $categoryPath
+                ],
+                [
+                    '@type' => 'ListItem',
+                    'position' => 3,
+                    'name' => $job->title,
+                    'item' => $canonicalUrl
+                ]
+            ]
+        ],
+        [
+            '@type' => 'JobPosting',
+            'title' => $job->title,
+            'description' => !empty($job->content) ? $job->content : '<p>' . e($job->tagline ?? $job->title) . '</p>',
+            'datePosted' => $datePosted,
+            'employmentType' => $employmentType,
+            'occupationalCategory' => $job->department,
+            'hiringOrganization' => [
+                '@type' => 'Organization',
+                'name' => 'Young Chanakya X',
+                'sameAs' => 'https://connectx.youngchanakya.com',
+                'logo' => 'https://connectx.youngchanakya.com/images/assets/logo.png'
+            ],
+            'jobLocation' => [
+                '@type' => 'Place',
+                'address' => [
+                    '@type' => 'PostalAddress',
+                    'addressLocality' => (!empty($job->location) && strtolower($job->location) !== 'remote') ? $job->location : 'Tiruchengode',
+                    'addressRegion' => 'Tamil Nadu',
+                    'addressCountry' => 'IN'
+                ]
+            ]
+        ]
+    ]
+];
+
+if ($isRemote) {
+    $jobSchema['@graph'][1]['jobLocationType'] = 'TELECOMMUTE';
+    $jobSchema['@graph'][1]['applicantLocationRequirements'] = [
+        '@type' => 'Country',
+        'name' => 'India'
+    ];
+}
 @endphp
 
 @extends('layout.app')
+
+@push('seo')
+<script type="application/ld+json">
+{!! json_encode($jobSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
+</script>
+@endpush
 
 @push('styles')
 <link rel="preconnect" href="https://fonts.googleapis.com">

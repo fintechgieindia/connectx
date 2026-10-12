@@ -3,11 +3,12 @@
  * Events Page SEO Data
  */
 $seo = [
-    'title'       => 'Events | Young Chanakya X',
-    'description' => 'Discover networking events, YCX Talks, workshops, meetups, podcasts, and community experiences designed for learning, collaboration, and growth.',
+    'title'       => 'Upcoming Events & Lounges | Young Chanakya X',
+    'description' => 'Discover upcoming networking events, YCX Talks, workshops, executive meetups, and creator experiences designed for learning, collaboration, and growth.',
     'keywords'    => 'YCX events, networking events, business meetups, workshops, conferences, community events, YCX Talks, leadership events, professional networking, Young Chanakya X',
     'image'       => asset('images/assets/seo-share.jpg'),
     'type'        => 'website',
+    'canonical'   => 'https://connectx.youngchanakya.com/events',
 ];
 @endphp
 
@@ -18,11 +19,25 @@ $seo = [
 @verbatim
 {
     "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": "Events | Young Chanakya X",
-    "description": "Discover networking events, YCX Talks, workshops, meetups, podcasts, and community experiences designed for learning, collaboration, and growth.",
-    "url": "https://connectx.youngchanakya.com/events",
-    "itemListElement": [
+    "@graph": [
+        {
+            "@type": "CollectionPage",
+            "@id": "https://connectx.youngchanakya.com/events#webpage",
+            "url": "https://connectx.youngchanakya.com/events",
+            "name": "Upcoming Events & Lounges | Young Chanakya X",
+            "description": "Discover upcoming networking events, YCX Talks, workshops, executive meetups, and creator experiences designed for learning, collaboration, and growth.",
+            "inLanguage": "en-IN",
+            "isPartOf": {
+                "@type": "WebSite",
+                "@id": "https://connectx.youngchanakya.com/#website"
+            }
+        },
+        {
+            "@type": "ItemList",
+            "name": "Events | Young Chanakya X",
+            "description": "Discover networking events, YCX Talks, workshops, meetups, podcasts, and community experiences designed for learning, collaboration, and growth.",
+            "url": "https://connectx.youngchanakya.com/events",
+            "itemListElement": [
         {
             "@type": "ListItem",
             "position": 1,
@@ -95,6 +110,26 @@ $seo = [
                     "url": "https://connectx.youngchanakya.com"
                 }
             }
+        }
+    ]
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://connectx.youngchanakya.com/events#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://connectx.youngchanakya.com/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Events",
+                    "item": "https://connectx.youngchanakya.com/events"
+                }
+            ]
         }
     ]
 }

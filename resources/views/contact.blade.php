@@ -15,42 +15,69 @@ $seo = [
 @extends('layout.app')
 
 @push('seo')
-{{-- ── Contact Page: ContactPage + LocalBusiness JSON-LD ─── --}}
+{{-- ── Contact Page: ContactPage + BreadcrumbList JSON-LD ─── --}}
 <script type="application/ld+json">
 @verbatim
 {
     "@context": "https://schema.org",
-    "@type": "ContactPage",
-    "@id": "https://connectx.youngchanakya.com/contact#webpage",
-    "url": "https://connectx.youngchanakya.com/contact",
-    "name": "Contact Us | Young Chanakya X",
-    "description": "Contact Young Chanakya X for partnerships, sponsorships, speaking opportunities, podcasts, community programs, events, or general inquiries.",
-    "inLanguage": "en-IN",
-    "isPartOf": {
-        "@type": "WebSite",
-        "@id": "https://connectx.youngchanakya.com/#website"
-    },
-    "mainEntity": {
-        "@type": "Organization",
-        "name": "Young Chanakya X",
-        "url": "https://connectx.youngchanakya.com/",
-        "email": "youngchanakya.x@gmail.com",
-        "contactPoint": [
-            {
-                "@type": "ContactPoint",
-                "contactType": "customer service",
-                "email": "youngchanakya.x@gmail.com",
-                "availableLanguage": ["English", "Hindi"]
+    "@graph": [
+        {
+            "@type": "ContactPage",
+            "@id": "https://connectx.youngchanakya.com/contact#webpage",
+            "url": "https://connectx.youngchanakya.com/contact",
+            "name": "Contact Us | Young Chanakya X",
+            "description": "Contact Young Chanakya X for partnerships, sponsorships, speaking opportunities, podcasts, community programs, events, or general inquiries.",
+            "inLanguage": "en-IN",
+            "isPartOf": {
+                "@type": "WebSite",
+                "@id": "https://connectx.youngchanakya.com/#website"
             },
-            {
-                "@type": "ContactPoint",
-                "contactType": "sales",
+            "mainEntity": {
+                "@type": "Organization",
+                "name": "Young Chanakya X",
+                "url": "https://connectx.youngchanakya.com/",
                 "email": "youngchanakya.x@gmail.com",
-                "contactOption": "TollFree",
-                "availableLanguage": ["English", "Hindi"]
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Tiruchengode",
+                    "addressRegion": "Tamil Nadu",
+                    "addressCountry": "India"
+                },
+                "contactPoint": [
+                    {
+                        "@type": "ContactPoint",
+                        "contactType": "customer service",
+                        "email": "youngchanakya.x@gmail.com",
+                        "availableLanguage": ["English", "Hindi"]
+                    },
+                    {
+                        "@type": "ContactPoint",
+                        "contactType": "partnerships and sponsorships",
+                        "email": "youngchanakya.x@gmail.com",
+                        "availableLanguage": ["English", "Hindi"]
+                    }
+                ]
             }
-        ]
-    }
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://connectx.youngchanakya.com/contact#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://connectx.youngchanakya.com/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Contact Us",
+                    "item": "https://connectx.youngchanakya.com/contact"
+                }
+            ]
+        }
+    ]
 }
 @endverbatim
 </script>
@@ -479,21 +506,21 @@ $seo = [
 									<div class="address-block-one text-center mb-40 wow fadeInUp">
 										<div class="icon rounded-circle d-flex align-items-center justify-content-center m-auto"><i class="bi bi-geo-alt-fill" style="font-size: 26px; color: var(--primary);"></i></div>
 										<h5 class="title">Our Address</h5>
-										<p>Tiruchengode, <br>India</p>
+										<p style="color: #29594b; font-weight: 400; line-height: 1.6em;">Tiruchengode, <br>India</p>
 									</div> <!-- /.address-block-one -->
 								</div>
 								<div class="col-md-4">
 									<div class="address-block-one text-center mb-40 wow fadeInUp">
 										<div class="icon rounded-circle d-flex align-items-center justify-content-center m-auto"><i class="bi bi-telephone-fill" style="font-size: 24px; color: var(--primary);"></i></div>
 										<h5 class="title">Contact Info</h5>
-										<p><a href="tel:8667205661" class="call text-lg fw-500">+91 8667205661</a></p>
+										<p><a href="tel:8667205661" class="call" style="color: #29594b; font-weight: 400;">+91 8667205661</a></p>
 									</div> <!-- /.address-block-one -->
 								</div>
 								<div class="col-md-4">
 									<div class="address-block-one text-center mb-40 wow fadeInUp">
 										<div class="icon rounded-circle d-flex align-items-center justify-content-center m-auto"><i class="bi bi-envelope-fill" style="font-size: 24px; color: var(--primary);"></i></div>
 										<h5 class="title">Mail Us</h5>
-										<p><a href="mailto:youngchanakya.x@gmail.com" class="webaddress">youngchanakya.x@gmail.com</a></p>
+										<p><a href="mailto:youngchanakya.x@gmail.com" class="webaddress" style="color: #29594b; font-weight: 400; text-decoration: underline;">youngchanakya.x@gmail.com</a></p>
 									</div> <!-- /.address-block-one -->
 								</div>
 							</div>

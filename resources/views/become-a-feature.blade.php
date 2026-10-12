@@ -3,15 +3,63 @@
  * Become a Guest / Feature Page SEO Data
  */
 $seo = [
-    'title'       => 'Get Featured on Our Podcast | Young Chanakya X',
-    'description' => 'Share your journey, insights, and experiences on the Young Chanakya X Podcast. Connect with a growing community through authentic conversations and inspiring stories.',
+    'title'       => 'Featured on YCX Podcast — Guest Application | Young Chanakya X',
+    'description' => 'Share your journey, insights, and experiences on the Young Chanakya X Podcast. Connect with an engaged community through authentic conversations and inspiring stories.',
     'keywords'    => 'YCX podcast, get featured on podcast, podcast guest, business podcast, entrepreneur podcast, creator podcast, leadership podcast, storytelling podcast, Young Chanakya X podcast, podcast interview',
     'image'       => asset('images/assets/seo-share.jpg'),
     'type'        => 'website',
+    'canonical'   => 'https://connectx.youngchanakya.com/become-a-feature',
 ];
 @endphp
 
 @extends('layout.app')
+
+@push('seo')
+<script type="application/ld+json">
+@verbatim
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "WebPage",
+            "@id": "https://connectx.youngchanakya.com/become-a-feature#webpage",
+            "url": "https://connectx.youngchanakya.com/become-a-feature",
+            "name": "Featured on YCX Podcast — Guest Application | Young Chanakya X",
+            "description": "Share your journey, insights, and experiences on the Young Chanakya X Podcast. Connect with an engaged community through authentic conversations and inspiring stories.",
+            "inLanguage": "en-IN",
+            "isPartOf": {
+                "@type": "WebSite",
+                "@id": "https://connectx.youngchanakya.com/#website"
+            },
+            "about": {
+                "@type": "Organization",
+                "name": "Young Chanakya X",
+                "url": "https://connectx.youngchanakya.com/"
+            }
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://connectx.youngchanakya.com/become-a-feature#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://connectx.youngchanakya.com/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Featured on YCX Podcast",
+                    "item": "https://connectx.youngchanakya.com/become-a-feature"
+                }
+            ]
+        }
+    ]
+}
+@endverbatim
+</script>
+@endpush
 
 @push('styles')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/css/intlTelInput.css">

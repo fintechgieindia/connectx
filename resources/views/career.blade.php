@@ -4,7 +4,7 @@
  */
 $isInternship = $isInternship ?? false;
 $seo = [
-    'title'       => $isInternship ? 'Internship | Young Chanakya X' : 'Careers | Young Chanakya X',
+    'title'       => $isInternship ? 'Internship Programs & Opportunities | Young Chanakya X' : 'Careers & Job Openings | Young Chanakya X',
     'description' => $isInternship 
         ? 'Start your career with a Young Chanakya X internship. Gain hands-on experience, learn from real projects, and grow with an innovative community.' 
         : 'Explore career opportunities at Young Chanakya X and build your future with a team passionate about community, innovation, learning, and meaningful impact.',
@@ -13,10 +13,144 @@ $seo = [
         : 'YCX careers, jobs at Young Chanakya X, career opportunities, community jobs, startup careers, creative jobs, digital careers, join YCX, careers, hiring',
     'image'       => asset('images/assets/seo-share.jpg'),
     'type'        => 'website',
+    'canonical'   => 'https://connectx.youngchanakya.com/career',
 ];
 @endphp
 
 @extends('layout.app')
+
+@push('seo')
+<script type="application/ld+json">
+@verbatim
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "CollectionPage",
+            "@id": "https://connectx.youngchanakya.com/career#webpage",
+            "url": "https://connectx.youngchanakya.com/career",
+            "name": "Careers & Job Openings | Young Chanakya X",
+            "description": "Explore career opportunities at Young Chanakya X and build your future with a team passionate about community, innovation, learning, and meaningful impact.",
+            "inLanguage": "en-IN",
+            "isPartOf": {
+                "@type": "WebSite",
+                "@id": "https://connectx.youngchanakya.com/#website"
+            },
+            "about": {
+                "@type": "Organization",
+                "name": "Young Chanakya X",
+                "url": "https://connectx.youngchanakya.com/"
+            }
+        },
+        {
+            "@type": "FAQPage",
+            "@id": "https://connectx.youngchanakya.com/career#faq",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "What is the hiring process like at Young Chanakya X?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Our process typically includes application review, an introductory conversation, a role-specific skill or task assessment, and a final alignment discussion with the team."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Are career opportunities at YCX remote or on-site?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "We offer remote, hybrid, and on-site roles depending on the nature of the position and team requirements. Details are specified on each job listing."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Can I apply for multiple open positions?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yes, you may apply for more than one position if your experience aligns. We recommend highlighting your primary area of expertise in your application."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What qualities does YCX look for in candidates?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "We look for high ownership, initiative, adaptability, curiosity, strong execution capabilities, and a passion for creating impactful work."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How long does it take to get a response after applying?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Our talent team reviews applications on a rolling basis. You will typically receive an update within 1 to 2 weeks after submitting your application."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Does YCX offer career growth and learning opportunities?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Continuous learning, cross-functional collaboration, leadership growth, and ownership of key initiatives are central to our work culture."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What benefits and work culture can I expect?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "We foster a collaborative, fast-paced environment with flexible work arrangements, mentorship, performance recognition, and meaningful project ownership."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Are there entry-level or junior positions available?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yes, we welcome emerging talent across technical, creative, community, and business functions alongside experienced professionals."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What happens if there are no open roles matching my profile?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "You can submit your details via our interest form. Our team regularly reaches out to candidate talent pools as new opportunities open up."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Who can I contact for questions regarding my application status?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "You can reach out directly to our hiring team at youngchanakya.x@gmail.com with your application name and role details."
+                    }
+                }
+            ]
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://connectx.youngchanakya.com/career#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://connectx.youngchanakya.com/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Careers",
+                    "item": "https://connectx.youngchanakya.com/career"
+                }
+            ]
+        }
+    ]
+}
+@endverbatim
+</script>
+@endpush
 
 @push('styles')
 <link rel="preconnect" href="https://fonts.googleapis.com">

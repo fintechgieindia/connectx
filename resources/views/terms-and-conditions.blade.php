@@ -6,12 +6,56 @@ $seo = [
     'title'       => 'Terms & Conditions | Young Chanakya X',
     'description' => 'Review the Young Chanakya X Terms & Conditions to understand the rules, responsibilities, and guidelines for accessing and using our platform and services.',
     'keywords'    => 'Young Chanakya X terms, terms and conditions, website terms, user agreement, legal policy, platform guidelines, terms of service, YCX terms, website policies, user responsibilities',
-    'image'       => asset('images/assets/seo-share.jpg'),
+    'image'       => 'https://connectx.youngchanakya.com/images/assets/seo-share.jpg',
     'type'        => 'website',
+    'canonical'   => 'https://connectx.youngchanakya.com/terms-and-conditions',
 ];
 @endphp
 
 @extends('layout.app')
+
+@push('seo')
+<script type="application/ld+json">
+@verbatim
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://connectx.youngchanakya.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Terms and Conditions",
+          "item": "https://connectx.youngchanakya.com/terms-and-conditions"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://connectx.youngchanakya.com/terms-and-conditions#webpage",
+      "url": "https://connectx.youngchanakya.com/terms-and-conditions",
+      "name": "Terms & Conditions | Young Chanakya X",
+      "description": "Review the Young Chanakya X Terms & Conditions to understand the rules, responsibilities, and guidelines for accessing and using our platform and services.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://connectx.youngchanakya.com/#website",
+        "name": "Young Chanakya X",
+        "url": "https://connectx.youngchanakya.com"
+      },
+      "inLanguage": "en-IN"
+    }
+  ]
+}
+@endverbatim
+</script>
+@endpush
 
 @push('styles')
 <link rel="preconnect" href="https://fonts.googleapis.com">

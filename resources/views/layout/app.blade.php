@@ -13,16 +13,14 @@
     {{-- ── Page-level structured data (JSON-LD) injected here ── --}}
     @stack('seo')
 
-    {{-- ── Google Analytics GA4 (G-0JS1J2H2MQ) ─────────────── --}}
+    {{-- ── Google Analytics GA4 (G-RE94T5FM9Q) ─────────────── --}}
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{ env('GA_MEASUREMENT_ID', 'G-0JS1J2H2MQ') }}"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ env('GA_MEASUREMENT_ID', 'G-RE94T5FM9Q') }}"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', '{{ env('GA_MEASUREMENT_ID', 'G-0JS1J2H2MQ') }}', {
-            'anonymize_ip': true
-        });
+        gtag('config', '{{ env('GA_MEASUREMENT_ID', 'G-RE94T5FM9Q') }}');
     </script>
 
     {{-- ── Google Fonts ──────────────────────────────────────── --}}

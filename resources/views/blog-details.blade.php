@@ -1,15 +1,100 @@
 @php
-// Set page SEO dynamically
+use Illuminate\Support\Str;
+
+$postTitle       = $post->meta_title ?: ($post->title . ' — Young Chanakya X');
+$postDescRaw     = $post->meta_description ?: ($post->excerpt ?: strip_tags($post->content));
+$postDescription = Str::limit(trim(preg_replace('/\s+/', ' ', $postDescRaw)), 155);
+$postKeywords    = $post->meta_keywords ?: ('ycx insights, ' . $post->category . ', Young Chanakya X, creator ecosystem, leadership');
+$prodBase        = 'https://connectx.youngchanakya.com';
+
+if (!empty($post->image)) {
+    $postImage = Str::startsWith($post->image, ['http://', 'https://']) ? $post->image : ($prodBase . '/' . ltrim($post->image, '/'));
+} else {
+    $postImage = $prodBase . '/images/assets/ogg.png';
+}
+
+$postCanonical = $prodBase . '/insights/' . $post->slug;
+
 $seo = [
-    'title'       => $post->title . ' — Young Chanakya X',
-    'description' => strip_tags(Str::limit($post->content, 160)),
-    'keywords'    => 'ycx insights, ' . $post->category . ', young chanakya x, professional insights',
-    'image'       => $post->image,
+    'title'       => $postTitle,
+    'description' => $postDescription,
+    'keywords'    => $postKeywords,
+    'image'       => $postImage,
     'type'        => 'article',
+    'canonical'   => $postCanonical,
+];
+
+$blogPostingSchema = [
+    '@context' => 'https://schema.org',
+    '@graph' => [
+        [
+            '@type' => 'BlogPosting',
+            '@id' => $postCanonical . '#article',
+            'isPartOf' => [
+                '@type' => 'WebPage',
+                '@id' => $postCanonical . '#webpage'
+            ],
+            'headline' => $post->title,
+            'description' => $postDescription,
+            'image' => [
+                '@type' => 'ImageObject',
+                'url' => $postImage
+            ],
+            'datePublished' => optional($post->created_at)->toIso8601String() ?: now()->toIso8601String(),
+            'dateModified' => optional($post->updated_at)->toIso8601String() ?: now()->toIso8601String(),
+            'author' => [
+                '@type' => 'Person',
+                'name' => $post->author_name ?: 'Young Chanakya X Team'
+            ],
+            'publisher' => [
+                '@type' => 'Organization',
+                'name' => 'Young Chanakya X',
+                'url' => 'https://connectx.youngchanakya.com/',
+                'logo' => [
+                    '@type' => 'ImageObject',
+                    'url' => 'https://connectx.youngchanakya.com/images/logo/logo.png'
+                ]
+            ],
+            'mainEntityOfPage' => [
+                '@type' => 'WebPage',
+                '@id' => $postCanonical
+            ]
+        ],
+        [
+            '@type' => 'BreadcrumbList',
+            '@id' => $postCanonical . '#breadcrumb',
+            'itemListElement' => [
+                [
+                    '@type' => 'ListItem',
+                    'position' => 1,
+                    'name' => 'Home',
+                    'item' => 'https://connectx.youngchanakya.com/'
+                ],
+                [
+                    '@type' => 'ListItem',
+                    'position' => 2,
+                    'name' => 'Insights',
+                    'item' => 'https://connectx.youngchanakya.com/insights'
+                ],
+                [
+                    '@type' => 'ListItem',
+                    'position' => 3,
+                    'name' => $post->title,
+                    'item' => $postCanonical
+                ]
+            ]
+        ]
+    ]
 ];
 @endphp
 
 @extends('layout.app')
+
+@push('seo')
+<script type="application/ld+json">
+{!! json_encode($blogPostingSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
+</script>
+@endpush
 
 @push('styles')
 <link rel="preconnect" href="https://fonts.googleapis.com">

@@ -4,12 +4,12 @@
  * Executive Landing Page for School & College Founders, Correspondents & Leaders
  */
 $seo = [
-    'title'       => 'The Education Business Room | Young Chanakya X',
+    'title'       => 'The Education Business Room — Institution Partnership | Young Chanakya X',
     'description' => 'A premier executive podcast and leadership platform for school owners, college correspondents, chairpersons, and education founders to share their journeys and institutional stories.',
     'keywords'    => 'The Education Business Room, Young Chanakya X podcast, school owner podcast, college correspondent series, education leaders India, educational founders series, campus leadership, school founders stories',
     'image'       => asset('images/assets/seo-share.jpg'),
     'type'        => 'website',
-    'robots'      => 'index, follow',
+    'canonical'   => 'https://connectx.youngchanakya.com/register-institution',
 ];
 $lightNav = true;
 @endphp
@@ -21,16 +21,39 @@ $lightNav = true;
 @verbatim
 {
     "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "The Education Business Room | Young Chanakya X",
-    "url": "https://connectx.youngchanakya.com/register-institution",
-    "description": "A premier executive podcast and storytelling platform for school owners, college correspondents, chairpersons, and education entrepreneurs.",
-    "isPartOf": {
-        "@type": "WebSite",
-        "@id": "https://connectx.youngchanakya.com/#website",
-        "name": "Young Chanakya X",
-        "url": "https://connectx.youngchanakya.com/"
-    }
+    "@graph": [
+        {
+            "@type": "WebPage",
+            "@id": "https://connectx.youngchanakya.com/register-institution#webpage",
+            "name": "The Education Business Room — Institution Partnership | Young Chanakya X",
+            "url": "https://connectx.youngchanakya.com/register-institution",
+            "description": "A premier executive podcast and storytelling platform for school owners, college correspondents, chairpersons, and education entrepreneurs.",
+            "isPartOf": {
+                "@type": "WebSite",
+                "@id": "https://connectx.youngchanakya.com/#website",
+                "name": "Young Chanakya X",
+                "url": "https://connectx.youngchanakya.com/"
+            }
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://connectx.youngchanakya.com/register-institution#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://connectx.youngchanakya.com/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Institution Partnership",
+                    "item": "https://connectx.youngchanakya.com/register-institution"
+                }
+            ]
+        }
+    ]
 }
 @endverbatim
 </script>
