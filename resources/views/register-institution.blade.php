@@ -877,24 +877,6 @@ $lightNav = true;
               </div>
             </form>
 
-            {{-- SUCCESS STATE --}}
-            <div id="formSuccessState" @if(!session('success')) hidden @endif class="py-8 text-center">
-              <div class="mx-auto grid h-14 w-14 place-items-center rounded-full bg-forest text-peach">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-              </div>
-              <h3 class="mt-4 text-2xl font-bold text-forest">Registration Received</h3>
-              <p class="mx-auto mt-2 max-w-sm text-xs leading-relaxed text-forest/75">
-                Thank you for connecting with <strong>The Education Business Room</strong>. Our curation team will review your profile and reach out within 2–3 working days to coordinate the conversation format.
-              </p>
-              <div class="mt-5">
-                <a href="#untold-stories" class="text-xs font-bold text-forest underline underline-offset-4">
-                  Explore the Leadership Stories below ↓
-                </a>
-              </div>
-            </div>
-
             <p id="liveStatus" aria-live="polite" class="sr-only"></p>
           </div>
         </div>
@@ -2213,6 +2195,26 @@ $lightNav = true;
 
 </div>
 
+<!-- Success Modal (Same as Partner Page) -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="background: linear-gradient(135deg, #fffcf9 0%, #ffeada 100%); border: 1px solid rgba(12, 58, 48, 0.15); border-radius: 20px;">
+            <div class="modal-body text-center p-5">
+                <div class="mb-4">
+                    <i class="bi bi-check-circle-fill" style="font-size: 4rem; color: #0c3a30;"></i>
+                </div>
+                <h3 class="fw-bold mb-3" style="font-size: 1.5rem; line-height: 1.3; color: #0c3a30;">Thank You for Connecting!</h3>
+                <p class="mb-4" style="line-height: 1.6; font-size: 0.95rem; color: #687588;">
+                    We're excited about the opportunity to partner together and build impactful collaborations.
+                </p>
+                <a href="{{ request()->url() }}" class="btn px-5 py-3 fw-bold w-100 d-block text-center" style="text-decoration: none; background-color: #0c3a30; color: #ffffff; border-radius: 12px; border: none; transition: all 0.3s ease;">
+                    Continue Exploring
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
 @endsection
 
 @push('scripts')
@@ -2221,7 +2223,6 @@ $lightNav = true;
   'use strict';
 
   var form = document.getElementById('founderRegForm'),
-      done = document.getElementById('formSuccessState'),
       live = document.getElementById('liveStatus');
 
   function mark(f, bad) {
@@ -2292,14 +2293,20 @@ $lightNav = true;
         });
       })
       .then(function (result) {
-        if (result.ok && (result.data.success || result.data.message)) {
-          form.hidden = true;
-          if (done) done.hidden = false;
+        if (result.ok && (result.data.success || result.data.message || result.data.type === 'success')) {
+          form.reset();
           if (live) live.textContent = 'Registration submitted successfully.';
 
-          var founderForm = document.getElementById('founder-form');
-          if (founderForm) {
-            founderForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            if (submitBtnText) submitBtnText.classList.remove('hidden');
+            if (submitBtnSpinner) submitBtnSpinner.classList.add('hidden');
+          }
+
+          var successModalElement = document.getElementById('successModal');
+          if (successModalElement && typeof bootstrap !== 'undefined') {
+            var myModal = new bootstrap.Modal(successModalElement);
+            myModal.show();
           }
         } else {
           var err = 'Unable to submit registration. Please try again.';
@@ -2339,6 +2346,15 @@ $lightNav = true;
       });
     });
   }
+
+  // Show modal if redirected with flash session('success')
+  @if (session('success'))
+  var successModalElement = document.getElementById('successModal');
+  if (successModalElement && typeof bootstrap !== 'undefined') {
+    var myModal = new bootstrap.Modal(successModalElement);
+    myModal.show();
+  }
+  @endif
 })();
 </script>
 <script>
